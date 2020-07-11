@@ -17,7 +17,8 @@ class CreateAddressTable extends Migration
             $table->id();
             $table->string('address');
             $table->string('alias');
-            $table->bigInteger('id_parent');
+            $table->unsignedBigInteger('parent_id')->index();
+            $table->foreign('parent_id')->references('id')->on('address');
             $table->timestamps();
         });
     }

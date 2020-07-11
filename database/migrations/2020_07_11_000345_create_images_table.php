@@ -16,8 +16,9 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('url');
-            $table->bigInteger('id_homestay');
+            $table->unsignedBigInteger('homestay_id')->index();
             $table->tinyInteger('status')->default(1);
+            $table->foreign('homestay_id')->references('id')->on('homestays')->onDelete('cascade');
             $table->timestamps();
         });
     }

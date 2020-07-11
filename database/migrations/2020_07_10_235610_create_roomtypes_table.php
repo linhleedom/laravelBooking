@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHomestayTable extends Migration
+class CreateRoomtypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateHomestayTable extends Migration
      */
     public function up()
     {
-        Schema::create('homestay', function (Blueprint $table) {
+        Schema::create('roomtypes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('alias');
             $table->string('keyword(SE0)');
             $table->tinyInteger('status')->default(0);
-            $table->bigInteger('id_admin');
-            $table->bigInteger('id_address');
-            $table->float('point');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateHomestayTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('homestay');
+        Schema::dropIfExists('roomtypes');
     }
 }

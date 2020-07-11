@@ -15,8 +15,10 @@ class CreateUtiProTable extends Migration
     {
         Schema::create('uti_pro', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_product');
-            $table->bigInteger('id_utilities');
+            $table->unsignedBigInteger('product_id')->index();
+            $table->unsignedBigInteger('utilities_id')->index();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('utilities_id')->references('id')->on('utilities')->onDelete('cascade');
             $table->timestamps();
         });
     }

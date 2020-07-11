@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoomtypeTable extends Migration
+class CreateHomestaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateRoomtypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('roomtype', function (Blueprint $table) {
+        Schema::create('homestays', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('alias');
             $table->string('keyword(SE0)');
             $table->tinyInteger('status')->default(0);
+            $table->unsignedBigInteger('admin_id')->index();
+            $table->unsignedBigInteger('address_id')->index();
+            $table->float('point', 5, 2);
+            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('address_id')->references('id')->on('address')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ class CreateRoomtypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roomtype');
+        Schema::dropIfExists('homestays');
     }
 }
