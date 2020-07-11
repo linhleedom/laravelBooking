@@ -16,7 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('homestay_id')->index();
-            $table->unsignedBigInteger('roomtype_id')->index();
+            $table->unsignedBigInteger('room_type_id')->index();
             $table->tinyInteger('amount');
             $table->date('date');
             $table->integer('prices');
@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->tinyInteger('status')->default(0);
             $table->foreign('homestay_id')->references('id')->on('homestays')->onDelete('cascade');
-            $table->foreign('roomtype_id')->references('id')->on('roomtypes')->onDelete('cascade');
+            $table->foreign('room_type_id')->references('id')->on('room_types')->onDelete('cascade');
             $table->timestamps();
         });
     }
