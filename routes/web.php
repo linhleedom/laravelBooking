@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('test', function(){
+    $roomType = App\Product::find(2)->roomType->toArray();
+    echo $roomType['name'];
+    $homestay = App\Product::find(2)->homestay->toArray();
+    echo $homestay['name'];
+});
