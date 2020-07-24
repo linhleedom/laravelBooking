@@ -45,8 +45,8 @@ class User extends Authenticatable
     public function rating(){
         return $this->hasMany('App\Rating', 'user_id','id');
     }
-    public function address(){
-        return $this->belongsTo('App\Address', 'address_id','id');
+    public function ward(){
+        return $this->belongsTo('App\Ward', 'ward_id','id');
     }
 
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAddressTable extends Migration
+class CreateBlogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('address', function (Blueprint $table) {
+        Schema::create('blogs', function (Blueprint $table) {
             $table->id();
-            $table->string('address');
+            $table->string('title');
+            $table->string('img');
+            $table->text('description');
+            $table->longText('post');
             $table->string('alias');
-            $table->unsignedBigInteger('parent_id')->index()->default(0);
-            // $table->foreign('parent_id')->references('id')->on('address')->onDelete('cascade');
+            $table->unsignedBigInteger('ward_id')->index();
+            $table->foreign('ward_id')->references('id')->on('wards')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateAddressTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('address');
+        Schema::dropIfExists('blogs');
     }
 }

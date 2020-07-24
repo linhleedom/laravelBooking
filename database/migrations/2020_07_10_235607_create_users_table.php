@@ -21,12 +21,12 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar');
             $table->string('phone');
-            $table->unsignedBigInteger('address_id')->index();
+            $table->unsignedBigInteger('ward_id')->index();
             $table->string('address_detail');
             $table->tinyInteger('permision');
             $table->string('bank_number')->nullable();
             $table->rememberToken();
-            $table->foreign('address_id')->references('id')->on('address')->onDelete('cascade');
+            $table->foreign('ward_id')->references('id')->on('wards')->onDelete('cascade');
             $table->timestamps();
         });
     }
