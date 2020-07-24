@@ -26,17 +26,29 @@ Route::get('test', function(){
     // print_r($utilities);
     // echo $utilities[0]['name'];
 
-    $product = App\Utilities::find(1)->product->toArray();
+    // $product = App\Utilities::find(1)->product->toArray();
     // echo "<pre>";
     // print_r($product);
-    $room_type = $product[0]['id'];
-    $roomType = App\Product::find($room_type)->roomType->toArray();
-    echo $roomType['name'];
+    // $room_type = $product[0]['id'];
+    // $roomType = App\Product::find($room_type)->roomType->toArray();
+    // echo $roomType['name'];
 
     // $district = App\Address::find(1)->district->toArray();
     // echo "<Pre>";
     // print_r($district);
-    $province = App\Address::find(5)->province->toArray();
-    echo "<Pre>";
-    print_r($province);
+    // $province = App\Address::find(5)->province->toArray();
+    // echo "<Pre>";
+    // print_r($province);
 });
+Route::get('home',[
+    'as'=>'homePage',
+    'uses'=>'PageController@getHome'
+]);
+Route::get('blog',[
+    'as'=>'blogPage',
+    'uses'=>'PageController@getBlog'
+]);
+Route::get('hot-deal',[
+    'as'=>'hotDealPage',
+    'uses'=>'PageController@getBlog'
+]);
