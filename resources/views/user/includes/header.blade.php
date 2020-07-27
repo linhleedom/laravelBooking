@@ -1,16 +1,16 @@
-    <header>
+<header>
 		<div class="wrap clearfix">
 			<!--logo-->
-			<h1 class="logo"><a href="../home" title="Book Your Travel - home"><img src="images/txt/logo.png" alt="Book Your Travel" /></a></h1>
+			<h1 class="logo"><a href="../home" title="Book Your Travel - home"><img src="user/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
 			<!--//logo-->
 			
 			<!--ribbon-->
 			<div class="ribbon">
 				<nav>
 					<ul class="profile-nav">
-						<li class="active"><a href="#" title="My Account">Tài khoản</a></li>
-						<li><a href="#" class="register" title="Register">Đăng ký</a></li>
-						<li><a href="#" class="login" title="Login">Đăng nhập</a></li>
+						<li class="active"><a class="no-href" title="My Account">Tài khoản</a></li>
+						<li><a  class="register no-href" title="Register">Đăng ký</a></li>
+						<li><a  class="login no-href" title="Login">Đăng nhập</a></li>
 					</ul>
 					<ul class="currency-nav">
 						<li class="active"><a href="#" title="Partners">Đối tác</a></li>
@@ -39,9 +39,9 @@
 		<!--main navigation-->
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
-				<li class="active" ><a href="../home" title="Home">Trang chủ</a></li>
-				<li ><a href="../blog"  title="blog">Blog</a></li>
-				<li><a href="../hot-deal" title="hot deals">Khuyến mại</a></li>
+				<li @yield('home') ><a href="../home" title="Home">Trang chủ</a></li>
+				<li @yield('blog') ><a href="../blog"  title="Blog">Blog</a></li>
+				<li @yield('hot_deal') ><a href="../hot-deal" title="Hot deals">Khuyến mại</a></li>
 			</ul>
 		</nav>
 		<!--//main navigation-->
@@ -51,7 +51,7 @@
 			<!-- Login -->
 			<div class="lightbox" id="login" style="display:none;">
 				<div class="lb-wrap">
-					<a href="#" class="close">x</a>
+					<a  class="close no-href">x</a>
 					<div class="lb-content">
 						<form>
 							<h1>Đăng nhập</h1>
@@ -70,7 +70,7 @@
 							<p><a href="user_reset_password_step_1.html" title="Forgot password?">Quên mật khẩu?</a>
 								<br />
 								<span style="color: rgba(56, 209, 255, 0.86);" >Nếu bạn chưa có tài khoản?</span>
-								<a href="#" class="register" title="Sign up">Đăng ký</a></p>
+								<a class="register no-href" title="Sign up">Đăng ký</a></p>
 							<input type="submit" id="login" name="login" value="Đăng nhập" class="gradient-button"/>
 						</form>
 					</div>
@@ -80,7 +80,7 @@
 			<!-- Register -->
 			<div class="lightbox" id="register" style="display:none;">
 				<div class="lb-wrap">
-					<a href="#" class="close">x</a>
+					<a class="close no-href">x</a>
 					<div class="lb-content">
 						<form>
 							<h1>Đăng ký</h1>

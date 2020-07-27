@@ -136,6 +136,9 @@ header #wrap .ribbon nav ul.open li a {
 .mysettings label{
 	margin: 10px 0 0;
 }
+.no-href{
+	cursor: pointer;
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;

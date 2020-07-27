@@ -50,5 +50,57 @@ Route::get('blog',[
 ]);
 Route::get('hot-deal',[
     'as'=>'hotDealPage',
-    'uses'=>'PageController@getBlog'
+    'uses'=>'PageController@getHotDeal'
+]);
+Route::get('error',[
+    'as'=>'errorPage',
+    'uses'=>'PageController@getError'
+]);
+Route::get('search-result',[
+    'as'=>'searchResultPage',
+    'uses'=>'PageController@getSearchResult'
+]);
+Route::get('room-detail',[
+    'as'=>'roomDetailPage',
+    'uses'=>'PageController@getRoomDetail'
+]);
+Route::get('blog-detail',[
+    'as'=>'blogDetailPage',
+    'uses'=>'PageController@getBlogDetail'
+]);
+Route::get('my-account',[
+    'as'=>'myAccountPage',
+    'uses'=>'PageController@getAccount'
+]);
+Route::get('terms-of-sevices',[
+    'as'=>'termOfSevicePage',
+    'uses'=>'PageController@getTermOfSevice'
+]);
+Route::get('booking-step-1',[
+    'as'=>'nookingStep1Page',
+    'uses'=>'PageController@getBookingStep1'
+]);
+Route::get('booking-step-2',[
+    'as'=>'bookingStep2Page',
+    'uses'=>'PageController@getBookingStep2'
+]);
+Route::get('booking-step-3',[
+    'as'=>'bookingStep3Page',
+    'uses'=>'PageController@getBookingStep3'
+]);
+Route::get('reset-password-step-1',[
+    'as'=>'resetPassStep1Page',
+    'uses'=>'PageController@getResetPassStep1'
+]);
+Route::get('reset-password-step-2',[
+    'as'=>'resetPassStep2Page',
+    'uses'=>'PageController@getResetPassStep2'
+]);
+Route::get('reset-password-step-3',[
+    'as'=>'resetPassStep3Page',
+    'uses'=>'PageController@getResetPassStep3'
+]);
+Route::get('loading',[
+    'as'=>'loadingPage',
+    'uses'=>'PageController@getLoading'
 ]);

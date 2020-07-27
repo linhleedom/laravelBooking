@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('amount');
             $table->date('date');
             $table->integer('prices');
+            $table->integer('discount')->default(0);
             $table->string('avatar');
             $table->text('description');
             $table->tinyInteger('status')->default(0);

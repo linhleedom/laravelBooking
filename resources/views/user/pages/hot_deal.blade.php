@@ -1,7 +1,11 @@
-@extends("user.master1")
+@extends("user.master")
 
 @section('title')
 Hot Deals
+@endsection
+
+@section('hot_deal')
+class="active"
 @endsection
 
 @section('content')
@@ -29,15 +33,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -54,15 +58,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -79,15 +83,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -104,15 +108,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -133,15 +137,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -158,15 +162,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -183,15 +187,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -208,15 +212,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -237,15 +241,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -262,15 +266,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -287,15 +291,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -312,15 +316,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -342,15 +346,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -367,15 +371,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -392,15 +396,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>
@@ -417,15 +421,15 @@ Hot Deals
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
-											<img src="images/ico/star-rating-off.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
-											<img src="images/ico/star.png" alt="" />
+											<img src="user/images/ico/star-rating-off.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
+											<img src="user/images/ico/star.png" alt="" />
 										</span>
 									</h1>
 									<span class="address">Hà Nội  •  Phòng giường đôi</span>

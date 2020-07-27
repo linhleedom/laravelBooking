@@ -1,7 +1,20 @@
-@extends("user.master1")
+@extends("user.master")
 
 @section('title')
 Travel Your Booking
+@endsection
+
+@section('script')
+	$(document).ready(function(){
+		$(".form").hide();
+		$(".form:first").show();
+		$(".f-item:first").addClass("active");
+		$(".f-item:first span").addClass("checked");
+	});
+@endsection
+
+@section('home')
+class="active"
 @endsection
 
 @section('content')
