@@ -13,10 +13,11 @@ class CreateProvincesTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('vietnam-zone.tables.provinces'), function (Blueprint $table) {
+        Schema::create('provinces', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('matp');
             $table->string('name');
-            $table->string('gso_id');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateProvincesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('vietnam-zone.tables.provinces'));
+        Schema::dropIfExists('provinces');
     }
 }

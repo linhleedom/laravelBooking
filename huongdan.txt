@@ -1,0 +1,5 @@
+Chạy lệnh để khởi tạo table
+php artisan migrate
+
+Chạy lệnh dưới để tải về dữ liệu bảng tỉnh, huyện,xã
+php artisan vietnamzone:download

@@ -20,8 +20,7 @@ class CreateBlogsTable extends Migration
             $table->text('description');
             $table->longText('post');
             $table->string('alias');
-            $table->unsignedBigInteger('ward_id')->index();
-            $table->foreign('ward_id')->references('id')->on('wards')->onDelete('cascade');
+            $table->unsignedBigInteger('xaid')->index();
             $table->timestamps();
         });
     }

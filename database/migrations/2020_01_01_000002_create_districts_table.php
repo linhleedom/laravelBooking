@@ -13,17 +13,13 @@ class CreateDistrictsTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('vietnam-zone.tables.districts'), function (Blueprint $table) {
+        Schema::create('districts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string(config('vietnam-zone.columns.name'));
-            $table->string(config('vietnam-zone.columns.gso_id'));
-            $table->unsignedBigInteger(config('vietnam-zone.columns.province_id'));
+            $table->integer('maqh');
+            $table->string('name');
+            $table->string('type');
+            $table->integer('matp');
             $table->timestamps();
-
-            $table->foreign(config('vietnam-zone.columns.province_id'))
-                ->references('id')
-                ->on(config('vietnam-zone.tables.provinces'))
-                ->cascadeOnDelete();
         });
     }
 
@@ -34,6 +30,6 @@ class CreateDistrictsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('vietnam-zone.tables.districts'));
+        Schema::dropIfExists('districts');
     }
 }

@@ -20,11 +20,10 @@ class CreateHomestaysTable extends Migration
             $table->string('keyword(SE0)');
             $table->tinyInteger('status')->default(0);
             $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('ward_id')->index();
+            $table->unsignedBigInteger('xaid')->index();
             $table->text('description');
             $table->float('point', 5, 2);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('ward_id')->references('id')->on('wards')->onDelete('cascade');
             $table->timestamps();
         });
     }
