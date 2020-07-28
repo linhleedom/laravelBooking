@@ -54,4 +54,71 @@ class PageController extends Controller
     public function getLoading(){
         return view('user.pages.loading');
     }
+    public function getIndex(){
+        return view('partner.trangchu');
+    }
+
+    public function getHomestay(){
+        return view('partner.homestay.homestay');
+    }
+
+    public function getRoom(){
+        return view ('partner.room.room');
+    }
+
+    public function getHome_add(){
+        return view('partner.home-add');
+    }
+
+    public function getAdd_homestay(){
+        return view('partner.homestay.add-homestay');
+    }
+
+    public function getAdd_room(){
+        return view('partner.room.add-room');
+    }
+
+    public function getEdit_detail_booking(){
+        return view('partner.my_order.Edit-detail-booking');
+    }
+
+    public function getEdit_list_homestay(){
+        return view('partner.homestay.Edit-list-homestay');
+    }
+
+    public function getEdit_list_room(){
+        return view('partner.room.Edit-list-room');
+    }
+    
+    public function getList_homestay(){
+        return view('partner.homestay.list-homestay');
+    }
+
+    public function getList_mybooking(){
+        return view('partner.my_order.list-mybooking');
+    }
+
+    public function getList_room(){
+        return view('partner.room.list-room');
+    }
+
+    public function getMy_detail_booking(){
+        return view('partner.my_order.my-detail-booking');
+    }
+
+    public function getPays_home(){
+        return view('partner.pays.pays-home');
+    }
+
+    public function getPays_new_step1(){
+        return view('partner.pays.pays-new-step1');
+    }
+
+    public function getPays_new_step2(){
+        return view('partner.pays.pays-new-step2');
+    }
+
+    public function getPays_new_step3(){
+        return view('partner.pays.pays-new-step3');
+    }
 }
