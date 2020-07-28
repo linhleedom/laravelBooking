@@ -9,9 +9,9 @@ class District extends Model
     protected $table = 'districts';
 
     public function ward(){
-        return $this->hasMany('App\Ward', 'district_id','id');
+        return $this->hasMany('App\Ward', 'maqh','maqh');
     }
     public function provice(){
-        return $this->belongsTo('App\Provice', 'province_id','id');
+        return $this->belongsTo('App\Provice', 'matp','matp');
     }
 }

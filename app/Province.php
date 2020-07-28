@@ -9,6 +9,6 @@ class Province extends Model
     protected $table = 'provinces';
 
     public function district(){
-        return $this->hasMany('App\District', 'province_id','id');
+        return $this->hasMany('App\District', 'matp','matp');
     }
 }

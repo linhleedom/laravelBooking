@@ -9,16 +9,16 @@ class Ward extends Model
     protected $table = 'wards';
 
     public function user(){
-        return $this->hasMany('App\User', 'ward_id','id');
+        return $this->hasMany('App\User', 'xaid','xaid');
     }
     public function homestay(){
-        return $this->hasMany('App\Homestay', 'ward_id','id');
+        return $this->hasMany('App\Homestay', 'xaid','xaid');
     }
     public function blog(){
-        return $this->hasMany('App\Blog', 'ward_id','id');
+        return $this->hasMany('App\Blog', 'xaid','xaid');
     }
     public function district(){
-        return $this->belongsTo('App\District', 'district_id','id');
+        return $this->belongsTo('App\District', 'maqh','maqh');
     }
 
 }
