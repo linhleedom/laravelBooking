@@ -104,3 +104,92 @@ Route::get('loading',[
     'as'=>'loadingPage',
     'uses'=>'PageController@getLoading'
 ]);
+
+// Route::get('/index', function () {
+//     return view('partner/master');
+// });
+
+Route::get('/index',[
+    'as' =>'trang-chu',
+    'uses' => 'PageController@getIndex'
+]);
+
+Route::get('homestay',[
+    'as' =>'homestay',
+    'uses' => 'PageController@getHomestay'
+]);
+
+Route::get('room',[
+    'as' =>'room',
+    'uses' =>'PageController@getRoom'
+]);
+
+Route::get('home-add',[
+    'as' => 'thêm homestay và phòng',
+    'uses' => 'PageController@getHome_add'
+]);
+
+Route::get('add-homestay',[
+    'as' => 'add-homestay',
+    'uses' => 'PageController@getAdd_homestay'
+]);
+
+Route::get('add-room',[
+    'as' => 'add-room',
+    'uses' => 'PageController@getAdd_room'
+]);
+
+Route::get('Edit-detail-booking',[
+    'as' => 'Edit-detail-booking',
+    'uses' => 'PageController@getEdit_detail_booking'
+]);
+
+Route::get('Edit-list-homestay',[
+    'as' => 'Edit-list-homestay',
+    'uses' => 'PageController@getEdit_list_homestay'
+]);
+
+Route::get('Edit-list-room',[
+    'as' => 'Edit-list-room',
+    'uses' => 'PageController@getEdit_list_room'
+]);
+
+Route::get('list-homestay',[
+    'as' => 'list-homestay',
+    'uses' => 'PageController@getList_homestay'
+]);
+
+Route::get('list-mybooking',[
+    'as' => 'list-mybooking',
+    'uses' => 'PageController@getList_mybooking'
+]);
+
+Route::get('list-room',[
+    'as' => 'list-room',
+    'uses' => 'PageController@getList_room'
+]);
+
+Route::get('my-detail-booking',[
+    'as' => 'my-detail-booking',
+    'uses' => 'PageController@getMy_detail_booking'
+]);
+
+Route::get('pays-home',[
+    'as' => 'pays-home',
+    'uses' => 'PageController@getPays_home'
+]);
+
+Route::get('pays-new-step1',[
+    'as' => 'pays-new-step1',
+    'uses' => 'PageController@getPays_new_step1'
+]);
+
+Route::get('pays-new-step2',[
+    'as' => 'pays-new-step2',
+    'uses' => 'PageController@getPays_new_step2'
+]);
+
+Route::get('pays-new-step3',[
+    'as' => 'pays-new-step3',
+    'uses' => 'PageController@getPays_new_step3'
+]);
