@@ -1,7 +1,7 @@
 <header>
 		<div class="wrap clearfix">
 			<!--logo-->
-			<h1 class="logo"><a href="../home" title="Book Your Travel - home"><img src="user/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
+			<h1 class="logo"><a href="../" title="Book Your Travel - home"><img src="user/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
 			<!--//logo-->
 			
 			<!--ribbon-->
@@ -39,7 +39,7 @@
 		<!--main navigation-->
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
-				<li @yield('home') ><a href="../home" title="Home">Trang chủ</a></li>
+				<li @yield('home') ><a href="../" title="Home">Trang chủ</a></li>
 				<li @yield('blog') ><a href="../blog"  title="Blog">Blog</a></li>
 				<li @yield('hot_deal') ><a href="../hot-deal" title="Hot deals">Khuyến mại</a></li>
 			</ul>

@@ -40,7 +40,7 @@ Route::get('test', function(){
     // echo "<Pre>";
     // print_r($province);
 });
-Route::get('home',[
+Route::get('/',[
     'as'=>'homePage',
     'uses'=>'PageController@getHome'
 ]);

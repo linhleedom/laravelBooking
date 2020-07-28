@@ -4,14 +4,15 @@ $(document).ready(function () {
 	
 	$('#datepicker1').datepicker({
 		showOn: 'button',
-		buttonImage: 'images/ico/calendar.png',
+		buttonImage: 'user/images/ico/calendar.png',
 		buttonImageOnly: true,
 		dateFormat: "dd/mm/yy",
 		minDate:0
 	});
+	// $check_in_date = $('#datepicker1').value();
 	$('#datepicker2').datepicker({
 		showOn: 'button',
-		buttonImage: 'images/ico/calendar.png',
+		buttonImage: 'user/images/ico/calendar.png',
 		buttonImageOnly: true,
 		dateFormat: "dd/mm/yy",
 		minDate:1,
