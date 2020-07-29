@@ -31,10 +31,18 @@
                             <td>1</td>
                             <td>Luxury Homestay Demo</td>
                             <td>
-                                <div class="range-wrap">
-                                    <div class="range-value" id="rangeV"></div>
-                                    <input id="range" type="range" min="1" max="5" value="200" step="">
-                                </div>
+                                <!--Star rating-->
+                                <dd style="display: block; height: auto;">
+                                    <div id="star" data-rating="3" style="cursor: pointer; width: 130px;">
+                                        <img src="user/images/ico/star-rating-on.png" alt="1" title="bad">&nbsp;
+                                        <img src="user/images/ico/star-rating-on.png" alt="2" title="poor">&nbsp;
+                                        <img src="user/images/ico/star-rating-on.png" alt="3" title="regular">&nbsp;
+                                        <img src="user/images/ico/star-rating-off.png" alt="4" title="good">&nbsp;
+                                        <img src="user/images/ico/star-rating-off.png" alt="5" title="gorgeous">
+                                        <input type="hidden" name="score" value="3">
+                                    </div>
+                                </dd>
+                                {{-- end-star-rating--}}
                             </td>
                             <td>Ẩn</td>
                             <td colspan="2">
@@ -90,4 +98,14 @@
         <!--//main content-->
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#star').raty({
+            score    : 3,
+            click: function(score, evt) {
+            alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
+        }
+        });
+    });
+</script>
 @endsection

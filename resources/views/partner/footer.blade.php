@@ -3,9 +3,9 @@
 			<!--column-->
 			<article class="one-fourth">
 				<h3>Book Your Travel</h3>
-				<p>1400 Pennsylvania Ave. Washington, DC</p>
-				<p><em>P:</em> 24/7 customer support: 1-555-555-5555</p>
-				<p><em>E:</em> <a href="#" title="booking@mail.com">booking@mail.com</a></p>
+				<p>Tòa nhà HTC, 236B & 238 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội.</p>
+				<p><em>P:</em> 0888519575 / 0359989090</p>
+				<p><em>E:</em> <a href="" title="booking@mail.com">booking-travel@gmail.com</a></p>
 			</article>
 			<!--//column-->
 			
@@ -26,20 +26,20 @@
 				<h3>Follow us</h3>
 				<ul class="social">
 					<li class="facebook"><a href="#" title="facebook">facebook</a></li>
-					<li class="youtube"><a href="#" title="youtube">youtube</a></li>
-					<li class="rss"><a href="#" title="rss">rss</a></li>
+					{{-- <li class="youtube"><a href="#" title="youtube">youtube</a></li> --}}
+					{{-- <li class="rss"><a href="#" title="rss">rss</a></li> --}}
 					<li class="linkedin"><a href="#" title="linkedin">linkedin</a></li>
 					<li class="googleplus"><a href="#" title="googleplus">googleplus</a></li>
 					<li class="twitter"><a href="#" title="twitter">twitter</a></li>
-					<li class="vimeo"><a href="#" title="vimeo">vimeo</a></li>
-					<li class="pinterest"><a href="#" title="pinterest">pinterest</a></li>
+					{{-- <li class="vimeo"><a href="#" title="vimeo">vimeo</a></li>
+					<li class="pinterest"><a href="#" title="pinterest">pinterest</a></li> --}}
 				</ul>
 			</article>
 			<!--//column-->
 			
 			<!--column-->
 			<article class="one-fourth last">
-				<h3>Don’t miss our exclusive offers</h3>
+				<h3>Contacts with us</h3>
 				<form id="newsletter" action="newsletter.php" method="post">
 					<fieldset>
 						<input type="email" id="newsletter_signup" name="newsletter_signup" placeholder="Enter your email here" />

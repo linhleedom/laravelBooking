@@ -323,3 +323,20 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     margin-top: -1px;
 }
 /* end-ranger-list-room  */
+.order table{
+	border: 1px solid #7d7979;
+	width: 100%;
+	text-align: center;
+	color: #444;
+	line-height: 20px;
+    margin-bottom: 20px;
+    
+}
+.order table td, .order table th{
+	border: 1px solid #7d7979;
+	padding: 3px;
+}
+.order a{
+	display: block;
+	margin:0 auto;
+}
