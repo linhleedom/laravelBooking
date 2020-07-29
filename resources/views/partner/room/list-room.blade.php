@@ -38,9 +38,9 @@
                                 <td>500000</td>
 								<td>Ẩn</td>
                                 <td>
-									<a href="room.html" title="chi tiết" class="gradient-button add">Chi tiết phòng</a>
-									<a href="edit-list-room.html" title="Sửa" class="gradient-button edit1">Sửa</a>
-                                    <a href="%" title="Xóa" class="gradient-button delete">Xóa</a>
+									<a href="../room-detail" title="chi tiết" class="gradient-button add">Chi tiết phòng</a>
+									<a href="../edit-list-room" title="Sửa" class="gradient-button edit1">Sửa</a>
+                                    <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
                                 </td>
                             </tr>
                             <tr>
