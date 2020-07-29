@@ -331,7 +331,7 @@ My Account
 								<tr>
 									<th>Ảnh đại diện: </th>
 									<td>
-										<img src="user/images/uploads/avatar.jpg" alt="avatar">
+										<img src="uploads/avatar/avatar.jpg" alt="avatar">
 										<!--edit fields-->
 										<div class="edit_field" id="field5">
 											<form action="" enctype="multipart/form-data">
@@ -402,7 +402,7 @@ My Account
 					
 					<!--Ads-->
 					<article class="default clearfix">
-						<img src="user/images/uploads/ad.png" alt="">
+						<img src="uploads/Ads/ad.png" alt="">
 					</article>
 					<!--//Ads-->
 					

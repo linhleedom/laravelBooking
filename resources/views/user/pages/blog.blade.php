@@ -40,7 +40,7 @@ class="active"
 					<div class="deals clearfix">
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img1.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -52,7 +52,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img1.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -64,7 +64,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img1.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -76,7 +76,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img1.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -88,7 +88,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img2.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -100,7 +100,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img2.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -112,7 +112,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img2.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -124,7 +124,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img2.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -136,7 +136,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img3.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -148,7 +148,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img3.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -160,7 +160,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img3.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">
@@ -172,7 +172,7 @@ class="active"
 						<!--//deal-->
 						<!--deal-->
 						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="172" /></a></figure>
+							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img3.jpg" alt="" width="270" height="172" /></a></figure>
 							<div class="details">
 								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
 								<div class="description blog">

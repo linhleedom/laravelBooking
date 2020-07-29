@@ -27,25 +27,15 @@ class="active"
 						<h2>Giá cả hợp lý</h2><br />
 						<p>Thủ tục đăng ký nhanh gọn</p>
 					</div>
-					<img class="main-image animate-in" src="user/images/slider/img.jpg" alt="" />
-				</li><li>
+					<img class="main-image animate-in" src="uploads/slider/slide2.jpg" alt="" />
+				</li>
+				<li>
 					<div class="info animate-in">
 						<h2>Giá cả hợp lý</h2><br />
 						<p>Thủ tục đăng ký nhanh gọn</p>
 					</div>
-					<img class="main-image animate-in" src="user/images/slider/img2.jpg" alt="" />
-				</li><li>
-					<div class="info animate-in">
-						<h2>Giá cả hợp lý</h2><br />
-						<p>Thủ tục đăng ký nhanh gọn</p>
-					</div>
-					<img class="main-image animate-in" src="user/images/slider/img3.jpg" alt="" />
-				</li><li>
-					<div class="info animate-in">
-						<h2>Giá cả hợp lý</h2><br />
-						<p>Thủ tục đăng ký nhanh gọn</p>
-					</div>
-					<img class="main-image animate-in" src="user/images/slider/img4.jpg" alt="" />
+					<img class="main-image animate-in" src="uploads/slider/slide3.jpg" alt="" />
+				</li>
 			</ul>
 		</div>
 	</section>
@@ -114,7 +104,7 @@ class="active"
 				<h1>Top Homestay được yêu thích </h1>
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -137,7 +127,7 @@ class="active"
 				<!--//column-->
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -160,7 +150,7 @@ class="active"
 				<!--//column-->
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -183,7 +173,7 @@ class="active"
 				<!--//column-->
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img4.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -208,7 +198,7 @@ class="active"
 				
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -232,7 +222,7 @@ class="active"
 				<!--column-->
 				<article class="one-fourth promo">
 					<div class="ribbon-small">- 20%</div>
-					<figure><a href="user_hot_deals.html" title=""><img src="user/images/uploads/img3.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_hot_deals.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_hot_deals.html" title="View all" class="gradient-button">View all</a>
 						<h5>LuxStay</h5>
@@ -256,7 +246,7 @@ class="active"
 				
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -280,7 +270,7 @@ class="active"
 				
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img7.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -309,7 +299,7 @@ class="active"
 				<h1>Sạch sẽ thoải mái, phù hợp cho lưu trú dài ngày</h1>
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -332,7 +322,7 @@ class="active"
 				<!--//column-->
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -355,7 +345,7 @@ class="active"
 				<!--//column-->
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -378,7 +368,7 @@ class="active"
 				<!--//column-->
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -403,7 +393,7 @@ class="active"
 				
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -427,7 +417,7 @@ class="active"
 				<!--column-->
 				<article class="one-fourth promo">
 					<div class="ribbon-small">- 20%</div>
-					<figure><a href="hot_deals.html" title=""><img src="user/images/uploads/img3.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="hot_deals.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="hot_deals.html" title="View all" class="gradient-button">View all</a>
 						<h5>LuxStay</h5>
@@ -451,7 +441,7 @@ class="active"
 				
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>
@@ -475,7 +465,7 @@ class="active"
 				
 				<!--column-->
 				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img2.jpg" alt="" width="270" height="152" /></a></figure>
+					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
 					<div class="details">
 						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
 						<h5>LuxStay</h5>

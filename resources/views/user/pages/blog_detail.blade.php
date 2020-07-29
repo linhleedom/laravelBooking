@@ -116,7 +116,7 @@ class="active"
 						<h2>Homestay có giá ưu đãi cực lớn</h2>
 						<div class="deal-of-the-day">
 							<a href="user_room_detail.html">
-								<figure><img src="user/images/slider/img.jpg" alt="" width="230" height="130" /></figure>
+								<figure><img src="uploads/homestay/img1.jpg" alt="" width="230" height="130" /></figure>
 								<h3>Tên homestay
 									<span class="stars">
 										<img src="user/images/ico/star.png" alt="" />
@@ -132,7 +132,7 @@ class="active"
 						</div>
 						<div class="deal-of-the-day">
 							<a href="user_room_detail.html">
-								<figure><img src="user/images/slider/img2.jpg" alt="" width="230" height="130" /></figure>
+								<figure><img src="uploads/homestay/img2.jpg" alt="" width="230" height="130" /></figure>
 								<h3>Tên homestay
 									<span class="stars">
 										<img src="user/images/ico/star.png" alt="" />
@@ -148,7 +148,7 @@ class="active"
 						</div>
 						<div class="deal-of-the-day">
 							<a href="user_room_detail.html">
-								<figure><img src="user/images/slider/img3.jpg" alt="" width="230" height="130" /></figure>
+								<figure><img src="uploads/homestay/img1.jpg" alt="" width="230" height="130" /></figure>
 								<h3>Tên homestay
 									<span class="stars">
 										<img src="user/images/ico/star.png" alt="" />
@@ -164,7 +164,7 @@ class="active"
 						</div>
 						<div class="deal-of-the-day">
 							<a href="user_room_detail.html">
-								<figure><img src="user/images/slider/img4.jpg" alt="" width="230" height="130" /></figure>
+								<figure><img src="uploads/homestay/img4.jpg" alt="" width="230" height="130" /></figure>
 								<h3>Tên homestay
 									<span class="stars">
 										<img src="user/images/ico/star.png" alt="" />
@@ -180,7 +180,7 @@ class="active"
 						</div>
 						<div class="deal-of-the-day">
 							<a href="user_room_detail.html">
-								<figure><img src="user/images/slider/img5.jpg" alt="" width="230" height="130" /></figure>
+								<figure><img src="uploads/homestay/img5.jpg" alt="" width="230" height="130" /></figure>
 								<h3>Tên homestay
 									<span class="stars">
 										<img src="user/images/ico/star.png" alt="" />
@@ -201,15 +201,15 @@ class="active"
 
 					<!--Ads-->
 					<article class="default clearfix">
-						<img src="user/images/uploads/ad.png" alt="">
+						<img src="uploads/Ads/ad.png" alt="">
 					</article>
 					<!--//Ads-->
 
 					<!--Need Help Booking?-->
-					<article class="default clearfix">
-						<h2>Need Help Booking?</h2>
-						<p>Call our customer services team on the number below to speak to one of our advisors who will help you with all of your holiday needs.</p>
-						<p class="number">1- 555 - 555 - 555</p>
+					<article class="default clearfix">	
+						<h2>Hỗ trợ đặt phòng?</h2>
+						<p>Gọi cho nhóm dịch vụ khách hàng của chúng tôi theo số dưới đây để nói chuyện với một trong những cố vấn của chúng tôi, những người sẽ giúp bạn với tất cả các nhu cầu kỳ nghỉ của bạn.</p>
+						<p class="number">1800 1989</p>
 					</article>
 					<!--//Need Help Booking?-->
 				</aside>
