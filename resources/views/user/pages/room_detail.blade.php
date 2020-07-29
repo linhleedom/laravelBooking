@@ -40,11 +40,11 @@ class="active"
 				<section class="three-fourth">
 					<!--gallery-->
 					<section class="gallery" id="crossfade">
-						<img src="user/images/slider/img.jpg" alt="" width="850" height="531" />
-						<img src="user/images/slider/img2.jpg" alt="" width="850" height="531" />
-						<img src="user/images/slider/img3.jpg" alt="" width="850" height="531" />
-						<img src="user/images/slider/img4.jpg" alt="" width="850" height="531" />
-						<img src="user/images/slider/img5.jpg" alt="" width="850" height="531" />
+						<img src="uploads/homestay/img1.jpg" alt="" width="850" height="531" />
+						<img src="uploads/homestay/img2.jpg" alt="" width="850" height="531" />
+						<img src="uploads/homestay/img3.jpg" alt="" width="850" height="531" />
+						<img src="uploads/homestay/img4.jpg" alt="" width="850" height="531" />
+						<img src="uploads/homestay/img5.jpg" alt="" width="850" height="531" />
 					</section>
 					<!--//gallery-->
 				
@@ -73,7 +73,8 @@ class="active"
 							<ul class="room-types">
 								<!--room-->
 								<li>
-                                    <figure class="left"><img src="user/images/slider/img.jpg" alt="" width="270" height="152" /><a href="user/images/slider/img.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
+                                    <figure class="left"><img src="uploads/room/img3.jpg" alt="" width="270" height="152" />
+									<a href="uploads/room/img3.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
                                     <div class="meta">
                                         <h2>Phòng 2 giường đơn</h2>
                                         <p>Wifi miễn phí<br />Chỗ đỗ xe miễn phí </p>
@@ -109,7 +110,8 @@ class="active"
 								
 								<!--room-->
 								<li>
-									<figure class="left"><img src="user/images/slider/img.jpg" alt="" width="270" height="152" /><a href="user/images/slider/img.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
+									<figure class="left"><img src="uploads/room/img.jpg" alt="" width="270" height="152" />
+									<a href="uploads/room/img.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
 									<div class="meta">
 										<h2>Phòng 1 giường đơn</h2>
 										<p>Wifi miễn phí<br />Chỗ đỗ xe miễn phí </p>
@@ -148,8 +150,8 @@ class="active"
 								<!--room-->
 								<li>
 									<figure class="left">
-										<img src="user/images/slider/img.jpg" alt="" width="270" height="152" /> 
-										<a href="user/images/slider/img.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a>
+										<img src="uploads/room/img3.jpg" alt="" width="270" height="152" /> 
+										<a href="uploads/room/img3.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a>
 									</figure>
 									<div class="meta">
 										<h2>Phòng 2 giường đôi</h2>
@@ -191,7 +193,8 @@ class="active"
 								
 								<!--room-->
 								<li>
-									<figure class="left"><img src="user/images/slider/img.jpg" alt="" width="270" height="152" /><a href="user/images/slider/img.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
+									<figure class="left"><img src="uploads/room/img4.jpg" alt="" width="270" height="152" />
+									<a href="uploads/room/img4.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
 									<div class="meta">
 										<h2>Phòng 2 giường đôi</h2>
 										<p>Wifi miễn phí<br />Chỗ đỗ xe miễn phí </p>
@@ -329,7 +332,7 @@ class="active"
 							<ul class="reviews">
 								<!--review-->
 								<li>
-									<figure class="left"><img src="user/images/uploads/avatar.jpg" alt="avatar" /></figure>
+									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
 									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
 									<div class="pro">
 										<p class="stars">
@@ -345,7 +348,7 @@ class="active"
 								<!--//review-->
 								<!--review-->
 								<li>
-									<figure class="left"><img src="user/images/uploads/avatar.jpg" alt="avatar" /></figure>
+									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
 									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
 									<div class="pro">
 										<p class="stars">
@@ -361,7 +364,7 @@ class="active"
 								<!--//review-->
 								<!--review-->
 								<li>
-									<figure class="left"><img src="user/images/uploads/avatar.jpg" alt="avatar" /></figure>
+									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
 									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
 									<div class="pro">
 										<p class="stars">
@@ -377,7 +380,7 @@ class="active"
 								<!--//review-->
 								<!--review-->
 								<li>
-									<figure class="left"><img src="user/images/uploads/avatar.jpg" alt="avatar" /></figure>
+									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
 									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
 									<div class="pro">
 										<p class="stars">
@@ -393,7 +396,7 @@ class="active"
 								<!--//review-->
 								<!--review-->
 								<li>
-									<figure class="left"><img src="user/images/uploads/avatar.jpg" alt="avatar" /></figure>
+									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
 									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
 									<div class="pro">
 										<p class="stars">
@@ -434,24 +437,24 @@ class="active"
 						<div class="image-item">
 							<ul>
 								<li>
-									<img src="user/images/slider/img.jpg" alt="" width="50" height="50" />
-									<a href="user/images/slider/img.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
+									<img src="uploads/homestay/img1.jpg" alt="" width="50" height="50" />
+									<a href="uploads/homestay/img1.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
 								</li>
 								<li>
-									<img src="user/images/slider/img2.jpg" alt="" width="50" height="50" />
-									<a href="user/images/slider/img2.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
+									<img src="uploads/homestay/img2.jpg" alt="" width="50" height="50" />
+									<a href="uploads/homestay/img2.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
 								</li>
 								<li>
-									<img src="user/images/slider/img3.jpg" alt="" width="50" height="50" />
-									<a href="user/images/slider/img3.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
+									<img src="uploads/homestay/img3.jpg" alt="" width="50" height="50" />
+									<a href="uploads/homestay/img3.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
 								</li>
 								<li>
-									<img src="user/images/slider/img4.jpg" alt="" width="50" height="50" />
-									<a href="user/images/slider/img4.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
+									<img src="uploads/homestay/img4.jpg" alt="" width="50" height="50" />
+									<a href="uploads/homestay/img4.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
 								</li>
 								<li>
-									<img src="user/images/slider/img5.jpg" alt="" width="50" height="50" />
-									<a href="user/images/slider/img5.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
+									<img src="uploads/homestay/img5.jpg" alt="" width="50" height="50" />
+									<a href="uploads/homestay/img5.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
 								</li>
 							</ul>
 						</div>
@@ -460,7 +463,7 @@ class="active"
 
 					<!--Ads-->
 					<article class="default clearfix">
-						<img src="user/images/uploads/ad.png" alt="">
+						<img src="uploads/Ads/ad.png" alt="">
 					</article>
 					<!--//Ads-->
 

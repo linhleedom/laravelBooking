@@ -33,7 +33,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -58,7 +58,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -83,7 +83,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -108,7 +108,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -137,7 +137,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -162,7 +162,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -187,7 +187,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -212,7 +212,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -241,7 +241,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -266,7 +266,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -291,7 +291,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -316,7 +316,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -346,7 +346,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -371,7 +371,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -396,7 +396,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img7.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -421,7 +421,7 @@ class="active"
 						<!--deal-->
 						<article class="one-fourth promo">
 							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img7.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">

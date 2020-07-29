@@ -213,30 +213,30 @@ class="active"
 							<h3>Bộ lọc</h3>
 							<ul class="sort">
 								<li>Phổ biết
-									<a href="#" title="ascending" class="ascending">ascending</a>
-									<a href="#" title="descending" class="descending">descending</a>
+									<a title="ascending" class="ascending no-href">ascending</a>
+									<a title="descending" class="descending no-href">descending</a>
 								</li>
 								<li>Giá
-									<a href="#" title="ascending" class="ascending">ascending</a>
-									<a href="#" title="descending" class="descending">descending</a>
+									<a title="ascending" class="ascending no-href">ascending</a>
+									<a title="descending" class="descending no-href">descending</a>
 								</li>
 								<li>Đánh giá 
-									<a href="#" title="ascending" class="ascending">ascending</a>
-									<a href="#" title="descending" class="descending">descending</a>
+									<a title="ascending" class="ascending no-href">ascending</a>
+									<a title="descending" class="descending no-href">descending</a>
 								</li>
 							</ul>
 							
 							<ul class="view-type">
-								<li class="grid-view"><a href="#" title="grid view">grid view</a></li>
-								<li class="list-view"><a href="#" title="list view">list view</a></li>
-								<li class="location-view"><a href="#" title="location view">location view</a></li>
+								<li class="grid-view"><a class="no-href" title="grid view">grid view</a></li>
+								<li class="list-view"><a class="no-href" title="list view">list view</a></li>
+								<!-- <li class="location-view"><a href="#" title="location view">location view</a></li> -->
 							</ul>
 						</div>
 						
 						<div class="deals clearfix">
 							<!--deal-->
 							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -259,7 +259,7 @@ class="active"
 							<!--//deal-->
 							<!--deal-->
 							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -282,7 +282,7 @@ class="active"
 							<!--//deal-->
 							<!--deal-->
 							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -305,7 +305,7 @@ class="active"
 							<!--//deal-->
 							<!--deal-->
 							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img4.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -328,7 +328,7 @@ class="active"
 							<!--//deal-->
 							<!--deal-->
 							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
@@ -351,7 +351,7 @@ class="active"
 							<!--//deal-->
 							<!--deal-->
 							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="user/images/uploads/img.jpg" alt="" width="270" height="152" /></a></figure>
+								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
 									<h1>Luxstay
 										<span class="stars">
