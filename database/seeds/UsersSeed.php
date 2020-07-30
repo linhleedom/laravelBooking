@@ -19,10 +19,10 @@ class UsersSeed extends Seeder
             ['4', 'user1', 'user1@gmail.com','user','0989525671','00006','2'],
             ['5', 'user2', 'user2@gmail.com','user','0989525455','00007','2'],
             ['6', 'user3', 'user3@gmail.com','user','0989523451','00006','2']
-        ];
-
-        foreach($data as $key=> $val){
-            DB::table('users')->insert(
+            ];
+           
+            foreach($data as $key=> $val){
+            DB::table('users')  ->insert(
                 [
                     'id' => $data[$key][0],
                     'name' => $data[$key][1],
