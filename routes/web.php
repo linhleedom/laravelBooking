@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
 Route::get('test', function(){
     // $roomType = App\Product::find(2)->roomType->toArray();
     // echo $roomType['name'];
@@ -111,10 +113,29 @@ Route::get('loading',[
 //     return view('partner/master');
 // });
 
-Route::get('/index',[
-    'as' =>'trang-chu',
-    'uses' => 'PageController@getIndex'
-]);
+
+Route::group(['namespace'=>'Partner'],function(){
+
+    Route::group(['prefix'=>'/'],function(){
+        Route::get('login-and-register','LoginController@getLogin');
+        Route::post('login-and-register','LoginController@postLogin');
+    });
+
+    Route::group(['prefix'=>'/'],function(){
+        Route::get('login-and-register','PageController@getLogout');
+    });
+
+
+});
+
+Route::group(['prefix'=>'/'],function(){
+    Route::get('index','PageController@getIndex');
+});
+
+// Route::get('/index',[
+//     'as' =>'trang-chu',
+//     'uses' => 'PageController@getIndex'
+// ]);
 
 Route::get('homestay',[
     'as' =>'homestay',
@@ -195,3 +216,24 @@ Route::get('pays-new-step3',[
     'as' => 'pays-new-step3',
     'uses' => 'PageController@getPays_new_step3'
 ]);
+
+Route::get('login-and-register',[
+    'as' => 'login-and-register',
+    'uses' => 'PageController@getLogin_and_Register'
+]);
+
+Route::get('reset-pass-step1',[
+    'as' => 'reset-pass-step1',
+    'uses' => 'PageController@getReset_Pass_step1'
+]);
+
+Route::get('reset-pass-step2',[
+    'as' => 'reset-pass-step2',
+    'uses' => 'PageController@getReset_Pass_step2'
+]);
+
+Route::get('reset-pass-step3',[
+    'as' => 'reset-pass-step3',
+    'uses' => 'PageController@getReset_Pass_step3'
+]);
+

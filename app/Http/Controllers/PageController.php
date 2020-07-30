@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+Use Auth;
 class PageController extends Controller
 {
     public function getHome(){
@@ -54,9 +54,18 @@ class PageController extends Controller
     public function getLoading(){
         return view('user.pages.loading');
     }
+
+
+
     public function getIndex(){
         return view('partner.trangchu');
     }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->intended('login-and-register');
+    }
+    
 
     public function getHomestay(){
         return view('partner.homestay.homestay');
@@ -120,5 +129,20 @@ class PageController extends Controller
 
     public function getPays_new_step3(){
         return view('partner.pays.pays-new-step3');
+    }
+
+    public function getLogin_and_Register(){
+        return view('partner.login.login-and-register');
+    }
+    public function getReset_Pass_Step1(){
+        return view('partner.login.reset-pass-step1');
+    }
+
+    public function getReset_Pass_Step2(){
+        return view('partner.login.reset-pass-step2');
+    }
+
+    public function getReset_Pass_Step3(){
+        return view('partner.login.reset-pass-step3');
     }
 }

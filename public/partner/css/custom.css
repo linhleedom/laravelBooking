@@ -340,3 +340,9 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 	display: block;
 	margin:0 auto;
 }
+table  tr td.alert-danger{
+    
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
