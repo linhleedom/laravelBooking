@@ -8,9 +8,9 @@
 			<div class="ribbon">
 				<nav>
 					<ul class="profile-nav">
-						<li class="active"><a title="My Account">My Account</a></li>
-						<li><a href="login.html" title="Login">Login</a></li>
-						<li><a href="my_account.html" title="Settings">Settings</a></li>
+						<li class="active"><a title="My Account">{{Auth::user()->name}}</a></li>
+						<li><a href="{{asset('logout')}}" title="Logout">Logout</a></li>
+						<li><a title="Settings">Settings</a></li>
 					</ul>
 					{{-- <ul class="lang-nav">
 						<li class="active"><a href="#" title="English (US)">English (US)</a></li>
