@@ -151,8 +151,8 @@ Route::get('Edit-list-homestay',[
     'uses' => 'PageController@getEdit_list_homestay'
 ]);
 
-Route::get('Edit-list-room',[
-    'as' => 'Edit-list-room',
+Route::get('edit-list-room',[
+    'as' => 'edit-list-room',
     'uses' => 'PageController@getEdit_list_room'
 ]);
 

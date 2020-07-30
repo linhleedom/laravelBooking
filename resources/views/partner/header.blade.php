@@ -8,11 +8,11 @@
 			<div class="ribbon">
 				<nav>
 					<ul class="profile-nav">
-						<li class="active"><a href="#" title="My Account">My Account</a></li>
+						<li class="active"><a title="My Account">My Account</a></li>
 						<li><a href="login.html" title="Login">Login</a></li>
 						<li><a href="my_account.html" title="Settings">Settings</a></li>
 					</ul>
-					<ul class="lang-nav">
+					{{-- <ul class="lang-nav">
 						<li class="active"><a href="#" title="English (US)">English (US)</a></li>
 						<li><a href="#" title="English (UK)">English (UK)</a></li>
 						<li><a href="#" title="Deutsch">Deutsch</a></li>
@@ -23,7 +23,7 @@
 						<li class="active"><a href="#" title="$US Dollar">$US Dollar</a></li>
 						<li><a href="#" title="€ Euro">€ Euro</a></li>
 						<li><a href="#" title="£ Pound">£ Pound</a></li>
-					</ul>
+					</ul> --}}
 				</nav>
 			</div>
 			<!--//ribbon-->
