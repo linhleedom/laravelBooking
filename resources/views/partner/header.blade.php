@@ -8,7 +8,7 @@
 			<div class="ribbon">
 				<nav>
 					<ul class="profile-nav">
-						<li class="active"><a title="My Account">{{Auth::user()->name}}</a></li>
+						{{-- <li class="active"><a title="My Account">{{Auth::user()->name}}</a></li> --}}
 						<li><a href="{{asset('logout')}}" title="Logout">Logout</a></li>
 						<li><a title="Settings">Settings</a></li>
 					</ul>
