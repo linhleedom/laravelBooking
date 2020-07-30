@@ -16,8 +16,8 @@ class CreateRoomTypesTable extends Migration
         Schema::create('room_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('alias');
-            $table->string('keyword(SE0)');
+            $table->string('alias')->nullable();
+            $table->string('keyword(SE0)')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('prices');
             $table->integer('discount')->default(0);
             $table->string('avatar');
-            $table->text('description');
+            $table->text('description')->nullabel();
             $table->tinyInteger('status')->default(0);
             $table->foreign('homestay_id')->references('id')->on('homestays')->onDelete('cascade');
             $table->foreign('room_type_id')->references('id')->on('room_types')->onDelete('cascade');

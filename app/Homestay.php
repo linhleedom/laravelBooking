@@ -12,12 +12,12 @@ class Homestay extends Model
         return $this->hasMany('App\Product', 'homestay_id','id');
     }
     public function address(){
-        return $this->belongsTo('App\Address', 'address_id','id');
+        return $this->belongsTo('App\Ward', 'xaid','id');
     }
     public function rating(){
         return $this->hasMany('App\Rating', 'homestay_id','id');
     }
     public function image(){
-        return $this->hasMany('App\Image', 'homestay_id','id');
+        return $this->hasMany('App\ImageHomestay', 'homestay_id','id');
     }
 }

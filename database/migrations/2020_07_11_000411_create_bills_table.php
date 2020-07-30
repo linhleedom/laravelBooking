@@ -15,13 +15,12 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable()->index();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone'); 
+            $table->bigInteger('user_id')->nullable()->index()->default(0);
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable(); 
             $table->tinyInteger('status')->default(0); 
             $table->integer('payments');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

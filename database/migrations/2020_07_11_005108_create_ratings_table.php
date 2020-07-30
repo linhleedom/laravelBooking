@@ -16,15 +16,14 @@ class CreateRatingsTable extends Migration
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('homestay_id')->index();
-            $table->unsignedBigInteger('user_id')->nullable()->index();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->tinyInteger('point');
-            $table->text('comment');
-            $table->tinyInteger('status')->default(0);
+            $table->bigInteger('user_id')->nullable()->index()->default(0);
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->tinyInteger('point')->nullable();
+            $table->text('comment')->nullable();
+            $table->tinyInteger('status')->default(1);
             $table->foreign('homestay_id')->references('id')->on('homestays')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

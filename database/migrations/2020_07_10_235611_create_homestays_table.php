@@ -16,13 +16,13 @@ class CreateHomestaysTable extends Migration
         Schema::create('homestays', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('alias');
-            $table->string('keyword(SE0)');
+            $table->string('alias')->nullable();
+            $table->string('keyword(SE0)')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->unsignedBigInteger('user_id')->index();
-            $table->unsignedBigInteger('xaid')->index();
-            $table->text('description');
-            $table->float('point', 5, 2);
+            $table->string('xaid')->index();
+            $table->text('description')->nullable();
+            $table->float('point', 5, 2)->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

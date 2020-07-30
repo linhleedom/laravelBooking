@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUtilitiesTable extends Migration
+class CreateImagesHomestayTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateUtilitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('utilities', function (Blueprint $table) {
+        Schema::create('images_homestay', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('alias')->nullable();
-            $table->tinyInteger('status')->default(0);
+            $table->string('url');
+            $table->unsignedBigInteger('homestay_id')->index();
+            $table->tinyInteger('status')->default(1);
+            $table->foreign('homestay_id')->references('id')->on('homestays')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateUtilitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utilities');
+        Schema::dropIfExists('images_homestay');
     }
 }

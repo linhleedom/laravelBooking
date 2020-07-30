@@ -33,9 +33,11 @@ Route::get('test', function(){
     // $roomType = App\Product::find($room_type)->roomType->toArray();
     // echo $roomType['name'];
 
-    // $district = App\Address::find(1)->district->toArray();
+    // $district = App\Ward::find(1)->district->toArray();
     // echo "<Pre>";
     // print_r($district);
+    // echo $district['name'];
+    
     // $province = App\Address::find(5)->province->toArray();
     // echo "<Pre>";
     // print_r($province);

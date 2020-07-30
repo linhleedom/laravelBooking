@@ -9,9 +9,9 @@ class Blog extends Model
     protected $table = 'blogs';
 
     public function ward(){
-        return $this->belongsTo('App\Ward', 'ward_id','id');
+        return $this->belongsTo('App\Ward', 'xaid','xaid');
     }
     public function image(){
-        return $this->hasMany('App\Image', 'blog_id','id');
+        return $this->hasMany('App\ImageBlog', 'blog_id','id');
     }
 }
