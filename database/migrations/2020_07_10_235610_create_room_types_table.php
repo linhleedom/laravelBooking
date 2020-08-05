@@ -18,6 +18,7 @@ class CreateRoomTypesTable extends Migration
             $table->string('name');
             $table->string('alias')->nullable();
             $table->string('keyword(SE0)')->nullable();
+            $table->tinyInteger('capacity');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

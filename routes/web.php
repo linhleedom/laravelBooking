@@ -13,9 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as'=>'userHomePage',
+    'uses'=>'user\HomeController@index'
+]);
+Route::get('/home', [
+    'as'=>'userHomePage',
+    'uses'=>'user\HomeController@index'
+]);
+Route::get('/autoComplete', [
+    'as'=>'userAutoComplete',
+    'uses'=>'user\HomeController@autoComplete'
+]);
+Route::get('/search', [
+    'as'=>'userSearch',
+    'uses'=>'user\SearchResultController@index'
+]);
 
 
 Route::get('test', function(){
@@ -40,74 +53,89 @@ Route::get('test', function(){
     // print_r($district);
     // echo $district['name'];
     
-    // $province = App\Address::find(5)->province->toArray();
+    // $district = App\Homestay::find(1)->ward->district->province;
+    // echo "<Pre>";
+    // print_r($district);
+    // echo $district->name;
+
+    // $district = App\Homestay::find(1)->image->toArray();
+    // echo "<Pre>";
+    // print_r($district);
+    // echo $district['name'];
+    
+    // $province = App\District::find(5)->province->toArray();
     // echo "<Pre>";
     // print_r($province);
+    
+
+
+    // print_r($imageHomestay);
+
 });
-Route::get('/',[
-    'as'=>'homePage',
-    'uses'=>'PageController@getHome'
-]);
-Route::get('blog',[
-    'as'=>'blogPage',
-    'uses'=>'PageController@getBlog'
-]);
-Route::get('hot-deal',[
-    'as'=>'hotDealPage',
-    'uses'=>'PageController@getHotDeal'
-]);
-Route::get('error',[
-    'as'=>'errorPage',
-    'uses'=>'PageController@getError'
-]);
-Route::get('search-result',[
-    'as'=>'searchResultPage',
-    'uses'=>'PageController@getSearchResult'
-]);
-Route::get('room-detail',[
-    'as'=>'roomDetailPage',
-    'uses'=>'PageController@getRoomDetail'
-]);
-Route::get('blog-detail',[
-    'as'=>'blogDetailPage',
-    'uses'=>'PageController@getBlogDetail'
-]);
-Route::get('my-account',[
-    'as'=>'myAccountPage',
-    'uses'=>'PageController@getAccount'
-]);
-Route::get('terms-of-sevices',[
-    'as'=>'termOfSevicePage',
-    'uses'=>'PageController@getTermOfSevice'
-]);
-Route::get('booking-step-1',[
-    'as'=>'nookingStep1Page',
-    'uses'=>'PageController@getBookingStep1'
-]);
-Route::get('booking-step-2',[
-    'as'=>'bookingStep2Page',
-    'uses'=>'PageController@getBookingStep2'
-]);
-Route::get('booking-step-3',[
-    'as'=>'bookingStep3Page',
-    'uses'=>'PageController@getBookingStep3'
-]);
-Route::get('reset-password-step-1',[
-    'as'=>'resetPassStep1Page',
-    'uses'=>'PageController@getResetPassStep1'
-]);
-Route::get('reset-password-step-2',[
-    'as'=>'resetPassStep2Page',
-    'uses'=>'PageController@getResetPassStep2'
-]);
-Route::get('reset-password-step-3',[
-    'as'=>'resetPassStep3Page',
-    'uses'=>'PageController@getResetPassStep3'
-]);
-Route::get('loading',[
-    'as'=>'loadingPage',
-    'uses'=>'PageController@getLoading'
-]);
+// Route::get('/',[
+//     'as'=>'homePage',
+//     'uses'=>'PageController@getHome'
+// ]);
+// Route::get('blog',[
+//     'as'=>'blogPage',
+//     'uses'=>'PageController@getBlog'
+// ]);
+// Route::get('hot-deal',[
+//     'as'=>'hotDealPage',
+//     'uses'=>'PageController@getHotDeal'
+// ]);
+// Route::get('error',[
+//     'as'=>'errorPage',
+//     'uses'=>'PageController@getError'
+// ]);
+// Route::get('search-result',[
+//     'as'=>'searchResultPage',
+//     'uses'=>'PageController@getSearchResult'
+// ]);
+// Route::get('room-detail',[
+//     'as'=>'roomDetailPage',
+//     'uses'=>'PageController@getRoomDetail'
+// ]);
+// Route::get('blog-detail',[
+//     'as'=>'blogDetailPage',
+//     'uses'=>'PageController@getBlogDetail'
+// ]);
+// Route::get('my-account',[
+//     'as'=>'myAccountPage',
+//     'uses'=>'PageController@getAccount'
+// ]);
+// Route::get('terms-of-sevices',[
+//     'as'=>'termOfSevicePage',
+//     'uses'=>'PageController@getTermOfSevice'
+// ]);
+// Route::get('booking-step-1',[
+//     'as'=>'nookingStep1Page',
+//     'uses'=>'PageController@getBookingStep1'
+// ]);
+// Route::get('booking-step-2',[
+//     'as'=>'bookingStep2Page',
+//     'uses'=>'PageController@getBookingStep2'
+// ]);
+// Route::get('booking-step-3',[
+//     'as'=>'bookingStep3Page',
+//     'uses'=>'PageController@getBookingStep3'
+// ]);
+// Route::get('reset-password-step-1',[
+//     'as'=>'resetPassStep1Page',
+//     'uses'=>'PageController@getResetPassStep1'
+// ]);
+// Route::get('reset-password-step-2',[
+//     'as'=>'resetPassStep2Page',
+//     'uses'=>'PageController@getResetPassStep2'
+// ]);
+// Route::get('reset-password-step-3',[
+//     'as'=>'resetPassStep3Page',
+//     'uses'=>'PageController@getResetPassStep3'
+// ]);
+// Route::get('loading',[
+//     'as'=>'loadingPage',
+//     'uses'=>'PageController@getLoading'
+// ]);
 
 // Route::get('/index', function () {
 //     return view('partner/master');

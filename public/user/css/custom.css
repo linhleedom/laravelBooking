@@ -139,6 +139,25 @@ header #wrap .ribbon nav ul.open li a {
 .no-href{
 	cursor: pointer;
 }
+.homestay_info{
+	height: 35px;
+}
+#ui-id-1{
+	width: 300px;
+	background-color: #fff;
+	z-index: 99999;
+	border-left: 1px solid #4d4d4d50;
+	/* border-radius: 2px; */
+}
+#ui-id-1 li{
+	text-align: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #4d4d4d50;
+	cursor: pointer;
+	padding-left: 30px;
+
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;

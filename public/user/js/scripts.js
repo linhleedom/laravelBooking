@@ -6,17 +6,20 @@ $(document).ready(function () {
 		showOn: 'button',
 		buttonImage: 'user/images/ico/calendar.png',
 		buttonImageOnly: true,
-		dateFormat: "dd/mm/yy",
-		minDate:0
+		dateFormat: "dd-mm-yy",
+		minDate:0,
+		monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
+		onClose:function(selectedDate){
+			$('#datepicker2').datepicker("option","minDate",selectedDate);
+		}
 	});
-	// $check_in_date = $('#datepicker1').value();
+
 	$('#datepicker2').datepicker({
 		showOn: 'button',
 		buttonImage: 'user/images/ico/calendar.png',
 		buttonImageOnly: true,
-		dateFormat: "dd/mm/yy",
-		minDate:1,
-		maxDate:20
+		dateFormat: "dd-mm-yy",
+		monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ]
 	});
 	
 	$( '#slider' ).slider({

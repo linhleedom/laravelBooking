@@ -17,10 +17,14 @@ class CreateHomestaysTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('alias')->nullable();
+            $table->string('avatar');
             $table->string('keyword(SE0)')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->unsignedBigInteger('user_id')->index();
+            $table->string('matp')->index();
+            $table->string('maqh')->index();
             $table->string('xaid')->index();
+            $table->text('title');
             $table->text('description')->nullable();
             $table->float('point', 5, 2)->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
