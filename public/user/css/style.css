@@ -1413,7 +1413,7 @@ header .ribbon {
 }
 
 .deals .full-width .address {
-    width: auto;
+    /* width: auto; */
     max-width: 60%;
     clear: left;
     padding: 0 25px 0 0;
@@ -2507,7 +2507,7 @@ aside article h3 {
 
 .address {
     font-size: 1.3em;
-    color: #999;
+    color: rgb(61, 61, 61);
 }
 
 .rating {

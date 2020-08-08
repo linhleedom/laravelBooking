@@ -51,7 +51,7 @@ class="active"
 						<h4><span>01 </span>Địa điểm</h4>
 						<div class="f-item">
 							<label for="address">Chọn địa điểm bạn muốn đến</label>
-							<input type="text" placeholder="" id="address" name="address" />
+							<input type="text" placeholder="" id="address" name="address" required="required" />
 						</div>
 					</div>
 					<!--//column-->
@@ -117,15 +117,15 @@ class="active"
 						<div class="details">
 							<div class="homestay_info">
 								<a href="user_room_detail.html" title="View all" class="gradient-button">Chi tiết</a>
-								<h5>{{$homestayTopRateVal->name}}</h5>
-								<span class="count">{{$homestayTopRateVal->point}}  <img src="user/images/ico/star.png" alt="">
+								<h5>{{$homestayTopRateVal->name}}&nbsp&nbsp<span class="point">{{$homestayTopRateVal->point}}</span>
+								</h5>
 								</span>
 							</div>
 							<div class="ribbon">
 								<div class="half hotel">
 									<a href="user_room_detail.html" title="View all">
 										<span class="small">Giá từ</span>
-										<span class="price">{{$homestayTopRateVal->product->min('prices')}}</span>
+										<span class="price">{{ number_format( $homestayTopRateVal->product->min('prices'),0,',',' ' ) }}đ</span>
 									</a>
 								</div>
 								<div class="half flight">
@@ -162,14 +162,13 @@ class="active"
 						<div class="details">
 							<div class="homestay_info">
 								<a href="user_room_detail.html" title="View all" class="gradient-button">Chi tiết</a>
-								<h5>{{$homestayVal->name}}</h5>
-								<span class="count">{{$homestayVal->point}}  <img src="user/images/ico/star.png" alt=""></span>
+								<h5>{{$homestayVal->name}}&nbsp&nbsp<span class="point">{{$homestayTopRateVal->point}}</span> </h5>
 							</div>
 							<div class="ribbon">
 								<div class="half hotel">
 									<a href="user_room_detail.html" title="View all">
 										<span class="small">Giá từ</span>
-										<span class="price">{{$homestayVal->product->min('prices')}}</span>
+										<span class="price">{{ number_format( $homestayVal->product->min('prices'),0,',',' ' ) }}đ</span>
 									</a>
 								</div>
 								<div class="half flight">

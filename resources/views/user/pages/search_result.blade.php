@@ -96,19 +96,15 @@ class="active"
 						<h2>Tìm kiếm theo</h2>
 						<dl>
 							<!--Price-->
-							<dt>Giá</dt>
+							<dt>Giá(1phòng/1đêm)</dt>
 							<dd>
 								<div class="checkbox">
 									<input type="checkbox" id="ch1" name="price" />
-									<label for="ch1">40.000 - 120.000 </label>
+									<label for="ch1">Dưới 300 000đ</label>
 								</div>
 								<div class="checkbox">
 									<input type="checkbox" id="ch2" name="price" />
-									<label for="ch2">120.000 - 300.000</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch3" name="price" />
-									<label for="ch3">300.000 - 600.000</label>
+									<label for="ch2">300 000đ - 600 000đ</label>
 								</div>
 								<div class="checkbox">
 									<input type="checkbox" id="ch4" name="price" />
@@ -117,41 +113,27 @@ class="active"
 							</dd>
 							<!--//Price-->
 							
-							<!--Tiện ích-->
-							<dt>Tiện ích</dt>
+							<!--Room type-->
+							<dt>Loại Phòng</dt>
 							<dd>
+								@foreach($room_type as $room_type_Val)
 								<div class="checkbox">
 									<input type="checkbox" id="ch6" name="accommodation" />
-									<label for="ch6">Free wifi</label>
+									<label for="ch6">{{$room_type_Val->name}}</label>
 								</div>
+								@endforeach
+							</dd>
+							<!--//Tiện ích-->
+
+							<!--Room type-->
+							<dt>Tiện ích</dt>
+							<dd>
+								@foreach($utilities as $utilitiesVal)
 								<div class="checkbox">
-									<input type="checkbox" id="ch7" name="accommodation" />
-									<label for="ch7">Đỗ xe miễn phí</label>
+									<input type="checkbox" id="ch6" name="accommodation" />
+									<label for="ch6">{{$utilitiesVal->name}}</label>
 								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch8" name="accommodation" />
-									<label for="ch8">Điều hòa</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch9" name="accommodation" />
-									<label for="ch9">Ăn sáng</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch10" name="accommodation" />
-									<label for="ch10">Có bể bơi</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch11" name="accommodation" />
-									<label for="ch11">Cho thuê xe đạp</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch12" name="accommodation" />
-									<label for="ch12">Gần chợ</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch13" name="accommodation" />
-									<label for="ch13">Gần đồn công an</label>
-								</div>
+								@endforeach
 							</dd>
 							<!--//Tiện ích-->
 
@@ -198,7 +180,6 @@ class="active"
 								</div>
 							</dd>
 							<!--//chính sách đặt phòng-->
-					
 						</dl>
 					</article>
 				</aside>
@@ -209,10 +190,6 @@ class="active"
 					<div class="sort-by">
 						<h3>Bộ lọc</h3>
 						<ul class="sort">
-							<li>Phổ biết
-								<a title="ascending" class="ascending no-href">ascending</a>
-								<a title="descending" class="descending no-href">descending</a>
-							</li>
 							<li>Giá
 								<a title="ascending" class="ascending no-href">ascending</a>
 								<a title="descending" class="descending no-href">descending</a>
@@ -222,44 +199,67 @@ class="active"
 								<a title="descending" class="descending no-href">descending</a>
 							</li>
 						</ul>
-						
 						<ul class="view-type">
 							<li class="grid-view"><a class="no-href" title="grid view">grid view</a></li>
 							<li class="list-view"><a class="no-href" title="list view">list view</a></li>
 							<!-- <li class="location-view"><a href="#" title="location view">location view</a></li> -->
 						</ul>
 					</div>
-					
 					<div class="deals clearfix">
-
-						@foreach( $homestay as $homestayVal )
-							<!--deal-->
-							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="{{$homestayVal->avatar}}" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>{{$homestayVal->name}}
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
+						@if( $product == "" )
+							@foreach( $homestay as $homestayVal )
+								<!--deal-->
+								<article class="one-fourth">
+									<figure><a href="user_room_detail.html" title=""><img src="{{$homestayVal->avatar}}" alt="" width="270" height="152" /></a></figure>
+									<div class="details">
+										<h1>{{$homestayVal->name}}
+											<div class="stars">
+												<span class="point">{{$homestayVal->point}}</span>
+											</div>
+										</h1>
+										<span class="address">{{$homestayVal->province->name}}</span>
+										<span class="address">{{$homestayVal->district->name}}</span>
+										<!-- <span class="rating">200</span> -->
+										<span class="price">Giá 1 đêm chỉ từ  
+											<em>{{ number_format( $homestayVal->product->min('prices'),0,',',' ' ) }}đ</em> 
 										</span>
-									</h1>
-									<span class="address">{{$homestayVal->district->name}}</span>
-									@foreach($homestayVal->product->take(1) as $productVal)
-										<span class="address">{{$productVal->roomType->name}}</span>
-									@endforeach
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>{{$homestayVal->title}}</p>
+										<div class="description">
+											<p>{{$homestayVal->title}}</p>
+										</div>
+										<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
 									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-							</article>
-							<!--//deal-->
-						@endforeach
+								</article>
+								<!--//deal-->
+							@endforeach	
+						@else
+							@foreach( $product as $productVal )
+								<!--deal-->
+								<article class="one-fourth">
+									<figure><a href="user_room_detail.html" title=""><img src="{{$productVal->avatar}}" alt="" width="270" height="152" /></a></figure>
+									<div class="details">
+										<h1>{{$productVal->homestay->name}}
+											<div class="stars">
+												<span class="point">{{$productVal->homestay->point}}</span>
+											</div>
+										</h1>
+										<span class="address">{{$productVal->homestay->province->name}}</span>
+										<span class="address">{{$productVal->homestay->district->name}}</span>
+										<span class="address product_name">{{$productVal->roomType->name}}</span>
+										<span class="address">Phù hợp cho {{$productVal->roomType->capacity}} người</span>
+										<!-- <span class="rating">200</span> -->
+										<span class="price">
+											Giá 1 đêm  
+											<em>{{ number_format( $productVal->prices,0,',',' ' ) }}đ</em> 
+										</span>
+										<div class="description">
+											<p>{{$productVal->homestay->title}}</p>
+										</div>
+										<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
+									</div>
+								</article>
+								<!--//deal-->
+							@endforeach	
+						@endif
 						<!--bottom navigation-->
 						<div class="bottom-nav">
 							<!--back up button-->

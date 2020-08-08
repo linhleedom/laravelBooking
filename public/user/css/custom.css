@@ -158,6 +158,20 @@ header #wrap .ribbon nav ul.open li a {
 	padding-left: 30px;
 
 }
+.point{
+	padding: 4px 4px 4px 15px;
+	background-color: #000482 !important;
+	color: #fff;
+	border-radius: 4px;
+	font-size: 12px;
+	background:url(../images/ico/star.png) 2px 4px no-repeat;
+}
+.product_name{
+	/* text-align: left !important; */
+	color: #0005a0;
+	font-size: 18px;
+	padding-top: 10px;
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;

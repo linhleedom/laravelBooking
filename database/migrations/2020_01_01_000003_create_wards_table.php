@@ -15,11 +15,9 @@ class CreateWardsTable extends Migration
     {
         Schema::create('wards', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('xaid');
+            $table->string('xaid');
             $table->string('name');
-            $table->string('type');
-            $table->integer('maqh');
-            $table->timestamps();
+            $table->string('maqh');
         });
     }
 

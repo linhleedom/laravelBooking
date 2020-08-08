@@ -15,11 +15,9 @@ class CreateDistrictsTable extends Migration
     {
         Schema::create('districts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('maqh');
+            $table->string('maqh');
             $table->string('name');
-            $table->string('type');
-            $table->integer('matp');
-            $table->timestamps();
+            $table->string('matp');
         });
     }
 

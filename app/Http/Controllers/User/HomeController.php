@@ -30,11 +30,11 @@ class HomeController extends Controller
         foreach($district as $districtVal){
             array_push($nameDistrict,$districtVal['name']);
         };
-        // $nameProvince = array();
-        // foreach($province as $provinceVal){
-        //     array_push($nameProvince,$provinceVal['name']);
-        // };
-        // $name = array_merge($nameDistrict, $nameProvince);
-        return json_encode($nameDistrict);
+        $nameProvince = array();
+        foreach($province as $provinceVal){
+            array_push($nameProvince,$provinceVal['name']);
+        };
+        $name = array_merge($nameDistrict, $nameProvince);
+        return json_encode($name);
     }
 }
