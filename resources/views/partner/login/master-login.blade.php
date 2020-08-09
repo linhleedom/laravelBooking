@@ -22,21 +22,18 @@
 	<script type="text/javascript" src="partner/js/jquery.prettyPhoto.js"></script>
 	<script type="text/javascript" src="partner/js/selectnav.js"></script>
 	<script type="text/javascript" src="partner/js/scripts.js"></script>
-	<script type="text/javascript">	
-		@yield('script')
-	</script>
 </head>
 <body>
 	<!--header-->
-	@include('partner/header')
+	@include('partner/login/header-login')
 	<!--//header-->
 	
 	<!--main-->
-	@yield('main')
+	@yield('content')
 	<!--//main-->
 	
 	<!--footer-->
-	@include('partner/footer')
+	@include('partner/login/footer-login')
 	<!--//footer-->
 </body>
 </html>
