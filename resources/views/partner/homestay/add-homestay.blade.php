@@ -1,4 +1,58 @@
 @extends('partner.master')
+@section('script')
+	$(document).ready(function(){
+		$('#provinces').change(function(){
+		var cid = $(this).val();
+		if(cid){
+		$.ajax({
+		type:"get",
+		url: '../partner/getdistricts/'+cid,//Please see the note at the end of the post**
+		success:function(res)
+		{       
+				if(res.length !== 0)
+				{
+					$("#districts").empty();
+					$("#wards").empty();
+					$("#districts").append('<option>Chon</option>');
+					$.each(res,function(key,value){
+						$("#districts").append('<option value="'+key+'">'+value+'</option>');
+					});
+				}else{
+					$("#districts").empty();
+					$("#wards").empty();
+					$("#districts").append('<option>Chọn</option>');
+					$("#wards").append('<option>Chọn</option>');
+				}
+		}
+
+		});
+		}
+	});
+
+	$('#districts').change(function(){
+		var cid = $(this).val();
+		if(cid){
+		$.ajax({
+		type:"get",
+		url: '../partner/getwards/'+cid,//Please see the note at the end of the post**
+		success:function(res)
+		{       
+				if(res)
+				{
+					$("#wards").empty();
+					$("#wards").append('<option>Chon</option>');
+					$.each(res,function(key,value){
+						$("#wards").append('<option value="'+key+'">'+value+'</option>');
+					});
+				}
+		}
+
+		});
+		}
+	});
+
+	});
+@endsection
 @section('main')
     <!--main-->
 	<div class="main" role="main">		
@@ -26,57 +80,29 @@
 				<!--three-fourth content-->
 					<section class="three-fourth form-booking">
 						<h1 style="text-align: center;text-transform: uppercase;">Thêm thông tin homestay của bạn</h1>
-						<form id="booking" method="post" action="booking-step2.html" class="booking ">
-							<fieldset>
-								<h3 style="margin-top: 20px;"><span>01</span> Địa chỉ Homestay của bạn </h3>
-								<div class="row twins">
-									<div class="f-item custom-item">
-										<label for="text">Tên chỗ nghỉ </label>
-										<input type="text" id="name" name="name" />
-									</div>
-									<div class="f-item custom-item">
-										<label>Tỉnh (Thành Phố)</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>Hà Nội</option>
-											<option>Hồ Chí Minh</option>
-										</select>
-                                    </div>
-                                    <div class="f-item custom-item">
-										<label>Quận (HUyện)</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option></option>
-											<option></option>
-										</select>
-                                    </div>
-                                    <div class="f-item custom-item">
-										<label>Phường Xã</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option></option>
-											<option></option>
-										</select>
-									</div>
-									<!-- <span class="info">You’ll receive a confirmation email</span> -->
-                                </div>
-
-                                <h3 style="margin-top: 20px;"><span>02</span> Loại Homestay</h3>
-								<div class="row twins">
-									<div class="f-item custom-item">
-										<label>Loại căn hộ </label>
-										<input type="text" id="brand_name" name="brand_name" />
-									</div>
-									
-									<div class="f-item custom-item">
-										<label for="">Trạng thái của Homestay</label>
-										<input type="checkbox" id="status" name="status"  value=""/> &nbsp <b>Ẩn/Hiện</b>
-									</div>
-                                </div>
-							</fieldset>							
-							<input type="submit" class="gradient-button" value="Thêm mới" id="add" >
-						</form>
+						
+						<select class="provinces" name="provinces" id="provinces">
+							<option value="">Select provinces</option>
+							@if($provinces)
+								@foreach($provinces as $province)
+									<option value="{{$province->matp}}">{{$province->name}}</option>
+								@endforeach
+							@endif
+						</select>
+						<div class="f-item custom-item">
+							<label>Quận (HUyện)</label>
+							<select name="districts" id="districts">
+								<option selected="selected">Chọn</option>
+							</select>
+						</div>
+						<div class="f-item custom-item">
+							<label>Phường Xã</label>
+							<select name="wards" id="wards">
+								<option selected="selected">Chọn</option>
+							</select>
+						</div>
 					</section>
+						
 				<!--//three-fourth content-->
 				
 				<!--right sidebar-->
@@ -125,5 +151,5 @@
 			<!--//main content-->
 		</div>
 	</div>
-	<!--//main-->
+
 @endsection

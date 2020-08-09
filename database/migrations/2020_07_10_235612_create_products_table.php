@@ -17,8 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('homestay_id')->index();
             $table->unsignedBigInteger('room_type_id')->index();
-            $table->tinyInteger('amount');
-            $table->date('date');
+            $table->string('name');
             $table->integer('prices');
             $table->integer('discount')->default(0);
             $table->string('avatar');

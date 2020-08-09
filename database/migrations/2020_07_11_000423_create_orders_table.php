@@ -17,7 +17,6 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('bill_id')->index();
             $table->unsignedBigInteger('product_id')->index();
-            $table->tinyInteger('amount');
             $table->date('date_start');
             $table->date('date_end');
             $table->tinyInteger('status')->default(0);
