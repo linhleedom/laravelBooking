@@ -15,6 +15,7 @@ header #wrap .ribbon nav ul.open li a {
 /* end-home-top */
 .search-left{
 	position: relative;
+	background-color: #f3bf03;
 }
 .search-left .f-item{
 	padding:0 0 10px;
@@ -33,7 +34,7 @@ header #wrap .ribbon nav ul.open li a {
 	position: absolute;
     left: 35px;
     width: 204px;
-    height: 34px;
+    height: 35px;
     border: none;
     font: normal 1.2em/34px 'RobotoBold';
     text-transform: uppercase;
@@ -84,6 +85,11 @@ header #wrap .ribbon nav ul.open li a {
 }
 .full .output p{
 	width: 45%;
+}
+.capacity{
+	font-size: 1em !important;
+	line-height: 16px;
+	margin-right: 4px;
 }
 #number-room{
 	padding: 3% 6%;
@@ -143,7 +149,7 @@ header #wrap .ribbon nav ul.open li a {
 	height: 35px;
 }
 #ui-id-1{
-	width: 300px;
+	/* width: 300px; */
 	background-color: #fff;
 	z-index: 99999;
 	border-left: 1px solid #4d4d4d50;
@@ -172,6 +178,34 @@ header #wrap .ribbon nav ul.open li a {
 	font-size: 18px;
 	padding-top: 10px;
 }
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+	overflow-x: hidden;
+}
+.discount{
+	color: #ff0000 !important;
+	font-family: 'RobotoBold';
+}
+.price-old{
+	color: rgb(126, 126, 126) !important;
+}
+.room-types .pro-name{
+	padding-bottom: 5px;
+	font-size: 1.8em;
+	/* text-transform: ; */
+	color: rgb(15, 0, 230);
+	text-decoration: underline;
+}
+.utilities li{
+	font-size: 1.3em;
+	border-bottom: none;
+}
+.utilities li.last{
+	padding-left: 17px;
+}
+
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;

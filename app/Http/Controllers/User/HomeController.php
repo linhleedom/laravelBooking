@@ -17,24 +17,24 @@ class HomeController extends Controller
         
         $homestayTopRate = Homestay::where('status', '1')->orderBy('point', 'DESC')->take(8)->get();
         $homestay = Homestay::where('status', '1')->take(8)->get();
-        
-        return view('user.pages.home', compact('slide','homestay','homestayTopRate'));
+        $urlSearch ='&datepicker1=&datepicker2=&num_room=&num_adult=&num_chil=';
+        return view('user.pages.home', compact('slide','homestay','homestayTopRate','urlSearch'));
     }
 
     public function autoComplete(Request $request){
         $term = $request->get('term');
-        $district = District::select('name')->where('name', 'like', '%'.$term.'%')->get();
+        $district = District::where('name', 'like', '%'.$term.'%')->get();
         $province = Province::select('name')->where('name', 'like', '%'.$term.'%')->get();
 
         $nameDistrict = array();
         foreach($district as $districtVal){
-            array_push($nameDistrict,$districtVal['name']);
+            array_push($nameDistrict,$districtVal->name.' - '.$districtVal->province->name);
         };
         $nameProvince = array();
         foreach($province as $provinceVal){
-            array_push($nameProvince,$provinceVal['name']);
+            array_push($nameProvince,$provinceVal->name);
         };
-        $name = array_merge($nameDistrict, $nameProvince);
+        $name = array_merge($nameProvince, $nameDistrict);
         return json_encode($name);
     }
 }

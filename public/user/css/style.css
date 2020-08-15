@@ -1,7 +1,7 @@
 body {
     font: 62.5%/1.42 'Roboto', Arial, Helvetica, sans-serif;
     text-align: center;
-    color: #666;
+    color: #545454;
     background: #f7f9ff;
     overflow-x: hidden;
     -webkit-text-size-adjust: none;
@@ -1267,7 +1267,7 @@ header .ribbon {
     z-index: 2;
     text-align: center;
     color: #fff;
-    font: normal 1.7em 'Roboto';
+    font: normal 1.7em 'RobotoBold';
     -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     -moz-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
@@ -1599,7 +1599,7 @@ header .ribbon {
 .tab-content h1 {
     display: inline-block;
     font-size: 1.7em;
-    color: #B9ACA4;
+    color: #313131;
     padding: 0 0 10px;
     margin: 0 0 15px;
     text-indent: 10px;
@@ -1686,7 +1686,7 @@ header .ribbon {
 
 .room-types li figure {
     position: relative;
-    width: 44.2%;
+    width: 38%;
     height: auto;
     overflow: hidden;
 }
@@ -1720,14 +1720,14 @@ header .ribbon {
 }
 
 .room-types h2 {
-    font: normal 1.5em 'RobotoBold';
-    color: #0007e1;
+    font: normal 1.5em 'Roboto';
+    color: #313131;
     padding: 0 0 10px;
 }
 
 .room-types .meta {
     float: left;
-    width: 28%;
+    width: 34%;
     min-height: 152px;
 }
 

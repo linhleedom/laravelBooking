@@ -21,7 +21,7 @@ class CreateBlogsTable extends Migration
             $table->longText('post');
             $table->string('alias')->nullable();
             $table->string('xaid')->index();
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

@@ -29,6 +29,10 @@ Route::get('/search', [
     'as'=>'userSearch',
     'uses'=>'user\SearchResultController@index'
 ]);
+Route::get('/room-detail', [
+    'as'=>'userRoomDetail',
+    'uses'=>'user\RoomDetailController@index'
+]);
 
 
 Route::get('test', function(){

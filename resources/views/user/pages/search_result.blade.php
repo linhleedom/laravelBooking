@@ -19,6 +19,9 @@ $(document).ready(function() {
 
 	$("#address").autocomplete({
 		source: "{{url('/autoComplete')}}",
+		open: function(event, ui){
+			$("#address").autocomplete ("widget").css("width","249px");  
+		} 
 	});
 });
 
@@ -47,6 +50,9 @@ class="active"
 					<!--crumbs-->
 					<ul class="crumbs">
 						<li><a href="{{url('/')}}" title="Home">Home</a></li>
+						@if( $provinceSearch !== "" )
+						<li><a href="{{url('/search?address=').$provinceSearch.$url}}" title="Home">{{$provinceSearch}}</a></li>
+						@endif
 						<li><a title="{{$address}}">{{$address}}</a></li>
 						<li>Search results</li>                                       
 					</ul>
@@ -61,7 +67,8 @@ class="active"
 							<div class="row-1">
 								<div class="f-item">
 									<label for="address">Địa điểm</label>
-									<input type="text" placeholder="" value="{{$address}}" id="address" name="address" />
+
+									<input type="text" placeholder="" value="{{$address}}" id="address" name="address" required="required"/>
 								</div>
 							</div>
 							<div class="row-2">
@@ -90,8 +97,8 @@ class="active"
 							</div>
 							<input type="submit" value="Tìm kiếm" class="search-submit" id="search-submit" />
 						</form>
-
 					</article>
+						
 					<article class="refine-search-results">
 						<h2>Tìm kiếm theo</h2>
 						<dl>
@@ -209,8 +216,13 @@ class="active"
 						@if( $product == "" )
 							@foreach( $homestay as $homestayVal )
 								<!--deal-->
-								<article class="one-fourth">
-									<figure><a href="user_room_detail.html" title=""><img src="{{$homestayVal->avatar}}" alt="" width="270" height="152" /></a></figure>
+								@if($homestayVal->product->max('discount') == 0)
+									<article class="one-fourth">
+								@else
+									<article class="one-fourth promo">
+									<div class="ribbon-small">- {{$homestayVal->product->max('discount')}}%</div>
+								@endif
+									<figure><a href="{{url('/room-detail?id='.$homestayVal->id.$url)}}" title=""><img src="{{$homestayVal->avatar}}" alt="" width="270" height="152" /></a></figure>
 									<div class="details">
 										<h1>{{$homestayVal->name}}
 											<div class="stars">
@@ -221,12 +233,12 @@ class="active"
 										<span class="address">{{$homestayVal->district->name}}</span>
 										<!-- <span class="rating">200</span> -->
 										<span class="price">Giá 1 đêm chỉ từ  
-											<em>{{ number_format( $homestayVal->product->min('prices'),0,',',' ' ) }}đ</em> 
+											<em>{{ number_format( $homestayVal->product->min('prices'),0,',','.' ) }}đ</em> 
 										</span>
 										<div class="description">
 											<p>{{$homestayVal->title}}</p>
 										</div>
-										<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
+										<a href="{{url('/room-detail?'.$url)}}" title="Book now" class="gradient-button">Chọn phòng</a>
 									</div>
 								</article>
 								<!--//deal-->
@@ -234,8 +246,13 @@ class="active"
 						@else
 							@foreach( $product as $productVal )
 								<!--deal-->
-								<article class="one-fourth">
-									<figure><a href="user_room_detail.html" title=""><img src="{{$productVal->avatar}}" alt="" width="270" height="152" /></a></figure>
+								@if($productVal->discount == 0)
+									<article class="one-fourth">
+								@else
+									<article class="one-fourth promo">
+									<div class="ribbon-small">- {{$productVal->discount}}%</div>
+								@endif
+									<figure><a href="{{url('/room-detail?id='.$productVal->homestay->id.$url)}}" title=""><img src="{{$productVal->avatar}}" alt="" width="270" height="152" /></a></figure>
 									<div class="details">
 										<h1>{{$productVal->homestay->name}}
 											<div class="stars">
@@ -254,7 +271,7 @@ class="active"
 										<div class="description">
 											<p>{{$productVal->homestay->title}}</p>
 										</div>
-										<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
+										<a href="{{url('/room-detail?'.$url)}}" title="Book now" class="gradient-button">Chọn phòng</a>
 									</div>
 								</article>
 								<!--//deal-->
