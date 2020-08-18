@@ -19,26 +19,26 @@ use App\Utilities;
 class SearchResultController extends Controller
 {
     public function index(Request $request){
-        //get address
-        if( strlen(strstr($request->address, "-")) > 0 ){
-            $add = explode(' - ', $request->address );
-            $address = $add[0];
-            $provinceSearch = $add[1];
-        }else{
-            $provinceSearch = '';
-            $address = $request->address;
-        }
-        // dd($address);
+        $address = $request->address;
         $datepicker1 =$request->datepicker1;
         $datepicker2 =$request->datepicker2;
         $num_room = $request->num_room;
         $num_adult = $request->num_adult;
         $num_chil = $request->num_chil;
-        
-        $matp = Province::select('matp')->where('name',$address)->value('matp');
-        $maqh = District::select('maqh')->where('name',$address)->value('maqh');
 
-        $homestay = Homestay::where('status', '1')->where('matp',$matp)->orWhere('maqh',$maqh)->get();
+        //get address
+        if( strlen(strstr($address, "-")) > 0 ){
+            $add = explode(' - ', $address );
+            $district = $add[0];
+            $province = $add[1];
+            $maqh = District::select('maqh')->where('name',$district)->value('maqh');
+            $homestay = Homestay::where('status', '1')->where('maqh',$maqh)->get();
+        }else{
+            $district = '';
+            $province = $address; 
+            $matp = Province::select('matp')->where('name',$province)->value('matp');
+            $homestay = Homestay::where('status', '1')->where('matp',$matp)->get();
+        }
         $homestay_id = array();
         foreach( $homestay as $homestayVal ){
             array_push( $homestay_id, $homestayVal->id );
@@ -80,15 +80,19 @@ class SearchResultController extends Controller
                                 ->whereNotIn('id',$product_actived_id)
                                 ->whereIn('room_type_id',$room_type_id)
                                 ->groupBy('homestay_id')
-                                ->get();
+                                ->paginate(9);
         }else{
-            $product = "";
+            $product = Product::where('status', '1')
+                                ->whereIn('homestay_id',$homestay_id)
+                                ->whereIn('room_type_id',$room_type_id)
+                                ->groupBy('homestay_id')
+                                ->paginate(9);
         }
         $utilities = Utilities::all()->take(5);
 
         $url ='&datepicker1='.$datepicker1.'&datepicker2='.$datepicker2.'&num_room='.$num_room.'&num_adult='.$num_adult.'&num_chil='.$num_chil;
         // dd($product);
-        return view('user.pages.search_result', compact('address','provinceSearch','datepicker1','datepicker2','num_room','num_adult','num_chil','homestay','product','utilities','room_type', 'url'));
+        return view('user.pages.search_result', compact('address','province','district','datepicker1','datepicker2','num_room','num_adult','num_chil','homestay','product','utilities','room_type', 'url'));
     }
 
 }

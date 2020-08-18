@@ -12,7 +12,7 @@ Travel Your Booking
 		$(".f-item:first span").addClass("checked");
 
 		$("#address").autocomplete({
-			source: "{{url('/autoComplete')}}",
+			source: "{{route('userAutoComplete')}}",
 			open: function(event, ui){
 				$("#address").autocomplete ("widget").css("width","315px");  
 			} 
@@ -45,7 +45,7 @@ class="active"
 	
 	<!--search-->
 	<div class="main-search">
-		<form id="main-search" method="get" action="{{url('/search')}}">
+		<form id="main-search" method="get" action="{{route('userSearch')}}">
 			<div class="forms">
 				<!--form hotel-->
 				<div class="form" id="form1">
@@ -113,26 +113,26 @@ class="active"
 						<div class="ribbon-small">- {{$homestayTopRateVal->product->max('discount')}}%</div>
 					@endif
 						<figure>
-							<a href="{{url('/room-detail?id=').$homestayTopRateVal->id}}" title="">
+							<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="">
 								<img src="{{$homestayTopRateVal->avatar}}" alt="" width="270" height="152" />
 							</a>
 						</figure>
 						<div class="details">
 							<div class="homestay_info">
-								<a href="{{url('/room-detail?id=').$homestayTopRateVal->id}}" title="View all" class="gradient-button">Chi tiết</a>
+								<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
 								<h5>{{$homestayTopRateVal->name}}&nbsp&nbsp<span class="point">{{$homestayTopRateVal->point}}</span>
 								</h5>
 								</span>
 							</div>
 							<div class="ribbon">
 								<div class="half hotel">
-									<a href="{{url('/room-detail?id=').$homestayTopRateVal->id}}" title="View all">
+									<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="View all">
 										<span class="small">Giá từ</span>
 										<span class="price">{{ number_format( $homestayTopRateVal->product->min('prices'),0,',','.' ) }}đ</span>
 									</a>
 								</div>
 								<div class="half flight">
-									<a href="{{url('/room-detail?id=').$homestayTopRateVal->id}}" title="View all">
+									<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="View all">
 										<span class="location">{{$homestayTopRateVal->province->name}}</span>
 									</a>
 								</div>
@@ -156,24 +156,24 @@ class="active"
 						<div class="ribbon-small">- {{$homestayVal->product->max('discount')}}%</div>
 					@endif
 						<figure>
-							<a href="{{url('/room-detail?id=').$homestayVal->id.$urlSearch}}" title="">
+							<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="">
 								<img src="{{$homestayVal->avatar}}" alt="" width="270" height="152" />
 							</a>
 						</figure>
 						<div class="details">
 							<div class="homestay_info">
-								<a href="{{url('/room-detail?id=').$homestayVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
+								<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
 								<h5>{{$homestayVal->name}}&nbsp&nbsp<span class="point">{{$homestayVal->point}}</span> </h5>
 							</div>
 							<div class="ribbon">
 								<div class="half hotel">
-									<a href="{{url('/room-detail?id=').$homestayVal->id.$urlSearch}}" title="View all">
+									<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="View all">
 										<span class="small">Giá từ</span>
 										<span class="price">{{ number_format( $homestayVal->product->min('prices'),0,',',' ' ) }}đ</span>
 									</a>
 								</div>
 								<div class="half flight">
-									<a href="{{url('/room-detail?id=').$homestayVal->id.$urlSearch}}" title="View all">
+									<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="View all">
 										<span class="location">{{$homestayVal->province->name}}</span>
 									</a>
 								</div>

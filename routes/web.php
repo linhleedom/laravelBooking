@@ -33,6 +33,31 @@ Route::get('/room-detail', [
     'as'=>'userRoomDetail',
     'uses'=>'user\RoomDetailController@index'
 ]);
+Route::post('/register',[
+    'as'=>'registerUser',
+    'uses'=>'user\Auth\RegisterUserController@postRegister'
+]);
+Route::post('/login',[
+    'as'=>'loginUser',
+    'uses'=>'user\Auth\LoginUserController@postLogin'
+]);
+Route::get('/logout',[
+    'as'=>'logoutUser',
+    'uses'=>'user\Auth\LoginUserController@getLogout'
+]);
+Route::get('/blog',[
+    'as'=>'userBlog',
+    'uses'=>'user\BlogController@index'
+]);
+Route::get('/blog-detail',[
+    'as'=>'userBlogDetail',
+    'uses'=>'user\BlogDetailController@index'
+]);
+Route::get('/hot-deal',[
+    'as'=>'userHotDeal',
+    'uses'=>'user\HotDealController@index'
+]);
+
 
 
 Route::get('test', function(){

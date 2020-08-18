@@ -38,5 +38,6 @@
 	<!--footer-->
     @include("user.includes.footer")    
     <!--//footer-->	
+	@yield('scriptEnd')
 </body>
 </html>

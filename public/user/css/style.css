@@ -554,7 +554,7 @@ header .ribbon {
 .contact {
     float: right;
     display: block;
-    margin: 25px 22px 0;
+    margin: 25px 220px 0;
     width: 130px;
     background: url(../images/ico/icons.png) 0 1px no-repeat;
     padding: 0 0 0 37px;
@@ -564,7 +564,7 @@ header .ribbon {
     width: 100%;
     display: inline-block;
     font-size: 1.2em;
-    color: #999;
+    color: rgb(255, 255, 255);
 }
 
 .contact .number {
@@ -972,16 +972,11 @@ header .ribbon {
     webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-    -webkit-transition: all 0.1s ease-in 0.1s;
-    -moz-transition: all 0.1s ease-in 0.1s;
-    -o-transition: all 0.1s ease-in 0.1s;
-    -ms-transition: all 0.1s ease-in 0.1s;
-    transition: all 0.1s ease-in 0.1s;
 }
 
 .pager .first,
 .pager .last {
-    width: 90px;
+    width: 60px;
 }
 
 .pager .current {
@@ -1318,6 +1313,7 @@ header .ribbon {
 }
 
 .deals .details {
+    max-height: 350px;
     text-align: center;
 }
 
@@ -1351,7 +1347,7 @@ header .ribbon {
 
 .deals .address a {
     text-decoration: none;
-    color: #999;
+    /* color: #999; */
 }
 
 .deals .rating {
@@ -4312,6 +4308,7 @@ img {
     }
 
     .stars {
+        margin-bottom: 10px;
         width: 100%;
         float: left;
     }

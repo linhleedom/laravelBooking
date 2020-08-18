@@ -20,7 +20,7 @@ class CreateBlogsTable extends Migration
             $table->text('description')->nullable();
             $table->longText('post');
             $table->string('alias')->nullable();
-            $table->string('xaid')->index();
+            $table->string('maqh')->index();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

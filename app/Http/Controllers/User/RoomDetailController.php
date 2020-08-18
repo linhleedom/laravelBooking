@@ -64,7 +64,14 @@ class RoomDetailController extends Controller
                                 ->whereIn('room_type_id',$room_type_id)
                                 ->get();
         }
+        foreach($homestay as $homestayVal){
+            $suggestion = Homestay::where('status','1')
+                                    ->where('maqh', $homestayVal->maqh)
+                                    ->where('id','!=', $homestay_id)
+                                    ->take(5)
+                                    ->get();
+        }
         $url ='&datepicker1='.$datepicker1.'&datepicker2='.$datepicker2.'&num_room='.$num_room.'&num_adult='.$num_adult.'&num_chil='.$num_chil;
-        return view('user.pages.room_detail', compact('homestay_id','homestay','product','url','datepicker1','datepicker2','num_room','num_adult','num_chil'));
+        return view('user.pages.room_detail', compact('homestayVal','product','url','datepicker1','datepicker2','num_room','num_adult','num_chil','suggestion'));
     }
 }
