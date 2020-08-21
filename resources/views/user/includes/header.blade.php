@@ -13,13 +13,13 @@
 							$name = explode(' ', Auth::user()->name);
 							$last_name = array_pop($name);
 						?>
-						<li class="active"><a class="no-href" title="{{Auth::user()->name}}">Chào! <br/>{{$last_name}}</a></li>
-						<li class=""><a class="no-href li_list" title="My Account">Quản lý</a></li>
-						<li class=""><a href="{{route('logoutUser')}}" class="li_list" title="My Account">đăng xuất</a></li>
+						<li class="active" id="static"><a class="no-href" title="{{Auth::user()->name}}">Chào! <br/>{{$last_name}}</a></li>
+						<li class=""><a class="li_list" href="{{route('userAccount',['id' => Auth::user()->id])}}" title="My Account">Quản lý</a></li>
+						<li class=""><a href="{{route('logoutUser')}}" class="li_list" title="My Account" >Đăng xuất</a></li>
 					</ul>	
 					@else
 					<ul class="profile-nav">
-						<li class="active"><a class="no-href" title="My Account">Tài khoản</a></li>
+						<li class="active" id="static"><a class="no-href" title="My Account">Tài khoản</a></li>
 						<li><a  class="register no-href li_list" title="Register">Đăng ký</a></li>
 						<li><a  class="login no-href li_list" title="Login">Đăng nhập</a></li>
 					</ul>	

@@ -38,6 +38,7 @@
 	<!--footer-->
     @include("user.includes.footer")    
     <!--//footer-->	
-	@yield('scriptEnd')
+	@yield('scriptLogin')
+	@yield('scriptRegister')
 </body>
 </html>

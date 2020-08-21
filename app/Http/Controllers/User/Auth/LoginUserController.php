@@ -4,12 +4,13 @@ namespace App\Http\Controllers\User\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
 class LoginUserController extends Controller
 {
     public function postLogin(Request $request){
-        $this->validate($request,
+        $validatorLogin = Validator::make($request->all(), 
             [
                 'email'=>'required|email',
                 'password'=>'required|min:8|max:20',
@@ -20,11 +21,20 @@ class LoginUserController extends Controller
                 'password.max'=>'Mật khẩu dài không quá 20 kí tự'
             ]
         );
+        if ($validatorLogin->fails()) {
+            return redirect()->back()->withErrors($validatorLogin, 'login');
+        }
+
         $remember_me = $request->has('remember_me') ? true : false;
         $data = array('email'=>$request->email,'password'=>$request->password);
-        // dd($remember_me);
+
         if(Auth::attempt($data,$remember_me) ){
-            return redirect()->back()->with(['feedback'=>'success','massage'=>'Đăng nhập thành công']);
+            if( Auth::user()->permision != 2 ){
+                Auth::logout();
+                return redirect()->back()->with(['feedback'=>'fail','massage'=>'Email hoặc mật khẩu không đúng, vui lòng thử lại']);
+            }else{
+                return redirect()->back()->with(['feedback'=>'success','massage'=>'Đăng nhập thành công']);
+            }
         }else{
             return redirect()->back()->with(['feedback'=>'fail','massage'=>'Email hoặc mật khẩu không đúng, vui lòng thử lại']);
         }

@@ -250,6 +250,34 @@ header #wrap .ribbon nav ul.open li a {
 .li_list{
 	color: rgb(0, 114, 255);
 }
+.error_account{
+	color: rgb(223, 0, 0);
+	font-size: 1em;
+}
+.done_account{
+	color: rgb(16, 197, 0);
+	font-size: 1em;
+}
+.input-pass{
+	position: relative;
+}
+.input-pass .btnShow{
+	background: url(../images/ico/visible.png) no-repeat;
+	background-size: cover;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    font-size: 0px;
+    text-align: right;
+    cursor: pointer;
+    position: absolute;
+    background-position: center;
+    top:33px;
+    right: 5px;
+}
+.f-item .btnShow{
+	top:28px;
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;

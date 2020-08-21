@@ -235,7 +235,7 @@ class="active"
 												<div class="stars">
 													@for( $i=$ratingVal->point; $i--; $i >= 0 )
 														<img src="user/images/ico/star.png" alt="" />
-													@endfor	
+													@endfor
 												</div>
 											</div>
 											<div class="con"><p>{{$ratingVal->comment}}</p></div>

@@ -37,4 +37,8 @@ class HomeController extends Controller
         $name = array_merge($nameProvince, $nameDistrict);
         return json_encode($name);
     }
+
+    public function getError(){
+        return view('user.pages.error');
+    }
 }

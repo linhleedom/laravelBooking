@@ -426,8 +426,7 @@ header .ribbon {
     float: left;
     display: block;
     width: 80px;
-    font: normal 1.2em 'Roboto';
-    text-transform: uppercase;
+    font: normal 1.4em 'Roboto';
     padding: 9px 0 9px 3px;
     letter-spacing: -0.034em;
     border-bottom: 1px solid #000482;

@@ -55,7 +55,7 @@ $(document).ready(function () {
 		$(this).parent().siblings().each(function() {
 			$(this).removeClass('active');
 		});
-		$(this).parent().attr('class', 'active'); 
+		$('#static').attr('class', 'active'); 
 		$('.ribbon li.active').show();
 		$('.ribbon ul.open li').show();
 		return true;
@@ -146,6 +146,17 @@ $(document).ready(function () {
 	$('.edit_field a,.edit_field input[type=submit]').click(function() {
 		$('.edit_field').hide(400);
 	});
+
+	// Show/hidden password
+	$('#showPassword').click(function(){
+		var passwordField = $('.show');
+		var passwordFieldType = passwordField.attr('type');
+		if(passwordFieldType == 'password'){
+			passwordField.prop('type','text');
+		}else{
+			passwordField.prop('type','password');
+		}
+	})
 });
 	
 
