@@ -67,7 +67,7 @@
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label for="">Tên phòng :
-											<input type="text" name="name" >
+											<input required= "required" type="text" name="name" >
 										</label>
 										
 									</div>
@@ -87,12 +87,12 @@
 									<div class="f-item custom-item">
 										<label>Nhập giá phòng (VNĐ) :</label>
 										<form action="/action_page.php">
-											<input type="text" id="prices" name="prices" ><br><br>
+											<input required= "required" type="text" id="prices" name="prices" ><br><br>
 										</form>
 									</div>
 									<div class="f-item custom-item">
 										<label>Giảm giá :</label>
-										<input type="text" id="discount" name="discount" placeholder="... %">
+										<input required= "required" type="text" id="discount" name="discount" placeholder="... %">
 									</div>																
 								</div>
 
@@ -104,7 +104,7 @@
 									</div>
 									<div class="f-item custom-item">
 										<label for="avatar">Avatar room of Homestay :</label>
-											<input type="file" name="avatar" multiple id="avatar">
+											<input required= "required" type="file" name="avatar" multiple id="avatar">
 											<br><br>
 											{{-- <input type="submit" class="gradient-button" name = "send" value="Upload file"> --}}
 									</div>
@@ -114,7 +114,7 @@
 								<div class="row twins">
 									<div class="f-item custom-item checkbox">
 										@foreach ($tienichs as $items)											
-											<input type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
+											<input required= "required" type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
 											<label for="" >{{ $items->name }}</label> <br> <br>
 										@endforeach
 									</div>

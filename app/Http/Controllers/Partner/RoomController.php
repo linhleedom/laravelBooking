@@ -14,11 +14,18 @@ use App\Uti_Pro;
 
 class RoomController extends Controller
 {
-    public function getListRoom(){
-        
-        $product = Product::Join('Homestays','products.homestay_id','=','homestays.id')
-        ->where('user_id',Auth::user()->id)
-        ->get();
+    public function getListRoom(){        
+        // $product = Product::Join('Homestays','products.homestay_id','=','homestays.id')
+        // ->where('user_id',Auth::user()->id)
+        // ->get();
+        $homestay = Homestay::where('user_id',Auth::user()->id)->get();
+        $homestayforPartner = array();
+        foreach ($homestay as $homestayVal){
+            array_push($homestayforPartner, $homestayVal->id);
+        };
+
+    
+        $product = Product::whereIn('homestay_id',$homestayforPartner)->get();
         // dd($product);
         
         return view ('partner.room.list-room',compact('product'));
@@ -79,22 +86,7 @@ class RoomController extends Controller
         }
 
         return back()->withInput()->with('thongbao','Thêm phòng thành công');
-        // if($request->isMethod('post')){
-            
-        //     $homestay->name_homestay=$request->name_homestay;
-
-        //     $product->status=$request->status;
-        //     $product->name_pro=$request->name_pro;
-        //     $room_type->name_types=$request->name_types;
-        //     $product->prices=$request->prices;
-        //     $product->discount=$request->discount;
-        //     $product->description=$request->description;
-            
-            
-        //     // return back()->withInput()->with('thongbao','Đăng ký thành công');
-        // } 
-
-        
+                
     }
     public function getEditPartnerRoom($id){
         $id = Auth::user()->id;

@@ -18,20 +18,16 @@ Route::get('/', function () {
 });
 
 Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
-    Route::group(['prefix'=>'/','middleware'=>'CheckLogedIn'],function(){
+    Route::group(['prefix'=>'/'],function(){
         Route::get('login-partner','LoginPartnerController@getDangNhapPartner');
         Route::post('login-partner','LoginPartnerController@postDangNhapPartner');
     });
 
-    Route::group(['prefix'=>'register-partner','middleware'=>'CheckLogedIn'],function(){
-        Route::get('/','LoginPartnerController@getDangKyPartner'); 
-        Route::post('/','LoginPartnerController@postDangKyPartner');
-    });
-
-
-    
-
-    Route::group(['prefix'=>'/','middleware'=>'CheckLogedOut'],function(){
+    Route::group(['prefix'=>'/','middleware'=>'CheckLogedIn'],function(){
+        Route::group(['prefix'=>'register-partner'],function(){
+            Route::get('/','LoginPartnerController@getDangKyPartner'); 
+            Route::post('/','LoginPartnerController@postDangKyPartner');
+        });
         Route::get('trangchu','HomePartnerController@getHomePartner');
         
         Route::get('logout','HomePartnerController@getLogout');

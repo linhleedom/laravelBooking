@@ -17,8 +17,10 @@ class CheckLogedIn
     {
         if(Auth::check())
         {
-            return redirect()->intended('partner/trangchu');
+            return $next($request);
+        }else{
+            return redirect()->intended('partner/login-partner');
         }
-        return $next($request);
+
     }
 }

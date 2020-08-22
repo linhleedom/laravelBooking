@@ -8,7 +8,7 @@
 			<div class="ribbon">				
 				<nav>
 						<ul class="profile-nav">
-							<li class="active"><a >{{Auth::user()->name}}</a></li>
+							<li class="active"><a > @if(Auth::check()){{Auth::user()->name}} @endif</a></li>
 							<li><a href="{{asset('partner/logout')}}" title="Logout">Logout</a></li>
 							<li><a href=""title="Settings">Settings</a></li>
 						</ul>

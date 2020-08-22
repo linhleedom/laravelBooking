@@ -34,7 +34,7 @@
                                 <tr>
                                     <td><?php echo $i; ?></td>
                                     <td>{{$productVal->homestay->name}}</td>
-                                    <td>{{$productVal->roomType->name}}</td>
+                                    <td>{{$productVal->name}}</td>
                                     <td>{{$productVal->prices}}</td>
                                     <td>{{($productVal->status==0)?"Ẩn":"Hiện"}}</td>
                                     <td>

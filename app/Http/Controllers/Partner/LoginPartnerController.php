@@ -16,6 +16,7 @@ class LoginPartnerController extends Controller
     {
         return view ('partner.login.login');
     }
+    
     public function postDangNhapPartner(Request $request)
     {
         $arrcheck = ['email' => $request->email,'password' => $request->password];
@@ -25,11 +26,12 @@ class LoginPartnerController extends Controller
         {
             $remember =false;
         }
-        if(Auth::attempt($arrcheck))
+        if(Auth::attempt($arrcheck) && Auth::user()->permision == 1 )
         {
-            return redirect()->intended('partner/trangchu');
+                return redirect()->intended('partner/trangchu');
         }else 
         {
+            Auth::logout();
             return back()->withInput()->with('error','Tài khoản hoặc mật khẩu k đúng');
         }
     }
