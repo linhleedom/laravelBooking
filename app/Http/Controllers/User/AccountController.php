@@ -137,23 +137,49 @@ class AccountController extends Controller
     public function editAddress($id, Request $request){
         $user = User::find($id);
         
-        if( $user->xaid === "" && $request->wards !== "Chọn" ){
-            $user->xaid = $request->wards;
-            $user->address_detail = $request->address_detail;
-            $user->save();
-            return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
-        }elseif( $user->xaid !== "" && $request->wards !== "Chọn" ){
-            $user->xaid = $request->wards;
-            $user->address_detail = $request->address_detail;
-            $user->save();
-            return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
-        }elseif( $user->xaid !== "" && $request->wards === "Chọn" && $user->address_detail !== "" ){
-            $user->address_detail = $request->address_detail;
-            $user->save();
-            return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
-        }elseif( $user->xaid === "" && $request->wards === "Chọn" && $user->address_detail !== "" ){
-            return redirect()->back()->with(['edit_address'=>'fail','massage'=>'Vui lòng chọn xã/phường']);
-        }       
-        // dd($request->wards) ;
-    }
+        if( $user->xaid == ""){
+            if($request->wards == ""){
+                return redirect()->back()->with(['edit_address'=>'fail','massage'=>'Vui lòng chọn xã/phường']);
+            }else{
+                if($user->address_detail == ""){
+                    $user->xaid = $request->wards;
+                    $user->address_detail = $request->address_detail;
+                    $user->save();
+                    return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
+                }else{
+                    if($request->address_detail == ""){
+                        $user->xaid = $request->wards;
+                        $user->save();
+                        return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
+                    }else{
+                        $user->xaid = $request->wards;
+                        $user->address_detail = $request->address_detail;
+                        $user->save();
+                        return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
+                    }
+                }
+            }
+        }else{
+            if($request->wards == ""){
+                if($request->address_detail == ""){
+                    return redirect()->back()->with(['edit_address'=>'fail','massage'=>'Vui lòng chọn xã/phường']);
+                }else{
+                    $user->address_detail = $request->address_detail;
+                    $user->save();
+                    return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
+                }
+            }else{
+                if($request->address_detail == ""){
+                    $user->xaid = $request->wards;
+                    $user->save();
+                    return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
+                }else{
+                    $user->xaid = $request->wards;
+                    $user->address_detail = $request->address_detail;
+                    $user->save();
+                    return redirect()->back()->with(['edit_address'=>'success','massage'=>'Cập nhật thành công']);
+                }
+            }     
+        }
+    }    
 }

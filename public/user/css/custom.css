@@ -306,7 +306,9 @@ header #wrap .ribbon nav ul.open li a {
 	float: right;
 	font-size: 1.2em;
 }
-
+.order-date li{
+	border-top: none;
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;

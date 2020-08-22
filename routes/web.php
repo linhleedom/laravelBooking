@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix'=>'','middleware'=>'checkLogin'],function(){
+Route::group(['prefix'=>''],function(){
     Route::get('/', [
         'as'=>'userHomePage',
         'uses'=>'user\HomeController@index'
@@ -102,6 +102,10 @@ Route::group(['prefix'=>'','middleware'=>'checkLogin'],function(){
         'as'=>'userError',
         'uses'=>'user\HomeController@getError'
     ]);
+    Route::get('/add-cart/{id}',[
+        'as'=>'userAddCart',
+        'uses'=>'user\CartController@addCart'
+    ]);
     
 });
 
@@ -148,7 +152,9 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');  
 
             Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');       
-
+        });
+    });
+});        
             // Route::get('/getprovinces','HomestayPartnerController@getEditprovinces');
             // Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
             // Route::get('/getwards/{id}','HomestayPartnerController@getwards');
