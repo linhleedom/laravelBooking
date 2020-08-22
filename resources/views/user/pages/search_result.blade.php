@@ -6,24 +6,25 @@ Search Result
 
 @section('script')
 $(document).ready(function() {
-		$('dt').each(function() {
-			var tis = $(this), state = false, answer = tis.next('dd').hide().css('height','auto').slideUp();
-			tis.click(function() {
-				state = !state;
-				answer.slideToggle(state);
-				tis.toggleClass('active',state);
-			});
-		});
-		
-		$('.view-type li:first-child').addClass('active');
-		
-		$('#star').raty({
-			score    : 3,
-			click: function(score, evt) {
-			alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
-		  }
+	$('dt').each(function() {
+		var tis = $(this), state = false, answer = tis.next('dd').hide().css('height','auto').slideUp();
+		tis.click(function() {
+			state = !state;
+			answer.slideToggle(state);
+			tis.toggleClass('active',state);
 		});
 	});
+	
+	$('.view-type li:first-child').addClass('active');
+
+	$("#address").autocomplete({
+		source: "{{route('userAutoComplete')}}",
+		open: function(event, ui){
+			$("#address").autocomplete ("widget").css("width","249px");  
+		} 
+	});
+
+});
 
 	$(window).load(function () {
 	var maxHeight = 0;
@@ -49,8 +50,13 @@ class="active"
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="#" title="Home">Home</a></li>
-						<li><a href="#" title="Hà Nội">Hà Nội</a></li>
+						<li><a href="{{route('userHomePage')}}" title="Home">Home</a></li>
+						@if( $district !== "" )
+							<li><a href="{{route('userSearch').'?address='.$province.$url}}" title="{{$province}}">{{$province}}</a></li>
+							<li><a title="$district">{{$district}}</a></li>
+						@else
+						<li><a title="{{$province}}">{{$province}}</a></li>
+						@endif
 						<li>Search results</li>                                       
 					</ul>
 					<!--//crumbs-->
@@ -60,345 +66,202 @@ class="active"
 				<!--sidebar-->
 				<aside class="left-sidebar">
 					<article class="search-left">
-						<form action="">
+						<form action="{{route('userSearch')}}">
 							<div class="row-1">
 								<div class="f-item">
-									<label for="destination1">Địa điểm</label>
-									<input type="text" placeholder="" id="destination1" name="destination" />
+									<label for="address">Địa điểm</label>
+									<input type="text" placeholder="" value="{{$address}}" id="address" name="address" required="required"/>
 								</div>
 							</div>
 							<div class="row-2">
 								<div class="f-item datepicker">
 									<label for="datepicker1">Nhận phòng</label>
-									<div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker1" name="datepicker1" /></div>
+									<div class="datepicker-wrap"><input type="text" placeholder="" value="{{$datepicker1}}" id="datepicker1" name="datepicker1" /></div>
 								</div>
 								<div class="f-item datepicker">
 									<label for="datepicker2">Trả Phòng</label>
-									<div class="datepicker-wrap"><input type="text" placeholder="" id="datepicker2" name="datepicker2" /></div>
+									<div class="datepicker-wrap"><input type="text" placeholder="" value="{{$datepicker2}}" id="datepicker2" name="datepicker2" /></div>
 								</div>
 							</div>
 							<div class="row-3">
 								<div class="f-item spinner">
-									<label for="spinner1">Số phòng</label>
-									<input type="text" placeholder="" id="spinner1" name="spinner1" />
+									<label for="num_room">Số phòng</label>
+									<input type="text" placeholder="" value="{{$num_room}}" id="num_room" name="num_room" required="required"/>
 								</div>
 								<div class="f-item spinner">
-									<label for="spinner2">Người lớn</label>
-									<input type="text" placeholder="" id="spinner2" name="spinner1" />
+									<label for="num_adult">Người lớn</label>
+									<input type="text" placeholder="" value="{{$num_adult}}" id="num_adult" name="num_adult" required="required"/>
 								</div>
 								<div class="f-item spinner">
-									<label for="spinner3">Trẻ em</label>
-									<input type="text" placeholder="" id="spinner3" name="spinner1" />
+									<label for="num_chil">Trẻ em</label>
+									<input type="text" placeholder="" value="{{$num_chil}}" id="num_chil" name="num_chil" required="required"/>
 								</div>
 							</div>
 							<input type="submit" value="Tìm kiếm" class="search-submit" id="search-submit" />
 						</form>
-
 					</article>
-					<article class="refine-search-results">
-						<h2>Tìm kiếm theo</h2>
-						<dl>
-							<!--Price-->
-							<dt>Giá</dt>
-							<dd>
-								<div class="checkbox">
-									<input type="checkbox" id="ch1" name="price" />
-									<label for="ch1">40.000 - 120.000 </label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch2" name="price" />
-									<label for="ch2">120.000 - 300.000</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch3" name="price" />
-									<label for="ch3">300.000 - 600.000</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch4" name="price" />
-									<label for="ch5">Trên 600.000</label>
-								</div>
-							</dd>
-							<!--//Price-->
+					@if( isset($datepicker1) && isset($datepicker2) )
+						<article class="refine-search-results">
+							<h2>Tìm kiếm theo</h2>
+							<dl>
+								<!--Price-->
+								<dt>Giá(1phòng/1đêm)</dt>
+								<dd>
+									<div class="checkbox">
+										<input type="checkbox" id="ch1" name="price" />
+										<label for="ch1">Dưới 300 000đ</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" id="ch2" name="price" />
+										<label for="ch2">300 000đ - 600 000đ</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" id="ch4" name="price" />
+										<label for="ch5">Trên 600.000</label>
+									</div>
+								</dd>
+								<!--//Price-->
 							
-							<!--Tiện ích-->
-							<dt>Tiện ích</dt>
-							<dd>
-								<div class="checkbox">
-									<input type="checkbox" id="ch6" name="accommodation" />
-									<label for="ch6">Free wifi</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch7" name="accommodation" />
-									<label for="ch7">Đỗ xe miễn phí</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch8" name="accommodation" />
-									<label for="ch8">Điều hòa</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch9" name="accommodation" />
-									<label for="ch9">Ăn sáng</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch10" name="accommodation" />
-									<label for="ch10">Có bể bơi</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch11" name="accommodation" />
-									<label for="ch11">Cho thuê xe đạp</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch12" name="accommodation" />
-									<label for="ch12">Gần chợ</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch13" name="accommodation" />
-									<label for="ch13">Gần đồn công an</label>
-								</div>
-							</dd>
-							<!--//Tiện ích-->
+								<!--Room type-->
+								<dt>Loại Phòng</dt>
+								<dd>
+									@foreach($room_type as $room_type_Val)
+									<div class="checkbox">
+										<input type="checkbox" id="ch6" name="accommodation" />
+										<label for="ch6">{{$room_type_Val->name}}</label>
+									</div>
+									@endforeach
+								</dd>
+								<!--//Room type-->
 
-							<!--xếp hạng thao địa điểm-->
-							<dt>Xếp hạng theo điểm</dt>
-							<dd>
-								<div class="checkbox">
-									<input type="checkbox" id="ch15" name="facilities" />
-									<label for="ch15">1 sao</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch16" name="facilities" />
-									<label for="ch16">2 sao</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch17" name="facilities" />
-									<label for="ch17">3 sao</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch18" name="facilities" />
-									<label for="ch18">4 sao</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch19" name="facilities" />
-									<label for="ch19">5 sao</label>
-								</div>
-							</dd>
-							<!--//xếp hạng thao địa điểm-->
+								<!--Tiện ích-->
+								<dt>Tiện ích</dt>
+								<dd>
+									@foreach($utilities as $utilitiesVal)
+										<div class="checkbox">
+											<input type="checkbox" id="ch6" name="accommodation" />
+											<label for="ch6">{{$utilitiesVal->name}}</label>
+										</div>
+									@endforeach
+								</dd>
+								<!--//Tiện ích-->	
 							
-							<!--chính sách đặt phòng-->
-							<dt>Chính sách đặt phòng</dt>
-							<dd>
-								<div class="checkbox">
-									<input type="checkbox" id="ch29" name="room-facilities" />
-									<label for="ch29">Miễn phí hủy phòng</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch30" name="room-facilities" />
-									<label for="ch30">Không cần thanh toán trước</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox" id="ch31" name="room-facilities" />
-									<label for="ch31">Đặt phòng không cần thẻ tín dụng</label>
-								</div>
-							</dd>
-							<!--//chính sách đặt phòng-->
-					
-						</dl>
-					</article>
+								<!--xếp hạng thao địa điểm-->
+								<dt>Xếp hạng theo điểm</dt>
+								<dd>
+									<div class="checkbox">
+										<input type="checkbox" id="ch15" name="facilities" />
+										<label for="ch15">1 sao</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" id="ch16" name="facilities" />
+										<label for="ch16">2 sao</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" id="ch17" name="facilities" />
+										<label for="ch17">3 sao</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" id="ch18" name="facilities" />
+										<label for="ch18">4 sao</label>
+									</div>
+									<div class="checkbox">
+										<input type="checkbox" id="ch19" name="facilities" />
+										<label for="ch19">5 sao</label>
+									</div>
+								</dd>
+								<!--//xếp hạng thao địa điểm-->
+							</dl>
+						</article>
+					@else	
+						<article class="refine-search-results">
+							<h6><i>Chọn ngày để lọc kết quả</i></h6>
+						</article>
+					@endif
 				</aside>
 				<!--//sidebar-->
 			
 				<!--three-fourth content-->
-					<section class="three-fourth">
-						<div class="sort-by">
-							<h3>Bộ lọc</h3>
-							<ul class="sort">
-								<li>Phổ biết
-									<a title="ascending" class="ascending no-href">ascending</a>
-									<a title="descending" class="descending no-href">descending</a>
-								</li>
-								<li>Giá
-									<a title="ascending" class="ascending no-href">ascending</a>
-									<a title="descending" class="descending no-href">descending</a>
-								</li>
-								<li>Đánh giá 
-									<a title="ascending" class="ascending no-href">ascending</a>
-									<a title="descending" class="descending no-href">descending</a>
-								</li>
-							</ul>
-							
-							<ul class="view-type">
-								<li class="grid-view"><a class="no-href" title="grid view">grid view</a></li>
-								<li class="list-view"><a class="no-href" title="list view">list view</a></li>
-								<!-- <li class="location-view"><a href="#" title="location view">location view</a></li> -->
-							</ul>
-						</div>
+				<section class="three-fourth">
+					<div class="sort-by">
+						<h3>Sắp xếp theo</h3>
 						
-						<div class="deals clearfix">
+						<ul class="sort">
+						@if( isset($datepicker1) && isset($datepicker2) )
+							<li>Giá
+								<a title="ascending" id="price-max" class="ascending no-href">ascending</a>
+								<a title="descending" id="price-min" class="descending no-href">descending</a>
+							</li>
+							<li>Đánh giá 
+								<a title="ascending" class="ascending no-href">ascending</a>
+								<a title="descending" class="descending no-href">descending</a>
+							</li>
+						@else
+							<li>Đánh giá 
+								<a title="ascending" class="ascending no-href">ascending</a>
+								<a title="descending" class="descending no-href">descending</a>
+							</li>
+						@endif
+						</ul>
+						<ul class="view-type">
+							<li class="grid-view"><a class="no-href" title="grid view">grid view</a></li>
+							<li class="list-view"><a class="no-href" title="list view">list view</a></li>
+							<!-- <li class="location-view"><a href="#" title="location view">location view</a></li> -->
+						</ul>
+					</div>
+					<div class="deals clearfix">
+						@foreach( $product as $productVal )
 							<!--deal-->
-							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
+							@if($productVal->discount == 0)
+								<article class="one-fourth">
+							@else
+								<article class="one-fourth" id="promo">
+								<div class="ribbon-small">- {{$productVal->discount}}%</div>
+							@endif
+								<figure><a href="{{route('userRoomDetail').'?id='.$productVal->homestay->id.$url}}" title=""><img src="{{$productVal->avatar}}" alt="" width="270" height="152" /></a></figure>
 								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
+									<h1>{{$productVal->homestay->name}}
+										<div class="stars">
+											<span class="point">{{$productVal->homestay->point}}</span>
+										</div>
 									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
+									<span class="address"><a href="{{route('userSearch').'?address='.$productVal->homestay->province->name.$url}}">{{$productVal->homestay->province->name}}</a></span>
+									<span class="address"><a href="{{route('userSearch').'?address='.$productVal->homestay->district->name.' - '.$productVal->homestay->province->name.$url}}">{{$productVal->homestay->district->name}}</a></span>
+									@if( isset($datepicker1) && isset($datepicker2) )
+										<span class="address product_name">{{$productVal->roomType->name}}</span>
+										<span class="address">Phù hợp cho {{$productVal->roomType->capacity}} người</span>
+										<!-- <span class="rating">200</span> -->
+										<span class="price">
+											Giá 1 đêm  
+											<em>{{ number_format( $productVal->prices,0,',','.' ) }}đ</em> 
+										</span>
+									@else
+										<span class="price">
+											Giá 1 đêm chỉ từ  
+											<em>{{ number_format( $productVal->homestay->product->min('prices'),0,',','.' ) }}đ</em> 
+										</span>
+									@endif	
+										<div class="description">
+											<p>{{$productVal->homestay->title}}</p>
+										</div>
+									<a href="{{route('userRoomDetail').'?id='.$productVal->homestay->id.$url}}" title="Book now" class="gradient-button">Chọn phòng</a>
 								</div>
 							</article>
 							<!--//deal-->
-							<!--deal-->
-							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-							</article>
-							<!--//deal-->
-							<!--deal-->
-							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-							</article>
-							<!--//deal-->
-							<!--deal-->
-							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img4.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-							</article>
-							<!--//deal-->
-							<!--deal-->
-							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-							</article>
-							<!--//deal-->
-							<!--deal-->
-							<article class="one-fourth">
-								<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-							</article>
-							<!--//deal-->
+						@endforeach	
+						<!--bottom navigation-->
+						<div class="bottom-nav">
+							<!--back up button-->
+							<a href="#" class="scroll-to-top" title="Back up">Top</a> 
+							<!--//back up button-->
 							
-							<!--bottom navigation-->
-							<div class="bottom-nav">
-								<!--back up button-->
-								<a href="#" class="scroll-to-top" title="Back up">Back up</a> 
-								<!--//back up button-->
-								
-								<!--pager-->
-								<div class="pager">
-									<span><a href="#">First page</a></span>
-									<span><a href="#">&lt;</a></span>
-									<span class="current">1</span>
-									<span><a href="#">2</a></span>
-									<span><a href="#">3</a></span>
-									<span><a href="#">4</a></span>
-									<span><a href="#">5</a></span>
-									<span><a href="#">6</a></span>
-									<span><a href="#">7</a></span>
-									<span><a href="#">8</a></span>
-									<span><a href="#">&gt;</a></span>
-									<span><a href="#">Last page</a></span>
-								</div>
-								<!--//pager-->
-							</div>
-							<!--//bottom navigation-->
+							<!--pager-->
+								{{ $product->withQueryString()->links('vendor.pagination.custom') }}
+							<!--//pager-->
 						</div>
-					</section>
+						<!--//bottom navigation-->
+					</div>
+				</section>
 				<!--//three-fourth content-->
 			</div>
 			<!--//main content-->

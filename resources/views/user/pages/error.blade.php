@@ -1,7 +1,7 @@
 @extends("user.master")
 
 @section('title')
-Blog
+Error
 @endsection
 
 @section('content')

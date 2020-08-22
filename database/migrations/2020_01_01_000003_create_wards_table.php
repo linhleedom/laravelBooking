@@ -17,9 +17,7 @@ class CreateWardsTable extends Migration
             $table->bigIncrements('id');
             $table->string('xaid');
             $table->string('name');
-            $table->string('type');
             $table->string('maqh');
-            $table->timestamps();
         });
     }
 

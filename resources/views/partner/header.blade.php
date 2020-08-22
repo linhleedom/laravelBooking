@@ -5,25 +5,13 @@
 			<!--//logo-->
 			
 			<!--ribbon-->
-			<div class="ribbon">
+			<div class="ribbon">				
 				<nav>
-					<ul class="profile-nav">
-						{{-- <li class="active"><a title="My Account">{{Auth::user()->name}}</a></li> --}}
+						<ul class="profile-nav">
+						<li class="active"><a >{{Auth::user()->name}}</a></li>
 						<li><a href="{{asset('logout')}}" title="Logout">Logout</a></li>
-						<li><a title="Settings">Settings</a></li>
-					</ul>
-					{{-- <ul class="lang-nav">
-						<li class="active"><a href="#" title="English (US)">English (US)</a></li>
-						<li><a href="#" title="English (UK)">English (UK)</a></li>
-						<li><a href="#" title="Deutsch">Deutsch</a></li>
-						<li><a href="#" title="Italiano">Italiano</a></li>
-						<li><a href="#" title="Русский">Русский</a></li>
-					</ul>
-					<ul class="currency-nav">
-						<li class="active"><a href="#" title="$US Dollar">$US Dollar</a></li>
-						<li><a href="#" title="€ Euro">€ Euro</a></li>
-						<li><a href="#" title="£ Pound">£ Pound</a></li>
-					</ul> --}}
+						<li><a href="partner/login/login-and-register"title="Settings">Settings</a></li>
+						</ul>
 				</nav>
 			</div>
 			<!--//ribbon-->
@@ -59,9 +47,9 @@
 				</li> -->
 				<li><a href="">Danh mục</a>
 					<ul>
-						<li><a href="">Thêm</a></li>
-						<li><a href="">Danh sách homestay</a></li>
-						<li><a href="">Danh sách phòng</a></li>
+					<li><a href="{{asset('homestay/list-homestay')}}">Danh sách homestay</a></li>
+						<li><a href="{{asset('room/list-room')}}">Danh sách phòng</a></li>
+						<li><a href="{{asset('home-add')}}">Thêm</a></li>
 					</ul>
 				</li>
 				<li><a href="#" title="homstay">Chỗ Nghỉ</a></li>

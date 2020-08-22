@@ -17,8 +17,6 @@ class CreateProvincesTable extends Migration
             $table->bigIncrements('id');
             $table->string('matp');
             $table->string('name');
-            $table->string('type');
-            $table->timestamps();
         });
     }
 

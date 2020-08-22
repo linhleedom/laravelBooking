@@ -67,8 +67,7 @@
 		</div>
 	</footer>
 	
-	<script>
-		// Initiate selectnav function
+	{{-- <script>
 		selectnav();
 		const
 		range = document.getElementById('range'),
@@ -82,4 +81,7 @@
 		};
 	document.addEventListener("DOMContentLoaded", setValue);
 	range.addEventListener('input', setValue);
-	</script>
+	</script> --}}
+
+
+
