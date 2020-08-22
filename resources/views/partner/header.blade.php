@@ -9,7 +9,7 @@
 				<nav>
 						<ul class="profile-nav">
 							<li class="active"><a >{{Auth::user()->name}}</a></li>
-							<li><a href="{{asset('logout')}}" title="Logout">Logout</a></li>
+							<li><a href="{{asset('partner/logout')}}" title="Logout">Logout</a></li>
 							<li><a href="partner/login/login-and-register"title="Settings">Settings</a></li>
 						</ul>
 				</nav>

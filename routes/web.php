@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace'=>'Partner'],function(){
+Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
     Route::group(['prefix'=>'/','middleware'=>'CheckLogedIn'],function(){
         Route::get('login-partner','LoginPartnerController@getDangNhapPartner');
         Route::post('login-partner','LoginPartnerController@postDangNhapPartner');
@@ -35,7 +35,7 @@ Route::group(['namespace'=>'Partner'],function(){
     Route::group(['prefix'=>'/','middleware'=>'CheckLogedOut'],function(){
         Route::get('trangchu','HomePartnerController@getHomePartner');
 
-        Route::group(['prefix'=>'partner'],function(){
+        Route::group(['prefix'=>'/'],function(){
             Route::get('/home-add','HomestayPartnerController@getHomeAdd');
             Route::get('/list-homestay','HomestayPartnerController@getListPartnerHomestay');
             Route::get('/list-room','RoomController@getListRoom');

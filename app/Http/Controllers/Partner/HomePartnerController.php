@@ -15,6 +15,6 @@ class HomePartnerController extends Controller
     public function getLogout()
     {
         Auth::logout();
-        return redirect()->intended('login-partner');
+        return redirect()->intended('partner.login-partner');
     }
 }

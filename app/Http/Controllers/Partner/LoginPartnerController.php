@@ -27,7 +27,7 @@ class LoginPartnerController extends Controller
         }
         if(Auth::attempt($arrcheck))
         {
-            return redirect()->intended('trangchu');
+            return redirect()->intended('partner/trangchu');
         }else 
         {
             return back()->withInput()->with('error','Tài khoản hoặc mật khẩu k đúng');
