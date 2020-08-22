@@ -119,7 +119,7 @@ header #wrap .ribbon nav ul.open li a {
 
 .logins .b-info {
     float: left;
-    width: 72%;
+    width: 100%;
 }
 
 .logins .actions {
@@ -131,7 +131,7 @@ header #wrap .ribbon nav ul.open li a {
 .logins .actions .gradient-button {
     position: static;
     padding: 0;
-    width: 100%;
+    width: 50%;
     margin: 0 0 10px;
 }
 
@@ -345,4 +345,16 @@ table  tr td.alert-danger{
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
+}
+
+table  tr td.alert-success{
+    
+    color: #32df5d;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.form-booking form p .alert-danger{
+    width: 300px;
+    height: 80px;
+    background-color: rosybrown;
 }

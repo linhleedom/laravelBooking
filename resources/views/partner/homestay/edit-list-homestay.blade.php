@@ -1,4 +1,58 @@
 @extends('partner.master')
+@section('script')
+	$(document).ready(function(){
+		$('#provinces').change(function(){
+		var cid = $(this).val();
+		if(cid){
+		$.ajax({
+		type:"get",
+		url: '../partner/getdistricts/'+cid,//Please see the note at the end of the post**
+		success:function(res)
+		{       
+				if(res.length !== 0)
+				{
+					$("#districts").empty();
+					$("#wards").empty();
+					$("#districts").append('<option>Chon</option>');
+					$.each(res,function(key,value){
+						$("#districts").append('<option value="'+key+'">'+value+'</option>');
+					});
+				}else{
+					$("#districts").empty();
+					$("#wards").empty();
+					$("#districts").append('<option>Chọn</option>');
+					$("#wards").append('<option>Chọn</option>');
+				}
+		}
+
+		});
+		}
+	});
+
+	$('#districts').change(function(){
+		var cid = $(this).val();
+		if(cid){
+		$.ajax({
+		type:"get",
+		url: '../partner/getwards/'+cid,//Please see the note at the end of the post**
+		success:function(res)
+		{       
+				if(res)
+				{
+					$("#wards").empty();
+					$("#wards").append('<option>Chon</option>');
+					$.each(res,function(key,value){
+						$("#wards").append('<option value="'+key+'">'+value+'</option>');
+					});
+				}
+		}
+
+		});
+		}
+	});
+
+	});
+@endsection
 @section('main')
     <!--main-->
 	<div class="main" role="main">		
@@ -36,26 +90,25 @@
 									</div>
 									<div class="f-item custom-item">
 										<label>Tỉnh (Thành Phố)</label>
-										<select>
+										<select name="provinces" id="provinces">
 											<option selected="selected">Chọn</option>
-											<option>Hà Nội</option>
-											<option>Hồ Chí Minh</option>
+											@if($provinces)
+												@foreach($provinces as $province)
+													<option value="{{$province->matp}}">{{$province->name}}</option>
+												@endforeach
+											@endif
 										</select>
                                     </div>
                                     <div class="f-item custom-item">
 										<label>Quận (HUyện)</label>
-										<select>
+										<select name="districts" id="districts">
 											<option selected="selected">Chọn</option>
-											<option></option>
-											<option></option>
 										</select>
                                     </div>
                                     <div class="f-item custom-item">
 										<label>Phường Xã</label>
-										<select>
+										<select name="wards" id="wards">
 											<option selected="selected">Chọn</option>
-											<option></option>
-											<option></option>
 										</select>
 									</div>
 									<!-- <span class="info">You’ll receive a confirmation email</span> -->

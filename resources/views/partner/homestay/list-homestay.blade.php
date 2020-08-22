@@ -27,67 +27,27 @@
                             <th colspan="2">Trạng thái thanh toán</th>
                             <th></th>
                         </tr>
+                        @foreach ($homestaylist as $Homestay)                            
                         <tr>
-                            <td>1</td>
-                            <td>Luxury Homestay Demo</td>
+                        <td>{{$Homestay->id}}</td>
+                            <td>{{$Homestay->name}}</td>
                             <td>
-                                <!--Star rating-->
-                                <dd style="display: block; height: auto;">
-                                    <div id="star" data-rating="3" style="cursor: pointer; width: 130px;">
-                                        <img src="user/images/ico/star-rating-on.png" alt="1" title="bad">&nbsp;
-                                        <img src="user/images/ico/star-rating-on.png" alt="2" title="poor">&nbsp;
-                                        <img src="user/images/ico/star-rating-on.png" alt="3" title="regular">&nbsp;
-                                        <img src="user/images/ico/star-rating-off.png" alt="4" title="good">&nbsp;
-                                        <img src="user/images/ico/star-rating-off.png" alt="5" title="gorgeous">
-                                        <input type="hidden" name="score" value="3">
-                                    </div>
-                                </dd>
-                                {{-- end-star-rating--}}
+                                <p style="font-size: medium;color: lightcoral">
+                                    {{$Homestay->point}}/5
+                                </p>
                             </td>
-                            <td>Ẩn</td>
+                            <td>{{$Homestay->status}}</td>
                             <td colspan="2">
-                                <a href="edit-list-homestay.html" title="Sửa" class="gradient-button edit1">Thanh toán </a>
+                                <a href="" title="Sửa" class="gradient-button edit1">Thanh toán </a>
+                                {{-- DB thiếu cột trạng thái thanh toán --}}
                             </td>
                             <td>
-                                <a href="homestay.html" title="Chi tiết" class="gradient-button add">Chi tiết</a>
-                                <a href="edit-list-homestay.html" title="Sửa" class="gradient-button edit">Sửa </a>
-                                <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
+                                <a href="{{asset('homestay/views-homestay'.$Homestay->user_id)}}" title="Chi tiết" class="gradient-button add">Chi tiết</a>
+                                <a href="{{asset('homestay/edit-homestay'.$Homestay->user_id)}}" title="Sửa" class="gradient-button edit">Sửa </a>
+                                <a href="{{asset('homestay/delete-homestay'.$Homestay->user_id)}}" title="Xóa" class="gradient-button delete" onclick="return confirm('Bạn có muốn xóa không')">Xóa</a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Luxury Homestay Demo2</td>
-                            <td>
-                                <div class="range-wrap">
-                                    <div class="range-value" id="rangeV"></div>
-                                    <input id="range" type="range" min="1" max="5" value="200" step="">
-                                </div>
-                            </td>
-                            <td>Hiện</td>
-                            <td colspan="2">Đã thanh toán</td>
-                            <td>
-                                <a href="homestay.html" title="Chi tiết" class="gradient-button add">Chi tiết</a>
-                                <a href="edit-list-homestay.html" title="Sửa" class="gradient-button edit">Sửa </a>
-                                <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Luxury Homestay Demo3</td>
-                            <td>
-                                <div class="range-wrap">
-                                    <div class="range-value" id="rangeV"></div>
-                                    <input id="range" type="range" min="1" max="5" value="200" step="">
-                                </div>
-                            </td>
-                            <td>Ẩn</td>
-                            <td colspan="2">Đã thanh toán</td>
-                            <td>
-                                <a href="homestay.html" title="Chi tiết" class="gradient-button add">Chi tiết</a>
-                                <a href="edit-list-homestay.html" title="Sửa" class="gradient-button edit">Sửa </a>
-                                <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
-                            </td>
-                        </tr>
+                        @endforeach
                     </table>
                 </div>
                 <div class="separator"></div>
@@ -98,14 +58,4 @@
         <!--//main content-->
     </div>
 </div>
-<script>
-    $(document).ready(function() {
-        $('#star').raty({
-            score    : 3,
-            click: function(score, evt) {
-            alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
-        }
-        });
-    });
-</script>
 @endsection
