@@ -17,10 +17,15 @@
 					<!--//inner navigation-->
 					<!--Register-->
 					<section id="Register" class="tab-content register-tab">
+						
+						@foreach ($errors->all() as $messages)
+							{{$messages}}
+						@endforeach
+						
 						<article class="logins">
 							<tr>
 								<td colspan="2" class="alert-danger">
-									{{Session::get('error')}}
+									{{Session::get('thongbao')}}
 								</td>
 							</tr>
 							<h1 style="text-align: center;">Register </h1>
@@ -56,7 +61,7 @@
 										<tr>
 											<th>Phone</th>
 											<td>
-												<input type="text" name="phone_number" id="phone_number" placeholder="nhập số điện thoại">
+												<input type="text" name="phone" id="phone" placeholder="nhập số điện thoại">
 											</td>
 										</tr>
 										<tr>

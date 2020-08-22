@@ -52,6 +52,25 @@
 	});
 
 	});
+	function convert_name($str) {
+		$str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
+		$str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", 'e', $str);
+		$str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", 'i', $str);
+		$str = preg_replace("/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/", 'o', $str);
+		$str = preg_replace("/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/", 'u', $str);
+		$str = preg_replace("/(ỳ|ý|ỵ|ỷ|ỹ)/", 'y', $str);
+		$str = preg_replace("/(đ)/", 'd', $str);
+		$str = preg_replace("/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", 'A', $str);
+		$str = preg_replace("/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/", 'E', $str);
+		$str = preg_replace("/(Ì|Í|Ị|Ỉ|Ĩ)/", 'I', $str);
+		$str = preg_replace("/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/", 'O', $str);
+		$str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", 'U', $str);
+		$str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", 'Y', $str);
+		$str = preg_replace("/(Đ)/", 'D', $str);
+		$str = preg_replace("/(\“|\”|\‘|\’|\,|\!|\&|\;|\@|\#|\%|\~|\`|\=|\_|\'|\]|\[|\}|\{|\)|\(|\+|\^)/", '-', $str);
+		$str = preg_replace("/( )/", '-', $str);
+		return $str;
+	}
 @endsection
 @section('main')
     <!--main-->
@@ -78,30 +97,82 @@
 				<!--//breadcrumbs-->
 
 				<!--three-fourth content-->
-					<section class="three-fourth form-booking">
-						<h1 style="text-align: center;text-transform: uppercase;">Thêm thông tin homestay của bạn</h1>
-						
-						<select class="provinces" name="provinces" id="provinces">
-							<option value="">Select provinces</option>
-							@if($provinces)
-								@foreach($provinces as $province)
-									<option value="{{$province->matp}}">{{$province->name}}</option>
-								@endforeach
-							@endif
-						</select>
-						<div class="f-item custom-item">
-							<label>Quận (HUyện)</label>
-							<select name="districts" id="districts">
-								<option selected="selected">Chọn</option>
-							</select>
-						</div>
-						<div class="f-item custom-item">
-							<label>Phường Xã</label>
-							<select name="wards" id="wards">
-								<option selected="selected">Chọn</option>
-							</select>
-						</div>
-					</section>
+				<section class="three-fourth form-booking">
+					<h1 style="text-align: center;text-transform: uppercase;">Thêm thông tin homestay của bạn</h1>
+					<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
+						<fieldset>
+								<div colspan="2" 
+								style="
+									color: #32df5d;
+									border-color: #ebccd1;
+									width: 500px;
+									height: 50px;
+									font-size: 1.5em;
+								">
+									{{Session::get('thongbao')}}
+							</div>
+							<h3 style="margin-top: 20px;"><span>01</span> Địa chỉ Homestay của bạn </h3>
+							@csrf
+							<input type="hidden" name="_token" value="{{csrf_token()}}">
+							
+							<div class="row twins">
+								<div class="f-item custom-item">
+									<label for="text">Tên chỗ nghỉ </label>
+									<input required type="text" id="name" name="name" />
+								</div>
+								<div class="f-item custom-item">
+									<label>Tỉnh (Thành Phố)</label>
+									<select name="matp" id="provinces">
+										<option selected="selected" >Chọn</option>
+										@if($provinces)
+											@foreach($provinces as $province)
+												<option value="{{$province->matp}}">{{$province->name}}</option>
+											@endforeach
+										@endif
+									</select>
+								</div>
+								<div class="f-item custom-item">
+									<label>Quận (Huyện)</label>
+									<select name="maqh" id="districts">
+										<option selected="selected">Chọn</option>
+									</select>
+								</div>
+								<div class="f-item custom-item">
+									<label>Phường Xã</label>
+									<select name="xaid" id="wards">
+										<option selected="selected">Chọn</option>
+									</select>
+								</div>
+							</div>	
+
+							<h3 style="margin-top: 20px;"><span>02</span> Loại Homestay</h3>
+							<div class="row twins">
+								<div class="f-item custom-item">
+									<label>Mô tả Homestay :</label>
+									<textarea rows="10" cols="10" name="description" placeholder="Thông tin mô tả"></textarea>
+								</div>
+								
+								<div class="f-item custom-item">
+									<label for="">Trạng thái của Homestay</label>
+									<label for="status1">Ẩn  &nbsp 
+										<input required type="radio" id="status1" name="status"  value="0" checked/></label>
+									<label for="status2">Hiện  &nbsp 
+										<input required type="radio" id="status2" name="status"  value="1"/>
+									</label>										
+								</div>
+							</div>
+							<div class="row twins">								
+								<div class="f-item custom-item">
+									<h3 style="margin-top: 20px;"><span>03</span> Ảnh đại diện Homestay </h3>
+										<input type="file" name="avatar" multiple>
+										<br><br>
+										{{-- <input type="submit" class="gradient-button" name = "send" value="Upload file"> --}}
+								</div>
+							</div>
+						</fieldset>							
+						<input type="submit" class="gradient-button" value="Thêm mới" id="add" >
+					</form>
+				</section>
 						
 				<!--//three-fourth content-->
 				
