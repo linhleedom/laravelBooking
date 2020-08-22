@@ -311,29 +311,42 @@ class="active"
 						</form>
 					</article>
 					<!--//Search-->
+
 					<!-- Booking?-->
 					<article class="default clearfix order">
 						<h2>Phòng đã chọn</h2>
-						<div>
-							<table>
-							<tr>
-								<th>Loại phòng</th>
-								<th>Giá</th>
-								<th>Thay đổi</th>
-							</tr>
-							<tr>
-								<td>Phòng 1 giường đơn</td>
-								<td>200.000đ</td>
-								<td><a href="#">Xóa</a></td>
-							</tr>
-							<tr>
-								<th colspan="1">Tổng</th>
-								<td colspan="2">200.000đ</td>
-							</tr>
-
-						</table>
-						<a href="user_booking_step_1.html" class="gradient-button" title="Book">Thanh toán</a>
-						</div>	
+						<ul class="popular-hotels order-detail">
+							<li>
+								<h3>tên phòng </h3>
+								<p>Loại phòng</p>
+								<p>Giá <span class="price">200 000đ</span></p>
+								<button class="btn_del_cart" title="Xóa">X</button>
+							</li>
+						</ul>
+						<ul class="popular-hotels order-detail">
+							<li>
+								<h3>tên phòng </h3>
+								<p>Loại phòng</p>
+								<p>Giá <span class="price">200 000đ</span></p>
+								<button class="btn_del_cart" title="Xóa">X</button>
+							</li>
+						</ul>
+						<ul class="popular-hotels order-detail">
+							<li>
+								<h3>tên phòng </h3>
+								<p>Loại phòng</p>
+								<p>Giá <span class="price">200 000đ</span></p>
+								<button class="btn_del_cart" title="Xóa">X</button>
+							</li>
+						</ul>
+						<ul class="popular-hotels order-sum">
+							<li>
+								<h3>Tổng tiền: <span class="payment">1 000 000đ</span> </h3>
+								<p>Ngày nhận phòng: <i>20-08-2020</i></p>
+								<p>Ngày trả phòng: <i>20-08-2020</i></p>
+							</li>
+						</ul>
+						<a href="user_booking_step_1.html" class="gradient-button" title="Book">Thanh toán</a>	
 					</article>
 					<!--// Booking?-->
 
