@@ -114,7 +114,7 @@
 								<div class="row twins">
 									<div class="f-item custom-item checkbox">
 										@foreach ($tienichs as $items)											
-											<input required= "required" type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
+											<input type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
 											<label for="" >{{ $items->name }}</label> <br> <br>
 										@endforeach
 									</div>

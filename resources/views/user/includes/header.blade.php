@@ -7,7 +7,7 @@
 			<!--ribbon-->
 			<div class="ribbon">
 				<nav>
-				@if( Auth::check() )
+				@if( Auth::check() && Auth::user()->permision == 2)
 					<ul class="profile-nav">
 						<?php 
 							$name = explode(' ', Auth::user()->name);
@@ -17,14 +17,13 @@
 						<li class=""><a class="li_list" href="{{route('userAccount',['id' => Auth::user()->id])}}" title="My Account">Quản lý</a></li>
 						<li class=""><a href="{{route('logoutUser')}}" class="li_list" title="My Account" >Đăng xuất</a></li>
 					</ul>	
-					@else
+				@else
 					<ul class="profile-nav">
 						<li class="active" id="static"><a class="no-href" title="My Account">Tài khoản</a></li>
 						<li><a  class="register no-href li_list" title="Register">Đăng ký</a></li>
 						<li><a  class="login no-href li_list" title="Login">Đăng nhập</a></li>
 					</ul>	
-					@endif	
-					
+				@endif	
 					<ul class="currency-nav">
 						<li class="active"><a href="#" title="Partners">Đối tác</a></li>
 					</ul>

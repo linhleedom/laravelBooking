@@ -6,15 +6,22 @@ Room Detail
 
 @section('script')
 	$(document).ready(function() {
-		$("#book").click(function(){
-			var type_name = $(".type-name").val();
-			var price = $(".price-new").val();
-			 
-			alert(type_name,price);
-		});
+		
 	});
 @endsection
-
+@section('scriptCart')
+	<script>
+		function AddCart(id){
+			$.ajax({
+				url: '../add-cart/'+id,
+				type: 'GET',
+			}).done(function(response){
+				$('#change-item-cart').empty();
+				$('#change-item-cart').html(response);
+			});
+		}
+	</script>
+@endsection
 @section('home')
 class="active"
 @endsection
@@ -72,7 +79,7 @@ class="active"
 							<h1>Còn {{$product->count()}} phòng có sẵn</h1>
 							<div class="text-wrap">
 								@if( isset($datepicker1) && isset($datepicker2) )
-								<p>Phòng có sẵn từ <span class="date">{{$datepicker1}}</span> đến <span class="date">{{$datepicker2}}</span>.</p>
+									<p>Phòng có sẵn từ <span class="date">{{$datepicker1}}</span> đến <span class="date">{{$datepicker2}}</span>.</p>
 								@endif
 							</div>
 							<!-- <h1>Room types</h1> -->
@@ -110,7 +117,7 @@ class="active"
 													<span class="second price-new">{{ number_format( $productVal->prices*(100-$productVal->discount)/100,0,',','.' ) }}đ</span>
 												</div>
 											@endif	
-											<input type="submit" class="gradient-button" value="Chọn" id="book" name="book">	
+											<a onclick="AddCart({{$productVal->id}})" class="gradient-button no-href">Chọn</a>
 										</div>
 										<div class="more-information">
 											<p>{{$productVal->description}}</p>
@@ -315,37 +322,17 @@ class="active"
 					<!-- Booking?-->
 					<article class="default clearfix order">
 						<h2>Phòng đã chọn</h2>
-						<ul class="popular-hotels order-detail">
-							<li>
-								<h3>tên phòng </h3>
-								<p>Loại phòng</p>
-								<p>Giá <span class="price">200 000đ</span></p>
-								<button class="btn_del_cart" title="Xóa">X</button>
-							</li>
-						</ul>
-						<ul class="popular-hotels order-detail">
-							<li>
-								<h3>tên phòng </h3>
-								<p>Loại phòng</p>
-								<p>Giá <span class="price">200 000đ</span></p>
-								<button class="btn_del_cart" title="Xóa">X</button>
-							</li>
-						</ul>
-						<ul class="popular-hotels order-detail">
-							<li>
-								<h3>tên phòng </h3>
-								<p>Loại phòng</p>
-								<p>Giá <span class="price">200 000đ</span></p>
-								<button class="btn_del_cart" title="Xóa">X</button>
-							</li>
-						</ul>
-						<ul class="popular-hotels order-sum">
-							<li>
-								<h3>Tổng tiền: <span class="payment">1 000 000đ</span> </h3>
-								<p>Ngày nhận phòng: <i>20-08-2020</i></p>
-								<p>Ngày trả phòng: <i>20-08-2020</i></p>
-							</li>
-						</ul>
+						<div id="change-item-cart">
+
+						</div>
+						@if( isset($datepicker1) && isset($datepicker2) )
+							<ul class="popular-hotels order-sum order-date">
+								<li>
+									<p>Ngày nhận phòng: <i>{{$datepicker1}}</i></p>
+									<p>Ngày trả phòng: <i>{{$datepicker2}}</i></p>
+								</li>
+							</ul>
+						@endif
 						<a href="user_booking_step_1.html" class="gradient-button" title="Book">Thanh toán</a>	
 					</article>
 					<!--// Booking?-->

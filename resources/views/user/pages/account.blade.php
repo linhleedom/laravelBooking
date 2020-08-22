@@ -23,15 +23,15 @@ My Account
 						if(res.length !== 0){
 							$("#districts").empty();
 							$("#wards").empty();
-							$("#districts").append('<option>Chon</option>');
+							$("#districts").append('<option></option>');
 							$.each(res,function(key,value){
 								$("#districts").append('<option value="'+key+'">'+value+'</option>');
 							});
 						}else{
 							$("#districts").empty();
 							$("#wards").empty();
-							$("#districts").append('<option>Chọn</option>');
-							$("#wards").append('<option>Chọn</option>');
+							$("#districts").append('<option></option>');
+							$("#wards").append('<option></option>');
 						}
 					}
 
@@ -48,7 +48,7 @@ My Account
 					success:function(res){       
 						if(res){
 							$("#wards").empty();
-							$("#wards").append('<option>Chon</option>');
+							$("#wards").append('<option></option>');
 							$.each(res,function(key,value){
 								$("#wards").append('<option value="'+key+'">'+value+'</option>');
 							});
@@ -260,7 +260,7 @@ My Account
 												<textarea name="address_detail" id="address_detail" cols="10" rows="3"></textarea>
 												<label>Tỉnh/Thành Phố</label>
 												<select name="provinces" id="provinces">
-													<option selected="selected">Chọn</option>
+													<option selected="selected"></option>
 													@if($province)
 														@foreach($province as $provinceVal)
 															<option value="{{$provinceVal->matp}}">{{$provinceVal->name}}</option>
@@ -269,11 +269,11 @@ My Account
 												</select>
 												<label>Quận/Huyện</label>
 												<select name="districts" id="districts">
-													<option selected="selected">Chọn</option>
+													<option selected="selected"></option>
 												</select>
 												<label>Phường/Xã</label>
 												<select name="wards" id="wards">
-													<option selected="selected">Chọn</option>
+													<option selected="selected"></option>
 												</select>
 												<br/>
 												<input type="submit" value="Cập nhật" name="editPhone" class="gradient-button" id="editPhone"/>
