@@ -112,11 +112,13 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
         Route::post('login-partner','LoginPartnerController@postDangNhapPartner');
     });
 
+    Route::group(['prefix'=>'register-partner'],function(){
+        Route::get('/','LoginPartnerController@getDangKyPartner'); 
+        Route::post('/','LoginPartnerController@postDangKyPartner');
+    });
+
     Route::group(['prefix'=>'/','middleware'=>'CheckLogedIn'],function(){
-        Route::group(['prefix'=>'register-partner'],function(){
-            Route::get('/','LoginPartnerController@getDangKyPartner'); 
-            Route::post('/','LoginPartnerController@postDangKyPartner');
-        });
+        
         Route::get('trangchu','HomePartnerController@getHomePartner');
         
         Route::get('logout','HomePartnerController@getLogout');
@@ -152,7 +154,9 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             // Route::get('/getprovinces','HomestayPartnerController@getEditprovinces');
             // Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
             // Route::get('/getwards/{id}','HomestayPartnerController@getwards');
-
+        });
+    });
+});
 Route::get('admin/dangnhap','KhachHangController@getLogin');
 Route::post('admin/dangnhap','KhachHangController@postLogin');
 Route::get('admin/logout','KhachHangController@getLogout');

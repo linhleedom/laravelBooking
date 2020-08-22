@@ -52,8 +52,6 @@
 						<li><a href="{{asset('partner/home-add')}}">Thêm</a></li>
 					</ul>
 				</li>
-				<li><a href="#" title="homstay">Chỗ Nghỉ</a></li>
-				<li><a href="#" title="homstay">Đánh giá</a></li>
 			</ul>
 		</nav>
 		<!--//main navigation-->

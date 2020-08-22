@@ -16,7 +16,7 @@ class HomeController extends Controller
         $slide = Slide::where('status', '1')->get();
         
         $homestayTopRate = Homestay::where('status', '1')->orderBy('point', 'DESC')->take(8)->get();
-        $homestay = Homestay::where('status', '1')->take(8)->get();
+        $homestay = Homestay::where('status', '1')->take(4)->get();
         $urlSearch ='&datepicker1=&datepicker2=&num_room=1&num_adult=2&num_chil=0';
         return view('user.pages.home', compact('slide','homestay','homestayTopRate','urlSearch'));
     }
