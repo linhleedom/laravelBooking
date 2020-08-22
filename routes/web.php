@@ -113,7 +113,7 @@ Route::group(['namespace'=>'Partner'],function(){
         Route::post('/','LoginPartnerController@postDangKyPartner');
     });
 
-    Route::get('logout','HomePartnerController@getLogout');
+    Route::get('logoutsgit ','HomePartnerController@getLogout');
 
     Route::group(['prefix'=>'/','middleware'=>'CheckLogedOut'],function(){
         Route::get('trangchu','HomePartnerController@getHomePartner');
