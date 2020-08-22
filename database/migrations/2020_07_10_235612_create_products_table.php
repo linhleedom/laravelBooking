@@ -22,7 +22,8 @@ class CreateProductsTable extends Migration
             $table->integer('discount')->default(0);
             $table->string('avatar');
             $table->text('description')->nullabel();
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('area');
+            $table->tinyInteger('status')->default(1);
             $table->foreign('homestay_id')->references('id')->on('homestays')->onDelete('cascade');
             $table->foreign('room_type_id')->references('id')->on('room_types')->onDelete('cascade');
             $table->timestamps();
