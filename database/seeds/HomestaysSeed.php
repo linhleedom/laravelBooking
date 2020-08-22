@@ -43,4 +43,9 @@ class HomestaysSeed extends Seeder
             );
         }
     }
+
+    protected $table = 'homestays';
+    protected $fillable = [
+        'name','alias','matp','status','maqh','xaid'
+    ];
 }

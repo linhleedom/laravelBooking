@@ -25,52 +25,25 @@
                                 <th>Homestay</th>
                                 <th>Loại Phòng</th>
 								<th>Giá Phòng</th>
-								<th>Đánh giá</th>
 								<th>Trạng thái</th>
-                                <th></th>
+								<th colspan="3">Trạng thái</th>
                             </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Luxury Homestay Demo</td>
-                                <td>
-									Luxury
-								</td>
-                                <td>500000</td>
-								<td>Ẩn</td>
-                                <td>
-									<a href="../room-detail" title="chi tiết" class="gradient-button add">Chi tiết phòng</a>
-									<a href="../edit-list-room" title="Sửa" class="gradient-button edit1">Sửa</a>
-                                    <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Luxury Homestay Demo</td>
-                                <td>
-									Luxury
-								</td>
-                                <td>500000</td>
-								<td>Hiện</td>
-                                <td>
-									<a href="room.html" title="chi tiết" class="gradient-button add">Chi tiết phòng</a>
-                                    <a href="edit-list-room.html" title="Sửa" class="gradient-button edit1">Sửa </a>
-                                    <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Luxury Homestay Demo</td>
-                                <td>
-									Luxury
-								</td>
-                                <td>500000</td>
-								<td>Ẩn</td>
-                                <td>
-									<a href="room.html" title="chi tiết" class="gradient-button add">Chi tiết phòng</a>
-                                    <a href="edit-list-room.html" title="Sửa" class="gradient-button edit1">Sửa </a>
-                                    <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
-                                </td>
-                            </tr>
+                            <?php $i = 0 ;?>
+                            @foreach($product as $productVal)
+                            <?php $i++;  ?>  
+                                <tr>
+                                    <td><?php echo $i; ?></td>
+                                    <td>{{$productVal->homestay->name}}</td>
+                                    <td>{{$productVal->roomType->name}}</td>
+                                    <td>{{$productVal->prices}}</td>
+                                    <td>{{($productVal->status==0)?"Ẩn":"Hiện"}}</td>
+                                    <td>
+                                        <a href="../room-detail" title="chi tiết" class="gradient-button add">Chi tiết phòng</a>
+                                        <a href="{{url('partner/edit-list-room', ['id' => $productVal->id])}}" title="Sửa" class="gradient-button edit1">Sửa</a>
+                                        <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </table>
                     </div>
                     <div class="separator"></div>

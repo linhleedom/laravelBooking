@@ -8,9 +8,9 @@
 			<div class="ribbon">				
 				<nav>
 						<ul class="profile-nav">
-						<li class="active"><a >{{Auth::user()->name}}</a></li>
-						<li><a href="{{asset('logout')}}" title="Logout">Logout</a></li>
-						<li><a href="partner/login/login-and-register"title="Settings">Settings</a></li>
+							<li class="active"><a >{{Auth::user()->name}}</a></li>
+							<li><a href="{{asset('logout')}}" title="Logout">Logout</a></li>
+							<li><a href="partner/login/login-and-register"title="Settings">Settings</a></li>
 						</ul>
 				</nav>
 			</div>
@@ -36,7 +36,7 @@
 		<!--main navigation-->
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
-				<li><a href="index.html" title="Home">Trang chủ</a></li>
+			<li><a href="{{url('trangchu')}}" title="Home">Trang chủ</a></li>
 				<!-- <li><a href="hotels.html" title="Hotels">Hotels</a>
 					<ul>
 						<li><a href="#">Secondary navigation</a></li>
@@ -45,11 +45,11 @@
 						<li><a href="loading.html">Loading page</a></li>
 					</ul>
 				</li> -->
-				<li><a href="">Danh mục</a>
+				<li><a >Danh mục</a>
 					<ul>
-					<li><a href="{{asset('homestay/list-homestay')}}">Danh sách homestay</a></li>
-						<li><a href="{{asset('room/list-room')}}">Danh sách phòng</a></li>
-						<li><a href="{{asset('home-add')}}">Thêm</a></li>
+					<li><a href="{{asset('partner/list-homestay')}}">Danh sách homestay</a></li>
+						<li><a href="{{asset('partner/list-room')}}">Danh sách phòng</a></li>
+						<li><a href="{{asset('partner/home-add')}}">Thêm</a></li>
 					</ul>
 				</li>
 				<li><a href="#" title="homstay">Chỗ Nghỉ</a></li>

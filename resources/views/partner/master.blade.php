@@ -38,5 +38,9 @@
 	<!--footer-->
 	@include('partner/footer')
 	<!--//footer-->
+	<script type="text/javascript">	
+		@yield('script1')
+	</script>
 </body>
+
 </html>

@@ -1,4 +1,6 @@
 @extends('partner.master')
+@section('script')
+@endsection
 @section('main')
     <!--main-->
 	<div class="main" role="main">		
@@ -25,232 +27,101 @@
 
 				<!--three-fourth content-->
 					<section class="three-fourth form-booking">
-						<h1 style="text-align: center;text-transform: uppercase;">Thông tin phòng Homestay của bạn</h1>
-						<form id="booking" method="post" action="booking-step2.html" class="booking ">
+						<h1 style="text-align: center;text-transform: uppercase;">Thông tin phòng của bạn</h1>
+						<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data" >
+							@csrf
+							<input type="hidden" name="_token" value="{{csrf_token()}}">
+								<div colspan="2" 
+									style="color: #32df5d;
+										/* background-color: #f2dede; */
+										border-color: #ebccd1;
+										width: 500px;
+										height: 50px;
+										font-size: 1.5em;
+								">
+										{{Session::get('thongbao')}}
+								</div>
 							<fieldset>
-								<h3><span>01 </span>Hạng mục homestay</h3>
+
+								<h3><span>01 </span> Hạng mục homestay</h3>
 								<div class="row twins">
 									<div class="f-item custom-item">
-										<label>Loại căn hộ</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>HOMESTAY</option>
+										<label>Tên homestay</label>
+										<select name="homestay_id" id="">
+											<option selected="selected" >Chọn</option>
+												@foreach($homestay as $homestayVal)
+													<option value="{{$homestayVal->id}}">{{$homestayVal->name}}</option>
+												@endforeach
 										</select>
 									</div>
 									<div class="f-item custom-item">
 										<label for="">Trạng thái của phòng</label>
-										<input type="checkbox" id="status" name="status"  value=""/> &nbsp <b>Ẩn/Hiện</b>
+										<label for="status1">Ẩn  &nbsp 
+											<input required type="radio" id="status1" name="status"  value="0" checked/></label>
+										<label for="status2">Hiện  &nbsp 
+											<input required type="radio" id="status2" name="status"  value="1"/>
+										</label>
 									</div>
 								</div>
-								
 								<h3 style="margin-top: 20px;"><span>02</span> Chi tiết chỗ nghỉ</h3>
 								<div class="row twins">
 									<div class="f-item custom-item">
-										<label for="">Loại phòng</label>
-										<input type="text" id="" name="" />
-									</div>
-									<div class="f-item custom-item">
-										<label for="">Số lượng phòng</label>
-										<input type="number" id="" name="" />
-									</div>
-								</div>
-
-								<div class="row twins">
-									<div class="f-item custom-item">
-										<label for="">Số lượng khách có thể lưu trú</label>
-										<input type="number" id="" name="" />
-									</div>
-									<div class="f-item custom-item">
-										<label for="address">Kích thước phòng (m<sup>2</sup>)</label>
-										<input type="text" id="address" name="address" />
-									</div>
-
-									<div class="f-item custom-item checkbox">
-										<h4>Mô tả đồ dùng trong phòng </h4>
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Safety Deposit Box</label> <br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Air Conditioning</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Desk</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Ironing Facilities</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Seating Area</label><br> <br>
-										
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Heating</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Shower</label><br> <br>
+										<label for="">Tên phòng :
+											<input type="text" name="name" >
+										</label>
 										
 									</div>
 									<div class="f-item custom-item">
-										<label>Mô tả khác: </label>
-										<textarea rows="10" cols="10"></textarea>
-									</div>
-								</div>
-								
-								<div class="row twins">
-									<h3 style="margin-top: 20px;"><span>03</span> Tiện ích có tại chỗ nghỉ</h3>
-									<div class="f-item custom-item checkbox">
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Wifi miễn phí</label> <br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Trạm sạc xe điện</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Chỗ đậu xe trong khuôn viên</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Hồ bơi</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Điều hòa</label><br> <br>
-										
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Hệ thống sưởi</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Bồn tắm nóng/bể sục (jacuzzi)</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Sân thượng/hiên</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Sân vườn</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Phòng xông hơi</label><br> <br>
-
-										<input type="checkbox" name="check" id="check" value="" />
-										<label>Quầy bar</label><br> <br>
-									</div>
-								</div>
-
-								<h3 style="margin-top: 20px;"><span>04</span> Quy định chung</h3>
-
-								<div class="row twins">
-									<div class="f-item custom-item">
-										<label>Cho phép hút thuốc</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>Không</option>
-											<option>Có</option>
-										</select>
-									</div>
-
-									<div class="f-item custom-item">
-										<label>Cho phép đem vật nuôi</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>Không</option>
-											<option>Có</option>
-										</select>
-									</div>
-
-									<div class="f-item custom-item">
-										<label>Cho phép trẻ em</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>Không</option>
-											<option>Có</option>
-										</select>
-									</div>
-
-									<div class="f-item custom-item">
-										<label>Cho phép tiệc tùng/sự kiện</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>Không</option>
-											<option>Có</option>
-										</select>
-									</div>
-									
-								</div>
-								<div class="row twins">
-									<div class="f-item custom-item">
-										<label>Nhận phòng từ</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>14:00</option>
-											<option>15:00</option>
-										</select>
-									</div>
-									
-									<div class="f-item custom-item">
-										<label>Trả phòng từ</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>12:00</option>
-											<option>13:00</option>
+										<label for="">Kiểu phòng :</label>
+										<select name="room_type_id" id="">
+											<option selected="selected" >Chọn</option>
+												@foreach($types as $typeval)
+													<option value="{{$typeval->id}}">{{$typeval->name}}</option>
+												@endforeach
 										</select>
 									</div>
 								</div>
-
-								<h3 style="margin-top: 20px;"><span>05</span> Ảnh </h3>
-
-								<div class="row twins">
-									<div class="f-item custom-item">
-										<label>Chọn ảnh chỗ nghỉ của quý khách</label>
-										<form action="/action_page.php">
-											<input type="file" id="files" name="files" multiple><br><br>
-										</form>
-									</div>
-								</div>
-								<h3 style="margin-top: 20px;"><span>06</span> Giá phòng </h3>
+								<h3 style="margin-top: 20px;"><span>02</span> Giá phòng & ưu đãi </h3>
 
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label>Nhập giá phòng (VNĐ) :</label>
 										<form action="/action_page.php">
-											<input type="text" id="" name="" ><br><br>
+											<input type="text" id="prices" name="prices" ><br><br>
 										</form>
 									</div>
 									<div class="f-item custom-item">
 										<label>Giảm giá :</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>5%</option>
-											<option>10%</option>
-											<option>20%</option>
-											<option>25%</option>
-											<option>50%</option>
-										</select>
+										<input type="text" id="discount" name="discount" placeholder="... %">
 									</div>																
 								</div>
-								<div class="row twins">
-									<div class="f-item custom-item">
-										<label>Phí hoa hồng dịch vụ :</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>5%</option>
-											<option>10%</option>
-											<option>15%</option>
-										</select>
-									</div>								
-								</div>
-
-								<h3 style="margin-top: 20px;"><span>07</span> Chính sách hủy đặt phòng </h3>
 
 								<div class="row twins">
+								<h3 style="margin-top: 20px;"><span>03</span> Mô tả </h3>
 									<div class="f-item custom-item">
-										<label>Khách có thể hủy đặt phòng miễn phí  trước ngày nhận phòng bao nhiêu ngày?</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>1 ngày</option>
-											<option>5 ngày</option>
-											<option>14 ngày</option>
-										</select>
+										<label>Mô tả khác: </label>
+										<textarea rows="10" cols="10" id="description" name="description" ></textarea>
 									</div>
-								</div>	
+									<div class="f-item custom-item">
+										<label for="avatar">Avatar room of Homestay :</label>
+											<input type="file" name="avatar" multiple id="avatar">
+											<br><br>
+											{{-- <input type="submit" class="gradient-button" name = "send" value="Upload file"> --}}
+									</div>
+								</div>
+								
+								<h3 style="margin-top: 20px;"><span>04</span> Tiện ích có tại chỗ nghỉ</h3>
+								<div class="row twins">
+									<div class="f-item custom-item checkbox">
+										@foreach ($tienichs as $items)											
+											<input type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
+											<label for="" >{{ $items->name }}</label> <br> <br>
+										@endforeach
+									</div>
+								</div>
+							
+								<input type="submit" class="gradient-button" value="Thêm mới" id="update" >	
 							</fieldset>							
-							<input type="submit" class="gradient-button" value="Thêm mới" id="update" >
 						</form>
 					</section>
 				<!--//three-fourth content-->
