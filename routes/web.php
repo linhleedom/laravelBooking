@@ -87,6 +87,7 @@ Route::group(['prefix'=>'/my-account','middleware' => 'checkIdUser'], function()
         'uses'=>'user\AccountController@editAddress'
     ]);
 });
+
 Route::get('/get-district/{id}',[
     'as'=>'userGetDistrict',
     'uses'=>'user\AccountController@getDistrict'
@@ -130,9 +131,85 @@ Route::group(['namespace'=>'Partner'],function(){
             Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');              
             Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');  
 
-            Route::get('/getprovinces','HomestayPartnerController@getprovinces');
-            Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
-            Route::get('/getwards/{id}','HomestayPartnerController@getwards');
+Route::get('admin/dangnhap','KhachHangController@getLogin');
+Route::post('admin/dangnhap','KhachHangController@postLogin');
+Route::get('admin/logout','KhachHangController@getLogout');
+
+Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
+
+
+    Route::group(['prefix'=>'booking'],function(){
+        //admin/booking/danhsach
+        Route::get('danhsach','BookingController@getDanhSach');
+
+        Route::get('detail','BookingController@getDetail');
+
+        Route::get('edit/{id}','BookingController@getEdit');
+        Route::post('edit/{id}','BookingController@postEdit');
     });
+
+
+    Route::group(['prefix'=>'khachhang'],function(){
+        //admin/booking/danhsach
+        Route::get('danhsach','KhachHangController@getDanhSach');
+
+        Route::get('them','KhachHangController@getThem');
+        Route::post('them','KhachHangController@postThem');
+
+        Route::get('edit/{id}','KhachHangController@getEdit');
+        Route::post('edit/{id}','KhachHangController@postEdit');
+
+        Route::get('delete/{id}','KhachHangController@getDelete');
+
+        Route::get('detail','KhachHangController@getDetail');
+
+        Route::get('detailstay','KhachHangController@getDetailStay');
+
+        Route::get('dshomestay','KhachHangController@getDSHomeStay');
+    });
+
+    Route::group(['prefix'=>'login'],function(){
+        //admin/booking/danhsach
+        Route::get('login','LoginController@getLogin');
+        Route::get('loginagain','LoginController@getLoginAgain');
+    });
+
+    Route::group(['prefix'=>'QLBlog'],function(){
+        //admin/booking/danhsach
+        Route::get('danhsach','QLBlogController@getDanhSach');
+
+        Route::get('detail/{id}','QLBlogController@getDetail');
+
+        Route::get('edit/{id}','QLBlogController@getEdit');
+        Route::post('edit/{id}','QLBlogController@postEdit');
+
+        Route::get('delete/{id}','QLBlogController@getDelete');
+    });
+
+
+    Route::group(['prefix'=>'QLSlide'],function(){
+        //admin/booking/danhsach
+        Route::get('danhsach','QlSlideController@getDanhSach');
+
+        Route::get('edit/{id}','QLSlideController@getEdit');
+        Route::post('edit/{id}','QLSlideController@postEdit');
+
+        Route::get('delete/{id}','QLSlideController@getDel');
+    });
+
+    Route::group(['prefix'=>'/'],function(){
+        //admin/booking/danhsach
+        Route::get('dashboard','DBController@getDashBoard');
+    });
+
+    Route::group(['prefix'=>'/'],function(){
+        //admin/booking/danhsach
+        Route::get('thembai','TBController@getThemBai');
+        Route::post('thembai','TBController@postThemBai');
+    });
+
+    Route::group(['prefix'=>'/'],function(){
+        Route::get('themslide','TSController@getTS');
+        Route::post('themslide','TSController@postTS');
     });
 });
