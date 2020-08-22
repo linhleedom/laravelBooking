@@ -11,7 +11,10 @@ class District extends Model
     public function ward(){
         return $this->hasMany('App\Ward', 'maqh','maqh');
     }
-    public function provice(){
-        return $this->belongsTo('App\Provice', 'matp','matp');
+    public function province(){
+        return $this->belongsTo('App\Province', 'matp','matp');
+    }
+    public function homestay(){
+        return $this->hasMany('App\Homestay', 'maqh','maqh');
     }
 }

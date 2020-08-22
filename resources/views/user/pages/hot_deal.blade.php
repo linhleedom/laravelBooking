@@ -28,423 +28,51 @@ class="active"
 				<!--top destinations-->			
 				
 				<section class="full">
-					<h1>Hà Nội</h1>
-					<div class="deals clearfix">
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
+					@foreach($matp as $matpVal)
+						<h1 class="address-hot-deal"><a href="{{route('userSearch').'?address='.$matpVal->province->name.$urlSearch}}">{{$matpVal->province->name}}</a></h1>
+						<div class="deals clearfix">
+							@foreach( $matpVal->province->homestay->where('status','1')->take(4) as $homestayVal )
+							<!--deal-->
+							<article class="one-fourth promo">
+								<div class="ribbon-small">- {{$homestayVal->product->max('discount')}}%</div>
+								<figure>
+									<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="">
+										<img src="{{$homestayVal->avatar}}" alt="" width="270" height="152" />
+									</a>
+								</figure>
+									<div class="details">
+										<h1>{{$homestayVal->name}}&nbsp&nbsp
+											<span class="stars">
+												<span class="point">{{$homestayVal->point}}</span>
+											</span>
+										</h1>
+										<span class="address"><a href="{{route('userSearch').'?address='.$homestayVal->province->name.$urlSearch}}">{{$homestayVal->province->name}}</a></span>
+										<span class="address"><a href="{{route('userSearch').'?address='.$homestayVal->district->name.' - '.$homestayVal->province->name.$urlSearch}}">{{$homestayVal->district->name}}</a></span>
+										<!-- <span class="rating">200</span> -->
+										<span class="price">
+											Giá 1 đêm chỉ từ  
+											<em>{{ number_format( $homestayVal->product->min('prices'),0,',','.' ) }}đ</em> 
 										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
+										<div class="description">
+											<p>{{$homestayVal->title}}</p>
+										</div>
+										<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="Book now" class="gradient-button">Chọn phòng</a>
 									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					 
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					</div>
-					<div class="separator"></div>
-					
-					<h1>Hồ Chí Minh</h1>
-					<div class="deals clearfix">
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					 
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					</div>
-					<div class="separator"></div>
-					
-					<h1>Nha Trang</h1>
-					<div class="deals clearfix">
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					 
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					</div>
-					<div class="separator"></div>
-
-
-					<h1>Vũng tàu</h1>
-					<div class="deals clearfix">
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					 
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img7.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					
-						<!--deal-->
-						<article class="one-fourth promo">
-							<div class="ribbon-small">- 20%</div>
-							<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img7.jpg" alt="" width="270" height="152" /></a></figure>
-								<div class="details">
-									<h1>Luxstay
-										<span class="stars">
-											<img src="user/images/ico/star-rating-off.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h1>
-									<span class="address">Hà Nội  •  Phòng giường đôi</span>
-									<!-- <span class="rating">200</span> -->
-									<span class="price">Giá 1 đêm  <em>200.000đ</em> </span>
-									<div class="description">
-										<p>Overlooking the Aqueduct and Nature Park, Lorem Ipsum Hotel is situated 5 minutes’ walk from London’s Zoological Gardens and a metro station. <a href="user_room_detail.html">chi tiết</a></p>
-									</div>
-									<a href="user_room_detail.html" title="Book now" class="gradient-button">Chọn phòng</a>
-								</div>
-						</article>
-						<!--//deal-->
-					</div>
+							</article>
+							<!--//deal-->
+							@endforeach
+						</div>
+						<div class="separator"></div>
+					@endforeach
+					<!--bottom navigation-->
+				
+					<!--back up button-->
+					<a href="#" class="scroll-to-top" title="Back up">Top</a> 
+					<!--//back up button-->
+				<!--//bottom navigation-->
 				</section>
 				<!--//top destinations-->
+				
 			</div>
 			<!--//main content-->
 		</div>

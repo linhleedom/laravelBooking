@@ -13,16 +13,12 @@ class Homestay extends Model
     public function product(){
         return $this->hasMany('App\Product', 'homestay_id','id');
     }
-    public function address(){
-        return $this->belongsTo('App\Ward', 'xaid','id');
-    }
     public function rating(){
         return $this->hasMany('App\Rating', 'homestay_id','id');
     }
     public function image(){
         return $this->hasMany('App\ImageHomestay', 'homestay_id','id');
     }
-
     public function province(){
         return $this->belongsTo('App\Province', 'matp','matp');
     }
@@ -33,7 +29,10 @@ class Homestay extends Model
         return $this->belongsTo('App\Ward', 'xaid','xaid');
     }
 
+
     public function user(){
         return $this->belongsTo('App\User','user_id','id');
     }
+
+
 }

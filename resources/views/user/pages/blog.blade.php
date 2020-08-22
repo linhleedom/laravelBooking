@@ -5,16 +5,11 @@ Blog
 @endsection
 
 @section('script')
-	$(document).ready(function(){
-		$(".form").hide();
-		$(".form:first").show();
-		$(".f-item:first").addClass("active");
-		$(".f-item:first span").addClass("checked");
-	});
+	
 @endsection
 
 @section('blog')
-class="active"
+	class="active"
 @endsection
 
 @section('content')
@@ -27,7 +22,7 @@ class="active"
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="#" title="Home">Home</a></li> 
+						<li><a href="{{route('userHomePage')}}" title="Home">Home</a></li> 
 						<li>Blog</li>                                       
 					</ul>
 					<!--//crumbs-->
@@ -38,151 +33,20 @@ class="active"
 				<section class="full">
 					<h1>Địa điểm du lịch</h1>
 					<div class="deals clearfix">
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img1.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
+						@foreach($blog as $blogVal)
+							<!--deal-->
+							<article class="one-fourth">
+								<figure><a href="{{route('userBlogDetail').'?id='.$blogVal->id.'&title='.$blogVal->alias}}" title=""><img src="{{$blogVal->photo}}" alt="" width="270" height="172" /></a></figure>
+								<div class="details">
+									<a href="{{route('userBlogDetail').'?id='.$blogVal->id.'&title='.$blogVal->alias}}" class="title">{{$blogVal->title}}</a>
+									<div class="description blog">
+										<p>{{$blogVal->description}}...</p>
+										<p class="time_created">{{date( "d-m-Y", strtotime( $blogVal->created_at ))}}</p>
+									</div>
 								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img1.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img1.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img1.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img2.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img2.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img2.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img2.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img3.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img3.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img3.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						<!--deal-->
-						<article class="one-fourth">
-							<figure><a href="../blog-detail" title=""><img src="uploads/blog/img3.jpg" alt="" width="270" height="172" /></a></figure>
-							<div class="details">
-								<a href="#" class="title">Du lịch Phú Quốc : Khinh nghiệm du lịch phú quốc tự túc</a>
-								<div class="description blog">
-									<p>Phú Quốc địa danh được rất nhiều người quan tâm mà mong muốn một lần được ghé qua. Vậy thì còn chần chừ gì nữa, hôm nay Blog Trần Phú sẽ cùng bạn tìm hiểu Du lịch phú quốc có gì hấp dẫn và những kinh nghiệm đến phú quốc bạn cần có. <a href="../blog-detail">More info</a></p>
-									<p class="time_created">15 tháng 5, 2020</p>
-								</div>
-							</div>
-						</article>
-						<!--//deal-->
-						
+							</article>
+							<!--//deal-->
+						@endforeach
 						<!--bottom navigation-->
 						<div class="bottom-nav">
 							<!--back up button-->
@@ -190,20 +54,7 @@ class="active"
 							<!--//back up button-->
 							
 							<!--pager-->
-							<div class="pager">
-								<span><a href="#">Trang đầu</a></span>
-								<span><a href="#">&lt;</a></span>
-								<span class="current">1</span>
-								<span><a href="#">2</a></span>
-								<span><a href="#">3</a></span>
-								<span><a href="#">4</a></span>
-								<span><a href="#">5</a></span>
-								<span><a href="#">6</a></span>
-								<span><a href="#">7</a></span>
-								<span><a href="#">8</a></span>
-								<span><a href="#">&gt;</a></span>
-								<span><a href="#">Trang cuối</a></span>
-							</div>
+							{{ $blog->withQueryString()->links('vendor.pagination.custom') }}
 							<!--//pager-->
 						</div>
 						<!--//bottom navigation-->
