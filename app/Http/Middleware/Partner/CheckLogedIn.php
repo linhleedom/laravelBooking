@@ -17,7 +17,7 @@ class CheckLogedIn
     {
         if(Auth::check())
         {
-            return redirect()->intended('trangchu');
+            return redirect()->intended('partner/trangchu');
         }
         return $next($request);
     }

@@ -28,12 +28,13 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
         Route::post('/','LoginPartnerController@postDangKyPartner');
     });
 
-    Route::get('logout','HomePartnerController@getLogout');
 
     
 
     Route::group(['prefix'=>'/','middleware'=>'CheckLogedOut'],function(){
         Route::get('trangchu','HomePartnerController@getHomePartner');
+        
+        Route::get('logout','HomePartnerController@getLogout');
 
         Route::group(['prefix'=>'/'],function(){
             Route::get('/home-add','HomestayPartnerController@getHomeAdd');

@@ -1,7 +1,7 @@
 <header>
 		<div class="wrap clearfix">
 			<!--logo-->
-			<h1 class="logo"><a href="#" title="Book Your Travel - home"><img src="partner/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
+			<h1 class="logo"><a href="{{url('partner/trangchu')}}" title="Book Your Travel - home"><img src="partner/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
 			<!--//logo-->
 			
 			<!--ribbon-->
@@ -10,7 +10,7 @@
 						<ul class="profile-nav">
 							<li class="active"><a >{{Auth::user()->name}}</a></li>
 							<li><a href="{{asset('partner/logout')}}" title="Logout">Logout</a></li>
-							<li><a href="partner/login/login-and-register"title="Settings">Settings</a></li>
+							<li><a href=""title="Settings">Settings</a></li>
 						</ul>
 				</nav>
 			</div>
@@ -36,7 +36,7 @@
 		<!--main navigation-->
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
-			<li><a href="{{url('trangchu')}}" title="Home">Trang chủ</a></li>
+			<li><a href="{{url('partner/trangchu')}}" title="Home">Trang chủ</a></li>
 				<!-- <li><a href="hotels.html" title="Hotels">Hotels</a>
 					<ul>
 						<li><a href="#">Secondary navigation</a></li>

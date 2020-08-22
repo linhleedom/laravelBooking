@@ -1,7 +1,7 @@
 <header>
 		<div class="wrap clearfix">
 			<!--logo-->
-			<h1 class="logo"><a href="#" title="Book Your Travel - home"><img src="partner/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
+			<h1 class="logo"><a href="{{url('partner/trangchu')}}" title="Book Your Travel - home"><img src="partner/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
 			<!--//logo-->
 			
 			{{-- <div class="ribbon">				
@@ -25,8 +25,8 @@
 			
 			<!--contact-->
 			<div class="contact">
-				<span ><a href="{{asset('login-partner')}}" style= "text-decoration: none ;color: ivory">Đăng nhập</a></span>
-			<span ><a href="{{asset('register-partner')}}" style= "text-decoration: none ;color: ivory">Đăng ký</a></span>
+				<span ><a href="{{url('partner/login-partner')}}" style= "text-decoration: none ;color: ivory">Đăng nhập</a></span>
+			<span ><a href="{{url('partner/register-partner')}}" style= "text-decoration: none ;color: ivory">Đăng ký</a></span>
 			</div>
 			<!--//contact-->
 		</div>
