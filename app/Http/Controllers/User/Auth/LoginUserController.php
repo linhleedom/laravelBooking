@@ -28,7 +28,7 @@ class LoginUserController extends Controller
         $remember_me = $request->has('remember_me') ? true : false;
         $data = array('email'=>$request->email,'password'=>$request->password);
 
-        if(Auth::attempt($data,$remember_me) ){
+        if(Auth::attempt($data) ){
             if( Auth::user()->permision != 2 ){
                 Auth::logout();
                 return redirect()->back()->with(['feedback'=>'fail','massage'=>'Email hoặc mật khẩu không đúng, vui lòng thử lại']);
@@ -41,7 +41,10 @@ class LoginUserController extends Controller
         
     }
     public function getLogout(){
-        Auth::logout();
-        return redirect()->back();
+        if(Auth::user()->permision == 2){
+            Auth::logout();
+            return redirect()->route('userHomePage');
+        }
+        
     }
 }

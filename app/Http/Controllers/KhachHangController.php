@@ -128,7 +128,7 @@ class KhachHangController extends Controller
             return redirect('admin/dashboard');
         }else
         {
-            return redirect('admin/danhnhap')->with('thongbao','Đăng nhập thất bại');
+            return redirect('admin/dangnhap')->with('thongbao','Đăng nhập thất bại');
         }
     }
     public function getLogout()
