@@ -34,7 +34,7 @@ Booking
 
 				<!--three-fourth content-->
 					<section class="three-fourth">
-						@if( Auth::check() )
+						@if( Auth::check() && Auth::user()->permision == 2 )
 							<p> Chào <b>{{Auth::user()->name}}</b> .Chào mừng bạn quay trở lại!</a> </p>
 							<form id="booking" method="post" action="{{route('userBookingStep2')}}" class="booking">
 								{{ csrf_field() }}

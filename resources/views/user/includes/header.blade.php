@@ -25,7 +25,7 @@
 					</ul>	
 				@endif	
 					<ul class="currency-nav">
-						<li class="active"><a href="#" title="Partners">Đối tác</a></li>
+						<li class="active"><a href="{{url('/partner/login-partner')}}" title="Partners">Đối tác</a></li>
 					</ul>
 				</nav>
 			</div>

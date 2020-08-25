@@ -11,6 +11,7 @@ use App\Province;
 use App\District;
 use App\Ward;
 use App\Order;
+use App\Bill;
 use App\RoomType;
 use App\Utilities;
 
@@ -18,6 +19,29 @@ use App\Utilities;
 
 class SearchResultController extends Controller
 {
+    public function __construct(){
+        $today = date('Y-m-d');
+        $orderSucces = Order::where('date_end','<=',$today)->get();
+        $bill_id_success = array();
+
+        foreach($orderSucces as $orderSuccesVal){
+            $order = Order::find($orderSuccesVal->id);
+            if($orderSuccesVal->status == 1){
+                $order->status = 0;
+            }
+            $order->update();
+            array_push($bill_id_success,$orderSuccesVal->bill_id); 
+        }
+        $bill_seccess = Bill::whereIn('id',$bill_id_success)->get();
+        foreach($bill_seccess as $bill_seccess_val){
+            $bill = Bill::find($bill_seccess_val->id);
+            if($bill_seccess_val->status == 0){
+                $bill->status = 2;
+            }
+            $bill->update();
+        }
+    }
+
     public function index(Request $request){
         $address = $request->address;
         $datepicker1 =$request->datepicker1;

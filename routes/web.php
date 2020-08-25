@@ -88,8 +88,15 @@ Route::group(['prefix'=>''],function(){
             'as'=>'userEditAddress',
             'uses'=>'user\AccountController@editAddress'
         ]);
-    });
-    
+        Route::post('/rating/{id}/{bill_id}',[
+            'as'=>'userRating',
+            'uses'=>'user\AccountController@rating'
+        ]);
+        Route::get('/cancel-booking/{id}/{bill_id}',[
+            'as'=>'userCancelBooking',
+            'uses'=>'user\AccountController@cancelBooking'
+        ]);
+    }); 
     Route::get('/get-district/{id}',[
         'as'=>'userGetDistrict',
         'uses'=>'user\AccountController@getDistrict'

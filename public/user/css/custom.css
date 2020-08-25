@@ -330,6 +330,16 @@ header #wrap .ribbon nav ul.open li a {
 	margin-top: 0;
 
 }
+.starVoted img{
+	float: left;
+	margin-bottom: 10px;
+}
+.alert-account{
+	font-size: 0.7em;
+}
+.booking-succes{
+	color: rgb(0, 0, 255);
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;

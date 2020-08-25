@@ -254,12 +254,15 @@ class="active"
 									@foreach($homestayVal->rating as $ratingVal)
 										<!--review-->
 										<li>
-											<figure class="left"><img src="{{$ratingVal->user->avatar}}" alt="avatar" /></figure>
-											<address><span>{{$ratingVal->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->user->created_at ))}}</address>
+											<figure class="left"><img src="{{$ratingVal->user->avatar}}" alt="avatar" width=50 height=50/></figure>
+											<address><span>{{$ratingVal->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->created_at ))}}</address>
 											<div class="pro">
 												<div class="stars">
+													@for( $i=5-$ratingVal->point; $i--; $i >= 0 )
+														<img src="user/images/ico/star-rating-off.png" alt="" />
+													@endfor
 													@for( $i=$ratingVal->point; $i--; $i >= 0 )
-														<img src="user/images/ico/star.png" alt="" />
+														<img src="user/images/ico/star-rating-on.png" alt="" />
 													@endfor
 												</div>
 											</div>
@@ -321,15 +324,15 @@ class="active"
 							<div class="row-3">
 								<div class="f-item spinner">
 									<label for="num_room">Số phòng</label>
-									<input type="text" placeholder="" min="1" value="{{$num_room}}" id="num_room" name="num_room" />
+									<input type="text" placeholder="" min="1" value="{{$num_room}}" id="num_room" name="num_room" required="required"/>
 								</div>
 								<div class="f-item spinner">
 									<label for="num_adult">Người lớn</label>
-									<input type="text" placeholder="" value="{{$num_adult}}" id="num_adult" name="num_adult" />
+									<input type="text" placeholder="" value="{{$num_adult}}" id="num_adult" name="num_adult" required="required"/>
 								</div>
 								<div class="f-item spinner">
 									<label for="num_chil">Trẻ em</label>
-									<input type="text" placeholder="" value="{{$num_chil}}" id="num_chil" name="num_chil" />
+									<input type="text" placeholder="" value="{{$num_chil}}" id="num_chil" name="num_chil" required="required"/>
 								</div>
 							</div>
 							<input type="submit" value="Tìm kiếm" class="search-submit" id="search-submit" />
@@ -356,25 +359,6 @@ class="active"
 					<!--// Booking?-->
 
 					<!--Popular hotels in the area-->
-					<!-- <article class="default clearfix">
-						<h2>Bạn có thể quan tâm</h2>
-						<ul class="popular-hotels">
-							@foreach($suggestion as $suggestionVal)
-								<li>
-									<a href="{{route('userRoomDetail').'?id='.$suggestionVal->id.$url}}">
-										<h3>{{$suggestionVal->name}}&nbsp&nbsp
-											<span class="stars">
-												<span class="point">{{$suggestionVal->point}}</span>
-											</span>
-										</h3>
-										<p>Từ <span class="price">{{ number_format( $suggestionVal->product->min('prices'),0,',','.' ) }}đ / Đêm</span></p>
-										<p>{{$suggestionVal->district->name}}</p>
-									</a>
-								</li>
-							@endforeach
-						</ul>
-						<a href="{{route('userSearch').'?address='.$suggestionVal->district->name.' - '.$suggestionVal->province->name.$url}}" title="Show all" class="show-all">Show all</a>
-					</article> -->
 					<!--//Popular hotels in the area-->
 					
 					<!--Deal of the day-->

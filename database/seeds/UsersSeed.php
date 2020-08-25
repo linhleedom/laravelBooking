@@ -13,13 +13,10 @@ class UsersSeed extends Seeder
     {
         $data= [
             // ['id', 'name', 'email','password','phone','xaid','permision'],
-            ['1', 'admin', 'admin@gmail.com','admin','','','0'],
-            ['2', 'partner1', 'partner1@gmail.com','partner','','00011','1'],
-            ['3', 'partner2', 'partner2@gmail.com','partner','','00010','1'],
-            ['4', 'user1', 'user1@gmail.com','user','0989525671','00006','2'],
-            ['5', 'user2', 'user2@gmail.com','user','0989525455','00007','2'],
-            ['6', 'user3', 'user3@gmail.com','user','0989523451','00006','2']
-            ];
+            ['1', 'admin', 'admin@gmail.com','$2y$12$YFdLkoAqMYJ.A8IepkjGLevrf/BFlz.r73XyxFeN6d0C7L3Ovp7um','','','0'], 
+            ['2', 'Vũ Thành Long', 'vtlong2210@gmail.com','$2y$12$tDZg7EbxeHDgNf9HRlRBjeTkV5T58WYEFMB9r9Z7iThB8P.5DIiUm','','','1'],
+            ['3', 'Lê Duy Linh', 'leduylinh1998.nc@gmail.com','$2y$12$qGprTGI6OJ1V.R.cnIoXuetM.w9tplLPHTB1xJQYpZOYSfBI1gG/e','','','2'],
+        ];
            
             foreach($data as $key=> $val){
             DB::table('users')  ->insert(
