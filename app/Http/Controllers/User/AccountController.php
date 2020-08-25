@@ -12,13 +12,15 @@ use App\User;
 use App\Province;
 use App\District;
 use App\Ward;
+use App\Rating;
+use App\Homestay;
 
 class AccountController extends Controller
 {
     public function index(Request $request){
         $id = $request->id;
-        $billHistory = Bill::where('user_id',$id)->where('status','0')->get();
-        $billBooking = Bill::where('user_id',$id)->where('status','1')->get();
+        $billHistory = Bill::where('user_id',$id)->where('status','!=','0')->paginate(3);
+        $billBooking = Bill::where('user_id',$id)->where('status','0')->paginate(3);
         $user = User::find($id);
         $province = Province::all();
         $district = District::all();
@@ -181,5 +183,36 @@ class AccountController extends Controller
                 }
             }     
         }
-    }    
+    }
+
+    public function rating($id, $bill_id, Request $request){
+        $rating = new Rating;
+        $rating->homestay_id = $request->homestay_id;
+        $rating->user_id = $id;
+        $rating->bill_id = $bill_id;
+        $rating->point = $request->score;
+        $rating->comment = $request->comment;
+        $rating->status = 1;
+        $rating->save();
+        
+        $point_homestay = Rating::where('homestay_id',$request->homestay_id)->avg('point');
+        $homestay = Homestay::find($request->homestay_id);
+        $homestay->point = $point_homestay;
+        $homestay->update();
+        
+        return redirect()->back()->with(['rating'=>'success','massage'=>'Đã gửi đánh giá']);
+    }
+
+    public function cancelBooking($id, $bill_id){
+        // dd($bill_id);
+        $bill = Bill::find($bill_id);
+        $bill->status = 1;
+        $bill->update();
+        foreach($bill->order as $order){
+            $order = Order::find($order->id);
+            $order->status = 0;
+            $order->update();
+        }
+        return redirect()->back()->with(['cancel-booking'=>'success','massage'=>'Hủy phòng thành công, kiểm tra trong lịch sử đặt phòng']);
+    }
 }

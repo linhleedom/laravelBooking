@@ -9,7 +9,7 @@ Room Detail
 		
 	});
 @endsection
-@section('scriptCart')
+@section('scriptEnd')
 	<script>
 		function AddCart(id){
 			$.ajax({
@@ -19,6 +19,18 @@ Room Detail
 				$('#change-item-cart').empty();
 				$('#change-item-cart').html(response);
 			});
+		}
+		function DelItem(id){
+			$.ajax({
+				url: '../delete-item-cart/'+id,
+				type: 'GET',
+			}).done(function(response){
+				$('#change-item-cart').empty();
+				$('#change-item-cart').html(response);
+			});
+		}
+		function Alert(){
+			alert('Bạn hãy chọn thời gian để tìm được phòng phù hợp');
 		}
 	</script>
 @endsection
@@ -117,7 +129,13 @@ class="active"
 													<span class="second price-new">{{ number_format( $productVal->prices*(100-$productVal->discount)/100,0,',','.' ) }}đ</span>
 												</div>
 											@endif	
-											<a onclick="AddCart({{$productVal->id}})" class="gradient-button no-href">Chọn</a>
+											@if( isset($datepicker1) && isset($datepicker2) )
+												<a onclick="AddCart({{$productVal->id}})" class="gradient-button no-href">Chọn</a>
+											@else
+												<a onclick="Alert()" class="gradient-button no-href">Chọn</a>	
+											@endif
+											
+											<!-- <a href="{{route('userAddCart',['id' => $productVal->id])}}" class="gradient-button">Chọn</a> -->
 										</div>
 										<div class="more-information">
 											<p>{{$productVal->description}}</p>
@@ -236,12 +254,15 @@ class="active"
 									@foreach($homestayVal->rating as $ratingVal)
 										<!--review-->
 										<li>
-											<figure class="left"><img src="{{$ratingVal->user->avatar}}" alt="avatar" /></figure>
-											<address><span>{{$ratingVal->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->user->created_at ))}}</address>
+											<figure class="left"><img src="{{$ratingVal->user->avatar}}" alt="avatar" width=50 height=50/></figure>
+											<address><span>{{$ratingVal->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->created_at ))}}</address>
 											<div class="pro">
 												<div class="stars">
+													@for( $i=5-$ratingVal->point; $i--; $i >= 0 )
+														<img src="user/images/ico/star-rating-off.png" alt="" />
+													@endfor
 													@for( $i=$ratingVal->point; $i--; $i >= 0 )
-														<img src="user/images/ico/star.png" alt="" />
+														<img src="user/images/ico/star-rating-on.png" alt="" />
 													@endfor
 												</div>
 											</div>
@@ -303,15 +324,15 @@ class="active"
 							<div class="row-3">
 								<div class="f-item spinner">
 									<label for="num_room">Số phòng</label>
-									<input type="text" placeholder="" min="1" value="{{$num_room}}" id="num_room" name="num_room" />
+									<input type="text" placeholder="" min="1" value="{{$num_room}}" id="num_room" name="num_room" required="required"/>
 								</div>
 								<div class="f-item spinner">
 									<label for="num_adult">Người lớn</label>
-									<input type="text" placeholder="" value="{{$num_adult}}" id="num_adult" name="num_adult" />
+									<input type="text" placeholder="" value="{{$num_adult}}" id="num_adult" name="num_adult" required="required"/>
 								</div>
 								<div class="f-item spinner">
 									<label for="num_chil">Trẻ em</label>
-									<input type="text" placeholder="" value="{{$num_chil}}" id="num_chil" name="num_chil" />
+									<input type="text" placeholder="" value="{{$num_chil}}" id="num_chil" name="num_chil" required="required"/>
 								</div>
 							</div>
 							<input type="submit" value="Tìm kiếm" class="search-submit" id="search-submit" />
@@ -325,7 +346,7 @@ class="active"
 						<div id="change-item-cart">
 
 						</div>
-						@if( isset($datepicker1) && isset($datepicker2) )
+						@if( Session::has("Cart") != null && isset($datepicker1) && isset($datepicker2) )
 							<ul class="popular-hotels order-sum order-date">
 								<li>
 									<p>Ngày nhận phòng: <i>{{$datepicker1}}</i></p>
@@ -333,30 +354,11 @@ class="active"
 								</li>
 							</ul>
 						@endif
-						<a href="user_booking_step_1.html" class="gradient-button" title="Book">Thanh toán</a>	
+						<a href="{{route('userBookingStep1').'?id='.$homestayVal->id.'&address='.$homestayVal->province->name.$url}}" class="gradient-button" title="Book">Thanh toán</a>	
 					</article>
 					<!--// Booking?-->
 
 					<!--Popular hotels in the area-->
-					<article class="default clearfix">
-						<h2>Bạn có thể quan tâm</h2>
-						<ul class="popular-hotels">
-							@foreach($suggestion as $suggestionVal)
-								<li>
-									<a href="{{route('userRoomDetail').'?id='.$suggestionVal->id.$url}}">
-										<h3>{{$suggestionVal->name}}&nbsp&nbsp
-											<span class="stars">
-												<span class="point">{{$suggestionVal->point}}</span>
-											</span>
-										</h3>
-										<p>Từ <span class="price">{{ number_format( $suggestionVal->product->min('prices'),0,',','.' ) }}đ / Đêm</span></p>
-										<p>{{$suggestionVal->district->name}}</p>
-									</a>
-								</li>
-							@endforeach
-						</ul>
-						<a href="{{route('userSearch').'?address='.$suggestionVal->district->name.' - '.$suggestionVal->province->name.$url}}" title="Show all" class="show-all">Show all</a>
-					</article>
 					<!--//Popular hotels in the area-->
 					
 					<!--Deal of the day-->

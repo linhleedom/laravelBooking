@@ -17,15 +17,15 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeed::class);
         $this->call(UtilitiesSeed::class);
         $this->call(RoomTypesSeed::class);
-        $this->call(HomestaysSeed::class);
-        $this->call(ProductsSeed::class);
-        $this->call(UtiProSeed::class);
-        $this->call(BlogsSeed::class);
-        $this->call(ImagesHomestaySeed::class);
-        $this->call(ImagesBlogSeed::class);
-        $this->call(BillsSeed::class);
-        $this->call(OrdersSeed::class);
-        $this->call(RatingsSeed::class);
-        $this->call(SlidesSeed::class);
+        // $this->call(HomestaysSeed::class);
+        // $this->call(ProductsSeed::class);
+        // $this->call(UtiProSeed::class);
+        // $this->call(BlogsSeed::class);
+        // $this->call(ImagesHomestaySeed::class);
+        // $this->call(ImagesBlogSeed::class);
+        // $this->call(BillsSeed::class);
+        // $this->call(OrdersSeed::class);
+        // $this->call(RatingsSeed::class);
+        // $this->call(SlidesSeed::class);
     }
 }

@@ -1374,6 +1374,8 @@ header .ribbon {
     float: left;
     border-bottom: 1px solid #ccc;
     margin: 0 0 10px;
+    height: 85px;
+    width: 100%;
 }
 
 .deals .description p {

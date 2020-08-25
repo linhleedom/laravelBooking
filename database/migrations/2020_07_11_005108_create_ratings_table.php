@@ -17,6 +17,7 @@ class CreateRatingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('homestay_id')->index();
             $table->bigInteger('user_id')->nullable()->index()->default(0);
+            $table->bigInteger('bill_id')->index();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();

@@ -7,10 +7,7 @@ My Account
 @section('script')
     $(document).ready(function() {
         $('#star').raty({
-            score    : 3,
-            click: function(score, evt) {
-            	alert('ID: ' + $(this).attr('id') + '\nscore: ' + score + '\nevent: ' + evt);
-        	}
+            score    : 5
         });
 
 		$('#provinces').change(function(){
@@ -79,9 +76,15 @@ My Account
 
 				<!--three-fourth content-->
 				<section class="three-fourth">
-				
-					<h1>My account</h1>
-					
+					<h1>My account 
+						<span class="alert-account">
+							@if(Session::get('rating') == 'success')
+								<i class="done_account">{{Session::get('massage')}}</i>
+							@elseif(Session::get('cancel-booking') == 'success')
+								<i class="done_account">{{Session::get('massage')}}</i>
+							@endif
+						</span>
+					</h1>
 					<!--inner navigation-->
 					<nav class="inner-nav">
 						<ul>
@@ -291,105 +294,172 @@ My Account
 					
 					<!--MyReviews-->
 					<section id="MyBookings" class="tab-content">
-						<!--booking-->
-						<article class="bookings">
-							<h1><a href="#">Tên Homestay</a></h1>
-							<div class="b-info">
-								<table>
-									<tr>
-										<th>Loại phòng</th>
-										<td>1 giường đơn</td>
-									</tr>
-									<tr>
-										<th>Số lượng phòng</th>
-										<td>1 phòng</td>
-									</tr>
-									<tr>
-										<th>Ngày nhận phòng</th>
-										<td>23-05-20</td>
-									</tr>
-									<tr>
-										<th>Ngày trả phòng</th>
-										<td>30-05-20</td>
-									</tr>
-									<tr>
-										<th>Tổng tiền thanh toán</th>
-										<td><strong>200.000đ</strong></td>
-									</tr>
-									<tr>
-										<th>Trạng thái đặt phòng</th>
-										<td><strong>Đặt phòng thành công</strong></td>
-									</tr>
-								</table>
-							</div>
-							
-							<div class="actions">
-								<a href="#" class="gradient-button">Change booking</a>
-								<a href="#" class="gradient-button">Cancel booking</a>
-								<!-- <a href="#" class="gradient-button">View confirmation</a>
-								<a href="#" class="gradient-button">Print confirmation</a> -->
-							</div>
-						</article>
-						<!--//booking-->
+						@foreach( $billBooking as $billBookingVal )
+							<!--booking-->
+							<article class="bookings">
+								@foreach($billBookingVal->order->take(1) as $orderBookingTake_1)
+									<h1><a href="{{route('userRoomDetail').'?id='.$orderBookingTake_1->product->homestay->id}}">{{$orderBookingTake_1->product->homestay->name}}</a></h1>
+								@endforeach
+								<div class="b-info">
+									<table>
+										<tr>
+											<th>Họ tên khách hàng:</th>
+											<td>{{$billBookingVal->name}}</td>
+										</tr>
+										<tr>
+											<th>Số điện thoại</th>
+											<td>{{$billBookingVal->phone}}</td>
+										</tr>
+										<tr>
+											<th>Địa chỉ email</th>
+											<td>{{$billBookingVal->email}}</td>
+										</tr>
+										<tr>
+											<th>Loại phòng</th>
+											<td>
+												@foreach($billBookingVal->order as $orderBooking)
+													{{$orderBooking->product->roomType->name}} <br/>
+												@endforeach					
+											</td>
+										</tr>
+										<tr>
+											<th>Số lượng phòng</th>
+											<td>{{$billBookingVal->order->count()}}</td>
+										</tr>
+										<tr>
+											<th>Ngày nhận phòng</th>
+											<td>{{date( "d-m-Y", strtotime($orderBooking->date_start))}}</td>
+										</tr>
+										<tr>
+											<th>Ngày trả phòng</th>
+											<td>{{date( "d-m-Y", strtotime($orderBooking->date_end))}}</td>
+										</tr>
+										<tr>
+											<th>Tổng tiền thanh toán</th>
+											<td><strong>{{ number_format( $billBookingVal->payments,0,',','.' ) }}đ</strong></td>
+										</tr>
+										<tr>
+											<th>Trạng thái đặt phòng</th>
+											<td><strong class="done_account">Đặt phòng thành công</strong></td>
+										</tr>
+									</table>
+								</div>
+								<div class="actions">
+									<!-- <a href="#" class="gradient-button">Change booking</a> -->
+									<a href="{{route('userCancelBooking', ['id'=>$id, 'bill_id'=>$billBookingVal])}}" class="gradient-button">Cancel booking</a>
+									<!-- <a href="#" class="gradient-button">View confirmation</a>
+									<a href="#" class="gradient-button">Print confirmation</a> -->
+								</div>
+							</article>
+							<!--//booking-->
+						@endforeach
+						<a href="#" class="scroll-to-top" title="Back up">Top</a> 
+						{{ $billBooking->withQueryString()->links('vendor.pagination.custom') }}
 					</section>
 					<!--//MyReviews-->
 					
 					<!--My Bookings-->
 					<section id="MyHistorys" class="tab-content">
 						@foreach($billHistory as $billHistoryVal)
-							@foreach( $billHistoryVal->order->take(1) as $order )@endforeach
 							<!--booking-->
 							<article class="bookings">
-								<h1>{{$order->product->homestay->name}}</h1>
+								@foreach($billHistoryVal->order->take(1) as $orderHistoryTake_1)
+									<h1><a href="{{route('userRoomDetail').'?id='.$orderHistoryTake_1->product->homestay->id}}">{{$orderHistoryTake_1->product->homestay->name}}</a></h1>
+								@endforeach
 								<div class="b-info">
 									<table>
 										<tr>
-											<th>Số lượng phòng</th>
-											<td>{{$billHistoryVal->order->count()}} phòng</td>
+											<th>Họ tên khách hàng:</th>
+											<td>{{$billHistoryVal->name}}</td>
 										</tr>
-											<tr>
-												<th>Ngày nhận phòng</th>
-												<td>{{date( "d-m-Y", strtotime($order->date_start))}}</td>
-												
-											</tr>
-											<tr>
-												<th>Ngày trả phòng</th>
-												<td>{{date( "d-m-Y", strtotime($order->date_end))}}</td>
-											</tr>
-										
+										<tr>
+											<th>Số điện thoại</th>
+											<td>{{$billHistoryVal->phone}}</td>
+										</tr>
+										<tr>
+											<th>Địa chỉ email</th>
+											<td>{{$billHistoryVal->email}}</td>
+										</tr>
+										<tr>
+											<th>Loại phòng</th>
+											<td>
+												@foreach($billHistoryVal->order as $orderHistory)
+													{{$orderHistory->product->roomType->name}} <br/>
+												@endforeach					
+											</td>
+										</tr>
+										<tr>
+											<th>Số lượng phòng</th>
+											<td>{{$billHistoryVal->order->count()}}</td>
+										</tr>
+										<tr>
+											<th>Ngày nhận phòng</th>
+											<td>{{date( "d-m-Y", strtotime($orderHistory->date_start))}}</td>
+										</tr>
+										<tr>
+											<th>Ngày trả phòng</th>
+											<td>{{date( "d-m-Y", strtotime($orderHistory->date_end))}}</td>
+										</tr>
 										<tr>
 											<th>Tổng tiền thanh toán</th>
-											<td><strong>{{ number_format( $billHistoryVal->payments,0,',',' ' ) }}đ</strong></td>
+											<td><strong>{{ number_format( $billHistoryVal->payments,0,',','.' ) }}đ</strong></td>
 										</tr>
 										<tr>
-										<th>Đánh giá</th>
-										<td>
-											<!--Star rating-->
-											<dt>Star rating</dt>
-											<dd style="display: block; height: auto;">
-												<div id="star" data-rating="4" style="cursor: pointer; width: 130px;">
-													<img src="user/images/ico/star-rating-on.png" alt="1" title="bad">&nbsp;
-													<img src="user/images/ico/star-rating-on.png" alt="2" title="poor">&nbsp;
-													<img src="user/images/ico/star-rating-on.png" alt="3" title="regular">&nbsp;
-													<img src="user/images/ico/star-rating-off.png" alt="4" title="good">&nbsp;
-													<img src="user/images/ico/star-rating-off.png" alt="5" title="gorgeous">
-													<input type="hidden" name="score" value="3">
-												</div>
-											</dd>
-											<!--//Star rating-->
-											<textarea readonly="readonly" name="comment" id="comment" cols="10" rows="3">dfdgfdgfgf</textarea>
-										</td>
-									</tr>
+											<th>Trạng thái đặt phòng</th>
+											@if($billHistoryVal->status == 1)
+												<td><strong class="error_account">Đã hủy</strong></td>
+											@elseif($billHistoryVal->status == 2)
+												<td><strong class="booking-succes">Đã hoàn thành</strong></td>
+											@endif
+										</tr>
+										@if($billHistoryVal->status == 2)
+											<tr>
+												<th>Đánh giá</th>
+												<td>
+												@if($billHistoryVal->rating != null)
+													<!--Star rating-->
+													<dt>Star rating</dt>
+													<dd style="display: block; height: auto;">
+														<div class="starVoted" style=" width: 130px;">
+															@for( $i=$billHistoryVal->rating->point; $i--; $i >= 0 )
+																<img src="user/images/ico/star-rating-on.png" alt="" />
+															@endfor
+															@for( $i=5-$billHistoryVal->rating->point; $i--; $i >= 0 )
+																<img src="user/images/ico/star-rating-off.png" alt="" />
+															@endfor
+														</div>	
+													</dd>
+													<!--//Star rating-->
+													<textarea readonly="readonly" name="comment" id="comment" cols="10" rows="3">{{$billHistoryVal->rating->comment}}</textarea>
+												@else
+													<!--Star rating-->
+													<dt>Star rating</dt>
+													<form action="{{route('userRating',['id'=>$id,'bill_id'=>$billHistoryVal->id])}}" method="post">
+														{{ csrf_field() }}
+														<dd style="display: block; height: auto;">
+															<div id="star"></div>
+														</dd>
+														<!--//Star rating-->
+														<input type="hidden" name="homestay_id" value="{{$orderHistoryTake_1->product->homestay->id}}">
+														<textarea name="comment" id="comment" cols="10" rows="3"></textarea>
+														<input type="submit" class="gradient-button" id="addRating" name="addRating" value="Gửi">
+													</form>
+												@endif											
+												</td>
+											</tr>
+										@endif
 									</table>
 								</div>
 								
 								<div class="actions">
-									<a href="#" class="gradient-button">Book again</a>
-									<a href="#" class="gradient-button">Remove from list</a>
+									<a href="{{route('userRoomDetail').'?id='.$orderHistoryTake_1->product->homestay->id}}" class="gradient-button">Book again</a>
+									<!-- <a href="#" class="gradient-button">Remove from list</a> -->
 								</div>
 							</article>
 							<!--//booking-->
 						@endforeach
+						<a href="#" class="scroll-to-top" title="Back up">Top</a> 
+						{{ $billHistory->withQueryString()->links('vendor.pagination.custom') }}
 					</section>
 					<!--//My Bookings-->	
 				</section>

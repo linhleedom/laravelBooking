@@ -14,4 +14,7 @@ class Rating extends Model
     public function homestay(){
         return $this->belongsTo('App\Homestay', 'homestay_id','id');
     }
+    public function bill(){
+        return $this->belongsTo('App\Bill', 'bill_id','id');
+    }
 }

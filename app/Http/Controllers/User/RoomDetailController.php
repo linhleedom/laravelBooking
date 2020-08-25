@@ -7,11 +7,38 @@ use Illuminate\Http\Request;
 use App\Homestay;
 use App\Product;
 use App\Order;
+use App\Bill;
 use App\RoomType;
+use Session;
 
 class RoomDetailController extends Controller
 {
+    public function __construct(){
+        $today = date('Y-m-d');
+        $orderSucces = Order::where('date_end','<=',$today)->get();
+        $bill_id_success = array();
+
+        foreach($orderSucces as $orderSuccesVal){
+            $order = Order::find($orderSuccesVal->id);
+            if($orderSuccesVal->status == 1){
+                $order->status = 0;
+            }
+            $order->update();
+            array_push($bill_id_success,$orderSuccesVal->bill_id); 
+        }
+        $bill_seccess = Bill::whereIn('id',$bill_id_success)->get();
+        foreach($bill_seccess as $bill_seccess_val){
+            $bill = Bill::find($bill_seccess_val->id);
+            if($bill_seccess_val->status == 0){
+                $bill->status = 2;
+            }
+            $bill->update();
+        }
+    }
+
     public function index(Request $request){
+        
+        $request->session()->forget('Cart');
 
         $homestay_id = $request->id;
         $datepicker1 =$request->datepicker1;
@@ -64,14 +91,7 @@ class RoomDetailController extends Controller
                                 ->whereIn('room_type_id',$room_type_id)
                                 ->get();
         }
-        foreach($homestay as $homestayVal){
-            $suggestion = Homestay::where('status','1')
-                                    ->where('maqh', $homestayVal->maqh)
-                                    ->where('id','!=', $homestay_id)
-                                    ->take(5)
-                                    ->get();
-        }
         $url ='&datepicker1='.$datepicker1.'&datepicker2='.$datepicker2.'&num_room='.$num_room.'&num_adult='.$num_adult.'&num_chil='.$num_chil;
-        return view('user.pages.room_detail', compact('homestayVal','product','url','datepicker1','datepicker2','num_room','num_adult','num_chil','suggestion'));
+        return view('user.pages.room_detail', compact('homestayVal','product','url','datepicker1','datepicker2','num_room','num_adult','num_chil'));
     }
 }
