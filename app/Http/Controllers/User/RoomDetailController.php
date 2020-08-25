@@ -47,7 +47,7 @@ class RoomDetailController extends Controller
         $num_adult = $request->num_adult;
         $num_chil = $request->num_chil;
 
-        $homestay = Homestay::where('id', $homestay_id)->get();
+        $homestayVal = Homestay::find($homestay_id);
 
         if( isset($num_room) && isset($num_adult) && isset($num_chil) && $num_room !== '0' ){
             $capacity = $num_adult/$num_room;
