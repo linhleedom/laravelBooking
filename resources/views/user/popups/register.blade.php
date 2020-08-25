@@ -11,7 +11,7 @@
 							</div>
 							<div class="f-item">
 								<label for="email">Địa chỉ email</label>
-								<input type="email" id="email" name="email" required="required"/>
+								<input type="email" id="emailRegister" name="email" required="required"/>
 								@if( $errors->register->has('email') )
 									<span class="feedback">{{$errors->register->first('email')}}</span><br/>
 								@endif

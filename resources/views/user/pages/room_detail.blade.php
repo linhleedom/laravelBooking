@@ -9,7 +9,7 @@ Room Detail
 		
 	});
 @endsection
-@section('scriptCart')
+@section('scriptEnd')
 	<script>
 		function AddCart(id){
 			$.ajax({
@@ -19,6 +19,18 @@ Room Detail
 				$('#change-item-cart').empty();
 				$('#change-item-cart').html(response);
 			});
+		}
+		function DelItem(id){
+			$.ajax({
+				url: '../delete-item-cart/'+id,
+				type: 'GET',
+			}).done(function(response){
+				$('#change-item-cart').empty();
+				$('#change-item-cart').html(response);
+			});
+		}
+		function Alert(){
+			alert('Bạn hãy chọn thời gian để tìm được phòng phù hợp');
 		}
 	</script>
 @endsection
@@ -117,7 +129,13 @@ class="active"
 													<span class="second price-new">{{ number_format( $productVal->prices*(100-$productVal->discount)/100,0,',','.' ) }}đ</span>
 												</div>
 											@endif	
-											<a onclick="AddCart({{$productVal->id}})" class="gradient-button no-href">Chọn</a>
+											@if( isset($datepicker1) && isset($datepicker2) )
+												<a onclick="AddCart({{$productVal->id}})" class="gradient-button no-href">Chọn</a>
+											@else
+												<a onclick="Alert()" class="gradient-button no-href">Chọn</a>	
+											@endif
+											
+											<!-- <a href="{{route('userAddCart',['id' => $productVal->id])}}" class="gradient-button">Chọn</a> -->
 										</div>
 										<div class="more-information">
 											<p>{{$productVal->description}}</p>
@@ -325,7 +343,7 @@ class="active"
 						<div id="change-item-cart">
 
 						</div>
-						@if( isset($datepicker1) && isset($datepicker2) )
+						@if( Session::has("Cart") != null && isset($datepicker1) && isset($datepicker2) )
 							<ul class="popular-hotels order-sum order-date">
 								<li>
 									<p>Ngày nhận phòng: <i>{{$datepicker1}}</i></p>
@@ -333,12 +351,12 @@ class="active"
 								</li>
 							</ul>
 						@endif
-						<a href="user_booking_step_1.html" class="gradient-button" title="Book">Thanh toán</a>	
+						<a href="{{route('userBookingStep1').'?id='.$homestayVal->id.'&address='.$homestayVal->province->name.$url}}" class="gradient-button" title="Book">Thanh toán</a>	
 					</article>
 					<!--// Booking?-->
 
 					<!--Popular hotels in the area-->
-					<article class="default clearfix">
+					<!-- <article class="default clearfix">
 						<h2>Bạn có thể quan tâm</h2>
 						<ul class="popular-hotels">
 							@foreach($suggestion as $suggestionVal)
@@ -356,7 +374,7 @@ class="active"
 							@endforeach
 						</ul>
 						<a href="{{route('userSearch').'?address='.$suggestionVal->district->name.' - '.$suggestionVal->province->name.$url}}" title="Show all" class="show-all">Show all</a>
-					</article>
+					</article> -->
 					<!--//Popular hotels in the area-->
 					
 					<!--Deal of the day-->

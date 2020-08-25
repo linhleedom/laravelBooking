@@ -40,6 +40,6 @@
     <!--//footer-->	
 	@yield('scriptLogin')
 	@yield('scriptRegister')
-	@yield('scriptCart')
+	@yield('scriptEnd')
 </body>
 </html>

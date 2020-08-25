@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('product_id')->index();
             $table->date('date_start');
             $table->date('date_end');
+            $table->integer('price');
             $table->tinyInteger('status')->default(0);
             $table->foreign('bill_id')->references('id')->on('bills')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');

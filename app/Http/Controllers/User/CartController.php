@@ -21,6 +21,22 @@ class CartController extends Controller
 
             $request->session()->put('Cart', $newCart);
         }
-        return view('user.cart.cart',compact('newCart','datepicker1','datepicker2'));
+        return view('user.cart.cart',compact('datepicker1','datepicker2'));
+    }
+
+    public function deleteItemCart(Request $request,$id){
+        $datepicker1 =$request->datepicker1;
+        $datepicker2 =$request->datepicker2;
+        $productDel = Product::find($id);
+        $oldCart = Session('Cart') ? Session('Cart') : null;
+        $newCart = new Cart($oldCart);
+        $newCart -> DeleteItemCart($productDel,$id);
+        if( $newCart->product != null ){
+            $request->session()->put('Cart', $newCart);
+        }else{
+            $request->session()->forget('Cart');
+        }
+        return view('user.cart.cart',compact('datepicker1','datepicker2'));
+        // dd($newCart->product);
     }
 }

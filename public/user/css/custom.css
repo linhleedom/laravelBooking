@@ -309,10 +309,32 @@ header #wrap .ribbon nav ul.open li a {
 .order-date li{
 	border-top: none;
 }
+.order-booking-step-1{
+	margin-top: 38px;
+	padding-top: 27px;
+	background-color: #e2effd;
+}
+.order-booking-step-1 .booking-info .price{
+	color: rgb(47, 0, 255);
+	font-size: 1em;
+	font-family: 'RobotoBold';
+	border: none;
+}
+.order-booking-step-1 .price-text{
+	margin-top: 10px;
+}
+.order-booking-step-1 .payment{
+	font-size: 1.1em;
+}
+.order-booking-step-3{
+	margin-top: 0;
+
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;
 	}
+
 /*	.room-information .price .first{
 	width: 60px;
 	}*/
@@ -321,11 +343,16 @@ header #wrap .ribbon nav ul.open li a {
 	.search-left .search-submit{
 		left:35%;
 	}
-
+	.order-booking-step-1{
+		margin-top: 0px;
+	}
 }
 @media screen and (max-width: 600px) {
 	.search-left .search-submit{
 		left:25%;
+	}
+	.order-booking-step-1{
+		margin-top: 0px;
 	}
 }
 /* ----------------------------------- */

@@ -106,6 +106,22 @@ Route::group(['prefix'=>''],function(){
         'as'=>'userAddCart',
         'uses'=>'user\CartController@addCart'
     ]);
+    Route::get('/delete-item-cart/{id}',[
+        'as'=>'userDeleteItemCart',
+        'uses'=>'user\CartController@deleteItemCart'
+    ]);
+    Route::get('/booking-step-1',[
+        'as'=>'userBookingStep1',
+        'uses'=>'user\BookingController@bookingStep1'
+    ]);
+    Route::post('/booking-step-2',[
+        'as'=>'userBookingStep2',
+        'uses'=>'user\BookingController@bookingStep2'
+    ]);
+    Route::get('/booking-step-3/{id}',[
+        'as'=>'userBookingStep3',
+        'uses'=>'user\BookingController@bookingStep3'
+    ]);
     
 });
 

@@ -14,10 +14,25 @@ class Cart{
     }
 
     public function AddCart($product,$id){
-        $newProduct = [ 'quanty'=>'1' ,'productInfo' => $product];
-        $this->product[$id] = $newProduct;
-        $this->totalPrice += $product->prices*(100-$product->discount)/100;
-        $this->totalQuanty++;
+        if($this->product){
+            if( array_key_exists($id, $this->product) == false ){
+                $newProduct = ['productInfo' => $product];
+                $this->product[$id] = $newProduct;
+                $this->totalPrice += $product->prices*(100-$product->discount)/100;
+                $this->totalQuanty++;
+            }
+        }else{
+            $newProduct = ['productInfo' => $product];
+            $this->product[$id] = $newProduct;
+            $this->totalPrice += $product->prices*(100-$product->discount)/100;
+            $this->totalQuanty++;
+        }
+    }
+
+    public function DeleteItemCart($product,$id){
+        $this->totalQuanty--;
+        $this->totalPrice -= $product->prices*(100-$product->discount)/100;
+        unset($this->product[$id]);
     }
 }
 

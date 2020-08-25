@@ -8,10 +8,13 @@ use App\Homestay;
 use App\Product;
 use App\Order;
 use App\RoomType;
+use Session;
 
 class RoomDetailController extends Controller
 {
     public function index(Request $request){
+        
+        $request->session()->forget('Cart');
 
         $homestay_id = $request->id;
         $datepicker1 =$request->datepicker1;
