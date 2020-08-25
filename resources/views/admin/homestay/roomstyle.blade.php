@@ -1,7 +1,5 @@
-
 @extends('admin.layout.index')
 @section('content')
-	<!-- start: Content -->
 	<div id="content" class="span10">
 		<ul class="breadcrumb">
 			<li>
@@ -11,13 +9,13 @@
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="#">Slide</a>
+				<a href="#">Forms</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
 			<div class="box span12">
 				<div class="box-header" data-original-title>
-					<h2><i class="halflings-icon white edit"></i><span class="break"></span>Edit Slide: {{$slide->id}}</h2>
+					<h2><i class="halflings-icon white edit"></i><span class="break"></span>Form Elements</h2>
 					<div class="box-icon">
 						<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 						<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -38,41 +36,39 @@
 							{{session('thongbao')}}
 						</div>
 					@endif
-					<form class="form-horizontal" action="{{url('/admin/QLSlide/edit')}}/{{$slide->id}}" method="POST" enctype="multipart/form-data">
+					<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 					  <fieldset>
 						<div class="control-group">
-						  <label class="control-label" for="slogan1">Slogan:</label>
+						  <label class="control-label" for="typeahead">Name:</label>
 						  <div class="controls">
-							<input type="text" id="slogan1" name="slogan" value="{{$slide->slogan}}">
+							<input type="text" id="typeahead" name="name">
 						  </div>
-						</div>
-						<div class="control-group">
-						  <label class="control-label" for="date01">Ảnh:</label>
+						</div>  
+						<!-- <div class="control-group">
+						  <label class="control-label" for="description">Keyword:</label>
 						  <div class="controls">
-							<input type="file" id="date01" name="url">
+							<input type="text" id="description" name="keyword(SEO)">
+						  </div>
+						</div> -->
+						<div class="control-group">
+						  <label class="control-label" for="xaid">Sức Chứa:</label>
+						  <div class="controls">
+							<input type="number" id="xaid" name="capacity">
 						  </div>
 						</div>   
 						<div class="control-group">
-							<label class="control-label" for="status">Public BV:</label>
+						  	<label class="control-label" for="status">Public BV:</label>
 						  	<label class="controls radio-inline">
-								<input type="radio" name="status" value="0" id="status" 
-									@if($slide->status == 0)
-									{{"checked"}}
-									@endif
-								>Ko
-							</label>
+								<input type="radio" name="status" value="0" id="status" checked="checked">Ẩn	
+							</label>	
 							<label class="controls radio-inline">
-								<input type="radio" name="status" value="1" id="status"
-									@if($slide->status == 1)
-									{{"checked"}}
-									@endif
-								>Có
+								<input type="radio" name="status" value="1" id="status">Public
 							</label>
 						</div>
 						<div class="form-actions">
-						 <button type="submit" class="btn btn-primary">Edit</button>
-						 <a href="{{url('/admin/QLSlide/danhsach')}}" class="btn">Quay Lại</a>
+						 <button type="submit" class="btn btn-primary">ADD</button>
+						  <button type="reset" class="btn">Hủy</button>
 						</div>
 					  </fieldset>
 					</form> 
@@ -81,4 +77,9 @@
 			</div>
 		</div>
 	</div>
+	<!-- <script>
+		var editor = CKEDITOR.replace('editor');
+							
+	</script> --> 
+	
 @endsection

@@ -4,18 +4,18 @@
 		<ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Home</a>
+				<a href="#">Home</a>
 				<i class="icon-angle-right"></i> 
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="form.html">Thêm Bài Viết</a>
+				<a href="#">Thêm Slide</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
 			<div class="box span12">
 				<div class="box-header" data-original-title>
-					<h2><i class="halflings-icon white edit"></i><span class="break"></span>Form Thêm</h2>
+					<h2><i class="halflings-icon white edit"></i><span class="break"></span>Thêm Slide</h2>
 					<div class="box-icon">
 						<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 						<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -36,7 +36,7 @@
 							{{session('thongbao')}}
 						</div>
 					@endif
-					<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+					<form class="form-horizontal" action="{{url('/admin/themslide')}}" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 					  <fieldset>
 						<div class="control-group">
@@ -46,18 +46,18 @@
 						  </div>
 						</div>
 						<div class="control-group">
-						  <label class="control-label" for="date01">Ảnh:</label>
+						  <label class="control-label" for="img">Ảnh:</label>
 						  <div class="controls">
-							<input type="file" id="date01" name="url">
+							<input type="file" id="img" name="url">
 						  </div>
 						</div>   
 						<div class="control-group">
 						  <label class="control-label" for="status">Public BV:</label>
 						  <label class="controls radio-inline">
-								<input type="radio" name="status" value="0" id="status">Ko	
+								<input type="radio" name="status" value="0" id="status" checked="checked">Ẩn	
 							</label>	
 							<label class="controls radio-inline">
-								<input type="radio" name="status" value="1" id="status">Có
+								<input type="radio" name="status" value="1" id="status">Public
 							</label>
 						</div>
 						<div class="form-actions">

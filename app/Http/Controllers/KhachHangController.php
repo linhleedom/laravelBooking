@@ -24,6 +24,7 @@ class KhachHangController extends Controller
     {
         $this->validate($request,[
             'name'=>'required|min:3',
+            'avatar'=>'required',
             'email'=>'required|email|unique:users,email',
             'password'=>'required|min:6|max:30',
             'passwordagain'=>'required|same:password'
@@ -31,6 +32,7 @@ class KhachHangController extends Controller
         [
             'name.required'=>'Bạn chưa nhập tên',
             'name.min'=>'Tên quá ngắn',
+            'avatar.required'=>'Chọn Avatar đuê!',
             'email.required'=>'Bạn chưa nhập email',
             'email.email'=>'Bạn chưa nhập đúng email',
             'email.unique'=>'Email đã tồn tại',
@@ -40,14 +42,21 @@ class KhachHangController extends Controller
             'passwordagain.required'=>'Bạn chưa nhập lại pass',
             'passwordagain.same'=>'Pass nhập lại không đúng'
         ]);
+        $file_name= $request->file('avatar')->getClientOriginalName();
         $user=new User;
         $user->name= $request->name;
+        $link='uploads/avatar/'.$file_name;
+        $user->avatar= $link;
         $user->password= bcrypt($request->password);
         $user->email= $request->email;
         $user->phone= $request->phone;
         $user->permision= $request->permision;
+        $request->file('avatar')->move('public/uploads/avatar',$file_name);
         $user->save();
         return redirect('admin/khachhang/them')->with('thongbao','Bạn dẫ thêm thành công');
+
+
+       
 
     }
 
@@ -57,19 +66,22 @@ class KhachHangController extends Controller
     }
     public function postEdit(Request $request,$id){
          $this->validate($request,[
-            'name'=>'required|min:3',      
+            'name'=>'required|min:3', 
+            'avatar'=>'required',     
         ],
         [
             'name.required'=>'Bạn chưa nhập tên',
             'name.min'=>'Tên quá ngắn',
+            'avatar.required'=>'Chọn Avatar Đuê!',
         ]);
+        $file_name= $request->file('avatar')->getClientOriginalName();
         $user=User::find($id);
         $user->name= $request->name;
-        // $user->email= $request->email;
-        // $user->password= bcrypt($request->password);
+        $link='uploads/avatar/'.$file_name;
+        $user->avatar= $link;
         $user->phone= $request->phone;
         $user->permision= $request->permision;
-
+        $request->file('avatar')->move('public/uploads/avatar',$file_name);
         if($request->changepass=="on")
         {
              $this->validate($request,[
@@ -85,7 +97,6 @@ class KhachHangController extends Controller
         ]);
              $user->password= bcrypt($request->password);
         }
-
         $user->save();
          return redirect('admin/khachhang/edit/'.$id)->with('thongbao','Bạn dẫ sửa thành công');
     }
@@ -132,7 +143,7 @@ class KhachHangController extends Controller
         }
     }
     public function getLogout()
-    {
+    {  
         Auth::logout();
         return redirect('admin/dangnhap');
     }

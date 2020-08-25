@@ -4,12 +4,12 @@
 		<ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Home</a>
+				<a href="#">Home</a>
 				<i class="icon-angle-right"></i> 
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="form.html">Forms</a>
+				<a href="#">Forms</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
@@ -23,6 +23,19 @@
 					</div>
 				</div>
 				<div class="box-content">
+					@if(count($errors) > 0)
+						<div class="alert alert-danger">
+							@foreach($errors->all() as $err)
+								{{$err}}
+							@endforeach
+						</div>
+					@endif
+
+					@if(session('thongbao'))
+						<div class="alert alert-success">
+							{{session('thongbao')}}
+						</div>
+					@endif
 					<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 					  <fieldset>
@@ -71,10 +84,10 @@
 						<div class="control-group">
 						  	<label class="control-label" for="status">Public BV:</label>
 						  	<label class="controls radio-inline">
-								<input type="radio" name="status" value="0" id="status">Ko	
+								<input type="radio" name="status" value="0" id="status">Ẩn	
 							</label>	
 							<label class="controls radio-inline">
-								<input type="radio" name="status" value="1" id="status">Có
+								<input type="radio" name="status" value="1" id="status">Public
 							</label>
 						</div>
 						<div class="form-actions">

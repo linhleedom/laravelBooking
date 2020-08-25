@@ -4,10 +4,10 @@
 		<ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Home</a> 
+				<a href="#">Home</a> 
 				<i class="icon-angle-right"></i>
 			</li>
-			<li><a href="dshomestay.html">DS Home Stay</a></li>
+			<li><a href="#">DS Home Stay</a></li>
 		</ul>
 		<div class="row-fluid sortable">		
 			<div class="box span12">

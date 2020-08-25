@@ -191,12 +191,26 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
         //admin/booking/danhsach
         Route::get('danhsach','BookingController@getDanhSach');
 
-        Route::get('detail','BookingController@getDetail');
+        Route::get('listorder/{id}','BookingController@getListOrder');
 
-        Route::get('edit/{id}','BookingController@getEdit');
-        Route::post('edit/{id}','BookingController@postEdit');
+       
     });
 
+    Route::group(['prefix'=>'homestay'],function(){
+        Route::get('ListHT','HomeStayController@getListHST');
+
+        Route::get('products/{id}','HomeStayController@getHomeStay');
+        
+        Route::get('edit/{id}','HomeStayController@getEdit');
+        Route::post('edit/{id}','HomeStayController@postEdit');
+
+        Route::get('tienich','HomeStayController@getTienIch');
+        Route::post('tienich','HomeStayController@postTienIch');
+
+        Route::get('roomstyle','HomeStayController@getRoomStyle');
+        Route::post('roomstyle','HomeStayController@postRoomStyle');
+
+    });
 
     Route::group(['prefix'=>'khachhang'],function(){
         //admin/booking/danhsach
@@ -217,12 +231,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
         Route::get('dshomestay','KhachHangController@getDSHomeStay');
     });
 
-    Route::group(['prefix'=>'login'],function(){
-        //admin/booking/danhsach
-        Route::get('login','LoginController@getLogin');
-        Route::get('loginagain','LoginController@getLoginAgain');
-    });
-
+   
     Route::group(['prefix'=>'QLBlog'],function(){
         //admin/booking/danhsach
         Route::get('danhsach','QLBlogController@getDanhSach');

@@ -5,12 +5,12 @@
 		<ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Home</a>
+				<a href="#">Home</a>
 				<i class="icon-angle-right"></i> 
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="form.html">Detail</a>
+				<a href="#">Detail</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
@@ -36,7 +36,7 @@
 						<div class="control-group">
 						  <label class="control-label" for="date01">Ảnh:</label>
 						  <div class="controls">
-							<input type="file" id="date01" name="photo" value="{{$blog->photo}}">
+						  	<img width="120px" src="{{$blog->photo}}" alt="">
 						  </div>
 						</div>   
 						<div class="control-group">

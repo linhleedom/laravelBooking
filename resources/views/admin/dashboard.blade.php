@@ -11,10 +11,10 @@
 	<ul class="breadcrumb">
 		<li>
 			<i class="icon-home"></i>
-			<a href="index.html">Home</a> 
+			<a href="#">Home</a> 
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="index.html">Dashboard</a></li>
+		<li><a href="#">Dashboard</a></li>
 	</ul>
 	<div class="row-fluid">	
 		<div class="span3 statbox purple" onTablet="span6" onDesktop="span3">
