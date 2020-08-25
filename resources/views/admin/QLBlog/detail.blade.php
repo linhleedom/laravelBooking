@@ -36,7 +36,7 @@
 						<div class="control-group">
 						  <label class="control-label" for="date01">Ảnh:</label>
 						  <div class="controls">
-							<input type="file" id="date01" name="photo" value="{{$blog->photo}}">
+						  	<img width="120px" src="{{$blog->photo}}" alt="">
 						  </div>
 						</div>   
 						<div class="control-group">

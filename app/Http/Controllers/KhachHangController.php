@@ -56,18 +56,7 @@ class KhachHangController extends Controller
         return redirect('admin/khachhang/them')->with('thongbao','Bạn dẫ thêm thành công');
 
 
-        $file_name= $request->file('url')->getClientOriginalName();
-        $slide=new Slide;
-        $slide->slogan= $request->slogan;
-        $link='uploads/slider/'.$file_name;
-        $slide->url= $link;
-        // $slide->img=$request->img;
-        $slide->status= $request->status;
-        $slide ->created_at= now();
-        $slide ->updated_at= now();
-        $request->file('url')->move('public/uploads/slider',$file_name);
-        $slide->save();
-        return redirect('admin/themslide')->with('thongbao','Thêm slide thành công !');
+       
 
     }
 

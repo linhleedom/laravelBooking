@@ -13,7 +13,8 @@ class HomeStayController extends Controller
     public function getListHST()
     {
     	 $homestay= Homestay::all();
-    	return view('admin.homestay.ListHT',['homestay'=>$homestay]);
+         $province= Province::all();
+    	return view('admin.homestay.ListHT',['homestay'=>$homestay],['province'=>$province]);
     }
     public function getHomeStay($id)
     {

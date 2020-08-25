@@ -60,7 +60,7 @@
 						<div class="control-group">
 						  	<label class="control-label" for="status">Public BV:</label>
 						  	<label class="controls radio-inline">
-								<input type="radio" name="status" value="0" id="status">Ẩn	
+								<input type="radio" name="status" value="0" id="status" checked="checked">Ẩn	
 							</label>	
 							<label class="controls radio-inline">
 								<input type="radio" name="status" value="1" id="status">Public

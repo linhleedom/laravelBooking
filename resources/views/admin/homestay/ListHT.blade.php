@@ -25,34 +25,41 @@
 				<table class="table table-striped table-bordered bootstrap-datatable datatable">
 				  <thead>
 					  <tr>
-						  <th>ID</th>
-						  <th>Avatar</th>
-						  <th>Name</th>
-						  <th>Keyword</th>
-						  <th>Thành phố</th>
-						  <th>Trạng Thái</th>
-						  <th>Hoạt Động</th>
+						  <th style="text-align: center">ID</th>
+						  <th style="text-align: center">Avatar</th>
+						  <th style="text-align: center">Name</th>
+						  <th style="text-align: center">Keyword</th>
+						  <th style="text-align: center">Thành phố</th>
+						  <th style="text-align: center">Trạng Thái</th>
+						  <th style="text-align: center">Hoạt Động</th>
 					  </tr>
 				  </thead>   
 				  <tbody>
 				  	@foreach($homestay as $tl)
 					<tr>
-						<td>{{$tl->id}}</td>
-						<td><img width="80px" src="{{$tl->avatar}}" alt=""></td>
+						<td style="text-align: center">{{$tl->id}}</td>
+						<td style="text-align: center"><img width="80px" src="{{$tl->avatar}}" alt=""></td>
 						<td>{{$tl->name}}</td>
 						
 						<td>{{$tl->keyword}}</td>
-						<td>{{$tl->maqh}}</td>
 						<td>
+							@foreach($province as $tlu)
+								@if($tl->maqh== $tlu->id)
+								{{$tlu->name}}
+								@endif
+							@endforeach
+							({{$tl->maqh}})
+						</td>
+						<td style="text-align: center">
 							@if($tl->status == 1)
-							<p>Public</p>
+							<p  class="label label-important">Public</p>
 							@else
-							<p>Ẩn</p>
+							<p class="label label-primary">Ẩn</p>
 							@endif
 						</td>
-						<td class="center">
+						<td style="text-align: center">
 							<a href="{{url('/admin/homestay/products')}}/{{$tl->id}}" class="btn btn-success">List</a>
-							<a class="btn btn-info" href="{{url('/admin/homestay/edit')}}/{{$tl->id}}">
+							<a class="btn btn-primary" href="{{url('/admin/homestay/edit')}}/{{$tl->id}}">
 								<i class="halflings-icon white edit"></i>  
 							</a>
 						</td>

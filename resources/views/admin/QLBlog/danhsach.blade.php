@@ -25,35 +25,35 @@
 				<table class="table table-striped table-bordered bootstrap-datatable datatable">
 				  <thead>
 					  <tr>
-						  <th>ID</th>
-						  <th>Avatar</th>
-						  <th>Tiêu Đề</th>
+						  <th style="text-align: center">ID</th>
+						  <th style="text-align: center">Avatar</th>
+						  <th style="text-align: center">Tiêu Đề</th>
 						  <th>Ngày viết</th>
 						  <th>Ngày cập nhật</th>
-						  <th>Trạng Thái</th>
-						  <th>Chi Tiết</th>
-						  <th>Hoạt Động</th>
+						  <th style="text-align: center">Trạng Thái</th>
+						  <th style="text-align: center">Chi Tiết</th>
+						  <th style="text-align: center">Hoạt Động</th>
 					  </tr>
 				  </thead>   
 				  <tbody>
 				  	@foreach($blog as $tl)
 					<tr>
-						<td>{{$tl->id}}</td>
-						<td><img width="70px" src="{{$tl->photo}}" alt=""></td>
+						<td style="text-align: center">{{$tl->id}}</td>
+						<td style="text-align: center"><img width="70px" src="{{$tl->photo}}" alt=""></td>
 						<td>{{$tl->title}}</td>
 						<td class="center">{{$tl->created_at}}</td>
 						<td class="center">{{$tl->updated_at}}</td>
-						<td class="center">
+						<td style="text-align: center">
 							@if($tl->status == 1)
-							<p>Public</p>
+							<p class="label label-important">Public</p>
 							@else
-							<p>Ẩn</p>
+							<p class="label label-primary">Ẩn</p>
 							@endif
 						</td>
-						<td class="center">
+						<td style="text-align: center">
 							<a href="{{url('/admin/QLBlog/detail')}}/{{$tl->id}}" class="btn btn-success">Detail</a>
 						</td>
-						<td class="center">
+						<td style="text-align: center">
 							<a class="btn btn-info" href="{{url('/admin/QLBlog/edit')}}/{{$tl->id}}">
 								<i class="halflings-icon white edit"></i>  
 							</a>
