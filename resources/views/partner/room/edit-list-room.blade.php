@@ -58,9 +58,9 @@ function convert_name($str) {
 									<label>Tên homestay</label>
 									<select name="homestay_id" id="">
 										<option selected="selected" >Chọn</option>
-											@foreach($product as $productVal)
-												<option value="{{$productVal->homestay_id}}" @if($productVal->homestay_id ==$homestay->id ) selected @endif>{{$productVal->name}}</option>
-											@endforeach
+										@foreach ($homestay as $homestayVal)											
+											<option value="{{$product->homestay_id}}" @if($homestayVal->id == $product->homestay_id) selected @endif >{{$homestayVal->name}}</option>
+										@endforeach										
 									</select>
 								</div>
 								<div class="f-item custom-item">
@@ -76,16 +76,15 @@ function convert_name($str) {
 							<div class="row twins">
 								<div class="f-item custom-item">
 									<label for="">Tên phòng :
-										<input type="text" name="name" >
-									</label>
-									
-								</div>
+										<input type="text" name="name" value="{{$product->name}}" >
+									</label>									
+								</div>								
 								<div class="f-item custom-item">
 									<label for="">Kiểu phòng :</label>
-									<select name="room_type_id" id="">
+									<select name="room_type_id" id="">										
 										<option selected="selected" >Chọn</option>
-											@foreach($types as $typeval)
-												<option value="{{$typeval->id}}">{{$typeval->name}}</option>
+											@foreach($room_type as $room_typeval)
+												<option value="{{$product->room_type_id}}" @if($room_typeval->id == $product->room_type_id) selected @endif >{{$room_typeval->name}}</option>
 											@endforeach
 									</select>
 								</div>
@@ -96,12 +95,12 @@ function convert_name($str) {
 								<div class="f-item custom-item">
 									<label>Nhập giá phòng (VNĐ) :</label>
 									<form action="/action_page.php">
-										<input type="text" id="prices" name="prices" ><br><br>
+									<input type="text" id="prices" name="prices" value="{{$product->prices}}" ><br><br>
 									</form>
 								</div>
 								<div class="f-item custom-item">
 									<label>Giảm giá :</label>
-									<input type="text" id="discount" name="discount" placeholder="... %">
+									<input type="text" id="discount" name="discount" value="{{$product->discount}}" placeholder="... %">
 								</div>																
 							</div>
 
@@ -109,54 +108,41 @@ function convert_name($str) {
 							<h3 style="margin-top: 20px;"><span>03</span> Mô tả </h3>
 								<div class="f-item custom-item">
 									<label>Mô tả khác: </label>
-									<textarea rows="10" cols="10" id="description" name="description" ></textarea>
+								<textarea rows="10" cols="10" id="description" name="description" >{{$product->description}}</textarea>
 								</div>
 							</div>
 							
 							<h3 style="margin-top: 20px;"><span>04</span> Tiện ích có tại chỗ nghỉ</h3>
 							<div class="row twins">
 								<div class="f-item custom-item checkbox">
-									@foreach ($tienichs as $items)											
-										<input type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
-										<label for="" >{{ $items->name }}</label> <br> <br>
-									@endforeach
+										@foreach ( $Utilities as $Utilitiesval)		
+											<input type="checkbox" name="tienich[]" id="check" value="{{$Utilitiesval->product_id}}" 
+												
+											@foreach ( $product->utilities as $productval)
+												@if($productval->utilities_id == $Utilitiesval->product_id ) checked = "checked" @endif
+											
+											@endforeach
+											/>
+												<label for="" >{{$Utilitiesval->name }}</label> <br> <br>
+										@endforeach
+									{{-- @endforeach --}}
 								</div>
-							</div>
-							<div class="row twins">
-								
-							</div>
-							{{-- <div class="row twins">
-								<div class="f-item custom-item">
-									<label>Nhận phòng từ</label>
-									<select>
-										<option selected="selected">Chọn</option>
-										<option>14:00</option>
-										<option>15:00</option>
-									</select>
-								</div>
-								
-								<div class="f-item custom-item">
-									<label>Trả phòng từ</label>
-									<select>
-										<option selected="selected">Chọn</option>
-										<option>12:00</option>
-										<option>13:00</option>
-									</select>
-								</div>
-							</div> --}}
+							</div>	
 
 							<h3 style="margin-top: 20px;"><span>05</span> Ảnh </h3>
 
 							<div class="row twins">
 								<div class="f-item custom-item">
-									<label>Chọn ảnh chỗ nghỉ của quý khách</label>
-									{{-- <form action="/action_page.php">
-										<input type="file" id="files" name="files" multiple><br><br>
-									</form> --}}
+									<label for="avatar">Thay ảnh phòng :</label>
+										<input  required="required" type="file" name="avatar" multiple id="avatar" value="{{$product->avatar}}">
+										<br><br>
+										<img src="{{asset('public/'.$product->avatar)}}" alt="Image" width="300px" height="150px" >
 								</div>
 							</div>
+							<br>
+							<input type="submit" class="gradient-button" value="Cập nhật" id="update" >	
+							</div>
 						
-							<input type="submit" class="gradient-button" value="Thêm mới" id="update" >	
 						</fieldset>							
 					</form>
 				</section>

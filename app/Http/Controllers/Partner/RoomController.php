@@ -23,9 +23,8 @@ class RoomController extends Controller
         foreach ($homestay as $homestayVal){
             array_push($homestayforPartner, $homestayVal->id);
         };
-
-    
         $product = Product::whereIn('homestay_id',$homestayforPartner)->get();
+    
         // dd($product);
         
         return view ('partner.room.list-room',compact('product'));
@@ -89,21 +88,44 @@ class RoomController extends Controller
                 
     }
     public function getEditPartnerRoom($id){
-        $id = Auth::user()->id;
-        // dd($id);
-        $homestay = Homestay::where('user_id',$id)->get();        
-        $product = Product::all();
-
-        dd($product->homestay_id);
+        $product = Product::find($id);
+        // dd($product);
+        $homestay = Homestay::where('user_id',Auth::user()->id)->get();
+        // dd($homestay);      
         $room_type = RoomType::all();
-        $Tienich = Utilities::all();
+        $Utilities = Utilities::all();
+
+        // dd($Tienich);
         return view ('partner.room.edit-list-room',
         ['homestay'=>$homestay,
         'product'=>$product,
-        'types'=>$room_type,
-        'tienichs'=>$Tienich
+        'Utilities'=>$Utilities,
+        'room_type'=>$room_type
         ]);
 
+    }
+    public function postEditPartnerRoom(Request $request,$id){
+        
+        $product = Product::find($id);
+
+        $product->homestay_id = $request->homestay_id;
+        $product->status = $request->status;
+        $product->name = $request->name;
+        $product->room_type_id = $request->room_type_id;
+        $product->prices = $request->prices;
+        $product->discount = $request->discount;
+        $product->description = $request->description;
+
+        $product->save();
+
+        // foreach($request->input('tienich') as $tienich){
+        //     Uti_Pro::update([
+        //         'product_id'=>$product->id,
+        //         'utilities_id'=>$tienich
+        //     ]);
+        // }
+
+        
     }
 
 }

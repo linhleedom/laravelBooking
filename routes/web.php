@@ -139,11 +139,13 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
         Route::post('login-partner','LoginPartnerController@postDangNhapPartner');
     });
 
+    Route::group(['prefix'=>'register-partner'],function(){
+        Route::get('/','LoginPartnerController@getDangKyPartner'); 
+        Route::post('/','LoginPartnerController@postDangKyPartner');
+    });
+
     Route::group(['prefix'=>'/','middleware'=>'CheckLogedIn'],function(){
-        Route::group(['prefix'=>'register-partner'],function(){
-            Route::get('/','LoginPartnerController@getDangKyPartner'); 
-            Route::post('/','LoginPartnerController@postDangKyPartner');
-        });
+        
         Route::get('trangchu','HomePartnerController@getHomePartner');
         
         Route::get('logout','HomePartnerController@getLogout');
@@ -168,20 +170,22 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::post('/add-room','RoomController@postAddRoom'); 
             Route::get('/edit-list-room/{id}','RoomController@getEditPartnerRoom');    
             Route::post('/edit-list-room/{id}','RoomController@postEditPartnerRoom'); 
+
+            Route::get('/list-bills','BillsController@getListBills'); 
+            Route::get('/information-order/{id}','OrderController@getInfoOrder');
             
 
             Route::get('/edit-list-homestay/{id}','HomestayPartnerController@getEditPartnerHomestay');    
             Route::post('/edit-list-homestay/{id}','HomestayPartnerController@postEditPartnerHomestay');           
             Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');  
 
-            Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');       
-        });
-    });
-});        
+            Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');;        
             // Route::get('/getprovinces','HomestayPartnerController@getEditprovinces');
             // Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
             // Route::get('/getwards/{id}','HomestayPartnerController@getwards');
-
+        });
+    });
+});
 Route::get('admin/dangnhap','KhachHangController@getLogin');
 Route::post('admin/dangnhap','KhachHangController@postLogin');
 Route::get('admin/logout','KhachHangController@getLogout');
