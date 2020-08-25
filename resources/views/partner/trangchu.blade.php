@@ -8,7 +8,7 @@
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li>Home</li>                             
+                        <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>                           
 					</ul> 
 					<!--//crumbs-->
 					

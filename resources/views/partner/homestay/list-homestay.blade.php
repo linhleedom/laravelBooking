@@ -8,7 +8,7 @@
             <nav role="navigation" class="breadcrumbs clearfix">
                 <!--crumbs-->
                 <ul class="crumbs">
-                    <li><a href="#" title="Home">Home</a></li>  
+                    <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>
                     <li><a href="{{asset('partner/home-add')}}">Thêm</a></li> 
                     <li>Danh sách Homestay</li>                                    
                 </ul>

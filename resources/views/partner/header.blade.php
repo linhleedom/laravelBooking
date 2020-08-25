@@ -52,6 +52,7 @@
 						<li><a href="{{asset('partner/home-add')}}">Thêm</a></li>
 					</ul>
 				</li>
+				<li><a href="{{asset('partner/list-bills')}}" >Hóa đơn</a>
 			</ul>
 		</nav>
 		<!--//main navigation-->

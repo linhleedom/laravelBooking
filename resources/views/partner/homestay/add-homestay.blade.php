@@ -82,7 +82,7 @@
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="#" title="Home">Home</a></li>  
+						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>  
 						<li>Thêm Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->

@@ -9,7 +9,7 @@
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-                        <li><a href="#" title="Home">Home</a></li>   
+                        <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>  
                         <li>Danh sách phòng </li>                                    
 					</ul>
 					<!--//crumbs-->
@@ -23,7 +23,7 @@
                             <tr>
                                 <th>STT</th>
                                 <th>Homestay</th>
-                                <th>Loại Phòng</th>
+                                <th>Tên Phòng</th>
 								<th>Giá Phòng</th>
 								<th>Trạng thái</th>
 								<th colspan="3">Trạng thái</th>

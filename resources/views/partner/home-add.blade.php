@@ -9,9 +9,9 @@
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a >Home</a></li> 
-                        <li><a >Danh mục</a></li>
-                        <li><a >Thêm</a></li>                                
+                        <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>
+                        <li><a title="Danh mục">Danh mục</a></li>
+                        <li><a title="Thêm">Thêm</a></li>                                
 					</ul>
 					<!--//crumbs-->
 					

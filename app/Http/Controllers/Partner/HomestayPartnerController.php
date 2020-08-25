@@ -142,7 +142,7 @@ class HomestayPartnerController extends Controller
         return view('partner.homestay.edit-list-homestay', compact('provinces'));
     }
 
-    //For fetching states
+    //For fetching districts
     public function getdistricts($id)
     {
         $districts = \DB::table("districts")
@@ -151,7 +151,7 @@ class HomestayPartnerController extends Controller
         return response()->json($districts);
     }
 
-    //For fetching cities
+    //For fetching wards
     public function getwards($id)
     {
         $wards= \DB::table("wards")
@@ -164,14 +164,10 @@ class HomestayPartnerController extends Controller
     public function getEditPartnerHomestay($id)
     {
         $homestay = Homestay::find($id);
-        $provinces = Province::find($id);
         $provinces = Province::all();
         $district = District::all();
         $ward = Ward::all();
-
-        // foreach ($district->name as $maqh){ 
-        //     echo $maqh.'<br />';
-        // }
+        
         return view ('partner.homestay.edit-list-homestay',['homestay'=>$homestay],compact('provinces','district','ward'));
     }
 
