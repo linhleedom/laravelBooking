@@ -4,12 +4,12 @@
 		<ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Home</a>
+				<a href="#">Home</a>
 				<i class="icon-angle-right"></i> 
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="form.html">User</a>
+				<a href="#">Edit User</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
@@ -43,6 +43,12 @@
 						  <label class="control-label" for="typeahead">Name:</label>
 						  <div class="controls">
 							<input type="text" id="typeahead" name="name" placeholder="Nhập Tên" value="{{$user->name}}">
+						  </div>
+						</div>
+						<div class="control-group">
+						  <label class="control-label" for="typeahead">Avatar:</label>
+						  <div class="controls">
+							<input type="file" id="typeahead" name="avatar" placeholder="Nhập Tên">
 						  </div>
 						</div>
 						<div class="control-group">

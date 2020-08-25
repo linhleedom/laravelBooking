@@ -14,14 +14,33 @@ class QLSlideController extends Controller
     	$slide = Slide::find($id);
     	return view('admin.QLSlide.edit',['slide'=>$slide]);
     }
-    public function postEdit(Request $request, $id){
-    	$silde = Slide::find($id);
-            $slide->slogan= $request->slogan;
-    		$slide->url= $request->url;
-	    	$slide->status= $request->status;
-	    	$slide->updated_at=now();
-	    	$slide->save();
-	    	 return redirect('admin/QLSlide/edit/'.$slide->id);
+    public function postEdit(Request $request, $id)
+    {
+           $this->validate($request,
+            [
+                'slogan'=>'required|min:3|max:100',
+                'url'=>'required',
+                
+            ],
+            [
+                'slogan.required'=>'Bạn chưa nhập slogan!',
+                'slogan.min'=>'Độ dài tối thiểu là 3 kí tự',
+                'slogan.max'=>'Độ dài tối đa là 100 kí tự',
+                'url.required'=>'Bạn hãy chọn ảnh nhé!',
+                
+            ]);
+
+            $file_name= $request->file('url')->getClientOriginalName();
+    	    $new = Slide::find($id);
+            $new->slogan= $request->slogan;
+
+            $link='uploads/slider/'.$file_name;
+            $new->url= $link;
+	    	$new->status= $request->status;
+            $request->file('url')->move('public/uploads/slider',$file_name);
+	    	$new->updated_at=now();
+	    	$new->save();
+	    	 return redirect('admin/QLSlide/danhsach')->with('thongbao','Sửa slide thành công !');
     }
     public function getDel($id){
         $slide=Slide::find($id);

@@ -4,12 +4,12 @@
 		<ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Home</a>
+				<a href="#">Home</a>
 				<i class="icon-angle-right"></i> 
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="form.html">User</a>
+				<a href="#">User</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
@@ -30,7 +30,6 @@
 							@endforeach
 						</div>
 					@endif
-
 					@if(session('thongbao'))
 						<div class="alert alert-success">
 							{{session('thongbao')}}
@@ -43,6 +42,12 @@
 						  <label class="control-label" for="typeahead">Tên:</label>
 						  <div class="controls">
 							<input type="text" id="typeahead" name="name" placeholder="Nhập Tên">
+						  </div>
+						</div>
+						<div class="control-group">
+						  <label class="control-label" for="typeahead">Avatar:</label>
+						  <div class="controls">
+							<input type="file" id="typeahead" name="avatar">
 						  </div>
 						</div>
 						<div class="control-group">
@@ -78,7 +83,7 @@
 								<input type="radio" name="permision" value="1" id="status">Partner
 							</label>
 							<label class="controls radio-inline">	
-								<input type="radio" name="permision" value="2" id="status">User
+								<input type="radio" name="permision" value="2" id="status" checked="checked">User
 							</label>
 						</div>
 						<div class="form-actions">

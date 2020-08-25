@@ -5,10 +5,10 @@
 	<ul class="breadcrumb">
 		<li>
 			<i class="icon-home"></i>
-			<a href="index.html">Home</a> 
+			<a href="#">Home</a> 
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="slide.html">Slide</a></li>
+		<li><a href="#">Slide</a></li>
 	</ul>
 	<div class="row-fluid sortable">		
 		<div class="box span12">
@@ -25,6 +25,7 @@
 				  <thead>
 					  <tr>
 						  <th>ID</th>
+						  <th>Avatar</th>
 						  <th>Slogan</th>
 						  <th>Ngày Đăng</th>
 						  <th>Ngày Updated</th>
@@ -36,6 +37,7 @@
 				  	@foreach($slide as $tl)
 					<tr>
 						<td>{{$tl->id}}</td>
+						<td><img width="70px" src="{{$tl->url}}" alt=""></td>
 						<td>{{$tl->slogan}}</td>
 						<td class="center">{{$tl->created_at}}</td>
 						<td class="center">{{$tl->updated_at}}</td>

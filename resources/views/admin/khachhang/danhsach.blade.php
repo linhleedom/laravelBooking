@@ -4,15 +4,15 @@
 			<ul class="breadcrumb">
 				<li>
 					<i class="icon-home"></i>
-					<a href="index.html">Home</a> 
+					<a href="#">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="custumer.html">Customer</a></li>
+				<li><a href="#">User</a></li>
 			</ul>
 			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon white user"></i><span class="break"></span>Members</h2>
+						<h2><i class="halflings-icon white user"></i><span class="break"></span>List Members</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -35,7 +35,7 @@
 						  <tbody>
 						  	@foreach($user as $tl)
 							<tr>
-								<td>{{$tl->avatar}}</td>
+								<td><img width="60px" src="{{$tl->avatar}}" alt=""></td>
 								<td>{{$tl->name}}</td>
 								<td class="center">{{$tl->created_at}}</td>
 								<td class="center">{{$tl->email}}</td>
@@ -50,7 +50,6 @@
 									@endif
 								</td>
 								<td class="center">
-									<a href="#" class="btn btn-success">Detail</a>
 									<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
 									<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}">
 										<i class="halflings-icon white trash"></i> 

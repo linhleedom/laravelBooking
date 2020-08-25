@@ -11,13 +11,13 @@
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="#">Slide</a>
+				<a href="#">Edit Home Stay</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
 			<div class="box span12">
 				<div class="box-header" data-original-title>
-					<h2><i class="halflings-icon white edit"></i><span class="break"></span>Edit Slide: {{$slide->id}}</h2>
+					<h2><i class="halflings-icon white edit"></i><span class="break"></span>Edit Slide: {{$homestay->id}}</h2>
 					<div class="box-icon">
 						<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 						<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -25,54 +25,30 @@
 					</div>
 				</div>
 				<div class="box-content">
-					@if(count($errors) > 0)
-						<div class="alert alert-danger">
-							@foreach($errors->all() as $err)
-								{{$err}}
-							@endforeach
-						</div>
-					@endif
-
-					@if(session('thongbao'))
-						<div class="alert alert-success">
-							{{session('thongbao')}}
-						</div>
-					@endif
-					<form class="form-horizontal" action="{{url('/admin/QLSlide/edit')}}/{{$slide->id}}" method="POST" enctype="multipart/form-data">
-						<input type="hidden" name="_token" value="{{csrf_token()}}">
+					<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+					<input type="hidden" name="_token" value="{{csrf_token()}}">
 					  <fieldset>
-						<div class="control-group">
-						  <label class="control-label" for="slogan1">Slogan:</label>
-						  <div class="controls">
-							<input type="text" id="slogan1" name="slogan" value="{{$slide->slogan}}">
-						  </div>
-						</div>
-						<div class="control-group">
-						  <label class="control-label" for="date01">Ảnh:</label>
-						  <div class="controls">
-							<input type="file" id="date01" name="url">
-						  </div>
-						</div>   
+						
 						<div class="control-group">
 							<label class="control-label" for="status">Public BV:</label>
 						  	<label class="controls radio-inline">
 								<input type="radio" name="status" value="0" id="status" 
-									@if($slide->status == 0)
+									@if($homestay->status == 0)
 									{{"checked"}}
 									@endif
-								>Ko
+								>Ân
 							</label>
 							<label class="controls radio-inline">
 								<input type="radio" name="status" value="1" id="status"
-									@if($slide->status == 1)
+									@if($homestay->status == 1)
 									{{"checked"}}
 									@endif
-								>Có
+								>Public
 							</label>
 						</div>
 						<div class="form-actions">
-						 <button type="submit" class="btn btn-primary">Edit</button>
-						 <a href="{{url('/admin/QLSlide/danhsach')}}" class="btn">Quay Lại</a>
+						 	<button type="submit" class="btn btn-primary">Edit</button>
+							<button type="reset" class="btn btn-danger">Reset</button></a>
 						</div>
 					  </fieldset>
 					</form> 

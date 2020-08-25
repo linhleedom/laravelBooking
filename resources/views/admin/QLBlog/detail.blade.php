@@ -5,12 +5,12 @@
 		<ul class="breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Home</a>
+				<a href="#">Home</a>
 				<i class="icon-angle-right"></i> 
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="form.html">Detail</a>
+				<a href="#">Detail</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">

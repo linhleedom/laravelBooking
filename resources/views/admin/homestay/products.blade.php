@@ -8,12 +8,12 @@
 			<a href="#">Home</a> 
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="#">Blog</a></li>
+		<li><a href="#">List Products</a></li>
 	</ul>
 	<div class="row-fluid sortable">		
 		<div class="box span12">
 			<div class="box-header" data-original-title>
-				<h2><i class="halflings-icon white user"></i><span class="break"></span>Blog</h2>
+				<h2><i class="halflings-icon white user"></i><span class="break"></span>Danh Sách Phòng</h2>
 				<div class="box-icon">
 					<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 					<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -27,39 +27,30 @@
 					  <tr>
 						  <th>ID</th>
 						  <th>Avatar</th>
-						  <th>Tiêu Đề</th>
-						  <th>Ngày viết</th>
-						  <th>Ngày cập nhật</th>
+						  <th>Name</th>
+						  <th>Discount</th>
+						  <th>Giá Tiền</th>
+						  <th>Giới Thiệu</th>
 						  <th>Trạng Thái</th>
-						  <th>Chi Tiết</th>
-						  <th>Hoạt Động</th>
+			
 					  </tr>
 				  </thead>   
 				  <tbody>
-				  	@foreach($blog as $tl)
+				  	@foreach($product as $tl)
 					<tr>
 						<td>{{$tl->id}}</td>
-						<td><img width="70px" src="{{$tl->photo}}" alt=""></td>
-						<td>{{$tl->title}}</td>
-						<td class="center">{{$tl->created_at}}</td>
-						<td class="center">{{$tl->updated_at}}</td>
-						<td class="center">
+						<td><img width="80px" src="{{$tl->avatar}}" alt=""></td>
+						<td>{{$tl->name}}</td>
+						
+						<td>{{$tl->discount}}</td>
+						<td>{{$tl->prices}}</td>
+						<td>{{$tl->description}}</td>
+						<td>
 							@if($tl->status == 1)
 							<p>Public</p>
 							@else
 							<p>Ẩn</p>
 							@endif
-						</td>
-						<td class="center">
-							<a href="{{url('/admin/QLBlog/detail')}}/{{$tl->id}}" class="btn btn-success">Detail</a>
-						</td>
-						<td class="center">
-							<a class="btn btn-info" href="{{url('/admin/QLBlog/edit')}}/{{$tl->id}}">
-								<i class="halflings-icon white edit"></i>  
-							</a>
-							<a class="btn btn-danger" href="{{url('/admin/QLBlog/delete')}}/{{$tl->id}}">
-								<i class="halflings-icon white trash"></i> 
-							</a>
 						</td>
 					</tr> 
 					@endforeach
