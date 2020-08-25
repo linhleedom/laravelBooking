@@ -27,6 +27,7 @@ class CreateHomestaysTable extends Migration
             $table->text('title');
             $table->text('description')->nullable();
             $table->float('point', 5, 2)->nullable();
+            $table->tinyInteger('status_pay')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

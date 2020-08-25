@@ -10,6 +10,13 @@ Travel Your Booking
 		$(".form:first").show();
 		$(".f-item:first").addClass("active");
 		$(".f-item:first span").addClass("checked");
+
+		$("#address").autocomplete({
+			source: "{{route('userAutoComplete')}}",
+			open: function(event, ui){
+				$("#address").autocomplete ("widget").css("width","315px");  
+			} 
+		});
 	});
 @endsection
 
@@ -22,20 +29,15 @@ class="active"
     <section class="slider clearfix">
 		<div id="sequence">
 			<ul>
-				<li>
-					<div class="info animate-in">
-						<h2>Giá cả hợp lý</h2><br />
-						<p>Thủ tục đăng ký nhanh gọn</p>
-					</div>
-					<img class="main-image animate-in" src="uploads/slider/slide2.jpg" alt="" />
-				</li>
-				<li>
-					<div class="info animate-in">
-						<h2>Giá cả hợp lý</h2><br />
-						<p>Thủ tục đăng ký nhanh gọn</p>
-					</div>
-					<img class="main-image animate-in" src="uploads/slider/slide3.jpg" alt="" />
-				</li>
+				@foreach($slide as $slideVal)
+					<li>
+						<div class="info animate-in">
+							<h2>{{$slideVal->slogan}}</h2><br />
+							<p>Thủ tục đăng ký nhanh gọn</p>
+						</div>
+						<img class="main-image animate-in" src="{{$slideVal->url}}" alt="" />
+					</li>
+				@endforeach
 			</ul>
 		</div>
 	</section>
@@ -43,7 +45,7 @@ class="active"
 	
 	<!--search-->
 	<div class="main-search">
-		<form id="main-search" method="post" action="user_search_results.html">
+		<form id="main-search" method="get" action="{{route('userSearch')}}">
 			<div class="forms">
 				<!--form hotel-->
 				<div class="form" id="form1">
@@ -51,8 +53,8 @@ class="active"
 					<div class="column location">
 						<h4><span>01 </span>Địa điểm</h4>
 						<div class="f-item">
-							<label for="destination1">Chọn địa điểm bạn muốn đến</label>
-							<input type="text" placeholder="" id="destination1" name="destination" />
+							<label for="address">Chọn địa điểm bạn muốn đến</label>
+							<input type="text" placeholder="" id="address" name="address" required="required" />
 						</div>
 					</div>
 					<!--//column-->
@@ -75,16 +77,16 @@ class="active"
 					<div class="column triplets">
 						<h4><span>03 </span>Thông tin khác</h4>
 						<div class="f-item spinner">
-							<label for="spinner1">Số phòng</label>
-							<input type="text" placeholder="" id="spinner1" name="spinner1" />
+							<label for="num_room">Số phòng</label>
+							<input type="text" placeholder="" value="1" id="num_room" name="num_room" />
 						</div>
 						<div class="f-item spinner">
-							<label for="spinner2">Số người lớn</label>
-							<input type="text" placeholder="" id="spinner2" name="spinner1" />
+							<label for="num_adult">Số người lớn</label>
+							<input type="text" placeholder="" value="2" id="num_adult" name="num_adult" />
 						</div>
 						<div class="f-item spinner">
-							<label for="spinner3">Trẻ em</label>
-							<input type="text" placeholder="" id="spinner3" name="spinner1" />
+							<label for="num_chil">Trẻ em</label>
+							<input type="text" placeholder="" value="0" id="num_chil" name="num_chil" />
 						</div>
 					</div>
 					<!--//column-->
@@ -102,390 +104,84 @@ class="active"
 			<!--top destinations-->
 			<section class="destinations clearfix full">
 				<h1>Top Homestay được yêu thích </h1>
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
+				@foreach($homestayTopRate as $homestayTopRateVal)
+					<!--column-->
+					@if($homestayTopRateVal->product->max('discount') == 0)
+						<article class="one-fourth">
+					@else
+						<article class="one-fourth promo">
+						<div class="ribbon-small">- {{$homestayTopRateVal->product->max('discount')}}%</div>
+					@endif
+						<figure>
+							<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="">
+								<img src="{{$homestayTopRateVal->avatar}}" alt="" width="270" height="152" />
+							</a>
+						</figure>
+						<div class="details">
+							<div class="homestay_info">
+								<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
+								<h5>{{$homestayTopRateVal->name}}&nbsp&nbsp<span class="point">{{$homestayTopRateVal->point}}</span>
+								</h5>
+								</span>
 							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
+							<div class="ribbon">
+								<div class="half hotel">
+									<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="View all">
+										<span class="small">Giá từ</span>
+										<span class="price">{{ number_format( $homestayTopRateVal->product->min('prices'),0,',','.' ) }}đ</span>
+									</a>
+								</div>
+								<div class="half flight">
+									<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="View all">
+										<span class="location">{{$homestayTopRateVal->province->name}}</span>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img4.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth promo">
-					<div class="ribbon-small">- 20%</div>
-					<figure><a href="user_hot_deals.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_hot_deals.html" title="View all" class="gradient-button">View all</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img7.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
+					</article>
+					<!--//column-->
+				@endforeach
 			</section>
 			<!--//top destinations-->
 
 			<!--top destinations-->
 			<section class="destinations clearfix full">
 				<h1>Sạch sẽ thoải mái, phù hợp cho lưu trú dài ngày</h1>
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img1.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
+				@foreach($homestay as $homestayVal)
+					<!--column-->
+					@if($homestayVal->product->max('discount') == 0)
+						<article class="one-fourth">
+					@else
+						<article class="one-fourth promo">
+						<div class="ribbon-small">- {{$homestayVal->product->max('discount')}}%</div>
+					@endif
+						<figure>
+							<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="">
+								<img src="{{$homestayVal->avatar}}" alt="" width="270" height="152" />
+							</a>
+						</figure>
+						<div class="details">
+							<div class="homestay_info">
+								<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
+								<h5>{{$homestayVal->name}}&nbsp&nbsp<span class="point">{{$homestayVal->point}}</span> </h5>
 							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
+							<div class="ribbon">
+								<div class="half hotel">
+									<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="View all">
+										<span class="small">Giá từ</span>
+										<span class="price">{{ number_format( $homestayVal->product->min('prices'),0,',',' ' ) }}đ</span>
+									</a>
+								</div>
+								<div class="half flight">
+									<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="View all">
+										<span class="location">{{$homestayVal->province->name}}</span>
+									</a>
+								</div>
 							</div>
 						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img5.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img6.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				<!--column-->
-				<article class="one-fourth promo">
-					<div class="ribbon-small">- 20%</div>
-					<figure><a href="hot_deals.html" title=""><img src="uploads/homestay/img3.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="hot_deals.html" title="View all" class="gradient-button">View all</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
-				
-				<!--column-->
-				<article class="one-fourth">
-					<figure><a href="user_room_detail.html" title=""><img src="uploads/homestay/img2.jpg" alt="" width="270" height="152" /></a></figure>
-					<div class="details">
-						<a href="user_room_detail.html" title="View all" class="gradient-button">More info</a>
-						<h5>LuxStay</h5>
-						<span class="count">4.5 <img src="user/images/ico/star.png" alt=""></span>
-						<div class="ribbon">
-							<div class="half hotel">
-								<a href="user_room_detail.html" title="View all">
-									<span class="small">Giá từ</span>
-									<span class="price">200.000đ</span>
-								</a>
-							</div>
-							<div class="half flight">
-								<a href="user_room_detail.html" title="View all">
-									<span class="location">Hà Nội</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</article>
-				<!--//column-->
+					</article>
+					<!--//column-->
+				@endforeach
 			</section>
 			<!--//top destinations-->
 			

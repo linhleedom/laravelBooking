@@ -61,10 +61,6 @@ class PageController extends Controller
         return view('partner.trangchu');
     }
 
-    public function getLogout(){
-        Auth::logout();
-        return redirect()->intended('login-and-register');
-    }
     
 
     public function getHomestay(){

@@ -53,6 +53,9 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        
+        'CheckLogedIn' => \App\Http\Middleware\Partner\CheckLogedIn::class,
+        'CheckLogedOut' => \App\Http\Middleware\Partner\CheckLogedOut::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -64,5 +67,9 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'adminLogin'=>\App\Http\Middleware\admin\AdminLoginMiddleware::class,
+        
+        'checkIdUser' => \App\Http\Middleware\User\CheckIdUser::class,
+        'checkLogin' => \App\Http\Middleware\User\CheckLogin::class,
+
     ];
 }

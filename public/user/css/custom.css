@@ -15,6 +15,7 @@ header #wrap .ribbon nav ul.open li a {
 /* end-home-top */
 .search-left{
 	position: relative;
+	background-color: #f3bf03;
 }
 .search-left .f-item{
 	padding:0 0 10px;
@@ -33,7 +34,7 @@ header #wrap .ribbon nav ul.open li a {
 	position: absolute;
     left: 35px;
     width: 204px;
-    height: 34px;
+    height: 35px;
     border: none;
     font: normal 1.2em/34px 'RobotoBold';
     text-transform: uppercase;
@@ -62,18 +63,8 @@ header #wrap .ribbon nav ul.open li a {
 	height: 100px;
 	background: none;
 }
-.order table{
-	border: 1px solid #7d7979;
-	width: 100%;
-	text-align: center;
-	font-size: 1.3em;
-	color: #444;
-	line-height: 20px;
-	margin-bottom: 20px;
-}
-.order table td, .order table th{
-	border: 1px solid #7d7979;
-	padding: 3px;
+.order {
+	background-color: rgb(226, 239, 253);
 }
 .order a{
 	display: block;
@@ -85,6 +76,11 @@ header #wrap .ribbon nav ul.open li a {
 .full .output p{
 	width: 45%;
 }
+.capacity{
+	font-size: 1em !important;
+	line-height: 16px;
+	margin-right: 4px;
+}
 #number-room{
 	padding: 3% 6%;
 }
@@ -92,6 +88,7 @@ header #wrap .ribbon nav ul.open li a {
 	font-size: 1.3em;
 }
 .deals .title {
+	height: 40px;
 	text-decoration: none;
 	text-align: left;
     width: 100%;
@@ -139,10 +136,215 @@ header #wrap .ribbon nav ul.open li a {
 .no-href{
 	cursor: pointer;
 }
+.homestay_info{
+	height: 35px;
+}
+#ui-id-1{
+	/* width: 300px; */
+	background-color: #fff;
+	z-index: 99999;
+	border-left: 1px solid #4d4d4d50;
+	/* border-radius: 2px; */
+}
+#ui-id-1 li{
+	text-align: left;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid #4d4d4d50;
+	cursor: pointer;
+	padding-left: 30px;
+
+}
+.point{
+	padding: 4px 4px 4px 15px;
+	background-color: #000482 !important;
+	color: #fff;
+	border-radius: 4px;
+	font-size: 12px;
+	background:url(../images/ico/star.png) 2px 4px no-repeat;
+}
+.product_name{
+	/* text-align: left !important; */
+	color: #0005a0;
+	font-size: 18px;
+	padding-top: 10px;
+}
+.ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+	overflow-x: hidden;
+}
+.discount{
+	color: #ff0000 !important;
+	font-family: 'RobotoBold';
+}
+.price-old{
+	color: rgb(126, 126, 126) !important;
+}
+.room-types .pro-name{
+	padding-bottom: 5px;
+	font-size: 1.8em;
+	/* text-transform: ; */
+	color: rgb(15, 0, 230);
+	text-decoration: underline;
+}
+.utilities li{
+	font-size: 1.3em;
+	border-bottom: none;
+}
+.utilities li.last{
+	padding-left: 17px;
+}
+#promo .gradient-button {
+    background: #ffc802;
+    
+}
+
+#promo .gradient-button:hover {
+    background: #0f0ada;
+}
+#promo .ribbon-small {
+    background: url(../images/bgr/ribbons.png) -2px -186px no-repeat;
+    width: 50px;
+    height: 45px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    padding: 15px 0 0;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    font: normal 1.7em 'RobotoBold';
+    -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    -moz-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.pager .disabled{
+	display: none;
+}
+.deal-of-the-day{
+	padding: 10px 0;
+	border-bottom: 1px solid rgb(208, 208, 208);
+}
+.address-hot-deal a{
+	text-decoration: none;
+}
+.feedback{
+	color: #ffe94a;
+	margin-top: 10px;
+	margin-bottom: -5px;
+	display: inline-block;
+}
+.li_list{
+	color: rgb(0, 114, 255);
+}
+.error_account{
+	color: rgb(223, 0, 0);
+	font-size: 1em;
+}
+.done_account{
+	color: rgb(16, 197, 0);
+	font-size: 1em;
+}
+.input-pass{
+	position: relative;
+}
+.input-pass .btnShow{
+	background: url(../images/ico/visible.png) no-repeat;
+	background-size: cover;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    font-size: 0px;
+    text-align: right;
+    cursor: pointer;
+    position: absolute;
+    background-position: center;
+    top:33px;
+    right: 5px;
+}
+.f-item .btnShow{
+	top:28px;
+}
+.order-detail li{
+	position: relative;
+	border: none;
+}
+.order-detail li button{
+	position: absolute;
+	top: 20%;
+	right: 0;
+	border: none;
+	background-color: #e2effd;
+	font-size: 1.2em;
+	text-transform: uppercase;
+	padding: 5px 7px;
+}
+.order-detail li button:hover{
+	border: 0.5px solid #cacaca;
+	border-radius: 2px;
+}
+.order-sum li{
+	border-top: 0.5px solid #cacaca;
+	padding-top: 10px;
+}
+.order-sum li p{
+	width: 100%;
+}
+.order-sum li h3{
+	width: 100%;
+	margin-bottom: 10px;
+}
+.order-sum li i{
+	color: #0600ff;
+	font-size: 1.1em;
+	float: right;
+}
+.payment{
+	float: right;
+	font-size: 1.2em;
+}
+.order-date li{
+	border-top: none;
+}
+.order-booking-step-1{
+	margin-top: 38px;
+	padding-top: 27px;
+	background-color: #e2effd;
+}
+.order-booking-step-1 .booking-info .price{
+	color: rgb(47, 0, 255);
+	font-size: 1em;
+	font-family: 'RobotoBold';
+	border: none;
+}
+.order-booking-step-1 .price-text{
+	margin-top: 10px;
+}
+.order-booking-step-1 .payment{
+	font-size: 1.1em;
+}
+.order-booking-step-3{
+	margin-top: 0;
+
+}
+.starVoted img{
+	float: left;
+	margin-bottom: 10px;
+}
+.alert-account{
+	font-size: 0.7em;
+}
+.booking-succes{
+	color: rgb(0, 0, 255);
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;
 	}
+
 /*	.room-information .price .first{
 	width: 60px;
 	}*/
@@ -151,11 +353,16 @@ header #wrap .ribbon nav ul.open li a {
 	.search-left .search-submit{
 		left:35%;
 	}
-
+	.order-booking-step-1{
+		margin-top: 0px;
+	}
 }
 @media screen and (max-width: 600px) {
 	.search-left .search-submit{
 		left:25%;
+	}
+	.order-booking-step-1{
+		margin-top: 0px;
 	}
 }
 /* ----------------------------------- */

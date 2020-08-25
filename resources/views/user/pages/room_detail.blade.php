@@ -5,8 +5,35 @@ Room Detail
 @endsection
 
 @section('script')
+	$(document).ready(function() {
+		
+	});
 @endsection
-
+@section('scriptEnd')
+	<script>
+		function AddCart(id){
+			$.ajax({
+				url: '../add-cart/'+id,
+				type: 'GET',
+			}).done(function(response){
+				$('#change-item-cart').empty();
+				$('#change-item-cart').html(response);
+			});
+		}
+		function DelItem(id){
+			$.ajax({
+				url: '../delete-item-cart/'+id,
+				type: 'GET',
+			}).done(function(response){
+				$('#change-item-cart').empty();
+				$('#change-item-cart').html(response);
+			});
+		}
+		function Alert(){
+			alert('Bạn hãy chọn thời gian để tìm được phòng phù hợp');
+		}
+	</script>
+@endsection
 @section('home')
 class="active"
 @endsection
@@ -21,17 +48,17 @@ class="active"
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="#" title="Home">Home</a></li>
-						<li><a href="#" title="Hotels">Homestay</a></li>
-						<li><a href="#" title="United Kingdom">Tên Homestay</a></li>
-						<li><a href="#" title="London">All</a></li>                                     
+						<li><a href="{{route('userHomePage')}}" title="Home">Home</a></li>
+						<li><a href="{{route('userSearch').'?address='.$homestayVal->province->name.$url}}" title="Address">{{$homestayVal->province->name}}</a></li>
+						<li><a href="{{route('userSearch').'?address='.$homestayVal->district->name.' - '.$homestayVal->province->name.$url}}" title="Address">{{$homestayVal->district->name}}</a></li>
+						<li>{{$homestayVal->name}}</li>                                    
 					</ul>
 					<!--//crumbs-->
 					
 					<!--top right navigation-->
-					<ul class="top-right-nav">
-						<li><a href="user_search_results.html" title="Back to results">Back to results</a></li>
-					</ul>
+					<!-- <ul class="top-right-nav">
+						<li><a href="{{url('/')}}" title="Back to results">Trang chủ</a></li>
+					</ul> -->
 					<!--//top right navigation-->
 				</nav>
 				<!--//breadcrumbs-->
@@ -40,20 +67,18 @@ class="active"
 				<section class="three-fourth">
 					<!--gallery-->
 					<section class="gallery" id="crossfade">
-						<img src="uploads/homestay/img1.jpg" alt="" width="850" height="531" />
-						<img src="uploads/homestay/img2.jpg" alt="" width="850" height="531" />
-						<img src="uploads/homestay/img3.jpg" alt="" width="850" height="531" />
-						<img src="uploads/homestay/img4.jpg" alt="" width="850" height="531" />
-						<img src="uploads/homestay/img5.jpg" alt="" width="850" height="531" />
+						@foreach($homestayVal->image as $image)
+							<img src="{{$image->url}}" alt="" width="850" height="531" />
+						@endforeach
 					</section>
 					<!--//gallery-->
 				
 					<!--inner navigation-->
 					<nav class="inner-nav">
 						<ul>
-							<li class="availability"><a href="#availability" title="Availability">Phòng có sẵn</a></li>
+							<li class="availability"><a href="#availability" title="Availability">Phòng phù hợp</a></li>
 							<li class="description"><a href="#description" title="Description">Mô tả</a></li>
-							<li class="facilities"><a href="#facilities" title="Facilities">Cơ sỏ vật chất</a></li>
+							<!-- <li class="facilities"><a href="#facilities" title="Facilities">Cơ sỏ vật chất</a></li> -->
 							<!-- <li class="location"><a href="#location" title="Location">Vị trí</a></li> -->
 							<li class="reviews"><a href="#reviews" title="Reviews">Đánh giá</a></li>
 						</ul>
@@ -63,175 +88,70 @@ class="active"
 					<!--availability-->
 					<section id="availability" class="tab-content">
 						<article>
-							<h1>Phòng có sẵn</h1>
+							<h1>Còn {{$product->count()}} phòng có sẵn</h1>
 							<div class="text-wrap">
-								<a href="user_search_results.html" class="gradient-button right" title="Change dates">Đổi ngày</a>
-								<p>Phòng có sẵn từ <span class="date">23/06/2020</span> đến <span class="date">24/06/2020</span>.</p>
+								@if( isset($datepicker1) && isset($datepicker2) )
+									<p>Phòng có sẵn từ <span class="date">{{$datepicker1}}</span> đến <span class="date">{{$datepicker2}}</span>.</p>
+								@endif
 							</div>
-							
 							<!-- <h1>Room types</h1> -->
 							<ul class="room-types">
-								<!--room-->
-								<li>
-                                    <figure class="left"><img src="uploads/room/img3.jpg" alt="" width="270" height="152" />
-									<a href="uploads/room/img3.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
-                                    <div class="meta">
-                                        <h2>Phòng 2 giường đơn</h2>
-                                        <p>Wifi miễn phí<br />Chỗ đỗ xe miễn phí </p>
-                                        <p>Còn 3 phòng<br />Đã bao gồm 10% VAT </p>
-                                        <a href="javascript:void(0)" title="more info" class="more-info">+ Thêm</a>
-                                    </div>
-                                    <div class="room-information">
-                                        <div class="row">
-                                            <span class="first">Phù hợp:</span>
-                                            <span class="second"><img src="user/images/ico/person.png" alt="" /><img src="user/images/ico/person.png" alt="" /></span>
-                                        </div>
-                                        <div class="row price">
-                                            <span class="first">Giá: </span>
-                                            <span class="second">200.000đ</span>
-                                        </div>
-                                        <form action="" method="get">
-                                            <div class="row">
-                                                <label for="number-room" id="choice-number" class="first">Số lượng:</label>
-                                                <input type="number" id="number-room" class="second" name="number-room" min="0" max="3"></input>
-
-                                            </div>
-                                            <input type="submit" class="gradient-button" value="Chọn" id="book" name="book">
-                                        </form>
-                                    </div>
-                                    <div class="more-information">
-                                        <p>Stylish and individually designed room featuring a satellite TV, mini bar and a 24-hour room service menu.</p>
-                                        <p><strong>Đồ dùng trong phòng:</strong> Safety Deposit Box, Air Conditioning, Desk, Ironing Facilities, Seating Area, Heating, Shower, Bath, Hairdryer, Toilet, Bathroom, Pay-per-view Channels, TV, Telephone</p>
-                                        <!-- <p><strong>Bed Size(s):</strong> 1 Double </p> -->
-                                        <p><strong>Kích thước phòng:</strong>  16 m<sup>2</sup></p>
-                                    </div>
-								</li>
-								<!--//room-->
-								
-								<!--room-->
-								<li>
-									<figure class="left"><img src="uploads/room/img.jpg" alt="" width="270" height="152" />
-									<a href="uploads/room/img.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
-									<div class="meta">
-										<h2>Phòng 1 giường đơn</h2>
-										<p>Wifi miễn phí<br />Chỗ đỗ xe miễn phí </p>
-										<p>Có điều hòa<br />Đã bao gồm 10% VAT </p>
-										<a href="javascript:void(0)" title="more info" class="more-info">+ Thêm</a>
-									</div>
-									<div class="room-information">
-										<div class="row">
-											<span class="first">Phù hợp:</span>
-											<span class="second">
-												<img src="user/images/ico/person.png" alt="" />
-											</span>
+								@foreach($product as $productVal)
+									<!--room-->
+									<li>
+										<figure class="left"><img src="{{$productVal->avatar}}" alt="" width="270" height="152" />
+										<a href="{{$productVal->avatar}}" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
+										<div class="meta">
+											<p class="pro-name">{{ucfirst($productVal->name)}}</p>
+											<h2 class="type-name">{{$productVal->roomType->name}}</h2>
+											<p>Giảm giá: <span class="discount">{{$productVal->discount}}%</span></p>
+											<p>Đã bao gồm 10% VAT </p>
+											<p>Thanh toán tại homestay</p>
+											<a href="javascript:void(0)" title="more info" class="more-info">+ Thêm</a>
 										</div>
-										<div class="row price">
-											<span class="first">Giá:</span>
-											<span class="second">100.000đ</span>
-										</div>
-										<form action="" method="get">
+										<div class="room-information">
 											<div class="row">
-												<label for="number-room" id="choice-number" class="first">Số lượng:</label>
-												<input type="number" id="number-room" class="second" name="number-room" min="0" max="3"></input>
-
+												<span class="first">Phù hợp:</span>
+												<span class="second"><span class="capacity">{{$productVal->roomType->capacity}} x</span><img src="user/images/ico/person.png" alt="" /></span>
 											</div>
-											<input type="submit" class="gradient-button" value="Chọn" id="book" name="book">
-										</form>
-									</div>
-									<div class="more-information">
-										<p>Stylish and individually designed room featuring a satellite TV, mini bar and a 24-hour room service menu.</p>
-										<p><strong>Đồ dùng trong phòng:</strong> Safety Deposit Box, Air Conditioning, Desk, Ironing Facilities, Seating Area, Heating, Shower, Bath, Hairdryer, Toilet, Bathroom, Pay-per-view Channels, TV, Telephone</p>
-										<!-- <p><strong>Bed Size(s):</strong> 1 Double </p> -->
-										<p><strong>Kích thước phòng:</strong>  16 m<sup>2</sup></p>
-									</div>
-								</li>
-								<!--//room-->
-								
-								<!--room-->
-								<li>
-									<figure class="left">
-										<img src="uploads/room/img3.jpg" alt="" width="270" height="152" /> 
-										<a href="uploads/room/img3.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a>
-									</figure>
-									<div class="meta">
-										<h2>Phòng 2 giường đôi</h2>
-										<p>Wifi miễn phí<br />Chỗ đỗ xe miễn phí </p>
-										<p>Có điều hòa<br />Đã bao gồm 10% VAT </p>
-										<a href="javascript:void(0)" title="more info" class="more-info">+ Thêm</a>
-									</div>
-									<div class="room-information">
-										<div class="row">
-											<span class="first">Phù hợp:</span>
-											<span class="second">
-												<img src="user/images/ico/person.png" alt="" />
-												<img src="user/images/ico/person.png" alt="" />
-												<img src="user/images/ico/person.png" alt="" />
-												<img src="user/images/ico/person.png" alt="" />
-											</span>
+											@if( $productVal->discount == 0 )
+												<div class="row price">
+													<span class="first">Giá: </span>
+													<span class="second">{{ number_format( $productVal->prices,0,',','.' ) }}đ</span>
+												</div>
+											@else
+												<div class="row price">
+													<span class="first">Giá: </span>
+													<span class="second price-old"><strike>{{ number_format( $productVal->prices,0,',','.' ) }}</strike>đ</span>
+												</div>
+												<div class="row price">
+													<span class="first">&nbsp</span>
+													<span class="second price-new">{{ number_format( $productVal->prices*(100-$productVal->discount)/100,0,',','.' ) }}đ</span>
+												</div>
+											@endif	
+											@if( isset($datepicker1) && isset($datepicker2) )
+												<a onclick="AddCart({{$productVal->id}})" class="gradient-button no-href">Chọn</a>
+											@else
+												<a onclick="Alert()" class="gradient-button no-href">Chọn</a>	
+											@endif
+											
+											<!-- <a href="{{route('userAddCart',['id' => $productVal->id])}}" class="gradient-button">Chọn</a> -->
 										</div>
-										<div class="row price">
-											<span class="first">Giá:</span>
-											<span class="second">440.000đ</span>
-										</div>
-										<form action="" method="get">
-											<div class="row">
-												<label for="number-room" id="choice-number" class="first">Số lượng:</label>
-												<input type="number" id="number-room" class="second" name="number-room" min="0" max="3"></input>
-
+										<div class="more-information">
+											<p>{{$productVal->description}}</p>
+											<p><strong>Tiện ích và đồ dùng:</strong></p>
+											<div class="text-wrap utilities">	
+												<ul class="three-col">
+													@foreach($productVal->utilities as $utilitiesVal)
+														<li>{{$utilitiesVal->name}}</li>
+													@endforeach
+												</ul>
 											</div>
-											<input type="submit" class="gradient-button" value="Chọn" id="book" name="book">
-										</form>
-									</div>
-									<div class="more-information">
-										<p>Stylish and individually designed room featuring a satellite TV, mini bar and a 24-hour room service menu.</p>
-										<p><strong>Đồ dùng trong phòng:</strong> Safety Deposit Box, Air Conditioning, Desk, Ironing Facilities, Seating Area, Heating, Shower, Bath, Hairdryer, Toilet, Bathroom, Pay-per-view Channels, TV, Telephone</p>
-										<!-- <p><strong>Bed Size(s):</strong> 1 Double </p> -->
-										<p><strong>Kích thước phòng:</strong>  16 m<sup>2</sup></p>
-									</div>
-								</li>
-								<!--//room-->
-								
-								<!--room-->
-								<li>
-									<figure class="left"><img src="uploads/room/img4.jpg" alt="" width="270" height="152" />
-									<a href="uploads/room/img4.jpg" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
-									<div class="meta">
-										<h2>Phòng 2 giường đôi</h2>
-										<p>Wifi miễn phí<br />Chỗ đỗ xe miễn phí </p>
-										<p>Có điều hòa<br />Đã bao gồm 10% VAT </p>
-										<a href="javascript:void(0)" title="more info" class="more-info">+ Thêm</a>
-									</div>
-									<div class="room-information">
-										<div class="row">
-											<span class="first">Phù hợp:</span>
-											<span class="second">
-												<img src="user/images/ico/person.png" alt="" />
-												<img src="user/images/ico/person.png" alt="" />
-												<img src="user/images/ico/person.png" alt="" />
-												<img src="user/images/ico/person.png" alt="" />
-											</span>
+											<p><strong>Kích thước phòng:</strong>  {{$productVal->area}} m<sup>2</sup></p>
 										</div>
-										<div class="row price">
-											<span class="first">Giá:</span>
-											<span class="second">300.000đ</span>
-										</div>
-										<form action="" method="get">
-											<div class="row">
-												<label for="number-room" id="choice-number" class="first">Số lượng:</label>
-												<input type="number" id="number-room" class="second" name="number-room" min="0" max="3"></input>
-
-											</div>
-											<input type="submit" class="gradient-button" value="Chọn" id="book" name="book">
-										</form>
-									</div>
-									<div class="more-information">
-										<p>Stylish and individually designed room featuring a satellite TV, mini bar and a 24-hour room service menu.</p>
-										<p><strong>Đồ dùng trong phòng:</strong> Safety Deposit Box, Air Conditioning, Desk, Ironing Facilities, Seating Area, Heating, Shower, Bath, Hairdryer, Toilet, Bathroom, Pay-per-view Channels, TV, Telephone</p>
-										<!-- <p><strong>Bed Size(s):</strong> 1 Double </p> -->
-										<p><strong>Kích thước phòng:</strong>  16 m<sup>2</sup></p>
-									</div>
-								</li>
-								<!--//room-->
+									</li>
+									<!--//room-->
+								@endforeach
 							</ul>
 						</article>
 					</section>
@@ -242,7 +162,7 @@ class="active"
 						<article>
 							<h1>Chung</h1>
 							<div class="text-wrap">	
-								<p>Khách sạn Best Ipsum có hơn 1.000 phòng, dãy phòng và căn hộ được thiết kế sang trọng, mỗi phòng đều có các tác phẩm nghệ thuật độc đáo. Chỗ ở tại khách sạn bao gồm máy lạnh trong tất cả các phòng, phòng tắm riêng có gương sưởi, máy sấy tóc, vòi hoa sen, Wi-Fi BT Openzone, tiện nghi pha cà phê và trà, đồ vệ sinh miễn phí, khăn trải giường Ai Cập, TV LCD màn hình phẳng với tầm nhìn miễn phí, bàn làm việc, dịch vụ phòng 24 giờ.</p>
+								<p>{{$homestayVal->description}}</p>
 							</div>
 							
 							<h1>Giờ nhận phòng</h1>
@@ -262,7 +182,7 @@ class="active"
 							
 							<h1>Chính sách giành cho trẻ em</h1>
 							<div class="text-wrap">	
-								<p><strong>Miễn phí!</strong> Với tất cả trẻ em dưới 140 cm.<br /><br />Tất cả trẻ em trên 140 cm đều được áp dụng chính sách dành cho người lớn<br /></p>
+								<p><strong style="color:red;">Miễn phí!</strong> Với tất cả trẻ em dưới <strong style="color:#0005a0;">140</strong>cm.<br /><br />Tất cả trẻ em trên <strong style="color:#0005a0;">140</strong>cm đều được áp dụng chính sách dành cho người lớn<br /></p>
 							</div>
 							
 							<h1>Thú cưng</h1>
@@ -274,7 +194,7 @@ class="active"
 					<!--//description-->
 					
 					<!--facilities-->
-					<section id="facilities" class="tab-content">
+					<!-- <section id="facilities" class="tab-content">
 						<article>
 							<h1>Cơ sở vật chất</h1>
 							<div class="text-wrap">	
@@ -312,7 +232,7 @@ class="active"
 								<p><strong>Miễn phí!</strong> Nơi đỗ xe được bố trí miễn phí </p>
 							</div>
 						</article>
-					</section>
+					</section> -->
 					<!--//facilities-->
 					
 					<!--location-->
@@ -330,86 +250,29 @@ class="active"
 						<article>
 							<h1>Đánh giá của du khách</h1>
 							<ul class="reviews">
-								<!--review-->
-								<li>
-									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
-									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
-									<div class="pro">
-										<p class="stars">
-											<!-- <img src="user/images/ico/star-rating-off.png" alt="" /> -->
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</p>
-									</div>
-									<div class="con"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, inventore.</p></div>
-								</li>
-								<!--//review-->
-								<!--review-->
-								<li>
-									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
-									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
-									<div class="pro">
-										<p class="stars">
-											<!-- <img src="user/images/ico/star-rating-off.png" alt="" /> -->
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</p>
-									</div>
-									<div class="con"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, inventore.</p></div>
-								</li>
-								<!--//review-->
-								<!--review-->
-								<li>
-									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
-									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
-									<div class="pro">
-										<p class="stars">
-											<!-- <img src="user/images/ico/star-rating-off.png" alt="" /> -->
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</p>
-									</div>
-									<div class="con"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, inventore.</p></div>
-								</li>
-								<!--//review-->
-								<!--review-->
-								<li>
-									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
-									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
-									<div class="pro">
-										<p class="stars">
-											<!-- <img src="user/images/ico/star-rating-off.png" alt="" /> -->
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</p>
-									</div>
-									<div class="con"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, inventore.</p></div>
-								</li>
-								<!--//review-->
-								<!--review-->
-								<li>
-									<figure class="left"><img src="uploads/avatar/avatar.jpg" alt="avatar" /></figure>
-									<address><span>Tên du khách</span><br /><br />22/06/2012</address>
-									<div class="pro">
-										<p class="stars">
-											<!-- <img src="user/images/ico/star-rating-off.png" alt="" /> -->
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</p>
-									</div>
-									<div class="con"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi, inventore.</p></div>
-								</li>
-								<!--//review-->
+								<!-- @if( isset($homestayVal->rating) ) -->
+									@foreach($homestayVal->rating as $ratingVal)
+										<!--review-->
+										<li>
+											<figure class="left"><img src="{{$ratingVal->user->avatar}}" alt="avatar" width=50 height=50/></figure>
+											<address><span>{{$ratingVal->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->created_at ))}}</address>
+											<div class="pro">
+												<div class="stars">
+													@for( $i=5-$ratingVal->point; $i--; $i >= 0 )
+														<img src="user/images/ico/star-rating-off.png" alt="" />
+													@endfor
+													@for( $i=$ratingVal->point; $i--; $i >= 0 )
+														<img src="user/images/ico/star-rating-on.png" alt="" />
+													@endfor
+												</div>
+											</div>
+											<div class="con"><p>{{$ratingVal->comment}}</p></div>
+										</li>
+										<!--//review-->
+									@endforeach
+								<!-- @elseif( !empty($homestayVal->rating) ) -->
+									<!-- <h3>Chưa có đánh giá nào</h3> -->
+								<!-- @endif -->
 							</ul>
 						</article>
 					</section>
@@ -421,147 +284,81 @@ class="active"
 				<aside class="right-sidebar">
 					<!--hotel details-->
 					<article class="hotel-details clearfix">
-						<h1>Tên homestay 
+						<h1>{{$homestayVal->name}}
 							<span class="stars">
-								<!-- <img src="user/images/ico/star-rating-off.png" alt="" /> -->
-								<img src="user/images/ico/star.png" alt="" />
-								<img src="user/images/ico/star.png" alt="" />
-								<img src="user/images/ico/star.png" alt="" />
-								<img src="user/images/ico/star.png" alt="" />
+								<span class="point">{{$homestayVal->point}}</span>
 							</span>
 						</h1>
-						<span class="address">Hà Nội</span>
+						<span class="address">{{$homestayVal->province->name}}</span><br/>
+						<span class="address">{{$homestayVal->district->name}}</span>
 						<div class="description">
-							<p>The Best Ipsum hotel  features over 1,000 luxuriously appointed, individually styled rooms, suites and apartments, each containing unique works of art. </p>
+							<p>{{$homestayVal->title}}</p>
 						</div>
 						<div class="image-item">
 							<ul>
+							@foreach($homestayVal->image as $image)
 								<li>
-									<img src="uploads/homestay/img1.jpg" alt="" width="50" height="50" />
-									<a href="uploads/homestay/img1.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
+									<img src="{{$image->url}}" alt="" width="50" height="50" />
+									<a href="{{$image->url}}" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
 								</li>
-								<li>
-									<img src="uploads/homestay/img2.jpg" alt="" width="50" height="50" />
-									<a href="uploads/homestay/img2.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
-								</li>
-								<li>
-									<img src="uploads/homestay/img3.jpg" alt="" width="50" height="50" />
-									<a href="uploads/homestay/img3.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
-								</li>
-								<li>
-									<img src="uploads/homestay/img4.jpg" alt="" width="50" height="50" />
-									<a href="uploads/homestay/img4.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
-								</li>
-								<li>
-									<img src="uploads/homestay/img5.jpg" alt="" width="50" height="50" />
-									<a href="uploads/homestay/img5.jpg" class="image-overlay" rel="prettyPhoto[gallery2]"></a>
-								</li>
+							@endforeach	
 							</ul>
 						</div>
 					</article>
 					<!--//hotel details-->
 
-					<!--Ads-->
-					<article class="default clearfix">
-						<img src="uploads/Ads/ad.png" alt="">
+					<!--Search-->
+					<article class=" default clearfix search-left">
+						<form action="{{route('userRoomDetail')}}">
+							<input type="hidden" name="id" value="{{$homestayVal->id}}">
+							<div class="row-2">
+								<div class="f-item datepicker">
+									<label for="datepicker1">Nhận phòng</label>
+									<div class="datepicker-wrap"><input type="text" placeholder="" value="{{$datepicker1}}" id="datepicker1" name="datepicker1" /></div>
+								</div>
+								<div class="f-item datepicker">
+									<label for="datepicker2">Trả Phòng</label>
+									<div class="datepicker-wrap"><input type="text" placeholder="" value="{{$datepicker2}}" id="datepicker2" name="datepicker2" /></div>
+								</div>
+							</div>
+							<div class="row-3">
+								<div class="f-item spinner">
+									<label for="num_room">Số phòng</label>
+									<input type="text" placeholder="" min="1" value="{{$num_room}}" id="num_room" name="num_room" required="required"/>
+								</div>
+								<div class="f-item spinner">
+									<label for="num_adult">Người lớn</label>
+									<input type="text" placeholder="" value="{{$num_adult}}" id="num_adult" name="num_adult" required="required"/>
+								</div>
+								<div class="f-item spinner">
+									<label for="num_chil">Trẻ em</label>
+									<input type="text" placeholder="" value="{{$num_chil}}" id="num_chil" name="num_chil" required="required"/>
+								</div>
+							</div>
+							<input type="submit" value="Tìm kiếm" class="search-submit" id="search-submit" />
+						</form>
 					</article>
-					<!--//Ads-->
+					<!--//Search-->
 
 					<!-- Booking?-->
 					<article class="default clearfix order">
 						<h2>Phòng đã chọn</h2>
-						<div>
-							<table>
-							<tr>
-								<th>Loại phòng</th>
-								<th>Số lượng</th>
-								<th>Giá</th>
-								<th>Thay đổi</th>
-							</tr>
-							<tr>
-								<td>Phòng 1 giường đơn</td>
-								<td>
-									<input style="width: 30px;height: 10px;border-radius: unset;" min="0" type="number" name="number_room" id="number_room" value="1">
-								</td>
-								<td>200.000đ</td>
-								<td><a href="#">Xóa</a></td>
-							</tr>
-							<tr>
-								<th colspan="2">Tổng</th>
-								<td colspan="2">200.000đ</td>
-							</tr>
+						<div id="change-item-cart">
 
-						</table>
-						<a href="user_booking_step_1.html" class="gradient-button" title="Book">Thanh toán</a>
-						</div>	
+						</div>
+						@if( Session::has("Cart") != null && isset($datepicker1) && isset($datepicker2) )
+							<ul class="popular-hotels order-sum order-date">
+								<li>
+									<p>Ngày nhận phòng: <i>{{$datepicker1}}</i></p>
+									<p>Ngày trả phòng: <i>{{$datepicker2}}</i></p>
+								</li>
+							</ul>
+						@endif
+						<a href="{{route('userBookingStep1').'?id='.$homestayVal->id.'&address='.$homestayVal->province->name.$url}}" class="gradient-button" title="Book">Thanh toán</a>	
 					</article>
 					<!--// Booking?-->
 
 					<!--Popular hotels in the area-->
-					<article class="default clearfix">
-						<h2>Bạn có thể quan tâm</h2>
-						<ul class="popular-hotels">
-							<li>
-								<a href="#">
-									<h3>Tên homestay
-										<span class="stars">
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h3>
-									<p>Từ <span class="price">100.000đ <small>/ Đêm</small></span></p>
-									<p>Hà Nội</p>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<h3>Tên homestay
-										<span class="stars">
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h3>
-									<p>Từ <span class="price">100.000đ <small>/ Đêm</small></span></p>
-									<p>Hà Nội</p>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<h3>Tên homestay
-										<span class="stars">
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h3>
-									<p>Từ <span class="price">100.000đ <small>/ Đêm</small></span></p>
-									<p>Hà Nội</p>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<h3>Tên homestay
-										<span class="stars">
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-											<img src="user/images/ico/star.png" alt="" />
-										</span>
-									</h3>
-									<p>Từ <span class="price">100.000đ <small>/ Đêm</small></span></p>
-									<p>Hà Nội</p>
-								</a>
-							</li>
-							
-						</ul>
-						<a href="user_hot_deals.html" title="Show all" class="show-all">Show all</a>
-					</article>
 					<!--//Popular hotels in the area-->
 					
 					<!--Deal of the day-->

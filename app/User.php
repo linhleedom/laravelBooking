@@ -17,9 +17,11 @@ class User extends Authenticatable
      */
 
     protected $table = 'users';
+    
     protected $fillable = [
         'email', 'password',
     ];
+    protected $quarded = ['*'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,8 +40,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    // protected $table = 'users';
 
     public function bill(){
         return $this->hasMany('App\Bill', 'user_id','id');

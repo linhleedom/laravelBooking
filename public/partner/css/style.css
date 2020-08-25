@@ -2989,7 +2989,7 @@ input[type="text"],
 input[type="number"],
 input[type="password"] {
     border: 1px solid #ccc;
-    font: normal 1.2em 'Roboto';
+    font: normal 1.0em 'Roboto';
     color: #000;
     padding: 6px 4%;
     width: 91.4%;

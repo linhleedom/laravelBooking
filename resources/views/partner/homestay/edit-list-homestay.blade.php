@@ -1,4 +1,90 @@
 @extends('partner.master')
+@section('script')
+
+$(document).ready(function(){
+	$('#provinces').change(function(){
+	var cid = $(this).val();
+	if(cid){
+	$.ajax({
+	type:"get",
+	url: '../partner/getdistricts/'+cid,//Please see the note at the end of the post**
+	success:function(res)
+	{       
+			if(res.length !== 0)
+			{
+				$("#districts").empty();
+				$("#wards").empty();
+				$("#districts").append('<option>Chon</option>');
+				$.each(res,function(key,value){
+					$("#districts").append('<option value="'+key+'">'+value+'</option>');
+				});
+			}else{
+				$("#districts").empty();
+				$("#wards").empty();
+				$("#districts").append('<option>Chọn</option>');
+				$("#wards").append('<option>Chọn</option>');
+			}
+	}
+
+	});
+	}
+});
+
+$('#districts').change(function(){
+	var cid = $(this).val();
+	if(cid){
+	$.ajax({
+	type:"get",
+	url: '../partner/getwards/'+cid,//Please see the note at the end of the post**
+	success:function(res)
+	{       
+			if(res)
+			{
+				$("#wards").empty();
+				$("#wards").append('<option>Chon</option>');
+				$.each(res,function(key,value){
+					$("#wards").append('<option value="'+key+'">'+value+'</option>');
+				});
+			}
+	}
+
+	});
+	}
+});
+
+});
+{{-- function convert_name($str) {
+	if(!$str){
+		return "";
+	};
+	$unicode = array(
+		'a' => 'à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ',
+		'e' => 'è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ',
+		'i' => 'ì|í|ị|ỉ|ĩ',
+		'o' => 'ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ',
+		'u' => 'ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ',
+		'y' => 'ỳ|ý|ỵ|ỷ|ỹ',
+		'd' => 'đ',
+		'A' => 'À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ',
+		'E' => 'È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ',
+		'I' => 'Ì|Í|Ị|Ỉ|Ĩ',
+		'O' => 'Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ',
+		'U' => 'Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ',
+		'Y' => 'Ỳ|Ý|Ỵ|Ỷ|Ỹ',
+		'D' => 'Đ',
+		'-' => '\“|\”|\‘|\’|\,|\!|\&|\;|\@|\#|\%|\~|\`|\=|\_|\'|\]|\[|\}|\{|\)|\(|\+|\^)/',
+		'-' => '/( )/',
+	);
+
+	foreach ($unicode as $khongdau=> $codau){
+		$uni_co_dau = explode("|",$codau);
+
+		$str = str_replace($uni_co_dau,$khongdau,$str);
+	};
+	return $str;
+	
+} --}}
+@endsection
 @section('main')
     <!--main-->
 	<div class="main" role="main">		
@@ -25,37 +111,44 @@
 
 				<!--three-fourth content-->
 					<section class="three-fourth form-booking">
-						<h1 style="text-align: center;text-transform: uppercase;">Thông tin homestay của bạn</h1>
-						<form id="booking" method="post" action="booking-step2.html" class="booking ">
+						<h1 style="text-align: center;text-transform: uppercase;">Sửa thông tin homestay <br><br><b style="color: lightcoral"><u>{{$homestay->name}}</u></b> </h1>
+					<form id="booking" method="post" action="" class="booking ">
+							{{csrf_field()}}
 							<fieldset>
+								
+								<tr>
+									<td colspan="2" class="alert-danger">
+										{{Session::get('Thongbao')}}
+									</td>
+								</tr>
 								<h3 style="margin-top: 20px;"><span>01</span> Địa chỉ Homestay của bạn </h3>
 								<div class="row twins">
 									<div class="f-item custom-item">
-										<label for="text">Tên chỗ nghỉ </label>
-										<input type="text" id="name" name="name" />
+										<label for="name">Tên chỗ nghỉ </label>
+									<input type="text" id="name"  name="name"  value="{{$homestay->name}}" />
 									</div>
 									<div class="f-item custom-item">
 										<label>Tỉnh (Thành Phố)</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option>Hà Nội</option>
-											<option>Hồ Chí Minh</option>
+										<select name="provinces" id="provinces">
+											@foreach($provinces as $province)
+												<option  value="{{$province->matp}}" @if($homestay->matp == $province->matp) selected @endif >{{$province->name}}</option>
+											@endforeach
 										</select>
                                     </div>
                                     <div class="f-item custom-item">
 										<label>Quận (HUyện)</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option></option>
-											<option></option>
+										<select name="district" id="districts">
+											@foreach($district as $districtVal)
+											<option  value="{{$districtVal->maqh}}" @if($homestay->maqh == $districtVal->maqh) selected @endif >{{$districtVal->name}}</option>
+											@endforeach
 										</select>
                                     </div>
                                     <div class="f-item custom-item">
 										<label>Phường Xã</label>
-										<select>
-											<option selected="selected">Chọn</option>
-											<option></option>
-											<option></option>
+										<select name="ward" id="wards">
+											@foreach($ward as $WardVal)
+												<option  value="{{$WardVal->xaid}}" @if($homestay->xaid == $WardVal->xaid) selected @endif >{{$WardVal->name}}</option>
+											@endforeach
 										</select>
 									</div>
 									<!-- <span class="info">You’ll receive a confirmation email</span> -->
@@ -64,17 +157,24 @@
                                 <h3 style="margin-top: 20px;"><span>02</span> Loại Homestay</h3>
 								<div class="row twins">
 									<div class="f-item custom-item">
-										<label>Loại căn hộ </label>
-										<input type="text" id="brand_name" name="brand_name" />
+										<label>Mô tả Homestay :
+											<textarea rows="10" cols="10" name="description" placeholder="Thông tin mô tả" >{{$homestay->description}}</textarea>
+										</label>
 									</div>
 									
 									<div class="f-item custom-item">
-										<label for="">Trạng thái của Homestay</label>
-										<input type="checkbox" id="status" name="status"  value=""/> &nbsp <b>Ẩn/Hiện</b>
+										<label for="status">Trạng thái của Homestay</label>
+										<label for="status1">Ẩn  &nbsp 
+											<input required type="radio" id="status1" name="status"  value="0" @if($homestay->status ==0) checked  @endif/></label>
+										<label for="status2">Hiện  &nbsp 
+											<input required type="radio" id="status2" name="status"  value="1" @if($homestay->status == 1) checked  @endif/>
+										</label>
 									</div>
-                                </div>
+								</div>
+								
+							<input type="submit" class="gradient-button" value="Update" id="Edit" >
 							</fieldset>							
-							<input type="submit" class="gradient-button" value="Thêm mới" id="add" >
+						{{-- <input href = "{{asset('partner/list-homestay')}}" type="submit" class="gradient-button" value="Cancel" id="Cancel" > --}}
 						</form>
 					</section>
 				<!--//three-fourth content-->
@@ -127,3 +227,4 @@
 	</div>
 	<!--//main-->
 @endsection
+

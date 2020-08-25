@@ -17,9 +17,7 @@ class CreateDistrictsTable extends Migration
             $table->bigIncrements('id');
             $table->string('maqh');
             $table->string('name');
-            $table->string('type');
             $table->string('matp');
-            $table->timestamps();
         });
     }
 
