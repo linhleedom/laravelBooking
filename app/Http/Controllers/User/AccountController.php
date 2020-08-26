@@ -204,14 +204,17 @@ class AccountController extends Controller
     }
 
     public function cancelBooking($id, $bill_id){
-        // dd($bill_id);
         $bill = Bill::find($bill_id);
-        $bill->status = 1;
-        $bill->update();
+        if($bill->status == 0){
+            $bill->status = 1;
+            $bill->update();
+        }
         foreach($bill->order as $order){
             $order = Order::find($order->id);
-            $order->status = 0;
-            $order->update();
+            if($order->status == 1){
+                $order->status = 0;
+                $order->update();
+            }
         }
         return redirect()->back()->with(['cancel-booking'=>'success','massage'=>'Hủy phòng thành công, kiểm tra trong lịch sử đặt phòng']);
     }

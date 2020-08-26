@@ -11,19 +11,21 @@ Room Detail
 @endsection
 @section('scriptEnd')
 	<script>
-		function AddCart(id){
+		function AddCart(id, homestay_id, datepicker1, datepicker2){
 			$.ajax({
 				url: '../add-cart/'+id,
 				type: 'GET',
+				data: {homestay_id: homestay_id, datepicker1:datepicker1, datepicker2:datepicker2}
 			}).done(function(response){
 				$('#change-item-cart').empty();
 				$('#change-item-cart').html(response);
 			});
 		}
-		function DelItem(id){
+		function DelItem(id, homestay_id, datepicker1, datepicker2){
 			$.ajax({
 				url: '../delete-item-cart/'+id,
 				type: 'GET',
+				data: {homestay_id: homestay_id, datepicker1:datepicker1, datepicker2:datepicker2}
 			}).done(function(response){
 				$('#change-item-cart').empty();
 				$('#change-item-cart').html(response);
@@ -130,9 +132,9 @@ class="active"
 												</div>
 											@endif	
 											@if( isset($datepicker1) && isset($datepicker2) )
-												<a onclick="AddCart({{$productVal->id}})" class="gradient-button no-href">Chọn</a>
+												<a onclick="AddCart({{$productVal->id}}, {{$homestayVal->id}}, '{{$datepicker1}}', '{{$datepicker2}}')" class="gradient-button no-href">Chọn</a>
 											@else
-												<a onclick="Alert()" class="gradient-button no-href">Chọn</a>	
+												<a onclick="Alert()" class="gradient-button no-href">Chọn</a>
 											@endif
 											
 											<!-- <a href="{{route('userAddCart',['id' => $productVal->id])}}" class="gradient-button">Chọn</a> -->
@@ -192,58 +194,6 @@ class="active"
 						</article>
 					</section>
 					<!--//description-->
-					
-					<!--facilities-->
-					<!-- <section id="facilities" class="tab-content">
-						<article>
-							<h1>Cơ sở vật chất</h1>
-							<div class="text-wrap">	
-								<ul class="three-col">
-									<li>Nhà bếp</li>
-									<li>Phòng tắm</li>
-									<li>Khăn tắm</li>
-									<li>Beachfront</li>
-									<li>Hotspots</li>
-									<li>Exhibition/convention floor</li>
-									<li>Restaurant</li>
-									<li>Room service - full menu</li>
-									<li>Courtyard</li>
-									<li>Lounges/bars</li>
-									<li>Laundry/Valet service</li>
-									<li>Airport Shuttle Service</li>
-									<li>Complimentary breakfast</li>
-									<li>Valet cleaning</li>
-									<li>Car hire</li>
-								</ul>
-							</div>
-							
-							<h1>Địa điểm lân cận</h1>
-							<div class="text-wrap">	
-								<p>Gần trung tâm, chợ, công an phường, các tụ điểm vui chơi,...</p>
-							</div>
-							
-							<h1>Mạng Internet</h1>
-							<div class="text-wrap">	
-								<p><strong>Miễn phí!</strong> Wifi có sẵn trong khu vực và hoàn toàn miễn phí</p>
-							</div>
-							
-							<h1>Nơi đỗ xe</h1>
-							<div class="text-wrap">	
-								<p><strong>Miễn phí!</strong> Nơi đỗ xe được bố trí miễn phí </p>
-							</div>
-						</article>
-					</section> -->
-					<!--//facilities-->
-					
-					<!--location-->
-					<!-- <section id="location" class="tab-content">
-						<article> -->
-							<!--map-->
-								<!-- <div class="gmap" id="map_canvas"></div> -->
-							<!--//map-->
-						<!-- </article> -->
-					<!-- </section> -->
-					<!--//location-->
 					
 					<!--reviews-->
 					<section id="reviews" class="tab-content">
@@ -344,17 +294,11 @@ class="active"
 					<article class="default clearfix order">
 						<h2>Phòng đã chọn</h2>
 						<div id="change-item-cart">
-
+							@include('user.cart.cart')
 						</div>
-						@if( Session::has("Cart") != null && isset($datepicker1) && isset($datepicker2) )
-							<ul class="popular-hotels order-sum order-date">
-								<li>
-									<p>Ngày nhận phòng: <i>{{$datepicker1}}</i></p>
-									<p>Ngày trả phòng: <i>{{$datepicker2}}</i></p>
-								</li>
-							</ul>
+						@if( isset($datepicker1) && isset($datepicker2) )
+							<a href="{{route('userBookingStep1').'?id='.$homestayVal->id.'&address='.$homestayVal->province->name.$url}}" class="gradient-button" title="Book">Thanh toán</a>	
 						@endif
-						<a href="{{route('userBookingStep1').'?id='.$homestayVal->id.'&address='.$homestayVal->province->name.$url}}" class="gradient-button" title="Book">Thanh toán</a>	
 					</article>
 					<!--// Booking?-->
 
