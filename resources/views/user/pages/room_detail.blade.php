@@ -20,7 +20,7 @@ Room Detail
 				$('#change-item-cart').empty();
 				$('#change-item-cart').html(response);
 			});
-		};
+		}
 		function DelItem(id, homestay_id, datepicker1, datepicker2){
 			$.ajax({
 				url: '../delete-item-cart/'+id,
@@ -30,33 +30,10 @@ Room Detail
 				$('#change-item-cart').empty();
 				$('#change-item-cart').html(response);
 			});
-		};
+		}
 		function Alert(){
 			alert('Bạn hãy chọn thời gian để tìm được phòng phù hợp');
-		};
-		$('#search-submit').click(function(){
-			var id = $('#id').val();
-			var datepicker1 = $('#datepicker1').val();
-			var datepicker2 = $('#datepicker2').val();
-			var num_room = $('#num_room').val();
-			var num_adult = $('#num_adult').val();
-			var num_chil = $('#num_chil').val();
-			$.ajax({
-				url: '../search-room-ajax',
-				type: 'GET',
-				data: { id: id, datepicker1: datepicker1, datepicker2: datepicker2, num_room: num_room, num_adult: num_adult, num_chil: num_chil}
-			}).done(function(response){
-				$('#search-result').empty();
-				$('#search-result').html(response);
-				$('.more-information').slideUp();
-				$('.more-info').click(function() {
-					var moreinformation = $(this).closest('li').find('.more-information');
-					var txt = moreinformation.is(':visible') ? '+ Thêm' : ' - Ẩn';
-					$(this).text(txt);
-					moreinformation.stop(true, true).slideToggle('slow');
-				});
-			});
-		})
+		}
 	</script>
 @endsection
 @section('home')
@@ -112,8 +89,72 @@ class="active"
 					
 					<!--availability-->
 					<section id="availability" class="tab-content">
-						<article id="search-result" >
-							@include('user.ajax.search_room_detail')
+						<article>
+							<h1>Còn {{$product->count()}} phòng có sẵn</h1>
+							<div class="text-wrap">
+								@if( isset($datepicker1) && isset($datepicker2) )
+									<p>Phòng có sẵn từ <span class="date">{{$datepicker1}}</span> đến <span class="date">{{$datepicker2}}</span>.</p>
+								@endif
+							</div>
+							<!-- <h1>Room types</h1> -->
+							<ul class="room-types">
+								@foreach($product as $productVal)
+									<!--room-->
+									<li>
+										<figure class="left"><img src="{{$productVal->avatar}}" alt="" width="270" height="152" />
+										<a href="{{$productVal->avatar}}" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
+										<div class="meta">
+											<p class="pro-name">{{ucfirst($productVal->name)}}</p>
+											<h2 class="type-name">{{$productVal->roomType->name}}</h2>
+											@if( $productVal->discount != 0 )
+												<p>Giảm giá: <span class="discount">{{$productVal->discount}}%</span></p>
+											@endif
+											<p>Đã bao gồm 10% VAT </p>
+											<p>Thanh toán tại homestay</p>
+											<a href="javascript:void(0)" title="more info" class="more-info">+ Thêm</a>
+										</div>
+										<div class="room-information">
+											<div class="row">
+												<span class="first">Phù hợp:</span>
+												<span class="second"><span class="capacity">{{$productVal->roomType->capacity}} x</span><img src="user/images/ico/person.png" alt="" /></span>
+											</div>
+											@if( $productVal->discount == 0 )
+												<div class="row price">
+													<span class="first">Giá: </span>
+													<span class="second">{{ number_format( $productVal->prices,0,',','.' ) }}đ</span>
+												</div>
+											@else
+												<div class="row price">
+													<span class="first">Giá: </span>
+													<span class="second price-old"><strike>{{ number_format( $productVal->prices,0,',','.' ) }}</strike>đ</span>
+												</div>
+												<div class="row price">
+													<span class="first">&nbsp</span>
+													<span class="second price-new">{{ number_format( $productVal->prices*(100-$productVal->discount)/100,0,',','.' ) }}đ</span>
+												</div>
+											@endif	
+											@if( isset($datepicker1) && isset($datepicker2) )
+												<a onclick="AddCart({{$productVal->id}}, {{$homestayVal->id}}, '{{$datepicker1}}', '{{$datepicker2}}')" class="gradient-button no-href">Chọn</a>
+											@else
+												<a onclick="Alert()" class="gradient-button no-href">Chọn</a>
+											@endif
+										</div>
+										<div class="more-information">
+											<p>{{$productVal->description}}</p>
+											<p><strong>Tiện ích và đồ dùng:</strong></p>
+											<div class="text-wrap utilities">	
+												<ul class="three-col">
+													@foreach($productVal->utilities as $utilitiesVal)
+														<li>{{$utilitiesVal->name}}</li>
+													@endforeach
+												</ul>
+											</div>
+											<p><strong>Kích thước phòng:</strong>  {{$productVal->area}} m<sup>2</sup></p>
+										</div>
+									</li>
+									<!--//room-->
+								@endforeach
+							</ul>
 						</article>
 					</section>
 					<!--//availability-->
@@ -218,8 +259,8 @@ class="active"
 
 					<!--Search-->
 					<article class=" default clearfix search-left">
-						<form>
-							<input type="hidden" name="id" id="id" value="{{$homestayVal->id}}">
+						<form action="{{route('userRoomDetail')}}">
+							<input type="hidden" name="id" value="{{$homestayVal->id}}">
 							<div class="row-2">
 								<div class="f-item datepicker">
 									<label for="datepicker1">Nhận phòng</label>
@@ -244,7 +285,7 @@ class="active"
 									<input type="text" placeholder="" value="{{$num_chil}}" id="num_chil" name="num_chil" required="required"/>
 								</div>
 							</div>
-							<input type="button" value="Tìm kiếm" class="search-submit" id="search-submit" />
+							<input type="submit" value="Tìm kiếm" class="search-submit" id="search-submit" />
 						</form>
 					</article>
 					<!--//Search-->
@@ -258,7 +299,9 @@ class="active"
 						<div id="change-item-cart">
 							@include('user.ajax.cart')
 						</div>
+						@if( isset($datepicker1) && isset($datepicker2) )
 							<a href="{{route('userBookingStep1').'?id='.$homestayVal->id.'&address='.$homestayVal->province->name.$url}}" class="gradient-button" title="Book">Thanh toán</a>	
+						@endif
 					</article>
 					<!--// Booking?-->
 

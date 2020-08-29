@@ -1,3 +1,5 @@
+
+
 @if(isset($sessionCart))
     @if( Session::has($sessionCart) && isset($datepicker1) && isset($datepicker2))
         @foreach(Session::get($sessionCart)->product as $item)
