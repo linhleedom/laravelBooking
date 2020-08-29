@@ -26,7 +26,7 @@
 	<script type="text/javascript" src="user/js/selectnav.js"></script>
 	<script type="text/javascript" src="user/js/scripts.js"></script>
 	<!-- <script type="text/javascript" src="user/js/validation.js"></script> -->
-	<script type="text/javascript">	
+	<script type="text/javascript">
 		@yield('script')
 	</script>
 </head>

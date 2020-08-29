@@ -15,10 +15,15 @@ class BookingController extends Controller
 {
     public function bookingStep1(Request $request){
         $id = $request->id;
-        $datepicker1 = $request->datepicker1;
-        $datepicker2 = $request->datepicker2;
-        $homestay = Homestay::find($id);
-        return view('user.pages.booking_step_1', compact('homestay','datepicker1','datepicker2'));
+        if(Session::has('Cart-homestay-'.$id)){
+            $datepicker1 = $request->datepicker1;
+            $datepicker2 = $request->datepicker2;
+            $homestay = Homestay::find($id);
+            return view('user.pages.booking_step_1', compact('homestay','datepicker1','datepicker2'));
+        }else{
+            return redirect()->back()->with(['check-session'=>'fail','massage'=>'Vui lòng chọn ít nhất 1 phòng']);
+        }
+        
     }
 
     public function bookingStep2(Request $request){

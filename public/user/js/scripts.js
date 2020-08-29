@@ -148,7 +148,7 @@ $(document).ready(function () {
 	});
 
 	// Show/hidden password
-	$('#showPassword').click(function(){
+	$('.showPassword').click(function(){
 		var passwordField = $('.show');
 		var passwordFieldType = passwordField.attr('type');
 		if(passwordFieldType == 'password'){

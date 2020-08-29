@@ -19,8 +19,8 @@ class AccountController extends Controller
 {
     public function index(Request $request){
         $id = $request->id;
-        $billHistory = Bill::where('user_id',$id)->where('status','!=','0')->paginate(3);
-        $billBooking = Bill::where('user_id',$id)->where('status','0')->paginate(3);
+        $billHistory = Bill::where([['user_id',$id],['status','!=','0']])->orderBy('created_at', 'DESC')->paginate(3);
+        $billBooking = Bill::where([['user_id',$id],['status','0']])->orderBy('created_at', 'DESC')->paginate(3);
         $user = User::find($id);
         $province = Province::all();
         $district = District::all();

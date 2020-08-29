@@ -34,6 +34,10 @@ Route::group(['prefix'=>''],function(){
         'as'=>'userRoomDetail',
         'uses'=>'user\RoomDetailController@index'
     ]);
+    Route::get('/search-room-ajax', [
+        'as'=>'userSearchRoomAjax',
+        'uses'=>'user\RoomDetailController@searchRoomAjax'
+    ]);
     Route::post('/register',[
         'as'=>'registerUser',
         'uses'=>'user\Auth\RegisterUserController@postRegister'
@@ -128,6 +132,14 @@ Route::group(['prefix'=>''],function(){
     Route::get('/booking-step-3/{id}',[
         'as'=>'userBookingStep3',
         'uses'=>'user\BookingController@bookingStep3'
+    ]);
+    Route::get('/search-filter',[
+        'as'=>'userSearchFilter',
+        'uses'=>'user\SearchResultController@filter'
+    ]);
+    Route::get('/search-orderBy',[
+        'as'=>'userSearchOrderBy',
+        'uses'=>'user\SearchResultController@orderBy'
     ]);
     
 });
