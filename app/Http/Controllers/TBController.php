@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Blog;
+use App\District;
 class TBController extends Controller
 {
     public function getThemBai(){
-    	return view('admin.thembai');
+        $district= District::all();
+    	return view('admin.thembai',['district'=>$district]);
     }
 
     public function postThemBai(Request $request)
@@ -17,7 +20,7 @@ class TBController extends Controller
                 'title'=>'required|min:3|max:100',
                 'photo'=>'required',
                 'post'=>'required',
-                'xaid'=>'required',
+                'maqh'=>'required',
                 'status'=>'required',
             ],
             [
@@ -26,7 +29,7 @@ class TBController extends Controller
                 'title.max'=>'Tiêu đề quá dài ( từ 3 đến 100 kí tự !)',
                 'post.required'=>'nhập thiếu nội dung',
                 'photo.required'=>'Mời bạn chọn ảnh!',
-                'xaid.required'=>'Mời bạn nhập xaid!',
+                'maqh.required'=>'Mời bạn chọn quận huyện!',
                 'status.required'=>'Hãy chọn trạng thái!',
 
             ]);
@@ -38,7 +41,9 @@ class TBController extends Controller
     	$new ->photo= $link;
         $new ->description= $request->description;
     	$new ->post= $request->post;
-        $new ->maqh= $request->xaid;
+        $new ->maqh= $request->maqh;
+
+        $new ->alias=Str::slug($request->title);
         $new ->status=$request->status;
         $new ->created_at= now();
         $new ->updated_at= now();

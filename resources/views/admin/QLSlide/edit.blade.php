@@ -5,13 +5,19 @@
 	<div id="content" class="span10">
 		<ul class="breadcrumb">
 			<li>
-				<i class="icon-home"></i>
-				<a href="#">Home</a>
-				<i class="icon-angle-right"></i> 
-			</li>
+			<i class="icon-home"></i>
+			<a href="#">Home</a> 
+			<i class="icon-angle-right"></i>
+		</li>
+		<li><a href="#">Quản Lí</a></li>
+		<li>
+			<i class="icon-angle-right"></i>
+			<a href="#">Quản Lí Slide</a>
+		</li>
 			<li>
+				<i class="icon-angle-right"></i>
 				<i class="icon-edit"></i>
-				<a href="#">Slide</a>
+				<a href="#">Edit Slide</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">

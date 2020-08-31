@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Blog;
+use App\District;
+use App\Province;
 class QLBlogController extends Controller
 {
 
@@ -13,11 +15,14 @@ class QLBlogController extends Controller
     }
     public function getDetail($id){
         $blog= Blog::find($id);
-    	return view('admin.QLBlog.detail',['blog'=>$blog]);
+        $province=Province::all();
+    	return view('admin.QLBlog.detail',['blog'=>$blog],['province'=>$province]);
     }
     public function getEdit($id){
         $blog= Blog::find($id);
-    	return view('admin.QLBlog.edit',['blog'=>$blog]);
+        
+        $district=District::all();
+    	return view('admin.QLBlog.edit',['blog'=>$blog],['district'=>$district]);
     }
     public function postEdit(Request $request, $id)
     {
@@ -27,7 +32,7 @@ class QLBlogController extends Controller
                 'title'=>'required|min:3|max:100',
                 'photo'=>'required',
                 'post'=>'required',
-                'xaid'=>'required',
+                'maqh'=>'required',
                 'status'=>'required',
             ],
             [
@@ -36,7 +41,7 @@ class QLBlogController extends Controller
                 'title.max'=>'Tiêu đề quá dài ( từ 3 đến 100 kí tự !)',
                 'post.required'=>'nhập thiếu nội dung',
                 'photo.required'=>'Mời bạn chọn ảnh!',
-                'xaid.required'=>'Mời bạn nhập xaid!',
+                'maqh.required'=>'Mời bạn nhập maqh!',
                 'status.required'=>'Hãy chọn trạng thái!',
 
             ]);
@@ -48,7 +53,7 @@ class QLBlogController extends Controller
         $new ->photo= $link;
         $new ->description= $request->description;
         $new ->post= $request->post;
-        $new ->maqh= $request->xaid;
+        $new ->maqh= $request->maqh;
         $new ->status=$request->status;
         $new ->created_at= now();
         $new ->updated_at= now();

@@ -208,11 +208,17 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
         Route::get('edit/{id}','HomeStayController@getEdit');
         Route::post('edit/{id}','HomeStayController@postEdit');
 
+        Route::get('DStienich','HomeStayController@getDStienich');
         Route::get('tienich','HomeStayController@getTienIch');
         Route::post('tienich','HomeStayController@postTienIch');
+        Route::get('editTI/{id}','HomeStayController@getEditTI');
+        Route::post('editTI/{id}','HomeStayController@postEditTI');
+        Route::get('xoaTI/{id}','HomeStayController@getDelTI');
 
+        Route::get('DSroomstyle','HomeStayController@getDSRS');
         Route::get('roomstyle','HomeStayController@getRoomStyle');
         Route::post('roomstyle','HomeStayController@postRoomStyle');
+        Route::get('xoaRS/{id}','HomeStayController@getDelRS');
 
     });
 

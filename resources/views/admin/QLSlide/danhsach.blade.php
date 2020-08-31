@@ -8,12 +8,16 @@
 			<a href="#">Home</a> 
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="#">Slide</a></li>
+		<li><a href="#">Quản Lí</a></li>
+		<li>
+			<i class="icon-angle-right"></i>
+			<a href="#">Quản Lí Slide</a>
+		</li>
 	</ul>
 	<div class="row-fluid sortable">		
 		<div class="box span12">
 			<div class="box-header" data-original-title>
-				<h2><i class="halflings-icon white user"></i><span class="break"></span>Slide</h2>
+				<h2><i class="halflings-icon white user"></i><span class="break"></span>danh Sách Slide</h2>
 				<div class="box-icon">
 					<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 					<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>

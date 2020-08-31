@@ -9,13 +9,13 @@
 			</li>
 			<li>
 				<i class="icon-edit"></i>
-				<a href="#">Forms</a>
+				<a href="#">Thêm Bài Viết</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
 			<div class="box span12">
 				<div class="box-header" data-original-title>
-					<h2><i class="halflings-icon white edit"></i><span class="break"></span>Form Elements</h2>
+					<h2><i class="halflings-icon white edit"></i><span class="break"></span>Thêm bài Viết</h2>
 					<div class="box-icon">
 						<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 						<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -42,7 +42,13 @@
 						<div class="control-group">
 						  <label class="control-label" for="typeahead">Tiêu Đề:</label>
 						  <div class="controls">
-							<input type="text" id="typeahead" name="title">
+							<input style="width: 500px; height: 30px;" type="text" id="typeahead" name="title">
+						  </div>
+						</div>
+						<div class="control-group">
+						  <label class="control-label" for="description">Mô tả:</label>
+						  <div class="controls">
+							<input style="width: 500px; height: 30px;" type="text" id="description" name="description">
 						  </div>
 						</div>
 						<div class="control-group">
@@ -51,16 +57,16 @@
 							<input type="file" id="date01" name="photo">
 						  </div>
 						</div>   
+						
 						<div class="control-group">
-						  <label class="control-label" for="description">Mô tả:</label>
+						  <label class="control-label" for="maqh">Mã quận/huyện:</label>
 						  <div class="controls">
-							<input type="text" id="description" name="description">
-						  </div>
-						</div>
-						<div class="control-group">
-						  <label class="control-label" for="xaid">XaId:</label>
-						  <div class="controls">
-							<input type="number" id="xaid" name="xaid">
+							<select name="maqh" id="maqh">
+								<option value="">-----------chọn mã qh-----------</option>
+								@foreach($district as $tl)
+								<option value="{{$tl->maqh}}">{{$tl->name}}</option>
+								@endforeach
+							</select>
 						  </div>
 						</div>   
 						<div class="control-group">
@@ -84,7 +90,7 @@
 						<div class="control-group">
 						  	<label class="control-label" for="status">Public BV:</label>
 						  	<label class="controls radio-inline">
-								<input type="radio" name="status" value="0" id="status">Ẩn	
+								<input type="radio" name="status" value="0" id="status" checked="checked">Ẩn	
 							</label>	
 							<label class="controls radio-inline">
 								<input type="radio" name="status" value="1" id="status">Public

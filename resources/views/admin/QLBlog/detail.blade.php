@@ -9,6 +9,10 @@
 				<i class="icon-angle-right"></i> 
 			</li>
 			<li>
+				<a href="#">Quản lí Bài Viết</a>
+				<i class="icon-angle-right"></i>
+			</li>
+			<li>
 				<i class="icon-edit"></i>
 				<a href="#">Detail</a>
 			</li>
@@ -46,9 +50,15 @@
 						  </div>
 						</div>
 						<div class="control-group">
-						  <label class="control-label" for="xaid">XaId:</label>
+						  <label class="control-label" for="maqh">Thành Phố/Tỉnh:</label>
 						  <div class="controls">
-							<input type="number" id="xaid" name="xaid" value="{{$blog->xaid}}">
+							<input type="text" id="maqh" name="maqh" 
+								@foreach($province as $tl)
+								@if($blog->maqh==$tl->id)
+								value="{{$tl->name}}"
+								@endif
+								@endforeach
+							>
 						  </div>
 						</div>   
 						<div class="control-group">
