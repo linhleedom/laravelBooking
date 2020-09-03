@@ -18,13 +18,30 @@ class OrderController extends Controller
         $homestay = Homestay::get();
         $order = Order::find($id);
         $order = Order::where('bill_id','=',$id)->get();
-        
-        // dd($homestay);
-        
 
         return view ('partner.my_order.my-orders',
         ['product'=> $product],
         ['order'=> $order],
         ['homestay'=> $homestay]);
     }
+    function getEditOrder($id){
+        
+        $order = Order::find($id);    
+        // dd($order);    
+        $list_Bill = Bill::find($id);
+        return view ('partner.my_order.edit-status-order',
+        ['order'=> $order],
+        ['list_Bill'=>$list_Bill]);
+    }
+
+    function postEditOrder(Request $request,$id){
+        
+        
+        $order = Order::find($id);  
+        $order->status = $request->status;  
+
+        $order->save();
+        return back()->withInput()->with('thongbao','Cập nhật thành công | Kiểm tra tại thông tin hóa đơn ');
+    }
+
 }

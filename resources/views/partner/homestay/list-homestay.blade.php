@@ -1,4 +1,7 @@
 @extends('partner.master')
+@section('title')
+List Homestay
+@endsection
 @section('main')
 <div class="main" role="main">		
     <div class="wrap clearfix">
@@ -29,7 +32,7 @@
 										font-size: 1.5em;
 								">
 										{{Session::get('thongbao')}}
-								</div>
+						</div>
                     <table class="list-homestay">
                         <tr>
                             <th>STT</th>
@@ -53,7 +56,11 @@
                             </td>
                             <td>{{($Homestay->status==0)?"Ẩn":"Hiện"}}</td>
                             <td colspan="2">
-                                <a href="" title="Sửa" class="gradient-button edit1">Thanh toán </a>
+                                @if ($Homestay->status_pay == 1)                                    
+                                    <a href="" title="Sửa" class="gradient-button success">Đã Thanh toán </a>
+                                @else                                    
+                                    <a href="" title="Sửa" class="gradient-button danger">Chưa Thanh toán </a>
+                                @endif
                                 {{-- DB thiếu cột trạng thái thanh toán --}}
                             </td>
                             <td>

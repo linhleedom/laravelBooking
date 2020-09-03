@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use App\Homestay;
 use App\District;
 use App\Province;
@@ -23,13 +24,7 @@ class HomestayPartnerController extends Controller
     public function getListPartnerHomestay()
     {
         $data1['homestaylist'] = Homestay::where('user_id',Auth::user()->id)->get();
-        // dd($data1);
         return view ('partner.homestay.list-homestay',$data1);
-    }
-
-    
-    public function getViewPartnerHomestay(){
-
     }
 
     //upload Ảnh
@@ -101,17 +96,12 @@ class HomestayPartnerController extends Controller
     public function postAddPartnerHomestay(Request $request){
         
         $homestay = new Homestay() ;
-        // if(){
-            
 
-        // }else {
-        //     return back()->with('thongbao','Lỗi thêm');
-        // }
         if($request->isMethod('post') && $request->hasFile('avatar')){
 
             $image = $request->file('avatar');
             $image_size = $image->getSize();
-             $image_ext = $image->getClientOriginalExtension();
+            $image_ext = $image->getClientOriginalExtension();
             $new_image_name = "uploads/homestay/"."avatar".rand(1,99999).".".$image_ext;
 
             $destination_path = public_path('/uploads/homestay');
@@ -120,10 +110,14 @@ class HomestayPartnerController extends Controller
             $homestay->avatar = $new_image_name;
             
             $homestay->name=$request->name;
+            $alias = Str::slug($request->name, '-');
+            $homestay->alias = $alias;
             $homestay->user_id= Auth::user()->id;
             $homestay->matp=$request->matp;
+            $homestay->title = $request->title;
             $homestay->maqh =$request->maqh ;
-            $homestay->xaid=$request->xaid ;
+            $homestay->xaid=$request->xaid ;            
+            $homestay->status_pay = 0;
             $homestay->description=$request->description;
             $homestay->status=$request->status;
 
@@ -167,7 +161,6 @@ class HomestayPartnerController extends Controller
         $provinces = Province::all();
         $district = District::all();
         $ward = Ward::all();
-        
         return view ('partner.homestay.edit-list-homestay',['homestay'=>$homestay],compact('provinces','district','ward'));
     }
 
@@ -194,16 +187,18 @@ class HomestayPartnerController extends Controller
         $homestay = Homestay::find($id);
 
         $homestay->name = $request->name;
+        $alias = Str::slug($request->name, '-');
+        $homestay->alias = $alias;
         $homestay->matp = $request->provinces;
+        $homestay->title = $request->title;
         $homestay->maqh = $request->district;
         $homestay->xaid = $request->ward;
+        $homestay->status_pay = $request->status_pay;
         $homestay->description = $request->description;
         $homestay->status = $request->status;
-        
-        // dd($homestay);
-        $homestay->save();
-        // return redirect('partner/list-homestay');
 
+        
+        $homestay->save();
 
         return redirect()->intended('partner/list-homestay')->with('Thongbao','Sửa thành công');
 

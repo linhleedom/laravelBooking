@@ -76,7 +76,7 @@ class LoginPartnerController extends Controller
 
         if ($user->id ){
             
-            return redirect()->intended('login-partner')->with('thongbao','Đăng ký thành công');
+            return redirect()->intended('partner/login-partner')->with('thongbao','Đăng ký thành công');
 
         }else
         {

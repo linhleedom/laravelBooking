@@ -1,4 +1,7 @@
 @extends('partner.master')
+@section('title')
+Edit list homestay
+@endsection
 @section('script')
 
 $(document).ready(function(){
@@ -99,13 +102,6 @@ $('#districts').change(function(){
 						<li>Thêm Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->
-					
-					<!--top right navigation-->
-					<!-- <ul class="top-right-nav">
-						<li><a href="#" title="Back to results">Back to results</a></li>
-						<li><a href="#" title="Change search">Change search</a></li>
-					</ul> -->
-					<!--//top right navigation-->
 				</nav>
 				<!--//breadcrumbs-->
 
@@ -161,6 +157,10 @@ $('#districts').change(function(){
 											<textarea rows="10" cols="10" name="description" placeholder="Thông tin mô tả" >{{$homestay->description}}</textarea>
 										</label>
 									</div>
+									<div class="f-item custom-item">
+										<label>Title: </label>
+									<input  required= "required" type="text" name = "title" value="{{$homestay->title}}">
+									</div>
 									
 									<div class="f-item custom-item">
 										<label for="status">Trạng thái của Homestay</label>
@@ -169,7 +169,19 @@ $('#districts').change(function(){
 										<label for="status2">Hiện  &nbsp 
 											<input required type="radio" id="status2" name="status"  value="1" @if($homestay->status == 1) checked  @endif/>
 										</label>
-									</div>
+									</div>									
+								</div>
+
+								<h3 style="margin-top: 20px;"><span>03</span> Thanh toán Homestay</h3>
+								<div class="row twins">									
+									<div class="f-item custom-item">
+										<label for="status" style="margin-bottom: 20px;">Trạng thái thanh toán Homestay</label>
+										<label for="status3"><strong class="gradient-button danger" >Chưa thanh toán  &nbsp </strong> 
+											<input required type="radio" id="status3" name="status_pay"  value="0" @if($homestay->status_pay ==0) checked  @endif/></label>
+										<label for="status4"> <span class="gradient-button success" style="color: aliceblue"> Đã thanh toán  &nbsp</span> 
+											<input required type="radio" id="status4" name="status_pay"  value="1" @if($homestay->status_pay == 1) checked  @endif/>
+										</label>
+									</div>									
 								</div>
 								
 							<input type="submit" class="gradient-button" value="Update" id="Edit" >

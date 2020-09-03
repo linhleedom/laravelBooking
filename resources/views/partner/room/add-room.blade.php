@@ -1,4 +1,7 @@
 @extends('partner.master')
+@section('title')
+Add Room
+@endsection
 @section('script')
 @endsection
 @section('main')
@@ -68,9 +71,24 @@
 									<div class="f-item custom-item">
 										<label for="">Tên phòng :
 											<input required= "required" type="text" name="name" >
-										</label>
-										
+										</label>										
 									</div>
+									<div class="f-item custom-item">
+										<label for="">Diện tích phòng</label>
+										<label for="area1">10m<sup>2</sup> &nbsp   &nbsp	
+											<input required type="radio" id="area1" name="area"  value="0"/></label>
+										<label for="area2">16m<sup>2</sup>  &nbsp 
+											<input required type="radio" id="area2" name="area"  value="1"/>
+										</label>	
+										<label for="area3">20m<sup>2</sup>  &nbsp 
+											<input required type="radio" id="area3" name="area"  value="2"/>
+										</label>	
+										<label for="area4">Cả căn  &nbsp 
+											<input required type="radio" id="area4" name="area"  value="3"/>
+										</label>										
+									</div>
+								</div>
+								<div class="row twins">
 									<div class="f-item custom-item">
 										<label for="">Kiểu phòng :</label>
 										<select name="room_type_id" id="">
@@ -105,7 +123,6 @@
 									<div class="f-item custom-item">
 										<label for="avatar">Avatar room of Homestay :</label>
 											<input required= "required" type="file" name="avatar" multiple id="avatar">
-											<br><br>
 											{{-- <input type="submit" class="gradient-button" name = "send" value="Upload file"> --}}
 									</div>
 								</div>

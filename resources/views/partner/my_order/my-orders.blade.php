@@ -1,4 +1,7 @@
 @extends('partner.master')
+@section('title')
+Information Bill
+@endsection
 @section('main')
     <!--main-->
     <div class="main" role="main">		
@@ -26,11 +29,21 @@
                     <!--MySettings-->
                     <section id="MyBookings" class="tab-content tab-booking">
                         <!--booking-->
+                        <div colspan="2" 
+                                style="color: #32df5d;
+                                    /* background-color: #f2dede; */
+                                    border-color: #ebccd1;
+                                    width: 500px;
+                                    height: 50px;
+                                    font-size: 1.5em;
+                            ">
+                                    {{Session::get('thongbao')}}
+                        </div>
                         <?php $i = 0 ;?>
                         @foreach ($order as $orderVal)
                         <?php $i++ ;?>
                             <article class="bookings">
-                            <h1><a href="#">Đơn hàng thứ {{$i}}</a></h1>
+                            <h1 style="color: #ff6666;font-size:20px;text-align: center;text-transform: uppercase;">Đơn hàng thứ {{$i}}</h1>
                                 <div class="b-info">
                                     <table>
                                         <tr>
@@ -72,7 +85,11 @@
                                         </tr>
                                         <tr>
                                             <th>Trạng thái</th>
-                                            <td>{{($orderVal->status)==0?"Ẩn":"Hiện"}}</td>
+                                            @if($orderVal->status == 0)
+													<td><strong class="gradient-button danger">Trống</strong></td>
+											@elseif($orderVal->status == 1)
+													<td><strong class="gradient-button  warning">Đã có người đặt</strong></td>
+											@endif
                                         </tr>
                                         <tr>
                                             <th> Price:</th>
@@ -86,8 +103,8 @@
                                 </div>
                                 
                                 <div class="actions">
-                                    <a href="{{url('partner/information-order', ['id' => $orderVal->id])}}" class="gradient-button add">Thông tin hóa đơn</a>
-                                    <a href="{{url('partner/delete-bill', ['id' => $orderVal->id])}}" class="gradient-button delete">Xóa hóa đơn</a>
+                                    {{-- <a href="{{url('partner/edit-order', ['id' => $orderVal->id])}}" class="gradient-button add">Sửa </a> --}}
+                                    {{-- <a href="{{url('partner/delete-bill', ['id' => $orderVal->id])}}" class="gradient-button delete">Xóa hóa đơn</a> --}}
                                 </div>
                             </article>									
                         @endforeach

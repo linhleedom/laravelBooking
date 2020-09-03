@@ -1,4 +1,10 @@
 @extends('partner.master')
+@section('title')
+List Bills
+@endsection
+@section('script')
+	
+@endsection
 @section('main')
     <!--main-->
 	<div class="main" role="main">		
@@ -42,7 +48,17 @@
 												</tr>
 												<tr>
 													<th>Số điện thoại</th>
-													<td>{{$list_BillVal->phone}}y</td>
+													<td>{{$list_BillVal->phone}}</td>
+												</tr>
+												<tr>
+													<th>Trạng thái</th>
+													@if($list_BillVal->status == 0)
+														<td><strong class="gradient-button warning">Đã đặt</strong></td>
+													@elseif($list_BillVal->status == 1)
+													<td><strong class="gradient-button danger">Hủy</strong></td>
+													@elseif($list_BillVal->status == 2)
+													<td><strong class="gradient-button success">Xong</strong></td>
+													@endif
 												</tr>
 												<tr>
 													<th>Total Price:</th>
@@ -52,7 +68,8 @@
 										</div>
 										
 										<div class="actions">
-											<a href="{{url('partner/information-order', ['id' => $list_BillVal->id])}}" class="gradient-button add">Thông tin hóa đơn</a>
+											<a href="{{url('partner/information-order', ['id' => $list_BillVal->id])}}" class="gradient-button ">Thông tin hóa đơn</a>
+											{{-- <a href="{{url('partner/edit-bill', ['id' => $list_BillVal->id])}}" class="gradient-button add ">Sửa</a> --}}
 											<a href="{{url('partner/delete-bill', ['id' => $list_BillVal->id])}}" class="gradient-button delete">Xóa hóa đơn</a>
 										</div>
 									</article>									

@@ -220,6 +220,15 @@ header #wrap .ribbon nav ul.open li a {
 .gradient-button.see {
     background: #a6a6a6	;
 }
+.gradient-button.success {
+    background: #28a745	;
+}
+.gradient-button.danger {
+    background: #dc3545	;
+}
+.gradient-button.warning {
+    background: #ffc107	;
+}
 /* end-index-partner */
 /* list-homestay-room */
 table.list-homestay {
@@ -357,4 +366,54 @@ table  tr td.alert-success{
     width: 300px;
     height: 80px;
     background-color: rosybrown;
+}
+
+.tab-content.myaccount {
+    width: 76.4%;
+}
+.edit_field.myaccount{
+    background: none;
+}
+.mysettings table tbody tr td .error_account{
+    font-size: 15px;
+    color: salmon;
+}
+.mysettings table tbody tr td .done_account{
+    font-size: 15px;
+    color: #32df5d;
+}
+
+
+/* Set color  */
+/* my-comments */
+
+/* endmy-comments */
+.myaccount .mysettings table.my-account tr th{
+    font-size: 16px;
+}
+.myaccount .myreviews table.my-comments  {
+    margin-bottom: 15px;
+}
+.myaccount .myreviews table.my-comments tr>th{
+    border: none;
+    background: none !important;
+    color: #41C0B8;
+    font-size: 15px;
+}
+.myaccount .myreviews table.my-comments  tr td{
+    border: none;
+    background: none;
+    font-size: 15px;
+}
+.myaccount .myreviews table.my-comments  tr {
+    border-bottom: 1px solid #B9ACA4;
+}
+.myaccount .myreviews strong.stt {
+    color: #fff;
+    font-size: 18px;
+}
+.three-fourth span.alert-account .change_status{
+    margin-left: 50px;
+    font-size: 14px;
+    color: #32df5d;
 }

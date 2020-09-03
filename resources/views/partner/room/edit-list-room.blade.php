@@ -1,24 +1,8 @@
 @extends('partner.master')
+@section('title')
+Edit Room
+@endsection
 @section('script')
-function convert_name($str) {
-	$str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
-	$str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", 'e', $str);
-	$str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", 'i', $str);
-	$str = preg_replace("/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/", 'o', $str);
-	$str = preg_replace("/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/", 'u', $str);
-	$str = preg_replace("/(ỳ|ý|ỵ|ỷ|ỹ)/", 'y', $str);
-	$str = preg_replace("/(đ)/", 'd', $str);
-	$str = preg_replace("/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", 'A', $str);
-	$str = preg_replace("/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/", 'E', $str);
-	$str = preg_replace("/(Ì|Í|Ị|Ỉ|Ĩ)/", 'I', $str);
-	$str = preg_replace("/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/", 'O', $str);
-	$str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", 'U', $str);
-	$str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", 'Y', $str);
-	$str = preg_replace("/(Đ)/", 'D', $str);
-	$str = preg_replace("/(\“|\”|\‘|\’|\,|\!|\&|\;|\@|\#|\%|\~|\`|\=|\_|\'|\]|\[|\}|\{|\)|\(|\+|\^)/", '-', $str);
-	$str = preg_replace("/( )/", '-', $str);
-	return $str;
-}
 @endsection
 @section('main')
     <!--main-->
@@ -51,7 +35,16 @@ function convert_name($str) {
 						@csrf
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 						<fieldset>
-
+							<div colspan="2" 
+									style="color: #32df5d;
+										/* background-color: #f2dede; */
+										border-color: #ebccd1;
+										width: 500px;
+										height: 50px;
+										font-size: 1.5em;
+								">
+										{{Session::get('thongbao')}}
+							</div>
 							<h3><span>01 </span> Hạng mục homestay</h3>
 							<div class="row twins">
 								<div class="f-item custom-item">
@@ -78,7 +71,21 @@ function convert_name($str) {
 									<label for="">Tên phòng :
 										<input type="text" name="name" value="{{$product->name}}" >
 									</label>									
-								</div>								
+								</div>	
+								<div class="f-item custom-item">
+									<label for="">Diện tích phòng</label>
+									<label for="area1">10m<sup>2</sup> &nbsp   &nbsp	
+										<input required type="radio" id="area1" name="area"  value="0" @if($product->area ==0) checked  @endif/></label>
+									<label for="area2">16m<sup>2</sup>  &nbsp 
+										<input required type="radio" id="area2" name="area"  value="1" @if($product->area ==1) checked  @endif/>
+									</label>	
+									<label for="area3">20m<sup>2</sup>  &nbsp 
+										<input required type="radio" id="area3" name="area"  value="2" @if($product->area ==2) checked  @endif/>
+									</label>	
+									<label for="area4">Cả căn  &nbsp 
+										<input required type="radio" id="area4" name="area"  value="3" @if($product->area ==3) checked  @endif/>
+									</label>										
+								</div>							
 								<div class="f-item custom-item">
 									<label for="">Kiểu phòng :</label>
 									<select name="room_type_id" id="">										
@@ -115,15 +122,11 @@ function convert_name($str) {
 							<h3 style="margin-top: 20px;"><span>04</span> Tiện ích có tại chỗ nghỉ</h3>
 							<div class="row twins">
 								<div class="f-item custom-item checkbox">
-										@foreach ( $Utilities as $Utilitiesval)		
-											<input type="checkbox" name="tienich[]" id="check" value="{{$Utilitiesval->product_id}}" 
-												
-											@foreach ( $product->utilities as $productval)
-												@if($productval->utilities_id == $Utilitiesval->product_id ) checked = "checked" @endif
-											
-											@endforeach
+										@foreach ( $utilities as $utilities)		
+											<input type="checkbox" name="tienich[]" id="check" value="{{$utilities->id}}" 
+											<?php echo  in_array($utilities->id, $utilityIds) ?  'checked = "checked"' : null; ?>
 											/>
-												<label for="" >{{$Utilitiesval->name }}</label> <br> <br>
+												<label for="" >{{$utilities->name }}</label> <br> <br>
 										@endforeach
 									{{-- @endforeach --}}
 								</div>
@@ -134,7 +137,7 @@ function convert_name($str) {
 							<div class="row twins">
 								<div class="f-item custom-item">
 									<label for="avatar">Thay ảnh phòng :</label>
-										<input  required="required" type="file" name="avatar" multiple id="avatar" value="{{$product->avatar}}">
+										<input   type="file" name="avatar" multiple id="avatar" value="{{$product->avatar}}">
 										<br><br>
 										<img src="{{asset('public/'.$product->avatar)}}" alt="Image" width="300px" height="150px" >
 								</div>
@@ -146,48 +149,6 @@ function convert_name($str) {
 						</fieldset>							
 					</form>
 				</section>
-				<!--//three-fourth content-->
-				
-				<!--right sidebar-->
-				<aside class="right-sidebar">
-					<!--Booking details-->
-					<!-- <article class="booking-details clearfix">
-						<h1>Best ipsum hotel 
-							<span class="stars">
-								<img src="images/ico/star.png" alt="" />
-								<img src="images/ico/star.png" alt="" />
-								<img src="images/ico/star.png" alt="" />
-								<img src="images/ico/star.png" alt="" />
-							</span>
-						</h1>
-						<span class="address">Marylebone, London</span>
-						<span class="rating"> 8 /10</span>
-						<div class="booking-info">
-							<h6>Rooms</h6>
-							<p>Standard twin room</p>
-							<h6>Room Description</h6>
-							<p>Room only</p>
-							<h6>Check-in Date</h6>
-							<p>14-11-12</p>
-							<h6>Check-out Date</h6>
-							<p>15-11-12</p>
-							<h6>Room(s)</h6>
-							<p>1 night, 1 room, max. 2 people. </p>
-						</div>
-						<div class="price">
-							<p class="total">Total Price:  $ 55,00</p>
-							<p>VAT (20%) included</p>
-						</div>
-					</article> -->
-					<!--//Booking details-->
-					
-					<!--Need Help Booking?-->
-					<!-- <article class="default clearfix">
-						<h2>Need Help Booking?</h2>
-						<p>Call our customer services team on the number below to speak to one of our advisors who will help you with all of your holiday needs.</p>
-						<p class="number">1- 555 - 555 - 555</p>
-					</article> -->
-					<!--//Need Help Booking?-->
 				</aside>
 				<!--//right sidebar-->
 			</div>

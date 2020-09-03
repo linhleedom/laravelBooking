@@ -68,64 +68,82 @@ class RoomController extends Controller
         
        
         $product = Product::create([
+            
             'homestay_id'=>$request->homestay_id,
             'status'=>$request->status,
-            'avatar'=>$request->avatar ,
+            'avatar'=>$request->avatar,
             'name'=>$request->name,
             'room_type_id'=>$request->room_type_id,
             'prices'=>$request->prices,
             'discount'=>$request->discount,
+            'area'=>$request->area,
             'description'=>$request->description
         ]);
+        // dd($product->area);
         foreach($request->input('tienich') as $tienich){
             Uti_Pro::create([
                 'product_id'=>$product->id,
                 'utilities_id'=>$tienich
             ]);
         }
-
+        // dd($product);
         return back()->withInput()->with('thongbao','Thêm phòng thành công');
                 
     }
     public function getEditPartnerRoom($id){
         $product = Product::find($id);
-        // dd($product);
         $homestay = Homestay::where('user_id',Auth::user()->id)->get();
-        // dd($homestay);      
+
+        $utilityIds = $product->utilities->pluck('id')->toArray();
+
         $room_type = RoomType::all();
-        $Utilities = Utilities::all();
+        $utilities = Utilities::all();
 
         // dd($Tienich);
         return view ('partner.room.edit-list-room',
         ['homestay'=>$homestay,
+        'utilityIds'=>$utilityIds,
+        'utilities'=>$utilities,
+        'room_type'=>$room_type,
         'product'=>$product,
-        'Utilities'=>$Utilities,
-        'room_type'=>$room_type
         ]);
 
     }
     public function postEditPartnerRoom(Request $request,$id){
-        
         $product = Product::find($id);
+
+        $uti_pro = Uti_Pro::where('product_id',$product->id);
 
         $product->homestay_id = $request->homestay_id;
         $product->status = $request->status;
         $product->name = $request->name;
+        $product->area = $request->area;
         $product->room_type_id = $request->room_type_id;
         $product->prices = $request->prices;
         $product->discount = $request->discount;
         $product->description = $request->description;
 
+        $image = $request->avatar;
+        $filename = $image->getClientOriginalName();
+        $image->move(public_path('uploads/room/'), $filename);
+        $link = 'uploads/room/'.$filename;
+        $product->avatar = $link;
+
         $product->save();
 
-        // foreach($request->input('tienich') as $tienich){
-        //     Uti_Pro::update([
-        //         'product_id'=>$product->id,
-        //         'utilities_id'=>$tienich
-        //     ]);
-        // }
-
-        
+        $uti_pro->delete();
+        // dd($request->input('tienich'));
+        foreach($request->input('tienich') as $tienich){
+            Uti_Pro::create([
+                'product_id'=>$product->id,
+                'utilities_id'=>$tienich
+            ]);
+        }
+        return back()->withInput()->with('thongbao','Sửa thành công ');
+    }
+    public function getDeleteRoom($id){
+        Product::destroy($id);
+        return back();
     }
 
 }

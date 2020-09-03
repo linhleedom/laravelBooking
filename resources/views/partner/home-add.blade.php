@@ -1,4 +1,7 @@
 @extends('partner.master')
+@section('title')
+Add Room & Homestay
+@endsection
 @section('main')
     <!--main-->
 	<div class="main" role="main">		

@@ -3,7 +3,6 @@
 namespace App\Http\Middleware\Partner;
 
 use Closure;
-
 use Auth;
 class CheckLogedOut
 {

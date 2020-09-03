@@ -8,9 +8,13 @@
 			<div class="ribbon">				
 				<nav>
 						<ul class="profile-nav">
-							<li class="active"><a > @if(Auth::check()){{Auth::user()->name}} @endif</a></li>
+							<?php 
+								$name = explode(' ', Auth::user()->name);
+								$last_name = array_pop($name);
+							?>
+							<li class="active"> @if(Auth::check())<a title="{{Auth::user()->name}}"> @endif Hi<br/>{{$last_name}} !!</a></li>
+						<li><a href="{{url('partner/my-account',['id' => Auth::user()->id])}}"title="Settings">Quản lý tài khoản</a></li>
 							<li><a href="{{asset('partner/logout')}}" title="Logout">Logout</a></li>
-							<li><a href=""title="Settings">Settings</a></li>
 						</ul>
 				</nav>
 			</div>
@@ -36,23 +40,23 @@
 		<!--main navigation-->
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
-			<li><a href="{{url('partner/trangchu')}}" title="Home">Trang chủ</a></li>
-				<!-- <li><a href="hotels.html" title="Hotels">Hotels</a>
+				<li><a href="{{url('partner/trangchu')}}" title="Home" class="active">Trang chủ</a></li>
+				{{-- <li><a href="hotels.html" title="Hotels">Hotels</a>
 					<ul>
 						<li><a href="#">Secondary navigation</a></li>
 						<li><a href="#">example links</a></li>
 						<li><a href="error.html">Error page</a></li>
 						<li><a href="loading.html">Loading page</a></li>
 					</ul>
-				</li> -->
+				</li> --}}
 				<li><a >Danh mục</a>
 					<ul>
-					<li><a href="{{asset('partner/list-homestay')}}">Danh sách homestay</a></li>
-						<li><a href="{{asset('partner/list-room')}}">Danh sách phòng</a></li>
-						<li><a href="{{asset('partner/home-add')}}">Thêm</a></li>
+					<li><a href="{{url('partner/list-homestay')}}">Danh sách homestay</a></li>
+						<li><a href="{{url('partner/list-room')}}">Danh sách phòng</a></li>
+						<li><a href="{{url('partner/home-add')}}">Thêm</a></li>
 					</ul>
 				</li>
-				<li><a href="{{asset('partner/list-bills')}}" >Hóa đơn</a>
+				<li><a href="{{url('partner/list-bills')}}" >Hóa đơn</a>
 			</ul>
 		</nav>
 		<!--//main navigation-->

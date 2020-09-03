@@ -169,20 +169,43 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::get('/add-room','RoomController@getAddRoom');  
             Route::post('/add-room','RoomController@postAddRoom'); 
             Route::get('/edit-list-room/{id}','RoomController@getEditPartnerRoom');    
-            Route::post('/edit-list-room/{id}','RoomController@postEditPartnerRoom'); 
+            Route::post('/edit-list-room/{id}','RoomController@postEditPartnerRoom');            
+            Route::get('/delete-room/{id}','RoomController@getDeleteRoom'); 
 
             Route::get('/list-bills','BillsController@getListBills'); 
             Route::get('/information-order/{id}','OrderController@getInfoOrder');
+            Route::get('/edit-order/{id}','OrderController@getEditOrder');
+            Route::post('/edit-order/{id}','OrderController@postEditOrder');
+            Route::get('/edit-bill/{id}','BillsController@getEditbill');
+            Route::post('/edit-bill/{id}','BillsController@postEditbill');
+            
             
 
             Route::get('/edit-list-homestay/{id}','HomestayPartnerController@getEditPartnerHomestay');    
             Route::post('/edit-list-homestay/{id}','HomestayPartnerController@postEditPartnerHomestay');           
-            Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');  
+            Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');
+            Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');
 
-            Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');;        
-            // Route::get('/getprovinces','HomestayPartnerController@getEditprovinces');
-            // Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
-            // Route::get('/getwards/{id}','HomestayPartnerController@getwards');
+            Route::group(['prefix'=>'/'], function(){
+                
+                Route::get('/my-account/{id}','AccountController@index');
+                Route::post('/edit-name/{id}','AccountController@editName')->name('userEditName');
+                Route::post('/edit-email/{id}','AccountController@editEmail')->name('userEditEmail');
+                Route::post('/edit-password/{id}','AccountController@editPassword')->name('userEditPassword');                
+                Route::post('/edit-phone/{id}','AccountController@editPhone')->name('userEditPhone');       
+                Route::post('/edit-avatar/{id}','AccountController@editAvatar')->name('userEditAvatar');
+                Route::post('/edit-address/{id}','AccountController@editAddress')->name('userEditAddress');
+
+                Route::get('/edit-address/{id}','AccountController@editAddress');
+                Route::get('/getdistricts/{id}','AccountController@getdistricts');
+                Route::get('/getwards/{id}','AccountController@getwards');
+                
+                
+                Route::get('/change-status/{bill_id}',[
+                    'as'=>'ChangeStatus',
+                    'uses'=>'AccountController@getChange'
+                ]);
+            });             
         });
     });
 });

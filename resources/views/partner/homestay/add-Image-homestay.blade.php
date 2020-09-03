@@ -1,4 +1,7 @@
 @extends('partner.master')
+@section('title')
+Add Image Homestay
+@endsection
 @section('script')
 @endsection
 @section('main')
@@ -64,7 +67,7 @@
 									">
 											{{Session::get('thongbao')}}
 									</div>
-							<table>
+							<table style="width : 100%">
 								<tr>
 									<th>STT</th>
 									<th>Homestay</th>

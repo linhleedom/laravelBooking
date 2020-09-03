@@ -1,4 +1,7 @@
 @extends('partner.master')
+@section('title')
+List Room
+@endsection
 @section('main')
     <!--main-->
 	<div class="main" role="main">		
@@ -40,7 +43,7 @@
                                     <td>
                                         <a href="../room-detail" title="chi tiết" class="gradient-button add">Chi tiết phòng</a>
                                         <a href="{{url('partner/edit-list-room', ['id' => $productVal->id])}}" title="Sửa" class="gradient-button edit1">Sửa</a>
-                                        <a href="" title="Xóa" class="gradient-button delete">Xóa</a>
+                                        <a href="{{url('partner/delete-room', ['id' => $productVal->id])}}" title="Xóa" class="gradient-button delete" onclick="return confirm('Bạn muốn xóa phòng ?')">Xóa</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -18,3 +18,4 @@ class Bill extends Model
         return $this->hasOne('App\Rating', 'bill_id','id');
     }
 }
+
