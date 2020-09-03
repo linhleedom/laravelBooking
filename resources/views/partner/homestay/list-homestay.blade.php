@@ -1,4 +1,35 @@
 @extends('partner.master')
+@section('script')
+$(document).ready(function() {
+	$('dt').each(function() {
+		var tis = $(this), state = false, answer = tis.next('dd').hide().css('height','auto').slideUp();
+		tis.click(function() {
+			state = !state;
+			answer.slideToggle(state);
+			tis.toggleClass('active',state);
+		});
+	});
+	
+	$('.view-type li:first-child').addClass('active');
+
+	$("#address").autocomplete({
+		source: "{{route('userAutoComplete')}}",
+		open: function(event, ui){
+			$("#address").autocomplete ("widget").css("width","249px");  
+		} 
+	});
+
+});
+
+	$(window).load(function () {
+	var maxHeight = 0;
+			
+	$(".three-fourth .one-fourth").each(function(){
+	if ($(this).height() > maxHeight) { maxHeight = $(this).height(); }
+	});
+	$(".three-fourth .one-fourth").height(maxHeight);	
+	});	
+@endsection
 @section('title')
 List Homestay
 @endsection
@@ -42,10 +73,9 @@ List Homestay
                             <th colspan="2">Trạng thái thanh toán</th>
                             <th></th>
                         </tr>
-                        @php
-                            $i= 0; foreach ($homestaylist as $Homestay) : $i++;
-                        @endphp
-                        
+                        <?php $i=0; ?>
+                        @foreach ($homestaylist as $Homestay)                        
+						<?php $i++; ?>
                         <tr>
                         <td>{{$i}}</td>
                             <td>{{$Homestay->name}}</td>
@@ -69,12 +99,15 @@ List Homestay
                                 <a href="{{url('partner/delete-homestay', ['id' => $Homestay->id])}}" title="Xóa" class="gradient-button delete" onclick="return confirm('Bạn có muốn xóa không')">Xóa</a>
                             </td>
                         </tr>
-                        @php
-                            endforeach
-                        @endphp
-                    </table>
+                        
+                        @endforeach
+                    </table>                    
+                        <!--pager-->
+                        {{ $homestaylist->withQueryString()->links('vendor.pagination.custom') }}
+                        {{-- endpager --}}
                 </div>
-                <div class="separator"></div>
+                           
+                        
                 
             </section>
             <!--//top destinations-->

@@ -74,6 +74,15 @@ List Bills
 										</div>
 									</article>									
 								@endforeach
+								<div class="bottom-nav">
+									<!--back up button-->
+									{{-- <a href="#" class="scroll-to-top" title="Back up">Top</a>  --}}
+									<!--//back up button-->
+									
+									<!--pager-->
+										{{ $list_Bill->withQueryString()->links('vendor.pagination.custom') }}
+									<!--//pager-->
+								</div>
 								<!--//booking-->
 							</section>
 						<!--//My Bookings-->

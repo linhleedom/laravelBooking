@@ -32,7 +32,7 @@ class BillsController extends Controller
             array_push($orderofBill, $OrderVal->bill_id);
         };
         
-        $list_Bill = Bill::whereIn('id',$orderofBill)->get();
+        $list_Bill = Bill::whereIn('id',$orderofBill)->paginate(2);
         // dd($Bill);
 
         return view ('partner.my_order.list-bills',['list_Bill'=>$list_Bill]);

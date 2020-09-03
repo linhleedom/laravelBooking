@@ -30,7 +30,7 @@ Add Image Homestay
 
 				<!--three-fourth content-->
 				<section class="three-fourth form-booking">
-                <h1 style="text-align: center;text-transform: uppercase;">Ảnh của Homestay</h1>
+                <h1 style="text-align: center;text-transform: uppercase;">Ảnh của Homestay <br><b style="color: lightcoral;font-size:15px"><u>{{$homestay->name}}</u></b></h1>
                     {{-- {{Route('upload_images')}} --}}
                 <form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
                         {{csrf_field()}}
@@ -53,7 +53,6 @@ Add Image Homestay
 					</form>
 				</section>
 				<section class="three-fourth form-booking">
-				<h1 style="text-align: center;text-transform: uppercase;">List Ảnh của <br><br> </h1>
 						{{-- {{Route('upload_images')}} --}}
 					<form id="booking" method="post" action="" class="booking " >
 							{{csrf_field()}}
@@ -95,7 +94,12 @@ Add Image Homestay
 										</td>	
 									</tr>	
 								@endforeach
-							</table>						
+							</table>	
+							<div class="bottom-nav">
+								<!--back up button-->
+								<a href="#" class="scroll-to-top" title="Back up">Top</a> 
+								<!--//back up button-->
+							</div>					
 						</form>
 					</section>
 						

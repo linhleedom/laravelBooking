@@ -284,9 +284,16 @@ $('#districts').change(function(){
 								<a href="{{route('ChangeStatus', ['bill_id'=>$rateVal])}}" class="gradient-button success">Change-status</a>
 							@endif
 						</div>
-						@endforeach						
-						
-						<a href="#" class="scroll-to-top" title="Back up">Top</a> 
+						@endforeach				
+						<div class="bottom-nav" style="background: none">
+							<!--back up button-->
+							<a href="#" class="scroll-to-top" title="Back up">Top</a> 
+							<!--//back up button-->
+							
+							<!--pager-->
+								{{ $rate->withQueryString()->links('vendor.pagination.custom') }}
+							<!--//pager-->
+						</div>
 					</section>
 					<!--//MyReviews-->
 					
