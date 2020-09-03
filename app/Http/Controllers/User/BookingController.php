@@ -24,8 +24,7 @@ class BookingController extends Controller
     public function bookingStep2(Request $request){
         $datepicker1 = $request->datepicker1;
         $datepicker2 = $request->datepicker2;
-
-        $cart = Session::get("Cart");
+        $homestay_id = $request->homestay_id;
 
         if(Auth::check()){
             $validator = Validator::make($request->all(), 
@@ -63,7 +62,9 @@ class BookingController extends Controller
                 return redirect()->back()->withErrors($validator, 'notLogin');
             }
         }
-        if($cart != null){
+
+        if( Session::has('Cart-homestay-'.$homestay_id) ){
+            $cart = Session::get('Cart-homestay-'.$homestay_id);
             $bill = new Bill;
             if(Auth::check()){
                 $bill->user_id = Auth::user()->id;
@@ -88,7 +89,7 @@ class BookingController extends Controller
                 $order->status = 1;
                 $order->save();
             }
-            Session::forget('Cart');
+            Session::forget('Cart-homestay-'.$homestay_id);
             return redirect()->route('userBookingStep3',['id'=>$bill->id]);
         }else{
             return redirect()->route('userError');

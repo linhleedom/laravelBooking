@@ -18,21 +18,22 @@ class HomeController extends Controller
         $orderSucces = Order::where('date_end','<=',$today)->get();
         $bill_id_success = array();
 
-        foreach($orderSucces as $orderSuccesVal){
-            $order = Order::find($orderSuccesVal->id);
-            if($orderSuccesVal->status == 1){
+        foreach($orderSucces as $orderSuccessVal){
+            $order = Order::find($orderSuccessVal->id);
+            if($orderSuccessVal->status == 1){
                 $order->status = 0;
+                $order->update();
             }
-            $order->update();
-            array_push($bill_id_success,$orderSuccesVal->bill_id); 
+            array_push($bill_id_success,$orderSuccessVal->bill_id); 
         }
+
         $bill_seccess = Bill::whereIn('id',$bill_id_success)->get();
         foreach($bill_seccess as $bill_seccess_val){
             $bill = Bill::find($bill_seccess_val->id);
             if($bill_seccess_val->status == 0){
                 $bill->status = 2;
+                $bill->update();
             }
-            $bill->update();
         }
     }
 
