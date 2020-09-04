@@ -76,11 +76,11 @@ Information Bill
                                             @endforeach
                                         </tr>
                                         <tr>
-                                            <th>Check-in Date</th>
+                                            <th>Ngày Check-in</th>
                                             <td>{{date("d-m-Y",strtotime($orderVal->date_start))}}</td>
                                         </tr>
                                         <tr>
-                                            <th>Check-out Date</th>
+                                            <th>CNgày Check-out</th>
                                             <td>{{date("d-m-Y",strtotime($orderVal->date_end))}}</td>
                                         </tr>
                                         <tr>
@@ -92,19 +92,14 @@ Information Bill
 											@endif
                                         </tr>
                                         <tr>
-                                            <th> Price:</th>
+                                            <th> Giá:</th>
                                             @foreach ($product as $valPro)
                                             @if($orderVal->product_id == $valPro->id)                                                
-                                                <td><strong>{{$valPro->prices}}</strong></td>
+                                                <td><strong>{{ number_format( $valPro->prices,0,',','.' ) }}đ</strong></td>
                                             @endif                                                
                                             @endforeach
                                         </tr>
                                     </table>
-                                </div>
-                                
-                                <div class="actions">
-                                    {{-- <a href="{{url('partner/edit-order', ['id' => $orderVal->id])}}" class="gradient-button add">Sửa </a> --}}
-                                    {{-- <a href="{{url('partner/delete-bill', ['id' => $orderVal->id])}}" class="gradient-button delete">Xóa hóa đơn</a> --}}
                                 </div>
                             </article>									
                         @endforeach

@@ -86,11 +86,14 @@ List Homestay
                             </td>
                             <td>{{($Homestay->status==0)?"Ẩn":"Hiện"}}</td>
                             <td colspan="2">
-                                @if ($Homestay->status_pay == 1)                                    
-                                    <a href="" title="Sửa" class="gradient-button success">Đã Thanh toán </a>
-                                @else                                    
+                                @if ($Homestay->status_pay == 2)                                    
+                                    <a title="Sửa" class="gradient-button success">Đã Thanh toán </a>
+                                @elseif($Homestay->status_pay == 1)                                    
+                                <a title="Sửa" class="gradient-button warning">Đang xử lý </a>
+                                @elseif($Homestay->status_pay == 0)                                 
                                     <a href="" title="Sửa" class="gradient-button danger">Chưa Thanh toán </a>
                                 @endif
+                                {{-- {{route('PaysHomestay', ['id'=>$Homestay])}} --}}
                                 {{-- DB thiếu cột trạng thái thanh toán --}}
                             </td>
                             <td>

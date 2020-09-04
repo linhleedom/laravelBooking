@@ -280,7 +280,7 @@ $('#districts').change(function(){
 						<div class="actions">
 							@if ($rateVal->status == 1)								
 								<a href="{{route('ChangeStatus', ['bill_id'=>$rateVal])}}" class="gradient-button danger">Change-status</a>
-							@else								
+							@elseif($rateVal->status == 0)								
 								<a href="{{route('ChangeStatus', ['bill_id'=>$rateVal])}}" class="gradient-button success">Change-status</a>
 							@endif
 						</div>

@@ -14,7 +14,7 @@
 							?>
 							<li class="active"> @if(Auth::check())<a title="{{Auth::user()->name}}"> @endif Hi<br/>{{$last_name}} !!</a></li>
 						<li><a href="{{url('partner/my-account',['id' => Auth::user()->id])}}"title="Settings">Quản lý tài khoản</a></li>
-							<li><a href="{{asset('partner/logout')}}" title="Logout">Logout</a></li>
+							<li><a href="{{asset('partner/logout')}}" title="Đăng xuất">Đăng xuất</a></li>
 						</ul>
 				</nav>
 			</div>
