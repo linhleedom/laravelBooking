@@ -33,7 +33,7 @@
 							</div>
                             <input type="hidden" name="permission" value="2">
 							<p>
-								<a href="{{route('resetPasswordUser')}}" title="Forgot password?">Quên mật khẩu?</a>
+								<a href="" title="Forgot password?">Quên mật khẩu?</a>
 								@if( Session::get('feedback') !== 'register_success' )
 									<br />
 									<span style="color: rgba(56, 209, 255, 0.86);" >Nếu bạn chưa có tài khoản?</span>
