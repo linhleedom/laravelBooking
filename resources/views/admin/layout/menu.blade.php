@@ -14,7 +14,7 @@
 						<a class="submenu" href="{{url('/admin/QLBlog/danhsach')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Quản Lí Bài Viết</span></a>
 					</li>
 					<li>
-						<a class="submenu" href="{{url('/admin/homestay/ListHT')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">List Home Stay</span></a>
+						<a class="submenu" href="{{url('/admin/homestay/ListHT')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Home Stay</span></a>
 					</li>
 				</ul>	
 			</li>

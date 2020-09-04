@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Homestay;
 use App\Province;
 use App\Product;
@@ -36,6 +37,11 @@ class HomeStayController extends Controller
         return redirect('admin/homestay/ListHT');
     
     }
+    public function getDStienich()
+    {
+        $DStienich= Utilities::all();
+        return view('admin.homestay.DStienich',['DStienich'=>$DStienich]);
+    }
     public function getTienIch()
     {
     	$utilities= Utilities::all();
@@ -58,10 +64,37 @@ class HomeStayController extends Controller
     	$utilities= new Utilities;
     	$utilities->name= $request->name;
     	$utilities->status= $request->status;
+        $utilities->alias= Str::slug($request->name);
     	$utilities->created_at=now();
     	$utilities->updated_at=now();
     	$utilities->save();
     	return redirect('admin/homestay/tienich')->with('thongbao','Thêm tiện ích thành công !');
+    }
+    public function getEditTI($id)
+    {
+        $EditTI=Utilities::find($id);
+        return view('admin.homestay.editTI',['EditTI'=>$EditTI]);
+    }
+    public function postEditTI(Request $request, $id)
+    {
+        $EditTI=Utilities::find($id);
+        $EditTI->name= $request->name;
+        $EditTI->status= $request->status;
+        $EditTI->updated_at=now();
+        $EditTI->save();
+        return redirect('admin/homestay/DStienich');
+
+    }
+    public function getDelTI($id)
+    {
+        $dele=Utilities::find($id);
+        $dele->delete();
+        return redirect('admin/homestay/DStienich');
+    }
+    public function getDSRS()
+    {
+        $DSRS=RoomType::all();
+        return view('admin.homestay.DSroomstyle',['DSRS'=>$DSRS]);
     }
      public function getRoomStyle()
     {
@@ -90,9 +123,16 @@ class HomeStayController extends Controller
     	$roomstyle->name= $request->name;
     	$roomstyle->capacity= $request->capacity;
     	$roomstyle->status= $request->status;
+        $roomstyle->alias=Str::slug($request->name);
     	$roomstyle->created_at=now();
     	$roomstyle->updated_at=now();
     	$roomstyle->save();
     	return redirect('admin/homestay/roomstyle')->with('thongbao','Thêm tiện ích thành công !');
+    }
+    public function getDelRS($id)
+    {
+        $DEL=RoomType::find($id);
+        $DEL->delete();
+        return redirect('admin/homestay/DSroomstyle');
     }
 }

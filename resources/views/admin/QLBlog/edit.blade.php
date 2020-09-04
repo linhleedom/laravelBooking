@@ -9,8 +9,12 @@
 				<i class="icon-angle-right"></i> 
 			</li>
 			<li>
+				<a href="#">Quản lí Bài Viết</a>
+				<i class="icon-angle-right"></i> 
+			</li>
+			<li>
 				<i class="icon-edit"></i>
-				<a href="#">Edit</a>
+				<a href="#">Edit Bài Viết</a>
 			</li>
 		</ul>
 		<div class="row-fluid sortable">
@@ -44,8 +48,14 @@
 						<div class="control-group">
 						  	<label class="control-label" for="typeahead">Tiêu Đề:</label>
 						  	<div class="controls">
-							<input type="text" id="typeahead" name="title" value="{{$blog->title}}">
+							<input style="width: 500px; height: 30px;" type="text" id="typeahead" name="title" value="{{$blog->title}}">
 						 	 </div>
+						</div>
+						<div class="control-group">
+						  	<label class="control-label" for="description">Mô tả:</label>
+						  	<div class="controls">
+							<input style="width: 500px; height: 30px;" type="text" id="description" name="description" value="{{$blog->description}}">
+						  	</div>
 						</div>
 						<div class="control-group">
 						  	<label class="control-label" for="date01">Ảnh:</label>
@@ -53,16 +63,15 @@
 							<input type="file" id="date01" name="photo" value="{{$blog->photo}}">
 						  	</div>
 						</div>   
+						
 						<div class="control-group">
-						  	<label class="control-label" for="description">Mô tả:</label>
+						  	<label class="control-label" for="maqh">Quận/Huyện:</label>
 						  	<div class="controls">
-							<input type="text" id="description" name="description" value="{{$blog->description}}">
-						  	</div>
-						</div>
-						<div class="control-group">
-						  	<label class="control-label" for="xaid">XaId:</label>
-						  	<div class="controls">
-							<input type="number" id="xaid" name="xaid" value="{{$blog->maqh}}">
+							<select name="maqh" id="maqh">
+								@foreach($district as $tl)
+								<option value="{{$tl->maqh}}" selected>{{$tl->name}}</option>
+								@endforeach
+							</select>
 						  	</div>
 						</div>   
 						<div class="control-group">

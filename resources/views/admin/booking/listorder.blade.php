@@ -7,6 +7,10 @@
 				<a href="#">Home</a> 
 				<i class="icon-angle-right"></i>
 			</li>
+			<li>
+				<a href="#">Bill</a> 
+				<i class="icon-angle-right"></i>
+			</li>
 			<li><a href="#">List Order</a></li>
 		</ul>
 		<div class="row-fluid sortable">		
@@ -25,7 +29,7 @@
 						  <tr>
 						  	  <th>ID</th>
 						  	  <th>Avatar</th>
-							  <th>Tên Home Stay</th>
+							  <th>Tên Phòng</th>
 							  <th>Giá</th>
 							  <th>Ngày Đặt</th>
 							  <th>Ngày Trả</th>

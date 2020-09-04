@@ -76,10 +76,11 @@
 				</div>
 			</div>
 		</div>
+		<div>
+			<a class="btn btn-primary" href="{{url('/admin/homestay/DSroomstyle')}}"><--</a>
+		
+		</div>
 	</div>
-	<!-- <script>
-		var editor = CKEDITOR.replace('editor');
-							
-	</script> --> 
+	
 	
 @endsection
