@@ -13,136 +13,135 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix'=>''],function(){
-    Route::get('/', [
-        'as'=>'userHomePage',
-        'uses'=>'user\HomeController@index'
+
+Route::get('/', [
+    'as'=>'userHomePage',
+    'uses'=>'user\HomeController@index'
+]);
+Route::get('/home', [
+    'as'=>'userHomePage',
+    'uses'=>'user\HomeController@index'
+]);
+Route::get('/autoComplete', [
+    'as'=>'userAutoComplete',
+    'uses'=>'user\HomeController@autoComplete'
+]);
+Route::get('/search', [
+    'as'=>'userSearch',
+    'uses'=>'user\SearchResultController@index'
+]);
+Route::get('/room-detail', [
+    'as'=>'userRoomDetail',
+    'uses'=>'user\RoomDetailController@index'
+]);
+Route::get('/search-room-ajax', [
+    'as'=>'userSearchRoomAjax',
+    'uses'=>'user\RoomDetailController@searchRoomAjax'
+]);
+Route::post('/register',[
+    'as'=>'registerUser',
+    'uses'=>'user\Auth\RegisterUserController@postRegister'
+]);
+Route::post('/login',[
+    'as'=>'loginUser',
+    'uses'=>'user\Auth\LoginUserController@postLogin',
+]);
+Route::get('/logout',[
+    'as'=>'logoutUser',
+    'uses'=>'user\Auth\LoginUserController@getLogout'
+]);
+Route::get('/blog',[
+    'as'=>'userBlog',
+    'uses'=>'user\BlogController@index'
+]);
+Route::get('/blog-detail',[
+    'as'=>'userBlogDetail',
+    'uses'=>'user\BlogDetailController@index'
+]);
+Route::get('/hot-deal',[
+    'as'=>'userHotDeal',
+    'uses'=>'user\HotDealController@index'
+]);
+Route::group(['prefix'=>'/my-account','middleware' => 'checkIdUser'], function(){
+    Route::get('/{id}',[
+        'as'=>'userAccount',
+        'uses'=>'user\AccountController@index'
     ]);
-    Route::get('/home', [
-        'as'=>'userHomePage',
-        'uses'=>'user\HomeController@index'
+    Route::post('/edit-name/{id}',[
+        'as'=>'userEditName',
+        'uses'=>'user\AccountController@editName'
     ]);
-    Route::get('/autoComplete', [
-        'as'=>'userAutoComplete',
-        'uses'=>'user\HomeController@autoComplete'
+    Route::post('/edit-email/{id}',[
+        'as'=>'userEditEmail',
+        'uses'=>'user\AccountController@editEmail'
     ]);
-    Route::get('/search', [
-        'as'=>'userSearch',
-        'uses'=>'user\SearchResultController@index'
+    Route::post('/edit-password/{id}',[
+        'as'=>'userEditPassword',
+        'uses'=>'user\AccountController@editPassword'
     ]);
-    Route::get('/room-detail', [
-        'as'=>'userRoomDetail',
-        'uses'=>'user\RoomDetailController@index'
+    Route::post('/edit-phone/{id}',[
+        'as'=>'userEditPhone',
+        'uses'=>'user\AccountController@editPhone'
     ]);
-    Route::get('/search-room-ajax', [
-        'as'=>'userSearchRoomAjax',
-        'uses'=>'user\RoomDetailController@searchRoomAjax'
+    Route::post('/edit-avatar/{id}',[
+        'as'=>'userEditAvatar',
+        'uses'=>'user\AccountController@editAvatar'
     ]);
-    Route::post('/register',[
-        'as'=>'registerUser',
-        'uses'=>'user\Auth\RegisterUserController@postRegister'
+    Route::post('/edit-address/{id}',[
+        'as'=>'userEditAddress',
+        'uses'=>'user\AccountController@editAddress'
     ]);
-    Route::post('/login',[
-        'as'=>'loginUser',
-        'uses'=>'user\Auth\LoginUserController@postLogin',
-        // 'middleware'=>'checkLogin',
+    Route::post('/rating/{id}/{bill_id}',[
+        'as'=>'userRating',
+        'uses'=>'user\AccountController@rating'
     ]);
-    Route::get('/logout',[
-        'as'=>'logoutUser',
-        'uses'=>'user\Auth\LoginUserController@getLogout'
+    Route::get('/cancel-booking/{id}/{bill_id}',[
+        'as'=>'userCancelBooking',
+        'uses'=>'user\AccountController@cancelBooking'
     ]);
-    Route::get('/blog',[
-        'as'=>'userBlog',
-        'uses'=>'user\BlogController@index'
-    ]);
-    Route::get('/blog-detail',[
-        'as'=>'userBlogDetail',
-        'uses'=>'user\BlogDetailController@index'
-    ]);
-    Route::get('/hot-deal',[
-        'as'=>'userHotDeal',
-        'uses'=>'user\HotDealController@index'
-    ]);
-    Route::group(['prefix'=>'/my-account','middleware' => 'checkIdUser'], function(){
-        Route::get('/{id}',[
-            'as'=>'userAccount',
-            'uses'=>'user\AccountController@index'
-        ]);
-        Route::post('/edit-name/{id}',[
-            'as'=>'userEditName',
-            'uses'=>'user\AccountController@editName'
-        ]);
-        Route::post('/edit-email/{id}',[
-            'as'=>'userEditEmail',
-            'uses'=>'user\AccountController@editEmail'
-        ]);
-        Route::post('/edit-password/{id}',[
-            'as'=>'userEditPassword',
-            'uses'=>'user\AccountController@editPassword'
-        ]);
-        Route::post('/edit-phone/{id}',[
-            'as'=>'userEditPhone',
-            'uses'=>'user\AccountController@editPhone'
-        ]);
-        Route::post('/edit-avatar/{id}',[
-            'as'=>'userEditAvatar',
-            'uses'=>'user\AccountController@editAvatar'
-        ]);
-        Route::post('/edit-address/{id}',[
-            'as'=>'userEditAddress',
-            'uses'=>'user\AccountController@editAddress'
-        ]);
-        Route::post('/rating/{id}/{bill_id}',[
-            'as'=>'userRating',
-            'uses'=>'user\AccountController@rating'
-        ]);
-        Route::get('/cancel-booking/{id}/{bill_id}',[
-            'as'=>'userCancelBooking',
-            'uses'=>'user\AccountController@cancelBooking'
-        ]);
-    }); 
-    Route::get('/get-district/{id}',[
-        'as'=>'userGetDistrict',
-        'uses'=>'user\AccountController@getDistrict'
-    ]);
-    Route::get('/get-ward/{id}',[
-        'as'=>'userGetWard',
-        'uses'=>'user\AccountController@getWard'
-    ]);
-    Route::get('/error',[
-        'as'=>'userError',
-        'uses'=>'user\HomeController@getError'
-    ]);
-    Route::get('/add-cart/{id}',[
-        'as'=>'userAddCart',
-        'uses'=>'user\CartController@addCart'
-    ]);
-    Route::get('/delete-item-cart/{id}',[
-        'as'=>'userDeleteItemCart',
-        'uses'=>'user\CartController@deleteItemCart'
-    ]);
-    Route::get('/booking-step-1',[
-        'as'=>'userBookingStep1',
-        'uses'=>'user\BookingController@bookingStep1'
-    ]);
-    Route::post('/booking-step-2',[
-        'as'=>'userBookingStep2',
-        'uses'=>'user\BookingController@bookingStep2'
-    ]);
-    Route::get('/booking-step-3/{id}',[
-        'as'=>'userBookingStep3',
-        'uses'=>'user\BookingController@bookingStep3'
-    ]);
-    Route::get('/search-filter',[
-        'as'=>'userSearchFilter',
-        'uses'=>'user\SearchResultController@filter'
-    ]);
-    Route::get('/search-orderBy',[
-        'as'=>'userSearchOrderBy',
-        'uses'=>'user\SearchResultController@orderBy'
-    ]);
-    
-});
+}); 
+Route::get('/get-district/{id}',[
+    'as'=>'userGetDistrict',
+    'uses'=>'user\AccountController@getDistrict'
+]);
+Route::get('/get-ward/{id}',[
+    'as'=>'userGetWard',
+    'uses'=>'user\AccountController@getWard'
+]);
+Route::get('/error',[
+    'as'=>'userError',
+    'uses'=>'user\HomeController@getError'
+]);
+Route::get('/add-cart/{id}',[
+    'as'=>'userAddCart',
+    'uses'=>'user\CartController@addCart'
+]);
+Route::get('/delete-item-cart/{id}',[
+    'as'=>'userDeleteItemCart',
+    'uses'=>'user\CartController@deleteItemCart'
+]);
+Route::get('/booking-step-1',[
+    'as'=>'userBookingStep1',
+    'uses'=>'user\BookingController@bookingStep1'
+]);
+Route::post('/booking-step-2',[
+    'as'=>'userBookingStep2',
+    'uses'=>'user\BookingController@bookingStep2'
+]);
+Route::get('/booking-step-3/{id}',[
+    'as'=>'userBookingStep3',
+    'uses'=>'user\BookingController@bookingStep3'
+]);
+Route::get('/search-filter',[
+    'as'=>'userSearchFilter',
+    'uses'=>'user\SearchResultController@filter'
+]);
+Route::get('/search-orderBy',[
+    'as'=>'userSearchOrderBy',
+    'uses'=>'user\SearchResultController@orderBy'
+]);
+
+
 
 
 Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
