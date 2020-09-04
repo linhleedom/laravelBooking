@@ -39,19 +39,19 @@ List Bills
 										<div class="b-info">
 											<table>
 												<tr>
-													<th>Tên Khách hàng</th>
+													<th>Tên Khách hàng:</th>
 													<td>{{$list_BillVal->name}}</td>
 												</tr>
 												<tr>
-													<th>Địa chỉ email</th>
+													<th>Email liên hệ:</th>
 													<td>{{$list_BillVal->email}}</td>
 												</tr>
 												<tr>
-													<th>Số điện thoại</th>
+													<th>Số điện thoại:</th>
 													<td>{{$list_BillVal->phone}}</td>
 												</tr>
 												<tr>
-													<th>Trạng thái</th>
+													<th>Trạng thái:</th>
 													@if($list_BillVal->status == 0)
 														<td><strong class="gradient-button warning">Đã đặt</strong></td>
 													@elseif($list_BillVal->status == 1)
@@ -61,16 +61,17 @@ List Bills
 													@endif
 												</tr>
 												<tr>
-													<th>Total Price:</th>
-													<td><strong>{{$list_BillVal->payments}}</strong></td>
+													<th>Tổng tiền:</th>
+													<td><strong>{{ number_format( $list_BillVal->payments,0,',','.' ) }}đ</strong></td>
 												</tr>
 											</table>
 										</div>
 										
 										<div class="actions">
 											<a href="{{url('partner/information-order', ['id' => $list_BillVal->id])}}" class="gradient-button ">Thông tin hóa đơn</a>
-											{{-- <a href="{{url('partner/edit-bill', ['id' => $list_BillVal->id])}}" class="gradient-button add ">Sửa</a> --}}
-											<a href="{{url('partner/delete-bill', ['id' => $list_BillVal->id])}}" class="gradient-button delete">Xóa hóa đơn</a>
+											@if ($list_BillVal->status == 0)
+											<a href="{{route('CancelBook', ['id'=>$list_BillVal])}}" class="gradient-button danger">Hủy phòng</a>
+											@endif
 										</div>
 									</article>									
 								@endforeach

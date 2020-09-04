@@ -189,6 +189,11 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::post('/edit-order/{id}','OrderController@postEditOrder');
             Route::get('/edit-bill/{id}','BillsController@getEditbill');
             Route::post('/edit-bill/{id}','BillsController@postEditbill');
+
+            Route::get('/Cancel-room/{id}',[
+                    'as'=>'CancelBook',
+                    'uses'=>'BillsController@getCancelBook'
+                ]);
             
             
 
@@ -196,6 +201,10 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::post('/edit-list-homestay/{id}','HomestayPartnerController@postEditPartnerHomestay');           
             Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');
             Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');
+
+            
+            Route::get('/pays-homestay/{id}','HomestayPartnerController@getPaysHomestay')->name('PaysHomestay');             
+            Route::get('/pays-homestay/{id}','HomestayPartnerController@getPaysHomestay2')->name('PaysHomestayStep2');
 
             Route::group(['prefix'=>'/'], function(){
                 

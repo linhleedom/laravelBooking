@@ -38,6 +38,22 @@ class BillsController extends Controller
         return view ('partner.my_order.list-bills',['list_Bill'=>$list_Bill]);
     }
 
+    public function getCancelBook($id){
+        $bill = Bill::find($id);
+        if($bill->status == 0){
+            $bill->status = 1;
+            $bill->update();
+        }
+        foreach($bill->order as $order){
+            $order = Order::find($order->id);
+            if($order->status == 1){
+                $order->status = 0;
+                $order->update();
+            }
+        }
+        return redirect()->back()->with(['change-status'=>'success','massage'=>'Hủy phòng thành công']);
+    }
+
     function getEditbill($id){
         
         $bill = Bill::find($id);    

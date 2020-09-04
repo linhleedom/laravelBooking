@@ -59,9 +59,9 @@ Edit Room
 								<div class="f-item custom-item">
 									<label for="">Trạng thái của phòng</label>
 									<label for="status1">Ẩn  &nbsp 
-										<input required type="radio" id="status1" name="status"  value="0" checked/></label>
+										<input required type="radio" id="status1" name="status"  value="0" @if($product->status ==0) checked  @endif/></label>
 									<label for="status2">Hiện  &nbsp 
-										<input required type="radio" id="status2" name="status"  value="1"/>
+										<input required type="radio" id="status2" name="status"  value="1" @if($product->status ==1) checked  @endif/>
 									</label>
 								</div>
 							</div>

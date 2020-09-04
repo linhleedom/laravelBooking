@@ -29,6 +29,14 @@ class HomestayPartnerController extends Controller
         return view ('partner.homestay.list-homestay',$data1);
     }
 
+    public function getPaysHomestay($id){
+        $homestay = Homestay::find($id);
+        return view('partner.pays.pays-new-step1',['homestay'=>$homestay]);
+    }
+    public function getPaysHomestay2(){
+        
+    }
+
     //upload Ảnh
     public function create($id){
         

@@ -141,7 +141,6 @@ class AccountController extends Controller
             $rate->status = 0;        
             $rate->update();
         }
-        // return view('partner.account.account');
         return redirect()->back()->with(['change-status'=>'success','massage'=>'Đổi trạng thái phòng thành công']);
     }
 }

@@ -24,17 +24,8 @@
 
 				<!--three-fourth content-->
 					<section class="three-fourth form-booking">
-						<h1>Chọn mục</h1>
-						<form id="booking" method="post" action="pays-new-step1.html" class="booking">
-							<fieldset style="text-align: center;">
-								<input type="submit" class="gradient-button" value="Thanh toán cho người mới" id="next-step" />
-							</fieldset>
-						</form>
-						<form id="booking" method="post" action="pays-booking.html" class="booking">
-							<fieldset style="text-align: center;">
-								<input type="submit" class="gradient-button" value="Thanh toán bình thường" id="next-step" />
-							</fieldset>
-						</form>
+						<h1 style="text-align: center;">Chọn mục</h1>
+							<a href="pays-new-step1.html" class="gradient-button" >Thanh toán cho người mới</a><br>
 					</section>
 				<!--//three-fourth content-->
 			</div>
