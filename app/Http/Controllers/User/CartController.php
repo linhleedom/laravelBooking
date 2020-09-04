@@ -14,7 +14,6 @@ class CartController extends Controller
         $sessionCart = 'Cart-homestay-'.$request->homestay_id;
 
         $product = Product::find($id);
- 
         $datepicker1 =$request->datepicker1;
         $datepicker2 =$request->datepicker2;
         if( $product != null ){
@@ -23,7 +22,7 @@ class CartController extends Controller
             $newCart -> AddCart($product, $id);
             $request->session()->put($sessionCart, $newCart);
         }
-        return view('user.cart.cart',compact('sessionCart','datepicker1','datepicker2'));
+        return view('user.ajax.cart',compact('sessionCart','datepicker1','datepicker2'));
     }
 
     public function deleteItemCart(Request $request,$id){
@@ -40,7 +39,6 @@ class CartController extends Controller
         }else{
             $request->session()->forget($sessionCart);
         }
-        return view('user.cart.cart',compact('sessionCart','datepicker1','datepicker2'));
-        // dd($newCart->product);
+        return view('user.ajax.cart',compact('sessionCart','datepicker1','datepicker2'));
     }
 }

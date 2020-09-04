@@ -157,7 +157,7 @@ My Account
 												<div class="input-pass">
 													<label for="pass_old">Nhập mật khẩu cũ: </label>
 													<input type="password" id="pass_old" class="show" name="pass_old" required="required"/>
-													<input type="button" class="btnShow" value="show" id="showPassword">
+													<input type="button" class="btnShow showPassword" value="show">
 													@if( $errors->has('pass_old') )
 														<i class="error_account">{{$errors->first('pass_old')}}</i><br/>
 													@endif
@@ -353,7 +353,6 @@ My Account
 							</article>
 							<!--//booking-->
 						@endforeach
-						<a href="#" class="scroll-to-top" title="Back up">Top</a> 
 						{{ $billBooking->withQueryString()->links('vendor.pagination.custom') }}
 					</section>
 					<!--//MyReviews-->
@@ -457,8 +456,7 @@ My Account
 								</div>
 							</article>
 							<!--//booking-->
-						@endforeach
-						<a href="#" class="scroll-to-top" title="Back up">Top</a> 
+						@endforeach 
 						{{ $billHistory->withQueryString()->links('vendor.pagination.custom') }}
 					</section>
 					<!--//My Bookings-->	

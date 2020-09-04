@@ -38,9 +38,6 @@ class RoomDetailController extends Controller
     }
 
     public function index(Request $request){
-        
-        // $request->session()->forget('Cart');
-
         $homestay_id = $request->id;
         $datepicker1 =$request->datepicker1;
         $datepicker2 =$request->datepicker2;
@@ -49,7 +46,6 @@ class RoomDetailController extends Controller
         $num_chil = $request->num_chil;
 
         $homestayVal = Homestay::find($homestay_id);
-
         if( isset($num_room) && isset($num_adult) && isset($num_chil) && $num_room !== '0' ){
             $capacity = $num_adult/$num_room;
             if($capacity <= 5){

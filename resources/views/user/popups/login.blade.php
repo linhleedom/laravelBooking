@@ -19,7 +19,7 @@
 							<div class="input-pass f-item">
 								<label for="password">Mật khẩu</label>
 								<input type="password" id="password" class="show" name="password" required="required"/>
-								<input type="button" class="btnShow" value="show" id="showPassword">
+								<input type="button" class="btnShow showPassword" value="show">
 								@if( $errors->login->has('password') )
 									<span class="feedback">{{$errors->login->first('password')}}</span><br/>
 								@endif
@@ -33,7 +33,7 @@
 							</div>
                             <input type="hidden" name="permission" value="2">
 							<p>
-								<a href="user_reset_password_step_1.html" title="Forgot password?">Quên mật khẩu?</a>
+								<a href="{{route('resetPasswordUser')}}" title="Forgot password?">Quên mật khẩu?</a>
 								@if( Session::get('feedback') !== 'register_success' )
 									<br />
 									<span style="color: rgba(56, 209, 255, 0.86);" >Nếu bạn chưa có tài khoản?</span>

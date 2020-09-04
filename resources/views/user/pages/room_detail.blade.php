@@ -106,7 +106,9 @@ class="active"
 										<div class="meta">
 											<p class="pro-name">{{ucfirst($productVal->name)}}</p>
 											<h2 class="type-name">{{$productVal->roomType->name}}</h2>
-											<p>Giảm giá: <span class="discount">{{$productVal->discount}}%</span></p>
+											@if( $productVal->discount != 0 )
+												<p>Giảm giá: <span class="discount">{{$productVal->discount}}%</span></p>
+											@endif
 											<p>Đã bao gồm 10% VAT </p>
 											<p>Thanh toán tại homestay</p>
 											<a href="javascript:void(0)" title="more info" class="more-info">+ Thêm</a>
@@ -136,8 +138,6 @@ class="active"
 											@else
 												<a onclick="Alert()" class="gradient-button no-href">Chọn</a>
 											@endif
-											
-											<!-- <a href="{{route('userAddCart',['id' => $productVal->id])}}" class="gradient-button">Chọn</a> -->
 										</div>
 										<div class="more-information">
 											<p>{{$productVal->description}}</p>
@@ -293,8 +293,11 @@ class="active"
 					<!-- Booking?-->
 					<article class="default clearfix order">
 						<h2>Phòng đã chọn</h2>
+						@if(Session::get('check-session') == 'fail')
+							<p><i class="error_account">{{Session::get('massage')}}</i></p>
+						@endif
 						<div id="change-item-cart">
-							@include('user.cart.cart')
+							@include('user.ajax.cart')
 						</div>
 						@if( isset($datepicker1) && isset($datepicker2) )
 							<a href="{{route('userBookingStep1').'?id='.$homestayVal->id.'&address='.$homestayVal->province->name.$url}}" class="gradient-button" title="Book">Thanh toán</a>	

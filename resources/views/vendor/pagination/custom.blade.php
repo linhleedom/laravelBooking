@@ -1,4 +1,7 @@
 @if ($paginator->hasPages())
+    <!--back up button-->
+        <a href="#" class="scroll-to-top" title="Back up">Top</a> 
+	<!--//back up button-->
     <div class="pager">
         {{-- Previous Page Link --}}
         @if ($paginator->onFirstPage())

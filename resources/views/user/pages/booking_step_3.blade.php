@@ -63,15 +63,13 @@ Booking Checkout
 				<aside class="right-sidebar">
 					<!--Booking details-->
 					<article class="booking-details clearfix order-booking-step-1 order-booking-step-3">
-						@foreach($bill->order->take(1) as $orderTake_1)
-							<h1>{{$orderTake_1->product->homestay->name}}
-								<span class="stars">
-									<span class="point">{{$orderTake_1->product->homestay->point}}</span>
-								</span>
-							</h1>
-							<span class="address">{{$orderTake_1->product->homestay->province->name}}</span><br/>
-							<span class="address">{{$orderTake_1->product->homestay->district->name}}</span>
-						@endforeach
+						<h1>{{$bill->order->first()->product->homestay->name}}
+							<span class="stars">
+								<span class="point">{{$bill->order->first()->product->homestay->point}}</span>
+							</span>
+						</h1>
+						<span class="address">{{$bill->order->first()->product->homestay->province->name}}</span><br/>
+						<span class="address">{{$bill->order->first()->product->homestay->district->name}}</span>
 						@foreach($bill->order as $order)
 							<div class="booking-info">
 								<h6>Tên phòng</h6>
@@ -85,8 +83,8 @@ Booking Checkout
 						<div class="price">
 							<p class="total">Tổng tiền: <span class="payment">{{ number_format( $bill->payments,0,',','.' ) }}đ</span></p>
 							<p class="total">Tổng số phòng: <span class="payment">{{$bill->order->count()}}</span></p>
-							<p class="total">Ngày nhận phòng: <span class="payment"><i>{{date( "d-m-Y", strtotime($orderTake_1->date_start))}}</i> </span></p>
-							<p class="total">Ngày trả phòng: <span class="payment"> <i>{{date( "d-m-Y", strtotime($orderTake_1->date_end))}}</i> </span></p>
+							<p class="total">Ngày nhận phòng: <span class="payment"><i>{{date( "d-m-Y", strtotime($bill->order->first()->date_start))}}</i> </span></p>
+							<p class="total">Ngày trả phòng: <span class="payment"> <i>{{date( "d-m-Y", strtotime($bill->order->first()->date_end))}}</i> </span></p>
 							<p>Đã bao gồm VAT(10%)</p>
 						</div>	
 					</article>

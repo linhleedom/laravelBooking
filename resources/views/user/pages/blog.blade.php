@@ -49,10 +49,6 @@ Blog
 						@endforeach
 						<!--bottom navigation-->
 						<div class="bottom-nav">
-							<!--back up button-->
-							<a href="#" class="scroll-to-top" title="Back up">Back up</a> 
-							<!--//back up button-->
-							
 							<!--pager-->
 							{{ $blog->withQueryString()->links('vendor.pagination.custom') }}
 							<!--//pager-->

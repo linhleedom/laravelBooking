@@ -17,7 +17,7 @@ class CreateRatingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('homestay_id')->index();
             $table->bigInteger('user_id')->nullable()->index()->default(0);
-            $table->bigInteger('bill_id')->index();
+            $table->unsignedBigInteger('bill_id')->index();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
@@ -25,6 +25,7 @@ class CreateRatingsTable extends Migration
             $table->text('comment')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->foreign('homestay_id')->references('id')->on('homestays')->onDelete('cascade');
+            $table->foreign('bill_id')->references('id')->on('bills')->onDelete('cascade');
             $table->timestamps();
         });
     }

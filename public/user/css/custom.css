@@ -340,6 +340,12 @@ header #wrap .ribbon nav ul.open li a {
 .booking-succes{
 	color: rgb(0, 0, 255);
 }
+.homestay_info h5{
+	width: 120px ;
+}
+.full-width img{
+	height: 200px;
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;
@@ -356,6 +362,9 @@ header #wrap .ribbon nav ul.open li a {
 	.order-booking-step-1{
 		margin-top: 0px;
 	}
+	.deals .description{
+		height: 70px;
+	}
 }
 @media screen and (max-width: 600px) {
 	.search-left .search-submit{
@@ -363,6 +372,9 @@ header #wrap .ribbon nav ul.open li a {
 	}
 	.order-booking-step-1{
 		margin-top: 0px;
+	}
+	.deals .description{
+		height: 70px;
 	}
 }
 /* ----------------------------------- */

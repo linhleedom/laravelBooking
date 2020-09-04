@@ -26,7 +26,7 @@
 							<div class="input-pass f-item">
 								<label for="password">Mật khẩu</label>
 								<input type="password" id="password" class="show" name="password" minLength="8" maxLength="12" required="required"/>
-								<input type="button" class="btnShow" value="show" id="showPassword">
+								<input type="button" class="btnShow showPassword" value="show">
 								@if( $errors->register->has('password') )
 									<span class="feedback">{{$errors->register->first('password')}}</span><br/>
 								@endif
