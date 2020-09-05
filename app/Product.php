@@ -8,7 +8,7 @@ use App\Uti_Pro;
 class Product extends Model
 {
     protected $table = 'products';
-    protected $fillable = ['id', 'homestay_id', 'room_type_id', 'name', 'prices', 'discount', 'avatar', 'description', 'status'];
+    protected $fillable = ['id', 'homestay_id', 'room_type_id', 'name', 'prices', 'area','discount', 'avatar', 'description', 'status'];
 
     public function roomType(){
         return $this->belongsTo('App\RoomType', 'room_type_id','id');

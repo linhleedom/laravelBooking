@@ -74,18 +74,9 @@ Add Room
 										</label>										
 									</div>
 									<div class="f-item custom-item">
-										<label for="">Diện tích phòng</label>
-										<label for="area1">10m<sup>2</sup> &nbsp   &nbsp	
-											<input required type="radio" id="area1" name="area"  value="0"/></label>
-										<label for="area2">16m<sup>2</sup>  &nbsp 
-											<input required type="radio" id="area2" name="area"  value="1"/>
-										</label>	
-										<label for="area3">20m<sup>2</sup>  &nbsp 
-											<input required type="radio" id="area3" name="area"  value="2"/>
-										</label>	
-										<label for="area4">Cả căn  &nbsp 
-											<input required type="radio" id="area4" name="area"  value="3"/>
-										</label>										
+										<label for="area1">Diện tích phòng m<sup>2</sup> 	
+											<input required="required" type="number" name="area"/>
+										</label>									
 									</div>
 								</div>
 								<div class="row twins">

@@ -1331,7 +1331,8 @@ header .ribbon {
     text-align: left;
     display: inline-block;
     float: left;
-    width: 100%;
+    width: 200px;
+    height: 40px;
 }
 
 .deals .stars {
