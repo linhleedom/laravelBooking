@@ -210,9 +210,7 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
                 Route::post('/edit-avatar/{id}','AccountController@editAvatar')->name('userEditAvatar');
                 Route::post('/edit-address/{id}','AccountController@editAddress')->name('userEditAddress');
 
-                Route::get('/edit-address/{id}','AccountController@editAddress');
-                
-                
+                Route::get('/edit-address/{id}','AccountController@editAddress');               
                 Route::get('/change-status/{bill_id}',[
                     'as'=>'ChangeStatus',
                     'uses'=>'AccountController@getChange'
