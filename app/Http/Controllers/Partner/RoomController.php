@@ -79,7 +79,7 @@ class RoomController extends Controller
             'area'=>$request->area,
             'description'=>$request->description
         ]);
-        // dd($product->area);
+        // dd($product);
         foreach($request->input('tienich') as $tienich){
             Uti_Pro::create([
                 'product_id'=>$product->id,

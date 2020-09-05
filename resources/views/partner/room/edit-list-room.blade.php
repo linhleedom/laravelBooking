@@ -73,17 +73,8 @@ Edit Room
 									</label>									
 								</div>	
 								<div class="f-item custom-item">
-									<label for="">Diện tích phòng</label>
-									<label for="area1">10m<sup>2</sup> &nbsp   &nbsp	
-										<input required type="radio" id="area1" name="area"  value="0" @if($product->area ==0) checked  @endif/></label>
-									<label for="area2">16m<sup>2</sup>  &nbsp 
-										<input required type="radio" id="area2" name="area"  value="1" @if($product->area ==1) checked  @endif/>
-									</label>	
-									<label for="area3">20m<sup>2</sup>  &nbsp 
-										<input required type="radio" id="area3" name="area"  value="2" @if($product->area ==2) checked  @endif/>
-									</label>	
-									<label for="area4">Cả căn  &nbsp 
-										<input required type="radio" id="area4" name="area"  value="3" @if($product->area ==3) checked  @endif/>
+									<label for="">Diện tích phòng m<sup>2</sup></label>
+								<input required type="number"  name="area"  value="{{$product->area}}" />
 									</label>										
 								</div>							
 								<div class="f-item custom-item">
