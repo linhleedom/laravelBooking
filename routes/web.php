@@ -217,8 +217,8 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
                 Route::post('/edit-address/{id}','AccountController@editAddress')->name('userEditAddress');
 
                 Route::get('/edit-address/{id}','AccountController@editAddress');
-                Route::get('/getdistricts/{id}','AccountController@getdistricts');
-                Route::get('/getwards/{id}','AccountController@getwards');
+                // Route::get('/getdistricts/{id}','AccountController@getdistricts');
+                // Route::get('/getwards/{id}','AccountController@getwards');
                 
                 
                 Route::get('/change-status/{bill_id}',[

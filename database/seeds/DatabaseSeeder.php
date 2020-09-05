@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call(DistrictsSeed::class);
         $this->call(WardsSeed::class);
         $this->call(UsersSeed::class);
-        $this->call(UtilitiesSeed::class);
-        $this->call(RoomTypesSeed::class);
+        // $this->call(UtilitiesSeed::class);
+        // $this->call(RoomTypesSeed::class);
         // $this->call(HomestaysSeed::class);
         // $this->call(ProductsSeed::class);
         // $this->call(UtiProSeed::class);
