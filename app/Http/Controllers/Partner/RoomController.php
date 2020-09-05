@@ -118,11 +118,12 @@ class RoomController extends Controller
         $product->status = $request->status;
         $product->name = $request->name;
         $product->area = $request->area;
-        $product->room_type_id = $request->room_type_id;
+        $product->room_type_id = $request->room_type;
         $product->prices = $request->prices;
         $product->discount = $request->discount;
         $product->description = $request->description;
 
+        // dd($product->room_type_id);
         $image = $request->avatar;
         $filename = $image->getClientOriginalName();
         $image->move(public_path('uploads/room/'), $filename);

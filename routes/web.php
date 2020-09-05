@@ -188,13 +188,7 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::get('/edit-order/{id}','OrderController@getEditOrder');
             Route::post('/edit-order/{id}','OrderController@postEditOrder');
             Route::get('/edit-bill/{id}','BillsController@getEditbill');
-            Route::post('/edit-bill/{id}','BillsController@postEditbill');
-
-            Route::get('/Cancel-room/{id}',[
-                    'as'=>'CancelBook',
-                    'uses'=>'BillsController@getCancelBook'
-                ]);
-            
+            Route::post('/edit-bill/{id}','BillsController@postEditbill');           
             
 
             Route::get('/edit-list-homestay/{id}','HomestayPartnerController@getEditPartnerHomestay');    
