@@ -201,7 +201,7 @@ class="active"
 							<h1>Đánh giá của du khách</h1>
 							<ul class="reviews">
 								<!-- @if( isset($homestayVal->rating) ) -->
-									@foreach($homestayVal->rating as $ratingVal)
+									@foreach($homestayVal->rating->where('status','1') as $ratingVal)
 										<!--review-->
 										<li>
 											<figure class="left"><img src="{{$ratingVal->user->avatar}}" alt="avatar" width=50 height=50/></figure>
