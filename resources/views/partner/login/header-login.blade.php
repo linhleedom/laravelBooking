@@ -1,7 +1,7 @@
 <header>
 		<div class="wrap clearfix">
 			<!--logo-->
-			<h1 class="logo"><a href="{{url('partner/trangchu')}}" title="Book Your Travel - home"><img src="partner/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
+			<h1 class="logo"><a href="{{url('')}}" title="Book Your Travel - home"><img src="partner/images/txt/logo.png" alt="Book Your Travel" /></a></h1>
 			<!--//logo-->
 			
 			{{-- <div class="ribbon">				
