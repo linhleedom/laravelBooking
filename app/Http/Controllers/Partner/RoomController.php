@@ -23,7 +23,7 @@ class RoomController extends Controller
         foreach ($homestay as $homestayVal){
             array_push($homestayforPartner, $homestayVal->id);
         };
-        $product = Product::whereIn('homestay_id',$homestayforPartner)->paginate(5);
+        $product = Product::whereIn('homestay_id',$homestayforPartner)->paginate(12);
     
         // dd($product);
         

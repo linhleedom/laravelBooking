@@ -49,70 +49,64 @@ List Homestay
                 <!--//crumbs-->
             </nav>
             <!--//breadcrumbs-->		
-            
-            <section class="full">
-                <div class="deals clearfix">
-                    <div style="text-align: center; font-size: 4.5em;margin-bottom: 50px;">Danh sách Homestay</div>
-                    {{csrf_field()}}
-                        <div colspan="2" 
-									style="color: #32df5d;
-										/* background-color: #f2dede; */
-										border-color: #ebccd1;
-										width: 500px;
-										height: 50px;
-										font-size: 1.5em;
-								">
-										{{Session::get('thongbao')}}
-						</div>
-                    <table class="list-homestay">
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên Homestay</th>
-                            <th>Đánh giá</th>
-                            <th>Trạng thái</th>
-                            <th colspan="2">Trạng thái thanh toán</th>
-                            <th></th>
-                        </tr>
-                        <?php $i=0; ?>
+            <section class="three-fourth" style="width:100%">                
+                <div class="deals clearfix" >
+                    <!--deal-->
+                    <?php $i=0; ?>
                         @foreach ($homestaylist as $Homestay)                        
-						<?php $i++; ?>
-                        <tr>
-                        <td>{{$i}}</td>
-                            <td>{{$Homestay->name}}</td>
-                            <td>
-                                <p style="font-size: medium;color: lightcoral">
-                                    {{$Homestay->point}}/5
-                                </p>
-                            </td>
-                            <td>{{($Homestay->status==0)?"Ẩn":"Hiện"}}</td>
-                            <td colspan="2">
-                                @if ($Homestay->status_pay == 2)                                    
-                                    <a title="Sửa" class="gradient-button success">Đã Thanh toán </a>
-                                @elseif($Homestay->status_pay == 1)                                    
-                                <a title="Sửa" class="gradient-button warning">Đang xử lý </a>
-                                @elseif($Homestay->status_pay == 0)                                 
-                                    <a href="" title="Sửa" class="gradient-button danger">Chưa Thanh toán </a>
-                                @endif
-                                {{-- {{route('PaysHomestay', ['id'=>$Homestay])}} --}}
-                                {{-- DB thiếu cột trạng thái thanh toán --}}
-                            </td>
-                            <td>
-                                <a href="{{url('partner/upload_images', ['id' => $Homestay->id])}}" title="Chi tiết" class="gradient-button add">Thêm file Ảnh </a>
-                                <a href="{{url('partner/edit-list-homestay', ['id' => $Homestay->id])}}" title="Sửa" class="gradient-button ">Sửa </a>
-                                <a href="{{url('partner/delete-homestay', ['id' => $Homestay->id])}}" title="Xóa" class="gradient-button delete" onclick="return confirm('Bạn có muốn xóa không')">Xóa</a>
-                            </td>
-                        </tr>
-                        
-                        @endforeach
-                    </table>                    
+					<?php $i++; ?>
+                    <article class="one-fourth homestay-custom" >
+                        <figure><a href="{{url('partner/edit-list-homestay', ['id' => $Homestay->id])}}" title=""><img src="{{asset('public/'.$Homestay->avatar)}}" alt="" width="270" height="152" /></a></figure>
+                        <div class="details">
+                            <h1 style="height: 75px;" >{{$Homestay->name}}
+                                <span  class="point" >
+                                    {{$Homestay->point}}
+                                </span><br>
+                                <span class="price none-border" style="font-size: 15px">Trạng thái &nbsp; &nbsp;
+                                    <em>
+                                    @if ($Homestay->status == 1)                                    
+                                        <a title=""  style="color:#32df5d ;font-size :12px">Hiện</a>
+                                    @elseif($Homestay->status == 0)                                 
+                                    <em> <a  title="" style="color:red  ;font-size :12px">Ẩn</a>
+                                    @endif
+                                    </em>
+                                </span>
+                            </h1>
+                            <span class="price">Thêm ảnh &nbsp; &nbsp;
+                                <em>                                
+                                    <a href="{{url('partner/upload_images', ['id' => $Homestay->id])}}"><img src="partner/images/ico/plus.png" alt="" width="22" height="22" /></a>
+                                </em>
+                            </span>
+                            <span class="price none-border">Thanh toán
+                                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
+                                    @if ($Homestay->status_pay == 2)                                    
+                                        <a title="Sửa"  style="color:#32df5d ;font-size :12px" >Đã Thanh toán </a>
+                                    @elseif($Homestay->status_pay == 1)                                    
+                                        <a title="Sửa"  style="color:yellow ;font-size :12px" >Đang xử lý </a>
+                                    @elseif($Homestay->status_pay == 0)                                 
+                                    <a href="" title="Sửa" style="color:red ;font-size :12px" >Chưa Thanh toán </a>
+                                    @endif                                
+                            </span>       
+                            <div class="description" style="height: 110px;">
+                                <p><br>{{$Homestay->title}} <a href="{{url('room-detail'.'?id='.$Homestay->id)}}" >Chi tiết</a></p>
+                            </div>                     
+                            <a href="{{url('partner/delete-homestay', ['id' => $Homestay->id])}}" title="Xóa" class="custom-button danger " >Xóa Homestay</a>
+                        </div>
+                    </article>
+                    <!--//deal-->
+                    <!--//deal-->
+                    @endforeach
+                    <!--bottom navigation-->
+                    <div class="bottom-nav">
                         <!--pager-->
                         {{ $homestaylist->withQueryString()->links('vendor.pagination.custom') }}
                         {{-- endpager --}}
+                        <!--//pager-->
+                    </div>
+                    <!--//bottom navigation-->
                 </div>
-                           
-                        
-                
             </section>
+        <!--//three-fourth content-->
             <!--//top destinations-->
         </div>
         <!--//main content-->

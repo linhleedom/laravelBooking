@@ -15,6 +15,7 @@ Add Image Homestay
 					<!--crumbs-->
 					<ul class="crumbs">
 						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li> 
+						<li><a href="{{url('partner/list-homestay')}}" title="Home">Danh sách Homestay</a></li>
 						<li>Thêm Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->
@@ -31,7 +32,7 @@ Add Image Homestay
 				<!--three-fourth content-->
 				<section class="three-fourth form-booking">
                 <h1 style="text-align: center;text-transform: uppercase;">Ảnh của Homestay <br><b style="color: lightcoral;font-size:15px"><u>{{$homestay->name}}</u></b></h1>
-                    {{-- {{Route('upload_images')}} --}}
+                
                 <form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
                         {{csrf_field()}}
                         <div colspan="2" 
@@ -48,61 +49,32 @@ Add Image Homestay
                             <h3 style="margin-top: 20px;"><span>01</span> Upload Ảnh </h3>
                             <input type="file" name="url[]" multiple>
                             <br><br>
-                            <input type="submit" class="gradient-button" name = "send" value="Upload file">
+                            <input type="submit" class="gradient-button" name = "send" value="Upload file" value="Thêm">
 						</fieldset>							
 					</form>
 				</section>
 				<section class="three-fourth form-booking">
-						{{-- {{Route('upload_images')}} --}}
 					<form id="booking" method="post" action="" class="booking " >
-							{{csrf_field()}}
-							<div colspan="2" 
-										style="color: #32df5d;
-											/* background-color: #f2dede; */
-											border-color: #ebccd1;
-											width: 500px;
-											height: 50px;
-											font-size: 1.5em;
-									">
-											{{Session::get('thongbao')}}
-									</div>
-							<table style="width : 100%">
-								<tr>
-									<th>STT</th>
-									<th>Homestay</th>
-									<th>Ảnh</th>
-									<th>Tên ảnh</th>
-									<th colspan="2">Chức năng</th>
-								</tr>
-								<?php $i = 0 ;?>								
-								@foreach ($homestay->image as $imageval)
-								<?php $i++;  ?> 
-									<tr>										
-										<td>
-											{{$i}}
-										</td>
-										<td>{{$homestay->name}}</td>
-											
-										<td >
-											<img src="{{asset('public/'.$imageval->url)}}" alt="Image" width="300px" height="150px" > <br>
-										</td>
-										<td> <?php echo substr("{$imageval->url}",17) ?></td>
-												
-											
-										<td colspan="2">											
-											<a href="{{url('partner/delete_image', ['id'=>$imageval->id])}}" title="Sửa" class="gradient-button delete" onclick="return confirm ('Bạn có muốn xóa ảnh')">Xóa </a>
-										</td>	
-									</tr>	
-								@endforeach
-							</table>	
-							<div class="bottom-nav">
-								<!--back up button-->
-								<a href="#" class="scroll-to-top" title="Back up">Top</a> 
-								<!--//back up button-->
-							</div>					
-						</form>
-					</section>
-						
+						{{csrf_field()}}							
+						@foreach ($homestay->image as $imageval)
+						<!--get inspired list-->
+						<ul class="get_inspired width-height">
+							<!--item-->
+							<li>
+								<a class="no_href">
+									<figure>
+										<img src="{{asset('public/'.$imageval->url)}}" alt="Image" width="200px" height="100px" />
+										<a href="{{asset('public/'.$imageval->url)}}" class="image-overlay search-custom" rel="prettyPhoto[gallery1]"></a>
+										<figcaption>{{$homestay->name}}</figcaption>
+									</figure>
+								</a>
+							</li>
+							<!--//item-->
+						</ul>
+						<!--//get inspired list-->
+						@endforeach
+					</form>
+				</section>
 				<!--//three-fourth content-->
 				
 				<!--right sidebar-->

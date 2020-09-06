@@ -233,7 +233,8 @@ header #wrap .ribbon nav ul.open li a {
 /* list-homestay-room */
 table.list-homestay {
 	border-collapse: collapse;
-	width: 100%;
+    width: 100%;    
+    margin-bottom: 20px;
 }
   
   .list-homestay tr,th, td {
@@ -416,4 +417,65 @@ table  tr td.alert-success{
     margin-left: 50px;
     font-size: 14px;
     color: #32df5d;
+}
+.wrap.clearfix a.no_href{
+    cursor: pointer;
+}
+
+.point {
+    padding: 4px 4px 4px 15px;
+    background-color: #000482 !important;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    background: url(../images/ico/star.png) 2px 4px no-repeat;
+}
+.custom-button{
+    font: normal 9px/30px 'RobotoBold';
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f5f5f5;
+    height: 30px;
+    padding: 0 10px;
+    text-align: center;
+    display: inline-block;
+    border-radius: 15px;
+}
+.custom-button.success {
+    background: #28a745	;
+}
+.custom-button.danger {
+    background: #dc3545	;
+}
+.custom-button.warning {
+    background: #ffc107	;
+}
+.image-overlay.search-custom{
+    background: url(../images/ico/magnify.png) 50% 70% no-repeat !important;
+}
+.get_inspired.width-height li {
+    width: 17.6%;
+    height: 150px;
+}
+.one-fourth .rating.like{
+    background: url(../images/ico/rating.png) 0 2px no-repeat !important;
+}
+.price.none-border{
+    border: none;
+}
+.three-fourth .one-fourth.homestay-custom {
+    width: 22.6%;
+    margin: 0 2.4% 20px 0;
+}
+.edit_field.edit_address{
+    background: none;
+}
+.edit_field.edit_address label{
+    text-align: left;
+}
+.edit_field.edit_address select {
+    width: 100%;
+}
+.edit_field.edit_address div.selector {
+    font-size: 15px;
 }
