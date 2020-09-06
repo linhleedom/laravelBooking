@@ -5,56 +5,56 @@ My Account
 @endsection
 
 @section('script')
-$(document).ready(function(){
-    $('#provinces').change(function(){
-    var cid = $(this).val();
-    if(cid){
-    $.ajax({
-    type:"get",
-    url: '../partner/getdistricts/'+cid,//Please see the note at the end of the post**
-    success:function(res)
-    {       
-            if(res.length !== 0)
-            {
-                $("#districts").empty();
-                $("#wards").empty();
-                $("#districts").append('<option>Chon</option>');
-                $.each(res,function(key,value){
-                    $("#districts").append('<option value="'+key+'">'+value+'</option>');
-                });
-            }else{
-                $("#districts").empty();
-                $("#wards").empty();
-                $("#districts").append('<option>Chọn</option>');
-                $("#wards").append('<option>Chọn</option>');
-            }
-    }
+    $(document).ready(function() {
+        $('#star').raty({
+            score    : 5
+        });
 
+		$('#provinces').change(function(){
+			var cid = $(this).val();
+			if(cid){
+				$.ajax({
+					type:"get",
+					url: '../partner/getdistricts/'+cid,//Please see the note at the end of the post**
+					success:function(res){       
+						if(res.length !== 0){
+							$("#districts").empty();
+							$("#wards").empty();
+							$("#districts").append('<option></option>');
+							$.each(res,function(key,value){
+								$("#districts").append('<option value="'+key+'">'+value+'</option>');
+							});
+						}else{
+							$("#districts").empty();
+							$("#wards").empty();
+							$("#districts").append('<option></option>');
+							$("#wards").append('<option></option>');
+						}
+					}
+
+				});
+			}
+		});
+
+		$('#districts').change(function(){
+			var cid = $(this).val();
+			if(cid){
+				$.ajax({
+					type:"get",
+					url: '../partner/getwards/'+cid,//Please see the note at the end of the post**
+					success:function(res){       
+						if(res){
+							$("#wards").empty();
+							$("#wards").append('<option></option>');
+							$.each(res,function(key,value){
+								$("#wards").append('<option value="'+key+'">'+value+'</option>');
+							});
+						}
+					}
+				});
+			}
+		});
     });
-    }
-});
-
-$('#districts').change(function(){
-    var cid = $(this).val();
-    if(cid){
-    $.ajax({
-    type:"get",
-    url: '../partner/getwards/'+cid,//Please see the note at the end of the post**
-    success:function(res)
-    {       
-            if(res)
-            {
-                $("#wards").empty();
-                $("#wards").append('<option>Chon</option>');
-                $.each(res,function(key,value){
-                    $("#wards").append('<option value="'+key+'">'+value+'</option>');
-                });
-            }
-    }
-
-    });
-    }
-});
 @endsection
 @section('main')
 	<!--main-->
@@ -103,7 +103,7 @@ $('#districts').change(function(){
 										@endif	
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field1">
-											<form action="{{route('userEditName',['id'=>$id])}}" method="post">
+											<form action="{{route('userEdit_Name',['id'=>$id])}}" method="post">
 												{{ csrf_field() }}
 												<label for="new_name">Nhập tên mới: </label>
 												<input type="text" id="name" name="name" required="required"/>
@@ -124,7 +124,7 @@ $('#districts').change(function(){
 										@endif
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field2">
-											<form action="{{route('userEditEmail',['id' => $id])}}" method="post" >
+											<form action="{{route('userEdit_Email',['id' => $id])}}" method="post" >
 												{{ csrf_field() }}
 												<label for="email">Nhập địa chỉ email mới: </label>
 												<input type="email" id="email" name="email" />
@@ -143,11 +143,11 @@ $('#districts').change(function(){
 										@elseif( count($errors->password) >0)
 											<i class="error_account">Đổi mật khẩu không thành công</i>
 										@else
-											••••••••••••••••••••
+											••••••
 										@endif
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field3">
-											<form action="{{route('userEditPassword',['id' => $id])}}" method="post">
+											<form action="{{route('userEdit_Password',['id' => $id])}}" method="post">
 												{{ csrf_field() }}
 												<div class="input-pass">
 													<label for="pass_old">Nhập mật khẩu cũ: </label>
@@ -187,7 +187,7 @@ $('#districts').change(function(){
 										@endif
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field4">
-											<form action="{{route('userEditPhone',['id' => $id])}}" method="post">
+											<form action="{{route('userEdit_Phone',['id' => $id])}}" method="post">
 												{{ csrf_field() }}
 												<label for="phone">Nhập số điện thoại mới: </label>
 												<input type="text" id="phone" name="phone" minLength="6" maxLength="12" required="required"/>
@@ -209,7 +209,7 @@ $('#districts').change(function(){
 										@endif
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field5">
-											<form action="{{route('userEditAvatar',['id' => $id])}}" method="post" enctype="multipart/form-data">
+											<form action="{{route('userEdit_Avatar',['id' => $id])}}" method="post" enctype="multipart/form-data">
 												{{ csrf_field() }}
 												<label for="avatar">Chọn ảnh đại diện mới </label>
 												<input type="file" id="avatar" name="avatar" /><br/>
@@ -222,6 +222,60 @@ $('#districts').change(function(){
 								</tr>
 								<tr>
 									<th>Địa chỉ: </th>
+									@if( !empty($user->address_detail) && !empty($user->xaid) )
+										<td>{{$user->address_detail.', '.$user->ward->name.', '.$user->ward->district->name.', '.$user->ward->district->province->name}}
+											<br/>
+											@if(Session::get('edit_address') == 'success')
+												<i class="done_account">{{Session::get('massage')}}</i>
+											@elseif(Session::get('edit_address') == 'fail')
+												<i class="error_account">{{Session::get('massage')}}</i>
+											@endif	
+									@elseif(empty($user->address_detail) && !empty($user->xaid))
+										<td>{{$user->ward->name.', '.$user->ward->district->name.', '.$user->ward->district->province->name}}
+										<br/>
+											@if(Session::get('edit_address') == 'success')
+												<i class="done_account">{{Session::get('massage')}}</i>
+											@elseif(Session::get('edit_address') == 'fail')
+												<i class="error_account">{{Session::get('massage')}}</i>
+											@endif
+									@else
+										<td>
+										<br/>
+											@if(Session::get('edit_address') == 'success')
+												<i class="done_account">{{Session::get('massage')}}</i>
+											@elseif(Session::get('edit_address') == 'fail')
+												<i class="error_account">{{Session::get('massage')}}</i>
+											@endif
+									@endif	
+										<!--edit fields-->
+										<div class="edit_field edit_address" id="field6">
+											<form action="{{route('userEdit_Address',['id' => $id])}}" method="post" >
+												{{ csrf_field() }}
+												<label for="address_detail">Địa chỉ cụ thể(không bắt buộc):</label>
+												<textarea name="address_detail" id="address_detail" cols="10" rows="3"></textarea>
+												<label for="provinces">Tỉnh/Thành Phố</label>
+												<select name="provinces" id="provinces">
+													<option selected="selected"></option>
+													@if($province)
+														@foreach($province as $provinceVal)
+															<option value="{{$provinceVal->matp}}">{{$provinceVal->name}}</option>
+														@endforeach
+													@endif
+												</select>
+												<label for="districts">Quận/Huyện</label>
+												<select name="districts" id="districts">
+													<option selected="selected"></option>
+												</select>
+												<label for="wards">Phường/Xã</label>
+												<select name="wards" id="wards">
+													<option selected="selected"></option>
+												</select>
+												<br/>
+												<input type="submit" value="Cập nhật" name="editPhone" class="gradient-button" id="editPhone"/>
+											</form>
+										</div>
+										<!--//edit fields-->
+									</td>
 									<td><a href="#field6" class="gradient-button edit delete">Sửa</a></td>
 								</tr>
 							</table>

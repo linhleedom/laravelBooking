@@ -53,7 +53,7 @@ Add Room
 										<select name="homestay_id" id="">
 											<option selected="selected" >Chọn</option>
 												@foreach($homestay as $homestayVal)
-													<option value="{{$homestayVal->id}}">{{$homestayVal->name}}</option>
+													<option required value="{{$homestayVal->id}}">{{$homestayVal->name}}</option>
 												@endforeach
 										</select>
 									</div>
@@ -109,7 +109,7 @@ Add Room
 								<h3 style="margin-top: 20px;"><span>03</span> Mô tả </h3>
 									<div class="f-item custom-item">
 										<label>Mô tả khác: </label>
-										<textarea rows="10" cols="10" id="description" name="description" ></textarea>
+										<textarea required rows="10" cols="10" id="description" name="description" ></textarea>
 									</div>
 									<div class="f-item custom-item">
 										<label for="avatar">Avatar room of Homestay :</label>
@@ -122,8 +122,8 @@ Add Room
 								<div class="row twins">
 									<div class="f-item custom-item checkbox">
 										@foreach ($tienichs as $items)											
-											<input type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
-											<label for="" >{{ $items->name }}</label> <br> <br>
+											<input type="checkbox" name="tienich[]" id="{{$items->id}}" value="{{$items->id}}"/>
+											<label for="{{$items->id}}" >{{ $items->name }}</label> <br> <br>
 										@endforeach
 									</div>
 								</div>

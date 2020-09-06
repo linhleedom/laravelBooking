@@ -24,7 +24,7 @@ class HomestayPartnerController extends Controller
     
     public function getListPartnerHomestay()
     {
-        $data1['homestaylist'] = Homestay::where('user_id',Auth::user()->id)->paginate(5);
+        $data1['homestaylist'] = Homestay::where('user_id',Auth::user()->id)->paginate(8);
         // $datalist
         return view ('partner.homestay.list-homestay',$data1);
     }

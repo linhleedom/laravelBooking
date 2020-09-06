@@ -1,4 +1,6 @@
 @extends('partner.master')
+@section('script')
+@endsection
 @section('title')
 Add Room & Homestay
 @endsection

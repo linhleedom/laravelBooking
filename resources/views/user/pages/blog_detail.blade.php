@@ -47,28 +47,29 @@ class="active"
 				
 				<!--right sidebar-->
 				<aside class="right-sidebar">
-					<!--Homestay suggest-->
-					<article class="default clearfix">
-						<h2>Gợi ý cho bạn</h2>
-						@foreach($homestaySuggest as $homestaySuggestVal)
-							<div class="deal-of-the-day">
-								<a href="{{route('userRoomDetail').'?id='.$homestaySuggestVal->id.$urlSearch}}">
-									<figure><img src="{{$homestaySuggestVal->avatar}}" alt="" width="230" height="130" /></figure>
-									<h3>{{$homestaySuggestVal->name}} &nbsp&nbsp
-										<span class="stars">
-											<span class="point">{{$homestaySuggestVal->point}}</span>
-										</span>
-									</h3>
-									<span id="address">{{$homestaySuggestVal->province->name}}</span>
-									<p>Từ <span class="price">{{ number_format( $homestaySuggestVal->product->min('prices'),0,',','.' ) }}<small>/đêm</small></span></p>	
-								</a>
-							</div>
-						@endforeach
-						<br /><br />
-						<a href="{{route('userSearch').'?address='.$homestaySuggestVal->province->name.$urlSearch}}" title="Show all" class="show-all">Show all</a>
-					</article>
-					<!--//Homestay suggest-->
-
+					@if(Count($homestaySuggest))
+						<!--Homestay suggest-->
+						<article class="default clearfix">
+							<h2>Gợi ý cho bạn</h2>
+							@foreach($homestaySuggest as $homestaySuggestVal)
+								<div class="deal-of-the-day">
+									<a href="{{route('userRoomDetail').'?id='.$homestaySuggestVal->id.$urlSearch}}">
+										<figure><img src="{{$homestaySuggestVal->avatar}}" alt="" width="230" height="130" /></figure>
+										<h3>{{$homestaySuggestVal->name}} &nbsp&nbsp
+											<span class="stars">
+												<span class="point">{{$homestaySuggestVal->point}}</span>
+											</span>
+										</h3>
+										<span id="address">{{$homestaySuggestVal->province->name}}</span>
+										<p>Từ <span class="price">{{ number_format( $homestaySuggestVal->product->min('prices'),0,',','.' ) }}<small>/đêm</small></span></p>	
+									</a>
+								</div>
+							@endforeach
+							<br /><br />
+							<a href="{{route('userSearch').'?address='.$homestaySuggestVal->province->name.$urlSearch}}" title="Show all" class="show-all">Show all</a>
+						</article>
+						<!--//Homestay suggest-->
+					@endif
 					<!--Ads-->
 					<!-- <article class="default clearfix">
 						<img src="uploads/Ads/ad.png" alt="">

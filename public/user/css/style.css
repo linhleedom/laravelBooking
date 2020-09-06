@@ -1380,6 +1380,7 @@ header .ribbon {
 }
 
 .deals .description p {
+    height: 75px;
     padding: 0 0 15px;
 }
 

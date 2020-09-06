@@ -15,13 +15,6 @@ Home
 						<li>Dashboard</li>                          
 					</ul> 
 					<!--//crumbs-->
-					
-					<!--top right navigation-->
-					<!-- <ul class="top-right-nav">
-						<li><a href="#" title="Back to results">Back to results</a></li>
-						<li><a href="#" title="Change search">Change search</a></li>
-					</ul> -->
-					<!--//top right navigation-->
 				</nav>
 				<!--//breadcrumbs-->
 

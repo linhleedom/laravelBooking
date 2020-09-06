@@ -9,7 +9,7 @@ use App\Blog;
 class BlogController extends Controller
 {
     public function index(){
-        $blog = Blog::where('status','1')->paginate(12);
+        $blog = Blog::where('status','1')->paginate(8);
         return view('user.pages.blog', compact('blog'));
     }
 }

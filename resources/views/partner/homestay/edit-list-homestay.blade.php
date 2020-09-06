@@ -171,18 +171,6 @@ $('#districts').change(function(){
 										</label>
 									</div>									
 								</div>
-
-								<h3 style="margin-top: 20px;"><span>03</span> Thanh toán Homestay</h3>
-								<div class="row twins">									
-									<div class="f-item custom-item">
-										<label for="status" style="margin-bottom: 20px;">Trạng thái thanh toán Homestay</label>
-										<label for="status3"><strong class="gradient-button danger" >Chưa thanh toán  &nbsp </strong> 
-											<input required type="radio" id="status3" name="status_pay"  value="0" @if($homestay->status_pay ==0) checked  @endif/></label>
-										<label for="status4"> <span class="gradient-button success" style="color: aliceblue"> Đã thanh toán  &nbsp</span> 
-											<input required type="radio" id="status4" name="status_pay"  value="1" @if($homestay->status_pay == 1) checked  @endif/>
-										</label>
-									</div>									
-								</div>
 								
 							<input type="submit" class="gradient-button" value="Update" id="Edit" >
 							</fieldset>							

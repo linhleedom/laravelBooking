@@ -6,7 +6,7 @@ My Account
 
 @section('script')
     $(document).ready(function() {
-        $('#star').raty({
+        $('.starRate').raty({
             score    : 5
         });
 
@@ -279,7 +279,7 @@ My Account
 													<option selected="selected"></option>
 												</select>
 												<br/>
-												<input type="submit" value="Cập nhật" name="editPhone" class="gradient-button" id="editPhone"/>
+												<input type="submit" value="Cập nhật" name="editAddress" class="gradient-button" id="editAddress"/>
 											</form>
 										</div>
 										<!--//edit fields-->
@@ -436,7 +436,7 @@ My Account
 													<form action="{{route('userRating',['id'=>$id,'bill_id'=>$billHistoryVal->id])}}" method="post">
 														{{ csrf_field() }}
 														<dd style="display: block; height: auto;">
-															<div id="star"></div>
+															<div id="star" class="starRate"></div>
 														</dd>
 														<!--//Star rating-->
 														<input type="hidden" name="homestay_id" value="{{$orderHistoryTake_1->product->homestay->id}}">
