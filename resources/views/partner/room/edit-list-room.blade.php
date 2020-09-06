@@ -15,7 +15,7 @@ Edit Room
 					<!--crumbs-->
 					<ul class="crumbs">
 					<li><a href="{{url('trangchu')}}" title="Home">Home</a></li>  
-						<li>Thêm Homestay</li>                               
+						<li>Sửa phòng</li>                               
 					</ul> 
 					<!--//crumbs-->
 					
@@ -52,7 +52,7 @@ Edit Room
 									<select name="homestay_id" id="">
 										<option selected="selected" >Chọn</option>
 										@foreach ($homestay as $homestayVal)											
-											<option value="{{$product->homestay_id}}" @if($homestayVal->id == $product->homestay_id) selected @endif >{{$homestayVal->name}}</option>
+											<option required value="{{$homestayVal->id}}" @if($homestayVal->id == $product->homestay_id) selected @endif >{{$homestayVal->name}}</option>
 										@endforeach										
 									</select>
 								</div>
@@ -69,7 +69,7 @@ Edit Room
 							<div class="row twins">
 								<div class="f-item custom-item">
 									<label for="">Tên phòng :
-										<input type="text" name="name" value="{{$product->name}}" >
+										<input required type="text" name="name" value="{{$product->name}}" >
 									</label>									
 								</div>	
 								<div class="f-item custom-item">
@@ -79,7 +79,7 @@ Edit Room
 								</div>							
 								<div class="f-item custom-item">
 									<label for="">Kiểu phòng :</label>
-									<select name="room_type_id" id="">										
+									<select name="room_type" id="room_type">										
 										<option selected="selected" >Chọn</option>
 											@foreach($room_type as $room_typeval)
 												<option value="{{$room_typeval->id}}" @if($room_typeval->id == $product->room_type_id) selected @endif >{{$room_typeval->name}}</option>

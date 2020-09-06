@@ -192,13 +192,12 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::get('/edit-order/{id}','OrderController@getEditOrder');
             Route::post('/edit-order/{id}','OrderController@postEditOrder');
             Route::get('/edit-bill/{id}','BillsController@getEditbill');
-            Route::post('/edit-bill/{id}','BillsController@postEditbill');
-
-            Route::get('/Cancel-room/{id}',[
-                    'as'=>'CancelBook',
-                    'uses'=>'BillsController@getCancelBook'
-                ]);
+            Route::post('/edit-bill/{id}','BillsController@postEditbill');  
             
+            Route::get('Cancel-room/{id}',[
+                'as'=>'CancelBook',
+                'uses'=>'BillsController@getCancelBook'
+            ]);
             
 
             Route::get('/edit-list-homestay/{id}','HomestayPartnerController@getEditPartnerHomestay');
@@ -213,12 +212,12 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::group(['prefix'=>'/'], function(){
                 
                 Route::get('/my-account/{id}','AccountController@index');
-                Route::post('/edit-name/{id}','AccountController@editName')->name('userEditName');
-                Route::post('/edit-email/{id}','AccountController@editEmail')->name('userEditEmail');
-                Route::post('/edit-password/{id}','AccountController@editPassword')->name('userEditPassword');                
-                Route::post('/edit-phone/{id}','AccountController@editPhone')->name('userEditPhone');       
-                Route::post('/edit-avatar/{id}','AccountController@editAvatar')->name('userEditAvatar');
-                Route::post('/edit-address/{id}','AccountController@editAddress')->name('userEditAddress');
+                Route::post('/edit-name/{id}','AccountController@editName')->name('userEdit_Name');
+                Route::post('/edit-email/{id}','AccountController@editEmail')->name('userEdit_Email');
+                Route::post('/edit-password/{id}','AccountController@editPassword')->name('userEdit_Password');                
+                Route::post('/edit-phone/{id}','AccountController@editPhone')->name('userEdit_Phone');       
+                Route::post('/edit-avatar/{id}','AccountController@editAvatar')->name('userEdit_Avatar');
+                Route::post('/edit-address/{id}','AccountController@editAddress')->name('userEdit_Address');
 
                 Route::get('/edit-address/{id}','AccountController@editAddress');               
                 Route::get('/change-status/{bill_id}',[

@@ -103,7 +103,7 @@ $('#districts').change(function(){
 										@endif	
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field1">
-											<form action="{{route('userEditName',['id'=>$id])}}" method="post">
+											<form action="{{route('userEdit_Name',['id'=>$id])}}" method="post">
 												{{ csrf_field() }}
 												<label for="new_name">Nhập tên mới: </label>
 												<input type="text" id="name" name="name" required="required"/>
@@ -124,7 +124,7 @@ $('#districts').change(function(){
 										@endif
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field2">
-											<form action="{{route('userEditEmail',['id' => $id])}}" method="post" >
+											<form action="{{route('userEdit_Email',['id' => $id])}}" method="post" >
 												{{ csrf_field() }}
 												<label for="email">Nhập địa chỉ email mới: </label>
 												<input type="email" id="email" name="email" />
@@ -143,11 +143,11 @@ $('#districts').change(function(){
 										@elseif( count($errors->password) >0)
 											<i class="error_account">Đổi mật khẩu không thành công</i>
 										@else
-											••••••••••••••••••••
+											••••••
 										@endif
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field3">
-											<form action="{{route('userEditPassword',['id' => $id])}}" method="post">
+											<form action="{{route('userEdit_Password',['id' => $id])}}" method="post">
 												{{ csrf_field() }}
 												<div class="input-pass">
 													<label for="pass_old">Nhập mật khẩu cũ: </label>
@@ -187,7 +187,7 @@ $('#districts').change(function(){
 										@endif
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field4">
-											<form action="{{route('userEditPhone',['id' => $id])}}" method="post">
+											<form action="{{route('userEdit_Phone',['id' => $id])}}" method="post">
 												{{ csrf_field() }}
 												<label for="phone">Nhập số điện thoại mới: </label>
 												<input type="text" id="phone" name="phone" minLength="6" maxLength="12" required="required"/>
@@ -209,7 +209,7 @@ $('#districts').change(function(){
 										@endif
 										<!--edit fields-->
 										<div class="edit_field myaccount" id="field5">
-											<form action="{{route('userEditAvatar',['id' => $id])}}" method="post" enctype="multipart/form-data">
+											<form action="{{route('userEdit_Avatar',['id' => $id])}}" method="post" enctype="multipart/form-data">
 												{{ csrf_field() }}
 												<label for="avatar">Chọn ảnh đại diện mới </label>
 												<input type="file" id="avatar" name="avatar" /><br/>
