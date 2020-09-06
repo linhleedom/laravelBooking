@@ -19,7 +19,7 @@ class="active"
 					<!--crumbs-->
 					<ul class="crumbs">
 						<li><a href="#" title="Home">Home</a></li> 
-						<li>Hot deals</li>                                       
+						<li>Hot deals</li>
 					</ul>
 					<!--//crumbs-->
 				</nav>

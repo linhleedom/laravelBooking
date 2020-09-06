@@ -103,6 +103,7 @@ class BookingController extends Controller
 
     public function BookingStep3($id){
         $bill = Bill::find($id);
+        Mail::to($bill->email)->send(new mailInfor($bill));
         return view('user.pages.booking_step_3', compact('bill'));
     }
 }

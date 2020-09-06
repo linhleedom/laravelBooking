@@ -140,6 +140,10 @@ Route::get('/search-orderBy',[
     'as'=>'userSearchOrderBy',
     'uses'=>'user\SearchResultController@orderBy'
 ]);
+Route::get('/test',[
+    'as'=>'usertest',
+    'uses'=>'user\Test@index'
+]);
 
 
 
@@ -197,8 +201,8 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             
             
 
-            Route::get('/edit-list-homestay/{id}','HomestayPartnerController@getEditPartnerHomestay');    
-            Route::post('/edit-list-homestay/{id}','HomestayPartnerController@postEditPartnerHomestay');           
+            Route::get('/edit-list-homestay/{id}','HomestayPartnerController@getEditPartnerHomestay');
+            Route::post('/edit-list-homestay/{id}','HomestayPartnerController@postEditPartnerHomestay');
             Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');
             Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');
 

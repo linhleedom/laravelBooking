@@ -21,7 +21,7 @@ Travel Your Booking
 @endsection
 
 @section('home')
-class="active"
+	class="active"
 @endsection
 
 @section('content')

@@ -82,7 +82,7 @@ Edit Room
 									<select name="room_type_id" id="">										
 										<option selected="selected" >Chọn</option>
 											@foreach($room_type as $room_typeval)
-												<option value="{{$product->room_type_id}}" @if($room_typeval->id == $product->room_type_id) selected @endif >{{$room_typeval->name}}</option>
+												<option value="{{$room_typeval->id}}" @if($room_typeval->id == $product->room_type_id) selected @endif >{{$room_typeval->name}}</option>
 											@endforeach
 									</select>
 								</div>
