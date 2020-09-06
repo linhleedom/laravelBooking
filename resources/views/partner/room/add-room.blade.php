@@ -122,8 +122,8 @@ Add Room
 								<div class="row twins">
 									<div class="f-item custom-item checkbox">
 										@foreach ($tienichs as $items)											
-											<input type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
-											<label for="" >{{ $items->name }}</label> <br> <br>
+											<input type="checkbox" name="tienich[]" id="{{$items->id}}" value="{{$items->id}}"/>
+											<label for="{{$items->id}}" >{{ $items->name }}</label> <br> <br>
 										@endforeach
 									</div>
 								</div>
