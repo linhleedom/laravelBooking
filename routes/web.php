@@ -228,6 +228,7 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
 Route::get('admin/dangnhap','KhachHangController@getLogin');
 Route::post('admin/dangnhap','KhachHangController@postLogin');
 Route::get('admin/logout','KhachHangController@getLogout');
+
 Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 
     Route::group(['prefix'=>'booking'],function(){
@@ -313,6 +314,7 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
         //admin/booking/danhsach
         Route::get('thembai','TBController@getThemBai');
         Route::post('thembai','TBController@postThemBai');
+        Route::get('ajax/them/{matp}','TBController@getmaqh');
     });
 
     Route::group(['prefix'=>'/'],function(){

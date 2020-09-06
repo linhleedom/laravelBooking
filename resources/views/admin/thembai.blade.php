@@ -1,4 +1,17 @@
 @extends('admin.layout.index')
+@section('script')
+	<script>
+		$(document).ready(function(){
+			$("#matp").change(function(){
+				var matp= $(this).val();
+				$.get("{{url('/admin/ajax/them')}}/"+matp,function(data){
+					$("#maqh").html(data);
+					
+				});
+			});
+		});
+	</script>
+@endsection
 @section('content')
 	<div id="content" class="span10">
 		<ul class="breadcrumb">
@@ -57,15 +70,27 @@
 							<input type="file" id="date01" name="photo">
 						  </div>
 						</div>   
-						
 						<div class="control-group">
-						  <label class="control-label" for="maqh">Mã quận/huyện:</label>
+						  <label class="control-label" for="matp">Tỉnh/Thành phố:</label>
+						  <div class="controls">
+							<select name="matp" id="matp">
+								<option value="">-----------chọn thành phố-----------</option>
+								@foreach($province as $tl)
+								<option value="{{$tl->matp}}">{{$tl->name}}</option>
+								@endforeach
+							</select>
+						  </div>
+						</div>   
+						<div class="control-group">
+						  <label class="control-label" for="maqh">Quận/huyện:</label>
 						  <div class="controls">
 							<select name="maqh" id="maqh">
-								<option value="">-----------chọn mã qh-----------</option>
-								@foreach($district as $tl)
-								<option value="{{$tl->maqh}}">{{$tl->name}}</option>
+								<option selectted="selected" value="">-----------chọn qh-----------</option>
+								@foreach($district as $tlu)
+								<option value="{{$tlu->maqh}}">{{$tlu->name}}</option>
 								@endforeach
+								
+								
 							</select>
 						  </div>
 						</div>   
@@ -107,9 +132,4 @@
 			</div>
 		</div>
 	</div>
-	<!-- <script>
-		var editor = CKEDITOR.replace('editor');
-							
-	</script> --> 
-	
 @endsection

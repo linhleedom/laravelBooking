@@ -20,9 +20,9 @@ class QLBlogController extends Controller
     }
     public function getEdit($id){
         $blog= Blog::find($id);
-        
+        $province=Province::all();
         $district=District::all();
-    	return view('admin.QLBlog.edit',['blog'=>$blog],['district'=>$district]);
+    	return view('admin.QLBlog.edit',['blog'=>$blog,'district'=>$district,'province'=>$province]);
     }
     public function postEdit(Request $request, $id)
     {

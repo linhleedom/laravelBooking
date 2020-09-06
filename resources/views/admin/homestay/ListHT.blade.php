@@ -43,12 +43,8 @@
 						
 						<td style="text-align: center">{{$tl->keyword}}</td>
 						<td style="text-align: center">
-							@foreach($province as $tlu)
-								@if($tl->maqh== $tlu->id)
-								{{$tlu->name}}
-								@endif
-							@endforeach
-							({{$tl->maqh}})
+							
+							({{$tl->province->name}})
 						</td>
 						<td style="text-align: center">
 							@if($tl->status == 1)
