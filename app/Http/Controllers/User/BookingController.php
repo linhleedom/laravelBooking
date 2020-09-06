@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use Session,Mail;
 use App\Cart;
 use App\Homestay;
 use App\Bill;
 use App\Order;
+use App\Mail\user\mailInfor;
 class BookingController extends Controller
 {
     public function bookingStep1(Request $request){
