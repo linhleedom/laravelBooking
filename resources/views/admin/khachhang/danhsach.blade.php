@@ -36,7 +36,7 @@
 						  	@foreach($user as $tl)
 						  	@if($tl->permision==0)
 							<tr>
-								<td style="text-align: center"><img width="60px" src="{{$tl->avatar}}" alt=""></td>
+								<td style="text-align: center"><img style="border-radius: 50%;width: 50px;height: 50px; padding-top: 3px;" src="{{$tl->avatar}}" alt=""></td>
 								<td>{{$tl->name}}</td>
 								<td>{{$tl->created_at}}</td>
 								<td>{{$tl->email}}</td>
@@ -44,12 +44,12 @@
 								<td style="text-align: center">
 									<p class="badge red">Admin</p>
 								</td>
-								<td class="center" style="text-align: center "
-								        
-								 >
+								<td>
 								 	@if(Auth::user()->id==$tl->id)
+										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
 										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
-									@else	
+									@else
+										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
 										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
 										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}">
 											<i class="halflings-icon white trash"></i> 
@@ -71,13 +71,12 @@
 								<td style="text-align: center">
 									<p class="badge green">Partner</p>
 								</td>
-								<td class="center" style="text-align: center "
-								        
-								 >
-								 	@if(Auth::user()->id==$tl->id)
+								<td> 
+									@if(Auth::user()->id==$tl->id)
+										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
 										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
 									@else	
-										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
+										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
 										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}">
 											<i class="halflings-icon white trash"></i> 
 										</a>
@@ -98,13 +97,12 @@
 								<td style="text-align: center">	
 									<p class="badge orange">User</p>
 								</td>
-								<td class="center" style="text-align: center "
-								        
-								 >
+								<td>
 								 	@if(Auth::user()->id==$tl->id)
+										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
 										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
 									@else	
-										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
+										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
 										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}">
 											<i class="halflings-icon white trash"></i> 
 										</a>

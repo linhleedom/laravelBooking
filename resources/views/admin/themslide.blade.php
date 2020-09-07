@@ -30,10 +30,14 @@
 							@endforeach
 						</div>
 					@endif
-
 					@if(session('thongbao'))
 						<div class="alert alert-success">
 							{{session('thongbao')}}
+						</div>
+					@endif
+					@if(session('loi'))
+						<div class="alert alert-success">
+							{{session('loi')}}
 						</div>
 					@endif
 					<form class="form-horizontal" action="{{url('/admin/themslide')}}" method="POST" enctype="multipart/form-data">

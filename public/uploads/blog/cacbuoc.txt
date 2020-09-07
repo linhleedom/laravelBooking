@@ -1,0 +1,32 @@
+b1: clone file github về
+
+b2: cd laravelBooking
+
+b3: git branch admin_br
+    git branch checkout admin_br
+
+b4: composer update
+
+b5: tạo database có tên là: laravelBooking
+
+b6: cp env.exmaple .env (tạo file .env)
+
+b7: cập nhật file .env 
+	DB_CONNECTION=mysql          
+	DB_HOST=127.0.0.1            
+	DB_PORT=3306                 
+	DB_DATABASE=laravelBooking       
+	DB_USERNAME=root             
+	DB_PASSWORD= 
+
+b8: php artisan key:generate (tạo key)
+
+b9: php artisan migrate
+    php artisan db:seed
+    ( đẩy các bảng và dữ liệu trong seed vào database ms tạo )
+
+b10: php artisan storage:link
+
+b11: phpunit
+
+sau đó anh chạy php artisan serve

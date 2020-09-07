@@ -41,7 +41,7 @@
 				  	@foreach($slide as $tl)
 					<tr>
 						<td style="text-align: center">{{$tl->id}}</td>
-						<td style="text-align: center"><img width="70px" src="{{$tl->url}}" alt=""></td>
+						<td style="text-align: center"><img width="70px" height="80px" src="{{$tl->url}}" alt=""></td>
 						<td style="text-align: center">{{$tl->slogan}}</td>
 						<td style="text-align: center">{{$tl->created_at}}</td>
 						<td style="text-align: center">{{$tl->updated_at}}</td>

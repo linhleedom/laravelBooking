@@ -35,6 +35,11 @@
 							{{session('thongbao')}}
 						</div>
 					@endif
+					@if(session('loi'))
+						<div class="alert alert-success">
+							{{session('loi')}}
+						</div>
+					@endif
 					<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 					  <fieldset>
@@ -77,14 +82,9 @@
 						<div class="control-group ">
 							<label class="control-label" for="status">Level:</label>
 							<label class="controls radio-inline">
-								<input type="radio" name="permision" value="0" id="status">Admin
+								<input type="radio" name="permision" value="0" id="status" checked="checked">Admin
 							</label>
-							<label class="controls radio-inline">
-								<input type="radio" name="permision" value="1" id="status">Partner
-							</label>
-							<label class="controls radio-inline">	
-								<input type="radio" name="permision" value="2" id="status" checked="checked">User
-							</label>
+							
 						</div>
 						<div class="form-actions">
 						 	<button type="submit" class="btn btn-primary">ADD</button>

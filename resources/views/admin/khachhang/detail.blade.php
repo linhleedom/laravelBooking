@@ -9,13 +9,13 @@
 				</li>
 				<li>
 					<i class="icon-edit"></i>
-					<a href="#">Detail Customer</a>
+					<a href="#">Detail user</a>
 				</li>
 			</ul>
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Detail Customer</h2>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Detail : {{$user->name}}</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -28,47 +28,42 @@
 							<div class="control-group">
 							  <label class="control-label" for="fileInput">Ảnh Đại Diện:</label>
 							  <div class="controls">
-								<input class="input-file uniform_on" id="fileInput" type="file">
+								<img style="border-radius: 50%;width: 70px;height: 70px; padding-top: 3px;" src="{{$user->avatar}}" alt="">
 							  </div>
 							</div>   
 							<div class="control-group">
 							  <label class="control-label" for="name">Tên:</label>
 							  <div class="controls">
-								<input type="text" class="input-xlarge datepicker" id="name">
-							  </div>
-							</div>
-							<div class="control-group">
-							  <label class="control-label" for="date01">Ngày Tham Gia:</label>
-							  <div class="controls">
-								<input type="text" class="input-xlarge datepicker" id="date01" value="02/16/20">
+								<input type="text"id="name" value="{{$user->name}}">
 							  </div>
 							</div>
 							<div class="control-group">
 							  <label class="control-label" for="address">Địa Chỉ:</label>
 							  <div class="controls">
-								<input type="text" class="input-xlarge datepicker" id="address">
+								<input type="text"id="address" value="{{$user->address_detail}}">
+							  </div>
+							</div>
+							<div class="control-group">
+							  <label class="control-label" for="email">Email:</label>
+							  <div class="controls">
+								<input type="text" id="email" value="{{$user->email}}">
 							  </div>
 							</div>
 							<div class="control-group">
 							  <label class="control-label" for="address">Số Điện Thoại:</label>
 							  <div class="controls">
-								<input type="text" class="input-xlarge datepicker" id="address">
+								<input type="text" id="address" value="{{$user->phone}}">
 							  </div>
 							</div> 
+							
 							<div class="control-group">
-							  <label class="control-label" for="email">Email:</label>
+							  <label class="control-label" for="ds">Số Tk:</label>
 							  <div class="controls">
-								<input type="email" class="input-xlarge datepicker" id="email">
-							  </div>
-							</div>
-							<div class="control-group">
-							  <label class="control-label" for="ds">Danh sách HS:</label>
-							  <div class="controls">
-								 <a href="dshomestay.html"class="btn btn-primary" id="ds">Danh Sách</a>
+								 <input type="text" value="{{$user->bank_number}}">
 							  </div>
 							</div> 
 							<div class="form-actions">
-							  <a href="custumer.html" class="btn btn-primary">OK</a>
+							  <a href="{{url('/admin/khachhang/danhsach')}}" class="btn btn-primary">OK</a>
 							</div>
 						  </fieldset>
 						</form>   
