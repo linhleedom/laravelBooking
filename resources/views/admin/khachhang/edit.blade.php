@@ -30,10 +30,14 @@
 							@endforeach
 						</div>
 					@endif
-
 					@if(session('thongbao'))
 						<div class="alert alert-success">
 							{{session('thongbao')}}
+						</div>
+					@endif
+					@if(session('loi'))
+						<div class="alert alert-success">
+							{{session('loi')}}
 						</div>
 					@endif
 					<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
@@ -46,28 +50,34 @@
 						  </div>
 						</div>
 						<div class="control-group">
-						  <label class="control-label" for="typeahead">Avatar:</label>
+						  <label class="control-label" for="avatar">Avatar:</label>
 						  <div class="controls">
-							<input type="file" id="typeahead" name="avatar" placeholder="Nhập Tên">
+							<input type="file" id="avatar" name="avatar" placeholder="Nhập Tên"><br>
+							<img width="190px" height="170px" src="{{$user->avatar}}" alt="">
 						  </div>
 						</div>
-						<div class="control-group">
-							<input type="checkbox" name="changepass" id="changepass">
-						    <label class="control-label" for="date01">Change PassWord:</label>
-						    <div class="controls">
-							<input type="password" name="password" placeholder="Nhập Password" disabled="" class="password">
-						 </div>
+						<div>
+							<div class="control-group">
+								<label for="changepass" class="control-label" >Click To Change</label>
+								<input type="checkbox" name="changepass" id="changepass">
+							</div>
+							<div class="control-group">
+							    <label class="control-label" for="date01">Change Pass:</label>
+							    <div class="controls">
+								<input type="password" name="password" placeholder="Nhập Password" disabled="" class="password">
+							 </div>
+							</div>
+							<div class="control-group">
+							  <label class="control-label" for="date02">Confirm Pass:</label>
+							  <div class="controls">
+								<input type="password" name="passwordagain" placeholder="Nhập PasswordAgain" disabled="" class="password">
+							  </div>
+							</div>   
 						</div>
 						<div class="control-group">
-						  <label class="control-label" for="date02">Confirm PassWord:</label>
+						  <label class="control-label" for="email">Email:</label>
 						  <div class="controls">
-							<input type="password" name="passwordagain" placeholder="Nhập PasswordAgain" disabled="" class="password">
-						  </div>
-						</div>   
-						<div class="control-group">
-						  <label class="control-label" for="description">Email:</label>
-						  <div class="controls">
-							<input type="email" id="description" name="email" placeholder="Nhập Email" value="{{$user->email}}" readonly="">
+							<input type="email" id="email" name="email" placeholder="Nhập Email" value="{{$user->email}}" readonly="">
 						  </div>
 						</div>
 						<div class="control-group">
@@ -84,21 +94,6 @@
 									{{"checked"}}
 									@endif
 								>Admin
-							</label>
-							<label class="controls radio-inline">
-								<input type="radio" name="permision" value="1" id="status"
-
-								@if($user->permision == 1)
-									{{"checked"}}
-									@endif
-								>Partner
-							</label>
-							<label class="controls radio-inline">
-								<input type="radio" name="permision" value="2" id="status"
-								@if($user->permision == 2)
-									{{"checked"}}
-									@endif
-								>User
 							</label>
 						</div>
 						<div class="form-actions">
@@ -122,15 +117,17 @@
 @section('script')
 	<script>
 		$(document).ready(function(){
-			$("#changepass").change(function(){
+			$("#changepass").click(function(){
 				if($(this).is(":checked"))
 				{
-					$(".password").removeAttr('disabled');
+					$('.password').removeAttr('disabled');
 				}else
 				{
-					$(".password").att('disabled');
+					$('.password').attr('disabled','');
+
 				}
-			})
+			});
+			
 		});
 	</script>
 @endsection

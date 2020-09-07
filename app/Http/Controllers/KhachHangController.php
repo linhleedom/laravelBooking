@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Str;
 use App\User;
 class KhachHangController extends Controller
 {
@@ -42,18 +42,24 @@ class KhachHangController extends Controller
             'passwordagain.required'=>'Bạn chưa nhập lại pass',
             'passwordagain.same'=>'Pass nhập lại không đúng'
         ]);
-        $file_name= $request->file('avatar')->getClientOriginalName();
+        
         $user=new User;
         $user->name= $request->name;
-        $link='uploads/avatar/'.$file_name;
-        $user->avatar= $link;
         $user->password= bcrypt($request->password);
         $user->email= $request->email;
         $user->phone= $request->phone;
         $user->permision= $request->permision;
-        $request->file('avatar')->move('public/uploads/avatar',$file_name);
+        $file_name= $request->file('avatar')->getClientOriginalName();
+        $duoi=$request->file('avatar')->getClientOriginalExtension();
+        if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png') {
+             return redirect('admin/khachhang/them')->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png || jfif');
+        }
+        $hinh=Str::random(5).'_'.$file_name;
+        $link='uploads/avatar/'.$hinh;
+        $user->avatar= $link;
+        $request->file('avatar')->move('public/uploads/avatar',$hinh);
         $user->save();
-        return redirect('admin/khachhang/them')->with('thongbao','Bạn dẫ thêm thành công');
+        return redirect('admin/khachhang/them')->with('thongbao','Bạn đã thêm thành công');
 
 
        
@@ -74,24 +80,30 @@ class KhachHangController extends Controller
             'name.min'=>'Tên quá ngắn',
             'avatar.required'=>'Chọn Avatar Đuê!',
         ]);
-        $file_name= $request->file('avatar')->getClientOriginalName();
         $user=User::find($id);
         $user->name= $request->name;
-        $link='uploads/avatar/'.$file_name;
-        $user->avatar= $link;
         $user->phone= $request->phone;
         $user->permision= $request->permision;
-        $request->file('avatar')->move('public/uploads/avatar',$file_name);
+        $file_name= $request->file('avatar')->getClientOriginalName();
+        $duoi=$request->file('avatar')->getClientOriginalExtension();
+        if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png'&& $duoi!='jfif') {
+             return redirect('admin/khachhang/edit/'.$id)->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png || jfif');
+        }
+        $hinh=Str::random(5).'_'.$file_name;
+        $link='uploads/avatar/'.$hinh;
+        unlink("public/".$user->avatar);
+        $user->avatar= $link;
+        $request->file('avatar')->move('public/uploads/avatar',$hinh);
         if($request->changepass=="on")
         {
              $this->validate($request,[
-            'password'=>'required|min:6|max:30',
+            'password'=>'required|min:5|max:30',
             'passwordagain'=>'required|same:password'
         ],
         [
             'password.required'=>'Bạn chưa nhập PassWord',
-            'password.min'=>'PassWord có 6->30 kí tự',
-            'password.max'=>'PassWord có 6->30 kí tự',
+            'password.min'=>'PassWord có 5->30 kí tự',
+            'password.max'=>'PassWord có 5->30 kí tự',
             'passwordagain.required'=>'Bạn chưa nhập lại pass',
             'passwordagain.same'=>'Pass nhập lại không đúng'
         ]);
@@ -101,27 +113,19 @@ class KhachHangController extends Controller
          return redirect('admin/khachhang/edit/'.$id)->with('thongbao','Bạn dẫ sửa thành công');
     }
 
+    public function getDetail($id)
+    {
+        $user=User::find($id);
+        return view('admin/khachhang/detail',['user'=>$user]);
+    }
+
     public function getDelete($id){
         $user=User::find($id);
         $user->delete();
         return redirect('admin/khachhang/danhsach')->with('thongbao','Xóa thành công');
     }
 
-    public function getDetail()
-    {
-    	return view('admin.khachhang.detail');
-    }
-    public function getDetailStay()
-    {
-    	return view('admin.khachhang.detailstay');
-    }
-    public function getDSHomeStay()
-    {
-    	return view('admin.khachhang.dshomestay');
-    }
-
-
-
+   
     public function getLogin(){
         return view('admin.login.login');
     }

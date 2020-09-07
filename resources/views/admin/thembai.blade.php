@@ -49,6 +49,11 @@
 							{{session('thongbao')}}
 						</div>
 					@endif
+					@if(session('loi'))
+						<div class="alert alert-success">
+							{{session('loi')}}
+						</div>
+					@endif
 					<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 					  <fieldset>

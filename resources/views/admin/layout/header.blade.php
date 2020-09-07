@@ -18,7 +18,7 @@
 								<li class="dropdown-menu-title">
  									<span>Setting</span>
 								</li>
-								<li><a href="{{url('/admin/khachhang/edit')}}/{{Auth::user()->id}}"><i class="halflings-icon user"></i> Profile</a></li>
+								<li><a href="{{url('/admin/khachhang/detail')}}/{{Auth::user()->id}}"><i class="halflings-icon user"></i> Profile</a></li>
 								<li><a href="{{url('/admin/logout')}}"><i class="halflings-icon off"></i> Logout</a></li>
 							</ul>
 						</li>

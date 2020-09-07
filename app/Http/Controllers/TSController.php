@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Slide;
 class TSController extends Controller
 {
@@ -27,15 +28,21 @@ class TSController extends Controller
                 'status.required'=>'Chọn trạng thái!',
             ]);
         
-    	$file_name= $request->file('url')->getClientOriginalName();
+    	
     	$slide=new Slide;
     	$slide->slogan= $request->slogan;
-        $link='uploads/slider/'.$file_name;
-    	$slide->url= $link;
     	$slide->status= $request->status;
     	$slide ->created_at= now();
         $slide ->updated_at= now();
-        $request->file('url')->move('public/uploads/slider',$file_name);
+        $file_name= $request->file('url')->getClientOriginalName();
+        $duoi=$request->file('url')->getClientOriginalExtension();
+        if ($duoi!='jpg'&&$duoi!='jpeg' && $duoi!='png' && $duoi!='jfif') {
+             return redirect('admin/themslide')->with('loi','File thêm phải có định dạng jpg || jpeg || png || jfif!');
+        }
+        $hinh= Str::random(5).$file_name;
+        $link='uploads/slider/'.$hinh;
+        $slide->url= $link;
+        $request->file('url')->move('public/uploads/slider',$hinh);
     	$slide->save();
         return redirect('admin/themslide')->with('thongbao','Thêm slide thành công !');
 

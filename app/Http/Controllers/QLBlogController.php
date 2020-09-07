@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 use App\Blog;
 use App\District;
 use App\Province;
@@ -46,22 +48,29 @@ class QLBlogController extends Controller
 
             ]);
                 
-        $file_name= $request->file('photo')->getClientOriginalName();
+       
         $new = Blog::find($id);
+       
         $new ->title= $request->title;
-        $link='uploads/blog/'.$file_name;
-        $new ->photo= $link;
+        $new ->alias=Str::slug($request->title);
         $new ->description= $request->description;
         $new ->post= $request->post;
         $new ->maqh= $request->maqh;
         $new ->status=$request->status;
         $new ->created_at= now();
         $new ->updated_at= now();
-        
-        // dd($link)
-        $request->file('photo')->move('public/uploads/blog',$file_name);
+        $file_name= $request->file('photo')->getClientOriginalName();
+        $duoi=$request->file('photo')->getClientOriginalExtension();
+        if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png' && $duoi!='jfif') {
+             return redirect('admin/QLBlog/edit/'.$id)->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png || jfif');
+        }
+        $hinh= Str::random(5)."_".$file_name;
+        $link='uploads/blog/'.$hinh;
+        unlink("public/".$new->photo);
+        $new ->photo= $link;
+        $request->file('photo')->move('public/uploads/blog',$hinh);
         $new->save();
-        return redirect('admin/QLBlog/danhsach')->with('thongbao','Sửa bài viết thành công !');
+        return redirect('admin/QLBlog/edit/'.$id)->with('thongbao','Sửa bài viết thành công !');
     }
     public function getDelete($id)
     {

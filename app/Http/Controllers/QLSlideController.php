@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Slide;
 class QLSlideController extends Controller
 {
@@ -29,22 +30,26 @@ class QLSlideController extends Controller
                 'url.required'=>'Bạn hãy chọn ảnh nhé!',
                 
             ]);
-
-            $file_name= $request->file('url')->getClientOriginalName();
     	    $new = Slide::find($id);
             $new->slogan= $request->slogan;
-
-            $link='uploads/slider/'.$file_name;
-            $new->url= $link;
 	    	$new->status= $request->status;
-            $request->file('url')->move('public/uploads/slider',$file_name);
 	    	$new->updated_at=now();
-	    	$new->save();
-	    	 return redirect('admin/QLSlide/danhsach')->with('thongbao','Sửa slide thành công !');
-    }
-    public function getDel($id){
-        $slide=Slide::find($id);
-        $slide->delete();
+            $file_name= $request->file('url')->getClientOriginalName();
+            $duoi=$request->file('url')->getClientOriginalExtension();
+            if ($duoi!='jpg'&&$duoi!='jpeg' && $duoi!='png' && $duoi!='jfif') {
+                 return redirect('admin/QLSlide/edit/'.$id)->with('loi','File thêm phải có định dạng jpg || jpeg || png || jfif!');
+            }
+            $hinh= Str::random(5).$file_name;
+            $link='uploads/slider/'.$hinh;
+            unlink("public/".$new->url);
+            $new->url= $link;
+            $request->file('url')->move('public/uploads/slider',$hinh);
+    	    $new->save();
+    	    return redirect('admin/QLSlide/edit/'.$id)->with('thongbao','Sửa slide thành công !');
+        }
+        public function getDel($id){
+            $slide=Slide::find($id);
+            $slide->delete();
         return redirect('admin/QLSlide/danhsach');
     }
 }
