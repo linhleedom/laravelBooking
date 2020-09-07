@@ -62,44 +62,47 @@ List Homestay
                         @foreach ($homestaylist as $Homestay)                        
 					<?php $i++; ?>
                     <article class="one-fourth homestay-custom" >
-                        <figure><a href="{{url('partner/edit-list-homestay', ['id' => $Homestay->id])}}" title=""><img src="{{asset('public/'.$Homestay->avatar)}}" alt="" width="270" height="152" /></a></figure>
+                        <figure><a href="{{url('room-detail'.'?id='.$Homestay->id)}}" title=""><img src="{{asset('public/'.$Homestay->avatar)}}" alt="" width="270" height="152" /></a></figure>
                         <div class="details">
-                            <h1 style="height: 75px;" >{{$Homestay->name}}
+                            <h1 style="height: 45px;" >{{$Homestay->name}}
                                 <span  class="point" >
                                     {{$Homestay->point}}
                                 </span><br>
-                                <span class="price none-border" style="font-size: 15px">Trạng thái &nbsp; &nbsp;
-                                    <em>
-                                    @if ($Homestay->status == 1)                                    
-                                        <a title=""  style="color:#32df5d ;font-size :12px">Hiện</a>
-                                    @elseif($Homestay->status == 0)                                 
-                                    <em> <a  title="" style="color:red  ;font-size :12px">Ẩn</a>
-                                    @endif
-                                    </em>
-                                </span>
-                            </h1>
-                            <span class="price">Thêm ảnh &nbsp; &nbsp;
+                            </h1>    
+                            <div class="description" style="height: 130px;border-top: 1px solid #ccc;"><h3>Tiêu đề :</h3>
+                                <p>{{$Homestay->title}}</p>
+                            </div>                              
+                            <span class="price none-border" style="font-size: 13.5px;">Trạng thái &nbsp; &nbsp;
+                                <em>
+                                @if ($Homestay->status == 1)                                    
+                                    <a title=""  style="color:#32df5d ;font-size :12px">Hiện</a>
+                                @elseif($Homestay->status == 0)                                 
+                                <em> <a  title="" style="color:red  ;font-size :12px">Ẩn</a>
+                                @endif
+                                </em>
+                            </span> 
+                            <span class="price none-border" style="border: none;margin : 0 auto">Thanh toán
+                                    @if ($Homestay->status_pay == 2)                                    
+                                        <a title=""  style="color:#32df5d ;font-size :12px;float:right;text-decoration: none;" >Đã Thanh toán </a>
+                                    @elseif($Homestay->status_pay == 1)                                    
+                                        <a title=""  style="color:yellow ;font-size :12px;float:right;text-decoration: none;" >Đang xử lý </a>
+                                    @elseif($Homestay->status_pay == 0)                                 
+                                    <a href="" title="" style="color:red ;font-size :12px;float:right;text-decoration: none;" >Chưa Thanh toán </a>
+                                    @endif                                
+                            </span> 
+                            <span class="price none-border">Thêm ảnh &nbsp; &nbsp;
                                 <em>                                
                                     <a href="{{url('partner/upload_images', ['id' => $Homestay->id])}}"><img src="partner/images/ico/plus.png" alt="" width="22" height="22" /></a>
                                 </em>
                             </span>
-                            <span class="price none-border">Thanh toán
-                                &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
-                                    @if ($Homestay->status_pay == 2)                                    
-                                        <a title="Sửa"  style="color:#32df5d ;font-size :12px" >Đã Thanh toán </a>
-                                    @elseif($Homestay->status_pay == 1)                                    
-                                        <a title="Sửa"  style="color:yellow ;font-size :12px" >Đang xử lý </a>
-                                    @elseif($Homestay->status_pay == 0)                                 
-                                    <a href="" title="Sửa" style="color:red ;font-size :12px" >Chưa Thanh toán </a>
-                                    @endif                                
-                            </span>       
-                            <div class="description" style="height: 110px;">
-                                <p><br>{{$Homestay->title}} <a href="{{url('room-detail'.'?id='.$Homestay->id)}}" >Chi tiết</a></p>
-                            </div>                     
+                            <span class="price" style="border: none;margin : 0 auto"><label for="">Chỉnh sửa &nbsp; &nbsp;</label> 
+                                <em>                                
+                                    <a href="{{url('partner/edit-list-homestay', ['id' => $Homestay->id])}}"><img src="partner/images/ico/edit.png" alt="" width="16" height="16" /></a>
+                                </em>
+                            </span>     <br>               
                             <a href="{{url('partner/delete-homestay', ['id' => $Homestay->id])}}" title="Xóa" class="custom-button danger " >Xóa Homestay</a>
                         </div>
                     </article>
-                    <!--//deal-->
                     <!--//deal-->
                     @endforeach
                     <!--bottom navigation-->

@@ -458,15 +458,16 @@ table  tr td.alert-success{
     height: 150px;
 }
 .one-fourth .rating.like{
-    background: url(../images/ico/rating.png) 0 2px no-repeat !important;
+    background: url(../images/ico/rating-gold.png) 0 2px no-repeat !important;
 }
 .price.none-border{
-    border: none;
+    /* border: none; */
+    margin :0;
 }
 .three-fourth .one-fourth.homestay-custom {
     width: 22.6%;
     margin: 0 2.4% 20px 0;
-    height: 600px !important;
+    /* height:; */
 }
 .edit_field.edit_address{
     background: none;

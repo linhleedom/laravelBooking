@@ -38,7 +38,8 @@ List Room
 									<span>
 									</span>
 								</h1>
-								<span class="address"> {{$productVal->name}}</span>
+								<span class="address"> Tên phòng • <a title="tên phòng"  style="color:red ;font-size :12px" >{{$productVal->name}}</a></span>
+								<span class="address">	Loại • <a title="loại phòng"  style="color:red ;font-size :12px" >{{$productVal->roomType->name}}</a></span>
 								<span class="address">Trạng thái  •  
 									@if ($productVal->status == 1)                                    
 										<a title="Sửa"  style="color:#32df5d ;font-size :12px" >Hiện</a>
@@ -48,15 +49,12 @@ List Room
 								</span>
 								<span class="rating like">{{$productVal->homestay->point}} / 5</span>
 								<span class="price">Giá phòng  <em>{{number_format( $productVal->prices,0,',','.' ) }}đ</em> </span>
-								<div class="description" style="height: 110px;">
-									<p><br>{{$productVal->description}}</a></p>
-								</div> 
-								<span class="price none-border">  
-									<em>
-										<a href="{{url('partner/edit-list-room', ['id' => $productVal->id])}}" title="Chỉnh sửa" class="gradient-button success">Chỉnh sửa</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="{{url('partner/delete-room', ['id' => $productVal->id])}}" title="Xóa" class="gradient-button delete" onclick="return confirm('Bạn muốn xóa phòng ?')">Xóa phòng</a>
-									</em> 
+								<span class="price" style="border: none;margin : 0 auto"><label for="">Chỉnh sửa &nbsp; &nbsp;</label> 
+									<em>                                
+										<a href="{{url('partner/edit-list-room', ['id' => $productVal->id])}}"><img src="partner/images/ico/edit.png" alt="" width="16" height="16" /></a>
+									</em>
 								</span>
+								<a href="{{url('partner/delete-room', ['id' => $productVal->id])}}" title="Xóa" class="gradient-button delete" onclick="return confirm('Bạn muốn xóa phòng ?')">Xóa phòng</a>
 							</div>
 						</article>
 						@endforeach

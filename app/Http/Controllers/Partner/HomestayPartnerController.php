@@ -11,6 +11,7 @@ use App\Homestay;
 use App\District;
 use App\Province;
 use App\Ward;
+use App\User;
 use DB;
 use App\Product;
 use App\ImageHomestay;
@@ -20,8 +21,15 @@ class HomestayPartnerController extends Controller
         
     public function getListPartnerHomestay()
     {
-        $data1['homestaylist'] = Homestay::where('user_id',Auth::user()->id)->paginate(8);
-        // $datalist
+        $user = Auth::user()->id;
+        $data1['homestaylist'] = Homestay::where('user_id',$user)->paginate(8);
+        // $account = $data1->user->phone;
+        // dd($account);
+        // if($user->phone = ""){
+        //     dd('Vui lòng cập nhật số điện thoại');
+        // }else{
+        //     dd('Thành công');
+        // }
         return view ('partner.homestay.list-homestay',$data1);
     }
 
