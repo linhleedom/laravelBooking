@@ -502,3 +502,18 @@ table  tr td.alert-success{
     top: 1px;
     right: 7px;
 }
+.three-fourth i.alert-danger{
+    color:red;
+}
+.alert{
+    width: 100%;
+    height: 15px;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    padding: .75rem 1.25rem;
+}
+.full i.alert-danger{
+    color:red;
+}

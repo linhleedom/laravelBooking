@@ -48,19 +48,24 @@ List Homestay
                 <!--//crumbs-->
             </nav>
             <!--//breadcrumbs-->		
-            <section class="three-fourth" style="width:100%">     
-                <div class="sort-by" style="width:98%;">
-                    <ul class="sort custom" style="float: right;">
-                        <li><label for="">Thêm Homestay </label>
-                            <a href="{{route('addHomestay')}}" title="addHomestay" class="add">Thêm Homestay</a></label>
-                        </li>
-                    </ul>
-                </div>           
+            <section class="three-fourth" style="width:100%"> 
+                
+				<h1 style="text-align: center; font-size: 3em;">Danh sách Homestay</h1>  
+                @if(empty(Auth::user()->phone ))
+                    <div class="alert"><i class="alert-danger">Vui lòng cập nhật số điện thoại trước khi tạo Homestay</i></div>
+                @elseif(empty(Auth::user()->xaid))
+                    <div class="alert"><i class="alert-danger">Vui lòng cập nhật địa chỉ trước khi tạo Homestay</i></div>
+                @else                  
+                    <div class="sort-by" style="width:98%;">
+                        <ul class="sort custom" style="float: right;">
+                            <li><label for="">Thêm Homestay </label>
+                                <a href="{{route('addHomestay')}}" title="addHomestay" class="add">Thêm Homestay</a></label>
+                            </li>
+                        </ul>
+                    </div>  
                 <div class="deals clearfix" >
-                    <!--deal-->
-                    <?php $i=0; ?>
-                        @foreach ($homestaylist as $Homestay)                        
-					<?php $i++; ?>
+                    <!--deal-->                    
+                        @foreach ($homestaylist as $Homestay)
                     <article class="one-fourth homestay-custom" >
                         <figure><a href="{{url('room-detail'.'?id='.$Homestay->id)}}" title=""><img src="{{asset('public/'.$Homestay->avatar)}}" alt="" width="270" height="152" /></a></figure>
                         <div class="details">
@@ -114,6 +119,8 @@ List Homestay
                     </div>
                     <!--//bottom navigation-->
                 </div>
+            
+            @endif
             </section>
         <!--//three-fourth content-->
             <!--//top destinations-->

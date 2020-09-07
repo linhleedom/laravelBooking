@@ -20,7 +20,12 @@ List Room
 				<!--//breadcrumbs-->	
 				
 				<section class="full">
-					<h1 style="text-align: center; font-size: 4.5em;margin-bottom: 50px;">Danh sách phòng của Homestay</h1>
+					<h1 style="text-align: center; font-size: 3em;">Danh sách phòng của Homestay</h1>
+				@if(empty(Auth::user()->phone ))
+                    <div class="alert"><i class="alert-danger">Vui lòng cập nhật số điện thoại trước khi tạo phòng</i></div>
+                @elseif(empty(Auth::user()->xaid))
+                    <div class="alert"><i class="alert-danger">Vui lòng cập nhật địa chỉ trước khi tạo phòng</i></div>
+                @else 
 					<div class="sort-by" style="width:98%">
 						<ul class="sort custom" style="float: right">
 							<li>Thêm phòng
@@ -63,6 +68,8 @@ List Room
 								{{ $product->withQueryString()->links('vendor.pagination.custom') }}
 							<!--//pager-->
 						</div>
+					
+					@endif
 						<!--//deal-->
 					</div>
 			<!--//deals-->
