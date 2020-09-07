@@ -69,7 +69,7 @@
 						  	<div class="controls">
 							<select name="maqh" id="maqh">
 								@foreach($district as $tl)
-								<option value="{{$tl->maqh}}" selected>{{$tl->name}}</option>
+								<option value="{{$tl->maqh}}" @if($blog->maqh==$tl->maqh) selected="selected" @endif >{{$tl->name}}</option>
 								@endforeach
 							</select>
 						  	</div>

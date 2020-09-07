@@ -17,4 +17,7 @@ class District extends Model
     public function homestay(){
         return $this->hasMany('App\Homestay', 'maqh','maqh');
     }
+    public function blog(){
+        return $this->hasMany('App\Blog', 'maqh','maqh');
+    }
 }

@@ -50,15 +50,9 @@
 						  </div>
 						</div>
 						<div class="control-group">
-						  <label class="control-label" for="maqh">Thành Phố/Tỉnh:</label>
+						  <label class="control-label" for="maqh">Quận/Huyện:</label>
 						  <div class="controls">
-							<input type="text" id="maqh" name="maqh" 
-								@foreach($province as $tl)
-								@if($blog->maqh==$tl->id)
-								value="{{$tl->name}}"
-								@endif
-								@endforeach
-							>
+							<input type="text" id="maqh" name="maqh" value="{{$blog->district->name}}">
 						  </div>
 						</div>   
 						<div class="control-group">

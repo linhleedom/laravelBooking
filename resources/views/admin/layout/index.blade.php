@@ -16,7 +16,7 @@
 	<!-- end: CSS -->
 	<link rel="shortcut icon" href="admin_asset/img/favicon.ico">
 	<script src="admin_asset/js/jquery_321/jquery-3.2.1.js"></script>
-	<script src="admin_asset/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="admin_asset/ckeditor/ckeditor.js"></script>
 	<script src="admin_asset/ckfinder/ckfinder.js"></script>
 </head>
 <body>
@@ -27,7 +27,8 @@
 
 	@include('admin.layout.footer')
 
-	@include('admin.layout.scrip')
 	@yield('script')
+	@include('admin.layout.scrip')
+	
 </body>
 </html>

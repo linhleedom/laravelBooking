@@ -26,7 +26,7 @@ class KhachHangController extends Controller
             'name'=>'required|min:3',
             'avatar'=>'required',
             'email'=>'required|email|unique:users,email',
-            'password'=>'required|min:6|max:30',
+            'password'=>'required|min:8|max:30',
             'passwordagain'=>'required|same:password'
         ],
         [
@@ -37,8 +37,8 @@ class KhachHangController extends Controller
             'email.email'=>'Bạn chưa nhập đúng email',
             'email.unique'=>'Email đã tồn tại',
             'password.required'=>'Bạn chưa nhập PassWord',
-            'password.min'=>'PassWord có 6->30 kí tự',
-            'password.max'=>'PassWord có 6->30 kí tự',
+            'password.min'=>'PassWord có 8->30 kí tự',
+            'password.max'=>'PassWord có 8->30 kí tự',
             'passwordagain.required'=>'Bạn chưa nhập lại pass',
             'passwordagain.same'=>'Pass nhập lại không đúng'
         ]);

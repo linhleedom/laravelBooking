@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Blog;
 use App\District;
+use App\Province;
 class TBController extends Controller
 {
     public function getThemBai(){
         $district= District::all();
-    	return view('admin.thembai',['district'=>$district]);
+        $province= Province::all();
+    	return view('admin.thembai',['district'=>$district,'province'=>$province]);
     }
 
     public function postThemBai(Request $request)
@@ -52,5 +54,11 @@ class TBController extends Controller
         $request->file('photo')->move('public/uploads/blog',$file_name);
     	$new->save();
         return redirect('admin/thembai')->with('thongbao','Thêm bài viết thành công !');
+    }
+    public function getmaqh($matp){
+        $district= District::where('matp',$matp)->get();
+        foreach ($district as $tlu) {
+            echo " <option value='".$tlu->maqh."'>".$tlu->name."</option>";
+        }
     }
 }
