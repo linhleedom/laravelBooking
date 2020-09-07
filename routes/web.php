@@ -276,11 +276,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
 
         Route::get('delete/{id}','KhachHangController@getDelete');
 
-        Route::get('detail','KhachHangController@getDetail');
+        Route::get('detail/{id}','KhachHangController@getDetail');
 
-        Route::get('detailstay','KhachHangController@getDetailStay');
-
-        Route::get('dshomestay','KhachHangController@getDSHomeStay');
+        
     });
 
    

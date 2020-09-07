@@ -36,10 +36,14 @@
 							@endforeach
 						</div>
 					@endif
-
 					@if(session('thongbao'))
 						<div class="alert alert-success">
 							{{session('thongbao')}}
+						</div>
+					@endif
+					@if(session('loi'))
+						<div class="alert alert-success">
+							{{session('loi')}}
 						</div>
 					@endif
 					<form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
@@ -61,6 +65,8 @@
 						  	<label class="control-label" for="date01">Ảnh:</label>
 						  	<div class="controls">
 							<input type="file" id="date01" name="photo" value="{{$blog->photo}}">
+							<br>
+							<img width="180px" height="170px" src="{{$blog->photo}}" alt="">
 						  	</div>
 						</div>   
 						

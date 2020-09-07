@@ -36,22 +36,25 @@ class TBController extends Controller
 
             ]);
                 
-        $file_name= $request->file('photo')->getClientOriginalName();
+       
     	$new = new Blog;
-    	$new ->title= $request->title;
-        $link='uploads/blog/'.$file_name;
-    	$new ->photo= $link;
+    	$new ->title= $request->title;  
         $new ->description= $request->description;
     	$new ->post= $request->post;
         $new ->maqh= $request->maqh;
-
         $new ->alias=Str::slug($request->title);
         $new ->status=$request->status;
+        $file_name= $request->file('photo')->getClientOriginalName();
+        $duoi=$request->file('photo')->getClientOriginalExtension();
+        if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png') {
+             return redirect('admin/thembai')->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png');
+        }
+        $hinh= Str::random(5)."_".$file_name;
+        $link='uploads/blog/'.$hinh;
+        $new ->photo= $link;
+        $request->file('photo')->move('public/uploads/blog',$hinh);
         $new ->created_at= now();
         $new ->updated_at= now();
-        
-        // dd($link)
-        $request->file('photo')->move('public/uploads/blog',$file_name);
     	$new->save();
         return redirect('admin/thembai')->with('thongbao','Thêm bài viết thành công !');
     }

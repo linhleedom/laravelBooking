@@ -44,6 +44,11 @@
 							{{session('thongbao')}}
 						</div>
 					@endif
+					@if(session('loi'))
+						<div class="alert alert-success">
+							{{session('loi')}}
+						</div>
+					@endif
 					<form class="form-horizontal" action="{{url('/admin/QLSlide/edit')}}/{{$slide->id}}" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 					  <fieldset>
@@ -56,7 +61,8 @@
 						<div class="control-group">
 						  <label class="control-label" for="date01">Ảnh:</label>
 						  <div class="controls">
-							<input type="file" id="date01" name="url">
+							<input type="file" id="date01" name="url"><br>
+							<img width="180px" height="160px" src="{{$slide->url}}" alt="">
 						  </div>
 						</div>   
 						<div class="control-group">
