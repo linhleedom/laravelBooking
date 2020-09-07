@@ -45,7 +45,6 @@
 					<ul>
 						<li><a href="{{url('partner/list-homestay')}}">Danh sách homestay</a></li>
 						<li><a href="{{url('partner/list-room')}}">Danh sách phòng</a></li>
-						<li><a href="{{url('partner/home-add')}}">Thêm</a></li>
 					</ul>
 				</li>
 				<li><a href="{{url('partner/list-bills')}}" >Hóa đơn</a>

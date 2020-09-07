@@ -15,6 +15,7 @@ Edit Room
 					<!--crumbs-->
 					<ul class="crumbs">
 					<li><a href="{{url('trangchu')}}" title="Home">Home</a></li>  
+					<li><a href="{{url('partner/list-room')}}" title="ListHomestay">Danh sách phòng</a></li> 
 						<li>Sửa phòng</li>                               
 					</ul> 
 					<!--//crumbs-->

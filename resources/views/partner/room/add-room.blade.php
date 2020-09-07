@@ -15,6 +15,7 @@ Add Room
 					<!--crumbs-->
 					<ul class="crumbs">
                         <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li> 
+						<li><a href="{{url('partner/list-room')}}" title="ListHomestay">Danh sách phòng</a></li> 
 						<li>Thêm Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->
@@ -122,8 +123,8 @@ Add Room
 								<div class="row twins">
 									<div class="f-item custom-item checkbox">
 										@foreach ($tienichs as $items)											
-											<input type="checkbox" name="tienich[]" id="check" value="{{$items->id}}"/>
-											<label for="" >{{ $items->name }}</label> <br> <br>
+											<input type="checkbox" name="tienich[]" id="{{$items->id}}" value="{{$items->id}}"/>
+											<label for="{{$items->id}}" >{{ $items->name }}</label> <br> <br>
 										@endforeach
 									</div>
 								</div>

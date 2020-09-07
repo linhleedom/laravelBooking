@@ -43,13 +43,19 @@ List Homestay
                 <!--crumbs-->
                 <ul class="crumbs">
                     <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>
-                    <li><a href="{{asset('partner/home-add')}}">Thêm</a></li> 
                     <li>Danh sách Homestay</li>                                    
                 </ul>
                 <!--//crumbs-->
             </nav>
             <!--//breadcrumbs-->		
-            <section class="three-fourth" style="width:100%">                
+            <section class="three-fourth" style="width:100%">     
+                <div class="sort-by" style="width:98%;">
+                    <ul class="sort custom" style="float: right;">
+                        <li><label for="">Thêm Homestay </label>
+                            <a href="{{route('addHomestay')}}" title="addHomestay" class="add">Thêm Homestay</a></label>
+                        </li>
+                    </ul>
+                </div>           
                 <div class="deals clearfix" >
                     <!--deal-->
                     <?php $i=0; ?>

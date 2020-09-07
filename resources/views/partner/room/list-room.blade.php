@@ -17,10 +17,17 @@ List Room
 					</ul>
 					<!--//crumbs-->
 				</nav>
-				<!--//breadcrumbs-->		
+				<!--//breadcrumbs-->	
 				
 				<section class="full">
 					<h1 style="text-align: center; font-size: 4.5em;margin-bottom: 50px;">Danh sách phòng của Homestay</h1>
+					<div class="sort-by" style="width:98%">
+						<ul class="sort custom" style="float: right">
+							<li>Thêm phòng
+								<a href="{{route('addRoom')}}" title="addRoom" class="add"></a>
+							</li>
+						</ul>
+					</div>  
 					<div class="deals clearfix">
 						<!--deal-->
                         @foreach($product as $productVal)

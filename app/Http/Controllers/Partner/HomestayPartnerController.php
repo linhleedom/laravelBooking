@@ -17,11 +17,7 @@ use App\ImageHomestay;
 
 class HomestayPartnerController extends Controller
 {
-    public function getHomeAdd(){
-
-        return view('partner.home-add');
-    }
-    
+        
     public function getListPartnerHomestay()
     {
         $data1['homestaylist'] = Homestay::where('user_id',Auth::user()->id)->paginate(8);

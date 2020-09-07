@@ -99,6 +99,7 @@ $('#districts').change(function(){
 					<!--crumbs-->
 					<ul class="crumbs">
 						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>
+						<li><a href="{{url('partner/list-homestay')}}" title="Home">Danh sách Homestay</a></li>
 						<li>Thêm Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->

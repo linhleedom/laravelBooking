@@ -64,6 +64,7 @@ $('#districts').change(function(){
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<ul class="crumbs">
 						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>  
+						<li><a href="{{url('partner/list-homestay')}}" title="ListHomestay">Danh sách Homestay</a></li>  
 						<li>Thêm Homestay</li>                               
 					</ul> 
 				</nav>
