@@ -33,8 +33,8 @@ Add Room & Homestay
 						<h1>Chọn mục</h1>
 						<form id="booking" method="post" action="" class="booking">
 							<fieldset style="text-align: center;">
-								<a href="{{asset('partner/add-homestay')}}"><b class="gradient-button">Thêm Homestay</b></a>
-								<a href="{{asset('partner/add-room')}}"><b class="gradient-button">Thêm phòng</b></a>
+								<a href="{{route('addHomestay')}}"><b class="gradient-button">Thêm Homestay</b></a>
+								<a href="{{route('addRoom')}}"><b class="gradient-button">Thêm phòng</b></a>
 							</fieldset>
 						</form>
 					</section>

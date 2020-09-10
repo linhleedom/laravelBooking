@@ -251,8 +251,6 @@ My Account
 										<div class="edit_field edit_address" id="field6">
 											<form action="{{route('userEdit_Address',['id' => $id])}}" method="post" >
 												{{ csrf_field() }}
-												<label for="address_detail">Địa chỉ cụ thể(không bắt buộc):</label>
-												<textarea name="address_detail" id="address_detail" cols="10" rows="3"></textarea>
 												<label for="provinces">Tỉnh/Thành Phố</label>
 												<select name="provinces" id="provinces">
 													<option selected="selected"></option>
@@ -270,6 +268,8 @@ My Account
 												<select name="wards" id="wards">
 													<option selected="selected"></option>
 												</select>
+												<label for="address_detail">Địa chỉ cụ thể(không bắt buộc):</label>
+												<textarea name="address_detail" id="address_detail" cols="10" rows="3"></textarea>
 												<br/>
 												<input type="submit" value="Cập nhật" name="editPhone" class="gradient-button" id="editPhone"/>
 											</form>

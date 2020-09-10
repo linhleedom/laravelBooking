@@ -32,7 +32,7 @@ class AccountController extends Controller
 
             $rate = Rating::whereIn('homestay_id',$homestayforPartner)->paginate(3);
             // dd($rate);
-            return view('partner.account.account',compact('user','id','province','district','ward','bill','rate'));
+            return view('partner.account.account',compact('user','id','province','district','ward','rate'));
     }
 
     public function editName($id, Request $request){

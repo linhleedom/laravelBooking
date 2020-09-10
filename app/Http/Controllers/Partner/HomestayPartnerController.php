@@ -11,21 +11,18 @@ use App\Homestay;
 use App\District;
 use App\Province;
 use App\Ward;
+use App\User;
 use DB;
 use App\Product;
 use App\ImageHomestay;
 
 class HomestayPartnerController extends Controller
 {
-    public function getHomeAdd(){
-
-        return view('partner.home-add');
-    }
-    
+        
     public function getListPartnerHomestay()
     {
-        $data1['homestaylist'] = Homestay::where('user_id',Auth::user()->id)->paginate(8);
-        // $datalist
+        $user = Auth::user()->id;
+        $data1['homestaylist'] = Homestay::where('user_id',$user)->paginate(8);
         return view ('partner.homestay.list-homestay',$data1);
     }
 

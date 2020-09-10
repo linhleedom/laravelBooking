@@ -15,11 +15,10 @@ class CheckLogedIn
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()){
+        if(Auth::check()== true){
             return $next($request);
         }else{
             return redirect()->intended('partner/login-partner');
         }
-
     }
 }

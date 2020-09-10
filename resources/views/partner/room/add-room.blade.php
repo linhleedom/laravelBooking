@@ -15,6 +15,7 @@ Add Room
 					<!--crumbs-->
 					<ul class="crumbs">
                         <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li> 
+						<li><a href="{{url('partner/list-room')}}" title="ListHomestay">Danh sách phòng</a></li> 
 						<li>Thêm Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->

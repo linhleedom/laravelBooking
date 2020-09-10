@@ -17,17 +17,16 @@
 					<!--//inner navigation-->
 					<!--Register-->
 					<section id="Register" class="tab-content register-tab">
-						
-						@foreach ($errors->all() as $messages)
-							{{$messages}}
-						@endforeach
-						
 						<article class="logins">
-							<tr>
-								<td colspan="2" class="alert-danger">
-									{{Session::get('thongbao')}}
-								</td>
-							</tr>
+							@if( $errors->register->has('email') )
+								<span class="errors-register"><i>{{$errors->register->first('email')}}</i></span><br/>
+							@endif
+							@if( $errors->register->has('phone') )
+								<span class="errors-register"><i>{{$errors->register->first('phone')}}</i></span><br/>
+							@endif
+							@if( $errors->register->has('password') )
+								<span class="errors-register"><i>{{$errors->register->first('password')}}</i></span><br/>
+							@endif
 							<h1 style="text-align: center;">Register </h1>
 							<div class="b-info">
 								<form action="" method="POST">									
@@ -36,13 +35,13 @@
 										<tr>
 											<th>Email</th>
 											<td>
-												<input type="email" name="email" id="email" placeholder="Nhập email">
+												<input required type="email" name="email" id="email" placeholder="Nhập email">
 											</td>
 										</tr>
 										<tr>
 											<th>Họ và tên</th>
 											<td>
-												<input type="text" name="name" id="name" placeholder="Nhập họ và tên của bạn">
+												<input required type="text" name="name" id="name" placeholder="Nhập họ và tên của bạn">
 											</td>
 										</tr>
 										<tr>
@@ -55,13 +54,13 @@
 										<tr>
 											<th>Password</th>
 											<td>
-												<input type="password" name="password" id="password" placeholder="Nhập mật khẩu">
+												<input required type="password" name="password" id="password" placeholder="Nhập mật khẩu">
 											</td>
 										</tr>
 										<tr>
 											<th>Phone</th>
 											<td>
-												<input type="text" name="phone" id="phone" placeholder="nhập số điện thoại">
+												<input required type="text" name="phone" id="phone" placeholder="nhập số điện thoại">
 											</td>
 										</tr>
 										<tr>
@@ -83,4 +82,3 @@
 		</div>
 	</div>
 	<!--//main-->
-@endsection

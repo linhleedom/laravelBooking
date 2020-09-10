@@ -166,13 +166,12 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
         Route::get('logout','HomePartnerController@getLogout');
 
         Route::group(['prefix'=>'/'],function(){
-            Route::get('/home-add','HomestayPartnerController@getHomeAdd');
             Route::get('/list-homestay','HomestayPartnerController@getListPartnerHomestay');
             Route::get('/list-room','RoomController@getListRoom');
             
 
 
-            Route::get('/add-homestay','HomestayPartnerController@getAddPartnerHomestay');  
+            Route::get('/add-homestay','HomestayPartnerController@getAddPartnerHomestay')->name('addHomestay');  
             Route::post('/add-homestay','HomestayPartnerController@postAddPartnerHomestay');          
             Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
             Route::get('/getwards/{id}','HomestayPartnerController@getwards');
@@ -181,7 +180,7 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::post('upload_images/{id}','HomestayPartnerController@Upload');           
             Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay'); 
              
-            Route::get('/add-room','RoomController@getAddRoom');  
+            Route::get('/add-room','RoomController@getAddRoom')->name('addRoom');  
             Route::post('/add-room','RoomController@postAddRoom'); 
             Route::get('/edit-list-room/{id}','RoomController@getEditPartnerRoom');    
             Route::post('/edit-list-room/{id}','RoomController@postEditPartnerRoom');            

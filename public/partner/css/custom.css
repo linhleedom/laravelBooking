@@ -458,14 +458,16 @@ table  tr td.alert-success{
     height: 150px;
 }
 .one-fourth .rating.like{
-    background: url(../images/ico/rating.png) 0 2px no-repeat !important;
+    background: url(../images/ico/rating-gold.png) 0 2px no-repeat !important;
 }
 .price.none-border{
-    border: none;
+    /* border: none; */
+    margin :0;
 }
 .three-fourth .one-fourth.homestay-custom {
     width: 22.6%;
     margin: 0 2.4% 20px 0;
+    /* height:; */
 }
 .edit_field.edit_address{
     background: none;
@@ -478,4 +480,60 @@ table  tr td.alert-success{
 }
 .edit_field.edit_address div.selector {
     font-size: 15px;
+}
+.sort.custom li a {
+    position: absolute;
+    top: 35px;
+    right: 13px;
+    background: url(../images/ico/plus.png) 0 0 no-repeat;
+    width: 22px;
+    height: 22px;
+    overflow: hidden;
+    text-indent: -99999px;
+    display: inline-block;
+}
+.sort.custom li {
+    width: 130px;
+}
+.sort.custom {
+    border-right:none;
+}
+.sort.custom li .add {
+    top: 1px;
+    right: 7px;
+}
+.three-fourth i.alert-danger{
+    color:red;
+}
+.alert{
+    width: 100%;
+    height: 15px;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    padding: .75rem 1.25rem;
+}
+.full i.alert-danger{
+    color:red;
+}
+.errors-register{
+    display: inline-block;
+    width: 92%;
+    height: 10px;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 0.5rem 1.25rem;
+    color: red;
+}
+.success-register{
+    display: inline-block;
+    width: 92%;
+    height: 10px;
+    background: #28a745;
+    border-color: #28a745;
+    padding: 0.75rem 1.25rem;
+    color: #fff;
+    margin-bottom: 28px;
+    border-radius: 25px;
 }
