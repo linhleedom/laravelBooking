@@ -31,6 +31,7 @@
 						  	  <th>Avatar</th>
 							  <th>Tên Phòng</th>
 							  <th>Giá</th>
+							  <th>Discount(%)</th>
 							  <th>Ngày Đặt</th>
 							  <th>Ngày Trả</th>
 							  
@@ -47,6 +48,7 @@
 							<td><img width="100px" src="{{$tlu->avatar}}" alt=""></td>
 							<td>{{$tlu->name}}</td>
 							<td>{{$tlu->prices}}</td>
+							<td>{{$tlu->discount}}</td>
 							@endif
 							@endforeach
 
