@@ -91,7 +91,9 @@ class KhachHangController extends Controller
         }
         $hinh=Str::random(5).'_'.$file_name;
         $link='uploads/avatar/'.$hinh;
-        unlink("public/".$user->avatar);
+       
+            unlink("public/".$user->avatar);
+       
         $user->avatar= $link;
         $request->file('avatar')->move('public/uploads/avatar',$hinh);
         if($request->changepass=="on")
