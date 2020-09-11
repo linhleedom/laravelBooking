@@ -34,6 +34,9 @@ Edit Room
 					<h1 style="text-align: center;text-transform: uppercase;">Thông tin phòng của bạn</h1>
 					<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data" >
 						@csrf
+						@if(Session::get('thongbao') == 'success')
+							<i class="notify-success">{{Session::get('massage')}}</i>
+						@endif
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 						<fieldset>
 							<div colspan="2" 
@@ -44,7 +47,6 @@ Edit Room
 										height: 50px;
 										font-size: 1.5em;
 								">
-										{{Session::get('thongbao')}}
 							</div>
 							<h3><span>01 </span> Hạng mục homestay</h3>
 							<div class="row twins">
@@ -124,16 +126,16 @@ Edit Room
 								</div>
 							</div>	
 
-							<h3 style="margin-top: 20px;"><span>05</span> Ảnh </h3>
+							@if(empty($product->avatar))
+								<h3 style="margin-top: 20px;"><span>05</span> Ảnh </h3>
 
-							<div class="row twins">
-								<div class="f-item custom-item">
-									<label for="avatar">Thay ảnh phòng :</label>
-										<input   type="file" name="avatar" multiple id="avatar" value="{{$product->avatar}}">
-										<br><br>
-										<img src="{{asset('public/'.$product->avatar)}}" alt="Image" width="300px" height="150px" >
+								<div class="row twins">
+									<div class="f-item custom-item">
+										<label for="avatar">Thay ảnh phòng :</label>
+											<input   type="file" name="avatar" multiple id="avatar" value="{{$product->avatar}}">											
+									</div>
 								</div>
-							</div>
+							@endif
 							<br>
 							<input type="submit" class="gradient-button" value="Cập nhật" id="update" >	
 							</div>

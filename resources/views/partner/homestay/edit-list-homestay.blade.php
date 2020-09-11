@@ -108,9 +108,12 @@ $('#districts').change(function(){
 
 				<!--three-fourth content-->
 					<section class="three-fourth form-booking">
-						<h1 style="text-align: center;text-transform: uppercase;">Sửa thông tin homestay <br><br><b style="color: lightcoral"><u>{{$homestay->name}}</u></b> </h1>
+					<h1 style="text-align: center;text-transform: uppercase;">Sửa thông tin homestay <br><br><b style="color: lightcoral"><u>{{$homestay->name}}</u></b> </h1>
 					<form id="booking" method="post" action="" class="booking ">
 							{{csrf_field()}}
+							@if(Session::get('thongbao') == 'success')
+								<i class="notify-success">{{Session::get('massage')}}</i>
+							@endif
 							<fieldset>
 								
 								<tr>

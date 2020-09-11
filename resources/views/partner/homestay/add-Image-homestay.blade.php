@@ -55,25 +55,32 @@ Add Image Homestay
 				</section>
 				<section class="three-fourth form-booking">
 					<form id="booking" method="post" action="" class="booking " >
-						{{csrf_field()}}							
-						@foreach ($homestay->image as $imageval)
+						{{csrf_field()}}						
 						<!--get inspired list-->
-						<ul class="get_inspired width-height">
-							<!--item-->
-							<li>
-								<a class="no_href">
-									<figure>
-										<img src="{{asset('public/'.$imageval->url)}}" alt="Image" width="200px" height="100px" />
-										<a href="{{asset('public/'.$imageval->url)}}" class="image-overlay search-custom" rel="prettyPhoto[gallery1]"></a>
-										<figcaption>{{$homestay->name}}</figcaption>
-									</figure>
-								</a>
-							</li>
-							<!--//item-->
-						</ul>
+							@foreach ($homestay->image as $imageval)
+							<!--column-->
+							<article class="one-fourth img_custom">
+								<figure>
+									<img src="{{asset('public/'.$imageval->url)}}" alt="" width="270" height="152">							
+								</figure>
+								<div class="details">
+									<h5>{{$homestay->name}}</h5>
+								</div>
+								<div class="details">
+									<a href="{{url('partner/delete_image', ['id'=>$imageval->id])}}"  onclick="return confirm ('Bạn có muốn xóa ảnh')"><img style="float: right" src="partner/images/ico/delete1.png" alt="" width="20" height="20" /></a> 
+								</div>
+							</article>
+							
+							@endforeach
+							<!--//column-->
 						<!--//get inspired list-->
-						@endforeach
 					</form>
+				</section>
+				<section class="three-fourth">
+										
+					<!--top destinations-->
+					
+					<!--//top destinations-->
 				</section>
 				<!--//three-fourth content-->
 				

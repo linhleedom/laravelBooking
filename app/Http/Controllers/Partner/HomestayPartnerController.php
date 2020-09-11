@@ -221,11 +221,8 @@ class HomestayPartnerController extends Controller
         $homestay->status_pay = $request->status_pay;
         $homestay->description = $request->description;
         $homestay->status = $request->status;
-
-        
         $homestay->save();
-
-        return redirect()->intended('partner/list-homestay')->with('Thongbao','Sửa thành công');
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Update thành công !']);
 
     }
     public function getDeletePartnerHomestay($id)
