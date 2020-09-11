@@ -19,12 +19,19 @@
 					<!--Login account-->
 					<section id="Login" class="tab-content login-tab">
 						<!--booking-->
-						<article class="logins">
-							<tr>
-								<td colspan="2" class="alert-danger">
-									{{Session::get('error')}}
-								</td>
-							</tr>
+						<article class="logins">														
+							@if( Session::get('errors-register') == 'register_success' )
+								<span class="success-register" style="text-align:center">{{Session::get('massage')}}</span>
+							@endif
+							@if( $errors->login->has('email') )
+								<span class="errors-register"><i>{{$errors->login->first('email')}}</i></span><br/>
+							@endif
+							@if( $errors->login->has('password') )
+								<span class="errors-register"><i>{{$errors->login->first('password')}}</i></span><br/>
+							@endif
+							@if( Session::get('errors-register') == 'fail' )
+                                    <span class="errors-register">{{Session::get('massage')}}</span>
+                            @endif
 							<div class="b-info">
 								<h1 style="text-align: center;">Login</h1>
 								<form action="" method="POST" >
@@ -34,17 +41,17 @@
 										<tr>
 											<th>E-mail address</th>
 											<td>
-											<input type="email" id="email" name="email" />
+											<input required type="email" id="email" name="email" />
 											</td>
 										</tr>
 										<tr>
 											<th>Password</th>
 											<td>
-												<input type="password" id="password" name="password" />
+												<input required type="password" id="password" name="password" />
 											</td>
 										</tr>
 										<tr>
-											<td></td>
+											<td> <input type="hidden" name="permission" value="1"></td>
 											<td>
 												<label for="remember" style="margin-left: -135px;">Nhớ mật khẩu
 													 <input type="checkbox" name="remember"  id="remember" value="Remember Me">
@@ -76,4 +83,3 @@
 		</div>
 	</div>
 	<!--//main-->
-@endsection

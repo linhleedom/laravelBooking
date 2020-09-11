@@ -19,7 +19,10 @@ Home
 				<!--//breadcrumbs-->
 
 				<!--three-fourth content-->
-				<section class="offers clearfix full">
+				<section class="offers clearfix full">												
+					@if( Session::get('success-login') == 'register_success' )
+						<span class="success-register" style="text-align:center">{{Session::get('massage')}}</span>
+					@endif
 					<h1 style="text-align: center;font-size: 50px;">Dashboard</h1>
 					
 					<!--column-->
