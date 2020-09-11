@@ -6,7 +6,7 @@
         <article class="one-fourth" id="promo">
         <div class="ribbon-small">- {{$productVal->discount}}%</div>
     @endif
-        <figure><a href="{{route('userRoomDetail').'?id='.$productVal->homestay->id.$url}}" title=""><img src="{{$productVal->avatar}}" alt="" width="270" height="152" /></a></figure>
+        <figure><a href="{{route('userRoomDetail').'?id='.$productVal->homestay->id.$url}}" title=""><img src="{{$productVal->homestay->avatar}}" alt="" width="270" height="152" /></a></figure>
         <div class="details">
             <h1>{{$productVal->homestay->name}}
                 <div class="stars">

@@ -140,9 +140,25 @@ Route::get('/search-orderBy',[
     'as'=>'userSearchOrderBy',
     'uses'=>'user\SearchResultController@orderBy'
 ]);
-Route::get('/test',[
-    'as'=>'usertest',
-    'uses'=>'user\Test@index'
+Route::get('/reset-password',[
+    'as'=>'userResetPassword',
+    'uses'=>'user\ResetPasswordController@resetPasswordStep1'
+]);
+Route::post('/reset-password-post',[
+    'as'=>'userResetPasswordPost',
+    'uses'=>'user\ResetPasswordController@resetPasswordStep1Post'
+]);
+Route::get('/reset-password/{token}',[
+    'as'=>'userResetPasswordStep2',
+    'uses'=>'user\ResetPasswordController@resetPasswordStep2'
+]);
+Route::post('/reset-password-2-post',[
+    'as'=>'userResetPasswordStep2Post',
+    'uses'=>'user\ResetPasswordController@resetPasswordStep2Post'
+]);
+Route::get('/conditions',[
+    'as'=>'userConditions',
+    'uses'=>'user\HomeController@conditions'
 ]);
 
 

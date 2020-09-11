@@ -126,7 +126,7 @@ Booking
 											<span class="error_account">{{$errors->notLogin->first('confirm_email')}}</span><br/>
 										@endif
 									</div>
-									<span class="info">Bạn sẽ nhận được email xác thực</span>
+									<span class="info">Bạn sẽ nhận được email thông báo</span>
 								</div>
 								<div class="row">
 									<div class="f-item">
@@ -138,7 +138,7 @@ Booking
 								<div class="row">
 									<div class="f-item checkbox" onclick="checked()">
 										<input type="checkbox" name="check" id="check" value="ch1" />
-										<label>Có, tôi đã đọc và chấp nhận các điều khoản trong <a href="user_terms_of_service.html">booking conditions</a>.</label>
+										<label>Có, tôi đã đọc và chấp nhận các điều khoản trong <a href="{{route('userConditions')}}">booking conditions</a>.</label>
 									</div>
 								</div>
 								<input type="submit" class="gradient-button" disabled value="Tiếp theo" id="next-step" />

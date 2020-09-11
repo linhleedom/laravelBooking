@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 use App\Homestay;
 use App\Province;
 use App\Product;
@@ -15,7 +16,8 @@ class HomeStayController extends Controller
     {
     	 $homestay= Homestay::all();
          $province= Province::all();
-    	return view('admin.homestay.ListHT',['homestay'=>$homestay],['province'=>$province]);
+         // dd($homestay);
+    	return view('admin.homestay.ListHT',['homestay'=>$homestay,'province'=>$province]);
     }
     public function getHomeStay($id)
     {

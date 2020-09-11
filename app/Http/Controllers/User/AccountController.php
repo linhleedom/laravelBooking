@@ -25,6 +25,7 @@ class AccountController extends Controller
         $province = Province::all();
         $district = District::all();
         $ward = Ward::all();
+        // dd($billBooking);
         return view('user.pages.account',compact('billHistory','billBooking','user','id','province','district','ward'));
     }
 
@@ -188,11 +189,11 @@ class AccountController extends Controller
     public function rating($id, $bill_id, Request $request){
         $rating = new Rating;
         $rating->homestay_id = $request->homestay_id;
-        $rating->user_id = $id;
-        $rating->bill_id = $bill_id;
-        $rating->point = $request->score;
-        $rating->comment = $request->comment;
-        $rating->status = 1;
+        $rating->user_id     = $id;
+        $rating->bill_id     = $bill_id;
+        $rating->point       = $request->score;
+        $rating->comment     = $request->comment;
+        $rating->status      = 1;
         $rating->save();
         
         $point_homestay = Rating::where('homestay_id',$request->homestay_id)->avg('point');
