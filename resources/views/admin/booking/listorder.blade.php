@@ -30,7 +30,9 @@
 						  	  <th>ID</th>
 						  	  <th>Avatar</th>
 							  <th>Tên Phòng</th>
+							  <th>Chủ Sở Hữu</th>
 							  <th>Giá</th>
+							  <th>Discount(%)</th>
 							  <th>Ngày Đặt</th>
 							  <th>Ngày Trả</th>
 							  
@@ -46,7 +48,9 @@
 							@if($tl->product_id==$tlu->id)
 							<td><img width="100px" src="{{$tlu->avatar}}" alt=""></td>
 							<td>{{$tlu->name}}</td>
+							<td>{{$tlu->homestay->user->name}}</td>
 							<td>{{$tlu->prices}}</td>
+							<td>{{$tlu->discount}}</td>
 							@endif
 							@endforeach
 

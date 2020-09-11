@@ -36,30 +36,30 @@
 				  </thead>   
 				  <tbody>
 				  	@foreach($homestay as $tl)
-					<tr>
-						<td style="text-align: center">{{$tl->id}}</td>
-						<td style="text-align: center"><img width="80px" src="{{$tl->avatar}}" alt=""></td>
-						<td style="text-align: center">{{$tl->name}}</td>
-						
-						<td style="text-align: center">{{$tl->keyword}}</td>
-						<td style="text-align: center">
+						<tr>
+							<td style="text-align: center">{{$tl->id}}</td>
+							<td style="text-align: center"><img width="80px" src="{{$tl->avatar}}" alt=""></td>
+							<td style="text-align: center">{{$tl->name}}</td>
 							
-							({{$tl->province->name}})
-						</td>
-						<td style="text-align: center">
-							@if($tl->status == 1)
-							<p  class="label label-important">Public</p>
-							@else
-							<p class="label label-primary">Ẩn</p>
-							@endif
-						</td>
-						<td style="text-align: center">
-							<a href="{{url('/admin/homestay/products')}}/{{$tl->id}}" class="btn btn-success">List</a>
-							<a class="btn btn-primary" href="{{url('/admin/homestay/edit')}}/{{$tl->id}}">
-								<i class="halflings-icon white edit"></i>  
-							</a>
-						</td>
-					</tr> 
+							<td style="text-align: center">{{$tl->keyword}}</td>
+							<td style="text-align: center">
+								
+								({{$tl->province->name}})
+							</td>
+							<td style="text-align: center">
+								@if($tl->status == 1)
+								<p  class="label label-important">Public</p>
+								@else
+								<p class="label label-primary">Ẩn</p>
+								@endif
+							</td>
+							<td style="text-align: center">
+								<a href="{{url('/admin/homestay/products')}}/{{$tl->id}}" class="btn btn-success">List</a>
+								<a class="btn btn-primary" href="{{url('/admin/homestay/edit')}}/{{$tl->id}}">
+									<i class="halflings-icon white edit"></i>  
+								</a>
+							</td>
+						</tr> 
 					@endforeach
 				  </tbody>
 			  </table>            
