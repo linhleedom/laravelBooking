@@ -103,18 +103,18 @@ class SearchResultController extends Controller
     }
     public function index(Request $request){
         $address = $request->address;
-        $datepicker1 =$request->datepicker1;
-        $datepicker2 =$request->datepicker2;
-        $num_room = $request->num_room;
-        $num_adult = $request->num_adult;
-        $num_chil = $request->num_chil;
+        $datepicker1 = $request->datepicker1;
+        $datepicker2 = $request->datepicker2;
+        $num_room    = $request->num_room;
+        $num_adult   = $request->num_adult;
+        $num_chil    = $request->num_chil;
 
         
         $searchAddress = $this->SearchAddress($address);
         
         $homestay_id = $searchAddress['0'];
-        $province = $searchAddress['1'];
-        $district = $searchAddress['2'];
+        $province    = $searchAddress['1'];
+        $district    = $searchAddress['2'];
 
         $room_type_id = $this->SearchRoomType($num_room,$num_adult,$num_chil);
 

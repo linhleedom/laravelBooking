@@ -7,7 +7,7 @@
 							<h1>Đăng ký</h1>
 							<div class="f-item">
 								<label for="name">Họ và Tên</label>
-								<input type="text" id="name" name="name" required="required"/>
+								<input type="text" id="nameRegister" name="name" required="required"/>
 							</div>
 							<div class="f-item">
 								<label for="email">Địa chỉ email</label>
@@ -18,7 +18,7 @@
 							</div>
 							<div class="f-item">
 								<label for="phone">Số điện thoại</label>
-								<input type="text" id="phone" name="phone" minLength="6" maxLength="12" required="required"/>
+								<input type="text" id="phoneRegister" name="phone" minLength="6" maxLength="12" required="required"/>
 								@if( $errors->register->has('phone') )
 									<span class="feedback">{{$errors->register->first('phone')}}</span><br/>
 								@endif

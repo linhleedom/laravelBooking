@@ -13,7 +13,7 @@ class BookingController extends Controller
 {
     public function getDanhSach()
     {
-        $bill = Bill::all(); 
+        $bill = Bill::where('status','0')->get(); 
         $user = User::all();
     	return view('admin.booking.danhsach',['bill'=>$bill],['user'=>$user]);
     }

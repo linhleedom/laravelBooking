@@ -126,7 +126,7 @@ Booking
 											<span class="error_account">{{$errors->notLogin->first('confirm_email')}}</span><br/>
 										@endif
 									</div>
-									<span class="info">Bạn sẽ nhận được email xác thực</span>
+									<span class="info">Bạn sẽ nhận được email thông báo</span>
 								</div>
 								<div class="row">
 									<div class="f-item">

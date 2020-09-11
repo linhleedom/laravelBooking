@@ -77,11 +77,11 @@ class BookingController extends Controller
             }else{
                 $bill->user_id = 0;
             }
-            $bill->name = $request->name;
-            $bill->phone = $request->phone;
-            $bill->email = $request->email;
-            $bill->note = $request->note;
-            $bill->status = 0;
+            $bill->name     = $request->name;
+            $bill->phone    = $request->phone;
+            $bill->email    = $request->email;
+            $bill->note     = $request->note;
+            $bill->status   = 0;
             $bill->payments = $cart->totalPrice;
             $bill->save();
 
