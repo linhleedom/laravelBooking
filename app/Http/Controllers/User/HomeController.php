@@ -67,4 +67,7 @@ class HomeController extends Controller
     public function getError(){
         return view('user.pages.error');
     }
+    public function conditions(){
+        return view('user.pages.terms_of_sevices');
+    }
 }

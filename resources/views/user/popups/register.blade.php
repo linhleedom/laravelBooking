@@ -43,7 +43,7 @@
 								<input type="checkbox" id="newsletter" name="newsletter" />
 								<label for="newsletter">Thông báo cho tôi những ưu đãi độc quyền</label>
 							</div> -->
-							<p style="color: rgba(56, 209, 255, 0.86);">Hãy nhấn <span style="color: aliceblue;">"Đăng ký"</span> nếu bạn đã đọc và đông ý với <a href="user_terms_of_service.html">Điều khoản dịch vụ</a> và <a href="user_terms_of_service.html">Chính sách bảo mật</a> của chúng tôi. </p>
+							<p style="color: rgba(56, 209, 255, 0.86);">Hãy nhấn <span style="color: aliceblue;">"Đăng ký"</span> nếu bạn đã đọc và đông ý với <a href="{{route('userConditions')}}">Điều khoản dịch vụ</a> và <a href="{{route('userConditions')}}">Chính sách bảo mật</a> của chúng tôi. </p>
 							<input type="submit" id="register" name="register" value="Đăng ký" class="gradient-button"/>
 						</form>
 					</div>

@@ -13,16 +13,10 @@ Reset Password
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="#" title="Home">Home</a></li>
-						<li><a href="#" title="Hotels">Reset Password</a></li>                                  
+						<li><a href="{{route('userHomePage')}}" title="Home">Home</a></li>
+						<li>Reset Password</li>
 					</ul>
 					<!--//crumbs-->
-					
-					<!--top right navigation-->
-					<ul class="top-right-nav">
-						<li><a href="#" title="Back to results">Quay lại</a></li>
-					</ul>
-					<!--//top right navigation-->
 				</nav>
 				<!--//breadcrumbs-->
 

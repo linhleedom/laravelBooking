@@ -156,6 +156,10 @@ Route::post('/reset-password-2-post',[
     'as'=>'userResetPasswordStep2Post',
     'uses'=>'user\ResetPasswordController@resetPasswordStep2Post'
 ]);
+Route::get('/conditions',[
+    'as'=>'userConditions',
+    'uses'=>'user\HomeController@conditions'
+]);
 
 
 
