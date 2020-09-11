@@ -140,11 +140,15 @@ class RoomController extends Controller
         $product->description = $request->description;
 
         // dd($product->room_type_id);
-        $image = $request->avatar;
-        $filename = $image->getClientOriginalName();
-        $image->move(public_path('uploads/room/'), $filename);
-        $link = 'uploads/room/'.$filename;
-        $product->avatar = $link;
+        if($product->avatar == "" ){
+            $image = $request->avatar;
+            $filename = $image->getClientOriginalName();
+            $image->move(public_path('uploads/room/'), $filename);
+            $link = 'uploads/room/'.$filename;
+            $product->avatar = $link;
+        }else {
+            $product->avatar = $request->avatar ;
+        }
 
         $product->save();
 
@@ -156,7 +160,7 @@ class RoomController extends Controller
                 'utilities_id'=>$tienich
             ]);
         }
-        return back()->withInput()->with('thongbao','Sửa thành công ');
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Cập nhật thành công !']);
     }
     public function getDeleteRoom($id){
         Product::destroy($id);
