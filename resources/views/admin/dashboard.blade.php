@@ -26,7 +26,7 @@
 		<a class="quick-button metro blue span2" href="{{url('/admin/booking/danhsach')}}" >
 			<i class="icon-shopping-cart"></i>
 			<p>Orders</p>
-			<span class="badge">{{$bill->count()}}</span>
+			<span class="badge">{{$bill->where('status','0')->count()}}</span>
 		</a>
 		<a class="quick-button metro red span2" href="{{url('/admin/QLSlide/danhsach')}}" >
 			<i class="icon-picture"></i>
