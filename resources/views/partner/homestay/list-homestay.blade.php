@@ -74,7 +74,7 @@ List Homestay
                                     {{$Homestay->point}}
                                 </span><br>
                             </h1>    
-                            <div class="description" style="height: 130px;border-top: 1px solid #ccc;"><h3>Tiêu đề :</h3>
+                            <div class="description" style="height: 130px;border-top: 1px solid #ccc;border-bottom : none;"><h3>Tiêu đề :</h3>
                                 <p>{{$Homestay->title}}</p>
                             </div>                              
                             <span class="price none-border" style="font-size: 13.5px;">Trạng thái &nbsp; &nbsp;

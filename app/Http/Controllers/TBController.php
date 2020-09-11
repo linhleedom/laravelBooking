@@ -23,6 +23,7 @@ class TBController extends Controller
                 'photo'=>'required',
                 'post'=>'required',
                 'maqh'=>'required',
+                'matp'=>'required',
                 'status'=>'required',
             ],
             [
@@ -32,6 +33,7 @@ class TBController extends Controller
                 'post.required'=>'nhập thiếu nội dung',
                 'photo.required'=>'Mời bạn chọn ảnh!',
                 'maqh.required'=>'Mời bạn chọn quận huyện!',
+                'matp.required'=>'Mời bạn chọn Tỉnh!',
                 'status.required'=>'Hãy chọn trạng thái!',
 
             ]);
