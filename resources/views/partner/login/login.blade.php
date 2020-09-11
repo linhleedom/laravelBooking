@@ -60,7 +60,7 @@
 										</tr>
 										<tr>
 											<td colspan="2">
-												<a href="" title="Forgot password?" style= "text-decoration: none">Quên mật khẩu ?</a>
+												<a href="{{route('userResetPassword')}}" title="Forgot password?" style= "text-decoration: none">Quên mật khẩu ?</a>
 											</td>
 										</tr>
 										<tr style="text-align: center;">

@@ -17,7 +17,7 @@ class ResetPasswordController extends Controller
 
     public function resetPasswordStep1Post(Request $request){
         $result = User::where('email', $request->email)->first();
-    	if($result && $result->permision == '2'){
+    	if($result && ($result->permision == '2'||$result->permision == '1')){
     		$resetPassword = ResetPassword::firstOrCreate(['email'=>$request->email, 'token'=>Str::random(60)]);
             $resetPass = ResetPassword::where('email', $request->email)->first();
 
@@ -38,6 +38,7 @@ class ResetPasswordController extends Controller
     		echo 'This link is expired';
         }
     }
+    
     public function resetPasswordStep2Post(Request $request){
         if($request->pass_new == $request->confirm_pass_new){
     		// Check email with token
