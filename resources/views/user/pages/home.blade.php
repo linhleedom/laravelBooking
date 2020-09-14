@@ -119,7 +119,6 @@ Travel Your Booking
 						</figure>
 						<div class="details">
 							<div class="homestay_info">
-								<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
 								<h5>{{$homestayTopRateVal->name}}&nbsp&nbsp<span class="point">{{$homestayTopRateVal->point}}</span>
 								</h5>
 								</span>
@@ -162,7 +161,6 @@ Travel Your Booking
 						</figure>
 						<div class="details">
 							<div class="homestay_info">
-								<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
 								<h5>{{$homestayVal->name}}&nbsp&nbsp<span class="point">{{$homestayVal->point}}</span> </h5>
 							</div>
 							<div class="ribbon">

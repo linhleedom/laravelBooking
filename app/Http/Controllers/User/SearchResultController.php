@@ -49,40 +49,29 @@ class SearchResultController extends Controller
             $district = $add[0];
             $province = $add[1];
             $maqh = District::select('maqh')->where('name',$district)->value('maqh');
-            $homestay = Homestay::where([['status', '1'],['maqh',$maqh]])->get();
+            $homestay = Homestay::where([['status', '1'],['maqh',$maqh]]);
         }else{
             $district = '';
-            $province = $address; 
+            $province = $address;
             $matp = Province::select('matp')->where('name',$province)->value('matp');
-            $homestay = Homestay::where([['status', '1'],['matp',$matp]])->get();
+            $homestay = Homestay::where([['status', '1'],['matp',$matp]]);
         }
-        
-        $homestay_id = array();
-        foreach( $homestay as $homestayVal ){
-            array_push( $homestay_id, $homestayVal->id );
-        }
-        // return json_encode($homestay_id);
-        return array($homestay_id,$province,$district);
+        $homestay_id = $homestay->pluck('id')->toArray();
+        return array($homestay_id, $province, $district);
     }
 
     public function SearchRoomType($num_room,$num_adult,$num_chil){
         if( isset($num_room) && isset($num_adult) && isset($num_chil) && $num_room !== '0'){
             $capacity = $num_adult/$num_room;
             if($capacity <= 5){
-                $room_type = RoomType::where('status', '1')->whereBetween('capacity',[$capacity-1,$capacity+1])->get();
+                $room_type = RoomType::where('status', '1')->whereBetween('capacity',[$capacity-1,$capacity+1]);
             }else{
-                $room_type = RoomType::where([['status', '1'],['capacity','>=',$capacity]])->get();
+                $room_type = RoomType::where([['status', '1'],['capacity','>=',$capacity]]);
             }
-            $room_type_id = array();
-            foreach( $room_type as $room_typeVal ){
-                array_push( $room_type_id, $room_typeVal->id );
-            }
+            $room_type_id = $room_type->pluck('id')->toArray();
         }else{
-            $room_type = RoomType::where('status', '1')->get();
-            $room_type_id = array();
-            foreach( $room_type as $room_typeVal ){
-                array_push( $room_type_id, $room_typeVal->id );
-            }
+            $room_type = RoomType::where('status', '1');
+            $room_type_id = $room_type->pluck('id')->toArray();
         }
         return $room_type_id;
     }
@@ -93,12 +82,9 @@ class SearchResultController extends Controller
         $order = Order::where([ ['status','1'] , ['date_start','<=',$check_in] , ['date_end','>=',$check_out] ])
                         ->orWhere([ ['status','1'] , ['date_start','>=',$check_in] , ['date_end','<=',$check_out] ])  
                         ->orWhere([ ['status','1'] , ['date_start','<',$check_out] , ['date_end','>=',$check_out] ])
-                        ->orWhere([ ['status','1'] , ['date_start','<=',$check_in] , ['date_end','>',$check_in] ])
-                        ->get();
-        $product_actived_id = array();
-        foreach( $order as $orderVal ){
-            array_push( $product_actived_id, $orderVal->product_id );
-        }
+                        ->orWhere([ ['status','1'] , ['date_start','<=',$check_in] , ['date_end','>',$check_in] ]);
+
+        $product_actived_id = $order->pluck('product_id')->toArray();
         return $product_actived_id;
     }
     public function index(Request $request){
@@ -201,28 +187,18 @@ class SearchResultController extends Controller
 
         $room_type_id = $this->SearchRoomType($num_room,$num_adult,$num_chil);
         $product_actived_id = $this->SearchDate($datepicker1,$datepicker2);
+        $searchProduct = Product::where('status', '1')
+                        ->whereIn('homestay_id',$homestay_id)
+                        ->whereNotIn('id',$product_actived_id)
+                        ->whereIn('room_type_id',$room_type_id)
+                        ->groupBy('homestay_id');
         if($request->orderBy === "asc"){
-            $product = Product::where('status', '1')
-                                ->whereIn('homestay_id',$homestay_id)
-                                ->whereNotIn('id',$product_actived_id)
-                                ->whereIn('room_type_id',$room_type_id)
-                                ->orderBy('prices', 'asc')
-                                ->groupBy('homestay_id')
-                                ->paginate(9);
-                                // dd('dddd');
+            $product = $searchProduct->orderBy('prices', 'asc')->paginate(9);
         }elseif($request->orderBy === "desc"){
-            $product = Product::where('status', '1')
-                                ->whereIn('homestay_id',$homestay_id)
-                                ->whereNotIn('id',$product_actived_id)
-                                ->whereIn('room_type_id',$room_type_id)
-                                ->orderBy('prices', 'desc')
-                                ->groupBy('homestay_id')
-                                ->paginate(9);
+            $product = $searchProduct->orderBy('prices', 'desc')->paginate(9);
         }
-        
         $url ='&datepicker1='.$datepicker1.'&datepicker2='.$datepicker2.'&num_room='.$num_room.'&num_adult='.$num_adult.'&num_chil='.$num_chil;
         return view('user.ajax.search_result', compact('address','province','district','datepicker1','datepicker2','num_room','num_adult','num_chil','product','url'));
-        // dd($product);
     }
 
 }

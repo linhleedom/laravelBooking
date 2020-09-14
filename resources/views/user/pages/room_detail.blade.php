@@ -204,8 +204,8 @@ class="active"
 									@foreach($homestayVal->rating->where('status','1') as $ratingVal)
 										<!--review-->
 										<li>
-											<figure class="left"><img src="{{$ratingVal->user->avatar}}" alt="avatar" width=50 height=50/></figure>
-											<address><span>{{$ratingVal->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->created_at ))}}</address>
+											<figure class="left"><img src="{{$ratingVal->bill->user->avatar}}" alt="avatar" width=50 height=50/></figure>
+											<address><span>{{$ratingVal->bill->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->created_at ))}}</address>
 											<div class="pro">
 												<div class="stars">
 													@for( $i=5-$ratingVal->point; $i--; $i >= 0 )
