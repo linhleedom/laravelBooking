@@ -1246,7 +1246,7 @@ header .ribbon {
 }
 
 .promo .ribbon {
-    background-position: 0 -114px;
+    background-position: 0 0;
 }
 
 .promo .ribbon-small {
@@ -1268,7 +1268,7 @@ header .ribbon {
 }
 
 .promo .gradient-button {
-    background: #ffc802;
+    background: #6eb1ff;
     
 }
 

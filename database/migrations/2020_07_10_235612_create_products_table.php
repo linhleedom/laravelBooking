@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('area');
             $table->tinyInteger('status')->default(1);
             $table->foreign('homestay_id')->references('id')->on('homestays')->onDelete('cascade');
-            $table->foreign('room_type_id')->references('id')->on('room_types')->onDelete('cascade');
+            $table->foreign('room_type_id')->references('id')->on('room_types');
             $table->timestamps();
         });
     }

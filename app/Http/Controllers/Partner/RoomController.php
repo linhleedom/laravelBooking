@@ -129,15 +129,12 @@ class RoomController extends Controller
         $product->discount = $request->discount;
         $product->description = $request->description;
 
-        // dd($product->room_type_id);
         if($product->avatar == "" ){
             $image = $request->avatar;
             $filename = $image->getClientOriginalName();
             $image->move(public_path('uploads/room/'), $filename);
             $link = 'uploads/room/'.$filename;
             $product->avatar = $link;
-        }else {
-            $product->avatar = $request->avatar ;
         }
 
         $product->save();

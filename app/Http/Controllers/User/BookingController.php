@@ -32,7 +32,7 @@ class BookingController extends Controller
         $datepicker2 = $request->datepicker2;
         $homestay_id = $request->homestay_id;
 
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->permision == '2'){
             $validator = Validator::make($request->all(), 
                 [
                     'name'=>'required',

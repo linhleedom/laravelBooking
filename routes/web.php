@@ -171,7 +171,7 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
     });
 
     Route::group(['prefix'=>'register-partner'],function(){
-        Route::get('/','LoginPartnerController@getDangKyPartner'); 
+        Route::get('/','LoginPartnerController@getDangKyPartner')->name('partnerRegister'); 
         Route::post('/','LoginPartnerController@postDangKyPartner');
     });
 

@@ -9,10 +9,6 @@ class ImageHomestay extends Model
     protected $table = 'images_homestay';
     protected $fillable = ['id', 'url', 'homestay_id', 'status'];
 
-    // public function product(){
-    //     return $this->belongsTo('App\Homestay', 'homestay_id','id');
-    // }
-
     public function homestay(){
         return $this->belongsTo('App\Homestay', 'homestay_id','id');
     }

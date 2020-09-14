@@ -28,8 +28,6 @@ class Homestay extends Model
     public function ward(){
         return $this->belongsTo('App\Ward', 'xaid','xaid');
     }
-
-
     public function user(){
         return $this->belongsTo('App\User','user_id','id');
     }
