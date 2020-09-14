@@ -31,7 +31,7 @@ Add Image Room
 
 				<!--three-fourth content-->
 				<section class="three-fourth form-booking">
-                <h1 style="text-align: center;text-transform: uppercase;"> Ảnh của phòng  <br><b style="color: lightcoral;font-size:15px"><u>{{$room->name}}</u></b></h1>
+                <h1 style="text-align: center;text-transform: uppercase;"> Ảnh của phòng  <br><b style="color: lightcoral;font-size:15px"><u>{{$product->name}}</u></b></h1>
                 
                 <form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
                         {{csrf_field()}}
@@ -62,17 +62,17 @@ Add Image Room
 					<form id="booking" method="post" action="" class="booking " >
 						{{csrf_field()}}						
 						<!--get inspired list-->
-							@foreach ($room->image as $productVal)
+							@foreach ($product->image as $productVal)
 							<!--column-->
 							<article class="one-fourth img_custom">
 								<figure>
-									<img src="{{asset('public/'.$imageval->url)}}" alt="" width="270" height="152">							
+									<img src="{{asset('public/'.$productVal->url)}}" alt="" width="270" height="152">							
 								</figure>
 								<div class="details">
-									<h5>{{$homestay->name}}</h5>
+									<h5>{{$product->name}}</h5>
 								</div>
 								<div class="details">
-									<a href="{{url('partner/delete_image', ['id'=>$imageval->id])}}"  onclick="return confirm ('Bạn có muốn xóa ảnh')"><img style="float: right" src="partner/images/ico/delete1.png" alt="" width="20" height="20" /></a> 
+									<a href="{{route('delete_image_room',['id'=>$productVal->id])}}"  onclick="return confirm ('Bạn có muốn xóa ảnh')"><img style="float: right" src="partner/images/ico/delete1.png" alt="" width="20" height="20" /></a> 
 								</div>
                             </article>
                             <!--column-->

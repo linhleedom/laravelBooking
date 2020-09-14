@@ -12,6 +12,7 @@ use App\Product;
 use App\RoomType;
 use App\Utilities;
 use App\Uti_Pro;
+use App\ImageProduct;
 
 class RoomController extends Controller
 {
@@ -156,17 +157,17 @@ class RoomController extends Controller
     //upload img Room
     public function createImage($id){
         
-        $room = Product::find($id);
+        $product = Product::find($id);
         return view ('partner.room.add-image-room',
-        ['room'=>$room]
+        ['product'=>$product]
     );
     }
     public function UploadImage(Request $request,$id){
        
-        $room = Product::find($id);
+        $product = Product::find($id);
 
         // dd($homestay);
-        $ImageHomestay = ImageHomestay::all(); //edit
+        $ImageHomestay = ImageProduct::all();
         if($request->hasFile('url')){
             //Xử lý upload Ảnh
             $image_array = $request->file('url');
@@ -185,9 +186,9 @@ class RoomController extends Controller
                 $destination_path = public_path('/uploads/room');
                
                 $image_array[$i]->move($destination_path,$new_image_name);
-                $table = new ImageHomestay; //Edit
+                $table = new ImageProduct;
                 $table->url= $new_image_name;
-                $table->homestay_id = $request->id;
+                $table->product_id = $request->id;
                 $table->save();
 
             }                       
@@ -207,7 +208,7 @@ class RoomController extends Controller
 
     public function getDeleteImagesRoom($id)
     {
-        ImageHomestay::destroy($id);
+        ImageProduct::destroy($id);
         return back();
     }
     //end upload img
