@@ -342,7 +342,13 @@ header #wrap .ribbon nav ul.open li a {
 	color: rgb(0, 0, 255);
 }
 .homestay_info h5{
-	width: 120px ;
+	position: relative;
+	width: 190px;
+	padding-right: 30px;
+}
+.homestay_info .point{
+	position: absolute;
+	right: 0;
 }
 .full-width img{
 	height: 200px;

@@ -4,30 +4,30 @@
 		<article class="one-fourth">
 			<h3>Book Your Travel</h3>
 			<p>238 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội</p>
-			<p><em>P:</em> 24/7 customer support: 1800 1989</p>
-			<p><em>E:</em> <a href="javascript:" title="booking@mail.com">booking@mail.com</a></p>
+			<p><em>Phone:</em> 24/7 liên hệ: 1800 1989</p>
+			<p><em>Email:</em> <a href="javascript:" title="bookyourtravel@gmail.com">bookyourtravel@gmail.com</a></p>
 		</article>
 		<!--//column-->
 		
 		<!--column-->
 		<article class="one-fourth">
-			<h3>Customer support</h3>
+			<h3>Hỗ trợ khách hàng</h3>
 			<ul>
-				<li><a href="javascript:" title="Faq">Faq</a></li>
-				<li><a href="javascript:" title="How do I make a reservation?">How do I make a reservation?</a></li>
-			<li><a href="javascript:" title="Payment options">Payment options</a></li>
-				<li><a href="javascript:" title="Booking tips">Booking tips</a></li>
+				<li><a href="javascript:" title="Điều khoản và điều kiện">Điều khoản và điều kiện</a></li>
+				<li><a href="javascript:" title="Làm cách nào để đặt chỗ?">Làm cách nào để đặt chỗ?</a></li>
+				<!-- <li><a href="javascript:" title="Payment options">Payment options</a></li> -->
+				<li><a href="javascript:" title="Mẹo đặt phòng">Mẹo đặt phòng</a></li>
 			</ul>
 		</article>
 		<!--//column-->
 		
 		<!--column-->
 		<article class="one-fourth">
-			<h3>Follow us</h3>
+			<h3>Theo dõi chúng tôi</h3>
 			<ul class="social">
 				<li class="facebook"><a href="javascript:" title="facebook">facebook</a></li>
 				<li class="youtube"><a href="javascript:" title="youtube">youtube</a></li>
-				<li class="rss"><a href="javascript:" title="rss">rss</a></li>
+				<!-- <li class="rss"><a href="javascript:" title="rss">rss</a></li> -->
 				<!-- <li class="linkedin"><a href="javascript:" title="linkedin">linkedin</a></li> -->
 				<li class="googleplus"><a href="javascript:" title="googleplus">googleplus</a></li>
 				<li class="twitter"><a href="javascript:" title="twitter">twitter</a></li>
@@ -73,8 +73,6 @@
 		var email = $('#email_signup').val();
 		$("#register").css("display", "block");
 		$('#emailRegister').val(email);
-
-		console.log(email);
 	}
 
 </script>

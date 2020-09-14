@@ -17,10 +17,12 @@ class Product extends Model
         return $this->belongsTo('App\Homestay', 'homestay_id','id');
     }
     public function utilities(){
-        
         return $this->belongsToMany('App\Utilities', 'uti_pro','product_id','utilities_id');
     }
     public function order(){
         return $this->hasMany('App\Order','product_id','id');
+    }
+    public function image(){
+        return $this->hasMany('App\ImageProduct','product_id','id');
     }
 }

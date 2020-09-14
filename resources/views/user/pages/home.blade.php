@@ -237,7 +237,7 @@ Travel Your Booking
 				<!--column-->
 				<article class="one-fourth">
 					<h2>Giải đáp thắc mắc?</h2>
-					<p>Gọi cho chúng tôi theo số <em>1-555-555-555</em> để được tư vấn riêng, phù hợp cho kỳ nghỉ hoàn hảo của bạn hoặc gửi tin nhắn cho chúng tôi với câu hỏi đặt phòng khách sạn của bạn.<br /></p>
+					<p>Gọi cho chúng tôi theo số <em>1800-1989</em> để được tư vấn riêng, phù hợp cho kỳ nghỉ hoàn hảo của bạn hoặc gửi tin nhắn cho chúng tôi với câu hỏi đặt phòng khách sạn của bạn.<br /></p>
 				</article>
 				<!--//column-->
 			</section>
