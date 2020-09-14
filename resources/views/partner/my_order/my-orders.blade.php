@@ -12,8 +12,8 @@ Information Bill
                 <nav role="navigation" class="breadcrumbs clearfix">
                     <!--crumbs-->
                     <ul class="crumbs">
-                        <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>	
-						<li><a href="{{url('partner/list-bills')}}" title="Hóa đơn">Hóa đơn</a></li>  
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+						<li><a href="{{route('list_bills')}}" title="Hóa đơn">Hóa đơn</a></li>  
                         <li><a title="thông tin hóa đơn">Thông tin hóa đơn</a></li>                                  
                     </ul>
                     <!--//crumbs-->

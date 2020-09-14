@@ -41,12 +41,7 @@
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
 				<li><a href="{{url('partner/trangchu')}}" title="Home" class="active">Trang chủ</a></li>
-				<li><a >Danh mục</a>
-					<ul>
-						<li><a href="{{url('partner/list-homestay')}}">Danh sách homestay</a></li>
-						<li><a href="{{url('partner/list-room')}}">Danh sách phòng</a></li>
-					</ul>
-				</li>
+				<li><a href="{{url('partner/list-homestay')}}">Homestay</a></li>
 				<li><a href="{{url('partner/list-bills')}}" >Hóa đơn</a>
 			</ul>
 		</nav>

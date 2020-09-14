@@ -14,8 +14,8 @@ Edit Room
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-					<li><a href="{{url('trangchu')}}" title="Home">Home</a></li>  
-					<li><a href="{{url('partner/list-room')}}" title="ListHomestay">Danh sách phòng</a></li> 
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li>  
+						<li><a href="{{route('list-room',['id'=>$product->homestay_id])}}" title="ListRoom">Danh sách phòng</a></li> 
 						<li>Sửa phòng</li>                               
 					</ul> 
 					<!--//crumbs-->

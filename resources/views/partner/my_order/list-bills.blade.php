@@ -3,7 +3,6 @@
 List Bills
 @endsection
 @section('script')
-	
 @endsection
 @section('main')
     <!--main-->
@@ -15,80 +14,75 @@ List Bills
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>	
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
 						<li><a  title="Hóa đơn">Hóa đơn</a></li>                      
 					</ul>
 					<!--//crumbs-->
-				
 				</nav>
 				<!--//breadcrumbs-->
 
 				<!--three-fourth content-->
 				<section class="three-fourth" style="width: 100%">
-					
-					<div class="deals clearfix">
-						<div style="text-align: center; font-size: 4.5em;margin-bottom: 50px;">Danh sách các Hóa đơn</div>
-						<!--My Bookings-->
-							<section id="MyBookings" class="tab-content tab-booking">
-								<!--booking-->
-								<?php $i = 0 ;?>
-								@foreach ($list_Bill as $list_BillVal)
-								<?php $i++ ;?>
-									<article class="bookings">
-									<h1><a href="#">Đơn hàng thứ {{$i}}</a></h1>
-										<div class="b-info">
-											<table>
-												<tr>
-													<th>Tên Khách hàng:</th>
-													<td>{{$list_BillVal->name}}</td>
-												</tr>
-												<tr>
-													<th>Email liên hệ:</th>
-													<td>{{$list_BillVal->email}}</td>
-												</tr>
-												<tr>
-													<th>Số điện thoại:</th>
-													<td>{{$list_BillVal->phone}}</td>
-												</tr>
-												<tr>
-													<th>Trạng thái:</th>
-													@if($list_BillVal->status == 0)
-														<td><strong class="gradient-button warning">Đã đặt</strong></td>
-													@elseif($list_BillVal->status == 1)
-													<td><strong class="gradient-button danger">Hủy</strong></td>
-													@elseif($list_BillVal->status == 2)
-													<td><strong class="gradient-button success">Xong</strong></td>
-													@endif
-												</tr>
-												<tr>
-													<th>Tổng tiền:</th>
-													<td><strong>{{ number_format( $list_BillVal->payments,0,',','.' ) }}đ</strong></td>
-												</tr>
-											</table>
-										</div>
-										
-										<div class="actions">
-											<a href="{{url('partner/information-order', ['id' => $list_BillVal->id])}}" class="gradient-button ">Thông tin hóa đơn</a>
-											@if ($list_BillVal->status == 0)
-											<a href="{{route('CancelBook', ['id'=>$list_BillVal])}}" class="gradient-button danger">Hủy phòng</a>
-											@endif
-										</div>
-									</article>									
-								@endforeach
-								<div class="bottom-nav">
-									<!--back up button-->
-									{{-- <a href="#" class="scroll-to-top" title="Back up">Top</a>  --}}
-									<!--//back up button-->
-									
-									<!--pager-->
-										{{ $list_Bill->withQueryString()->links('vendor.pagination.custom') }}
-									<!--//pager-->
+					<div style="text-align: center; font-size: 4.5em;">Danh sách các Hóa đơn</div>
+					<section class="full">
+						<div class="deals clearfix">
+							{{csrf_field()}}
+								<div colspan="2"style="color: #32df5d;
+												border-color: #ebccd1;
+												width: 100%;">
 								</div>
-								<!--//booking-->
-							</section>
-						<!--//My Bookings-->
-					</div>
-					
+							<table class="list-bills">
+								<tr>
+									<th>STT</th>
+									<th>Tài khoản</th>
+									<th>Tên khách hàng</th>
+									<th>Email</th>
+									<th>Số điện thoại</th>
+									<th>Yêu cầu</th>
+									<th>Tổng tiền</th>
+									<th>Trạng thái đơn hàng</th>
+									<th colspan="4">Thông tin</th>
+								</tr>
+								<?php $i=0; ?>
+								@foreach ($list_Bill  as $list_BillVal)                      
+								<?php $i++; ?>
+								<tr>
+								<td>{{$i}}</td>
+									<td>{{$list_BillVal->user->name}}</td>
+									<td>{{$list_BillVal->name}}</td>
+									<td>{{$list_BillVal->email}}</td>
+									<td>{{$list_BillVal->phone}}</td>
+									<td>{{$list_BillVal->note}}</td>
+									<td><strong>{{ number_format( $list_BillVal->payments,0,',','.' ) }}đ</strong></td>
+									<td >
+										@if ($list_BillVal->status == 2)                                    
+											<a title="Sửa" class="gradient-button success custom_button_bills">Xong</a>
+										@elseif($list_BillVal->status == 1)                                    
+										<a title="Sửa" class="gradient-button danger custom_button_bills">Đã hủy</a>
+										@elseif($list_BillVal->status == 0)                                 
+											<a href="" title="Sửa" class="gradient-button  warning custom_button_bills">Đã đặt phòng</a>
+										@endif
+									</td>
+									@if($list_BillVal->status != 0)
+									<td>
+										<a href="{{route('information_order', ['id' => $list_BillVal->id])}}" class="gradient-button  custom_button_bills">Thông tin</a>
+									</td>
+									@elseif($list_BillVal->status == 0)
+									<td>
+										<a href="{{route('information_order', ['id' => $list_BillVal->id])}}" class="gradient-button  custom_button_bills">Thông tin</a>
+										<a href="{{route('CancelBook', ['id'=>$list_BillVal])}}" class="gradient-button danger custom_button_bills">Hủy phòng</a>
+									</td>
+									@endif
+								</tr>
+								@endforeach
+							</table>
+						</div>
+						<div class="bottom-nav">
+							<!--pager-->
+								{{ $list_Bill->withQueryString()->links('vendor.pagination.custom') }}
+							<!--//pager-->
+						</div>
+					</section>
 				</section>
 				<!--//three-fourth content-->
 				

@@ -15,32 +15,22 @@ use App\Uti_Pro;
 
 class RoomController extends Controller
 {
-    public function getListRoom(){
-        $homestay = Homestay::where('user_id',Auth::user()->id)->get();
-        $homestayforPartner = array();
-        foreach ($homestay as $homestayVal){
-            array_push($homestayforPartner, $homestayVal->id);
-        };
-        $product = Product::whereIn('homestay_id',$homestayforPartner)->paginate(12);   
-        return view ('partner.room.list-room',compact('product'));
+    public function getListRoom(Request $request){
+        $homestay_id = $request->id;
+        $product = Product::where('homestay_id',$homestay_id)->paginate(12);   
+        return view ('partner.room.list-room',compact('product','homestay_id'));
     }
 
-    public function getAddRoom(){
-        $id = Auth::user()->id;
-        // dd($id);
-        $homestay = Homestay::where('user_id',$id)->get();
-        // dd($listproduct);
-        $product = Product::all();
-        $room_type = RoomType::all();
-        $Tienich = Utilities::all();
+    public function getAddRoom(Request $request){
+        // $id = Auth::user()->id;
+        $homestay = Homestay::where('id',$request->id)->firstOrFail();
+        // $product = Product::all();
+        $types = RoomType::all();
+        $tienichs = Utilities::all();
 
-        // dd($roomtype);
-        return view ('partner.room.add-room',
-        ['homestay'=>$homestay,
-        'product'=>$product,
-        'types'=>$room_type,
-        'tienichs'=>$Tienich
-        ]);
+        // // dd($roomtype);
+        return view ('partner.room.add-room',compact('types','tienichs','homestay'));
+        // dd($request->id);    
     }
     public function postAddRoom(Request $request){
 
@@ -166,6 +156,64 @@ class RoomController extends Controller
         Product::destroy($id);
         return back();
     }
+    //upload img Room
+    public function createImage($id){
+        
+        $room = Product::find($id);
+        return view ('partner.room.add-image-room',
+        ['room'=>$room]
+    );
+    }
+    public function UploadImage(Request $request,$id){
+       
+        $room = Product::find($id);
+
+        // dd($homestay);
+        $ImageHomestay = ImageHomestay::all(); //edit
+        if($request->hasFile('url')){
+            //Xử lý upload Ảnh
+            $image_array = $request->file('url');
+            $array_len = count($image_array);
+
+            $id = Product::where('id','user_id')->get();
+            
+
+            for($i=0;$i<$array_len;$i++)
+            {   
+                $image_size = $image_array[$i]->getSize();
+                $image_ext = $image_array[$i]->getClientOriginalExtension();
+                
+                $new_image_name = "uploads/room/".rand(1,99999).".".$image_ext;
+
+                $destination_path = public_path('/uploads/room');
+               
+                $image_array[$i]->move($destination_path,$new_image_name);
+                $table = new ImageHomestay; //Edit
+                $table->url= $new_image_name;
+                $table->homestay_id = $request->id;
+                $table->save();
+
+            }                       
+            return redirect()->back()->with(['thongbao'=>'success','massage'=>'Thêm ảnh thành công']);
+        }else {            
+            return redirect()->back()->with(['thongbao'=>'fail','massage'=>'Hãy chọn nhiều file ảnh ']);
+        }
+    }
+    public function get_search(Request $request){
+        $product = Product::where('name','like','%'.$request->search.'%')->where('status',1)->get();
+        return view ('partner.room.list-room',[
+            'product'=> $product
+        ]);
+    }
+
+    //Xóa ảnh
+
+    public function getDeleteImagesRoom($id)
+    {
+        ImageHomestay::destroy($id);
+        return back();
+    }
+    //end upload img
 
 }
 

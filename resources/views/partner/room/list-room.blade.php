@@ -12,7 +12,8 @@ List Room
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-                        <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>  
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+                        <li><a href="{{route('list-homestay')}}" title="list-homestay">Danh sách Homestay</a></li> 
                         <li>Danh sách phòng </li>                                    
 					</ul>
 					<!--//crumbs-->
@@ -21,15 +22,15 @@ List Room
 				
 				<section class="full">
 					<h1 style="text-align: center; font-size: 3em;">Danh sách phòng của Homestay</h1>
-				@if(empty(Auth::user()->phone ))
-                    <div class="alert"><i class="alert-danger">Vui lòng cập nhật số điện thoại trước khi tạo phòng</i></div>
-                @elseif(empty(Auth::user()->xaid))
-                    <div class="alert"><i class="alert-danger">Vui lòng cập nhật địa chỉ trước khi tạo phòng</i></div>
-                @else 
+					@if(empty(Auth::user()->phone ))
+						<div class="alert"><i class="alert-danger">Vui lòng cập nhật số điện thoại trước khi tạo phòng</i></div>
+					@elseif(empty(Auth::user()->xaid))
+						<div class="alert"><i class="alert-danger">Vui lòng cập nhật địa chỉ trước khi tạo phòng</i></div>
+					@else 
 					<div class="sort-by" style="width:98%">
 						<ul class="sort custom" style="float: right">
 							<li>Thêm phòng
-								<a href="{{route('addRoom')}}" title="addRoom" class="add"></a>
+								<a href="{{route('addRoom',['id' =>$homestay_id])}}" title="addRoom" class="add"></a>
 							</li>
 						</ul>
 					</div>  
@@ -39,22 +40,32 @@ List Room
 						<article class="one-fourth">
 							<figure><a href="{{url('room-detail'.'?id='.$productVal->homestay->id)}}" title=""><img src="{{asset('public/'.$productVal->avatar)}}" alt="" width="270" height="152" /></a></figure>
 							<div class="details">
-								<h1>{{$productVal->homestay->name}}
-									<span>
-									</span>
-								</h1>
-								<span class="address"> Tên phòng • <a title="tên phòng"  style="color:red ;font-size :12px" >{{$productVal->name}}</a></span>
+								<h1>{{$productVal->homestay->name}}</h1>
+								<span class="address"> Tên • <a title="tên phòng"  style="color:red ;font-size :12px" >{{$productVal->name}}</a></span>
 								<span class="address">	Loại • <a title="loại phòng"  style="color:red ;font-size :12px" >{{$productVal->roomType->name}}</a></span>
-								<span class="address">Trạng thái  •  
+								<span class="address status_room_custom" >Trạng thái  •  
 									@if ($productVal->status == 1)                                    
 										<a title="Sửa"  style="color:#32df5d ;font-size :12px" >Hiện</a>
 									@elseif($productVal->status == 0)                                 
-									<a href="" title="Sửa" style="color:red ;font-size :12px" >Ẩn</a>
-									@endif </a>
+										<a href="" title="Sửa" style="color:red ;font-size :12px" >Ẩn</a>
+									@endif
 								</span>
-								<span class="rating like">{{$productVal->homestay->point}} / 5</span>
-								<span class="price">Giá phòng  <em>{{number_format( $productVal->prices,0,',','.' ) }}đ</em> </span>
-								<span class="price" style="border: none;margin : 0 auto"><label for="">Chỉnh sửa &nbsp; &nbsp;</label> 
+								@if($productVal->discount != 0)
+								<span class="rating like" style="margin-bottom : 10px">&nbsp;
+										{{$productVal->discount}}%
+								</span>
+								@elseif($productVal->discount == 0)
+								<span class="rating nosale" style="margin-bottom : 10px">&nbsp;
+									No Sales
+								</span>
+								@endif
+								<span class="price none-border">Thêm ảnh &nbsp; &nbsp;
+									<em>                                
+										<a href="{{route('UploadImageRoom',['id'=>$productVal->id])}}"><img src="partner/images/ico/plus.png" alt="" width="22" height="22" /></a>
+									</em>
+								</span>
+								<span class="price none-border" style="border-top : none;">Giá phòng  <em>{{number_format( $productVal->prices,0,',','.' ) }}đ</em> </span>
+								<span class="price"  style="border: none;margin : 0 auto"><label for="">Chỉnh sửa &nbsp; &nbsp;</label> 
 									<em>                                
 										<a href="{{url('partner/edit-list-room', ['id' => $productVal->id])}}"><img src="partner/images/ico/edit.png" alt="" width="16" height="16" /></a>
 									</em>
@@ -82,4 +93,20 @@ List Room
 		</div>
 	</div>
 	<!--//main-->
+@endsection
+@section('script1')
+	$('#search').on('keyup',function(){
+		$value = $(this).val();
+		$.ajax({
+			type: 'get',
+			url: '{{ URL::to('search') }}',
+			data: {
+				'search': $value
+			},
+			success:function(data){
+				$('tbody').html(data);
+			}
+		});
+	})
+	$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 @endsection

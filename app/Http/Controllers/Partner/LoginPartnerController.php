@@ -85,6 +85,6 @@ class LoginPartnerController extends Controller
         $user->password =bcrypt($request->password);
         $user->phone =$request->phone;
         $user->save();
-        return redirect()->intended('partner/login-partner')->with(['errors-register'=>'register_success','massage'=>' Bạn đã đăng ký thành công ']);
+        return redirect()->intended('partner/login-partner')->with(['thongbao'=>'success','massage'=>' Bạn đã đăng ký thành công ']);
     }
 }

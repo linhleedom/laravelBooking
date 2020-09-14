@@ -231,25 +231,35 @@ header #wrap .ribbon nav ul.open li a {
 }
 /* end-index-partner */
 /* list-homestay-room */
-table.list-homestay {
+table.list-bills {
 	border-collapse: collapse;
     width: 100%;    
     margin-bottom: 20px;
 }
-  
-  .list-homestay tr,th, td {
+.gradient-button.custom_button_bills
+{
+    font: normal 8px/23px 'RobotoBold';
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    height: 23px;
+}
+.address.status_room_custom{
+    width: 50%;
+}
+  .list-bills tr,th, td {
 	padding: 8px;
 	text-align: center;
 	border-bottom: 1px solid #ddd;
-	font-size: 20px;
+	font-size: 15px;
 }
-  table.list-homestay tr:hover {
+  table.list-bills tr:hover {
 	  background-color: #f5f5f5;
 }
-table.list-homestay tr td a{
+table.list-bills tr td a{
 	text-decoration: none;
 }
-table.list-homestay tr th {
+table.list-bills tr th {
   background-color: #4CAF50;
   color: white;
 }
@@ -458,11 +468,17 @@ table  tr td.alert-success{
     height: 150px;
 }
 .one-fourth .rating.like{
-    background: url(../images/ico/rating-gold.png) 0 2px no-repeat !important;
+    background: url(../images/ico/discount.png) 0 2px no-repeat !important;
+}
+.one-fourth .rating.nosale{
+    background: url(../images/ico/nosale.png) 0 2px no-repeat !important;
 }
 .price.none-border{
     /* border: none; */
     margin :0;
+}
+.price.none-border{
+    border-bottom: none;
 }
 .three-fourth .one-fourth.homestay-custom {
     width: 22.6%;
@@ -557,6 +573,21 @@ table  tr td.alert-success{
     border-radius: .25rem;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
 }
+.notify-fail{
+    display: inline-block;
+    width: 96%;
+    height: 20px;
+    padding: 0.5rem 1.25rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    font-size: 15px;
+    border-color: #f5c6cb;
+    border-radius: .25rem;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
 .form-booking .img_custom {
     width: 22.6%;
+}
+.details.custom_details h1{
+    font-size: 1.5em;
 }

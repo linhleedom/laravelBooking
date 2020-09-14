@@ -66,8 +66,8 @@ My Account
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="" title="Home">Home</a></li>
-						<li><a href="#" title="My Account">My Account</a></li>                                    
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+						<li>My Account</li>                                    
 					</ul>
 					<!--//crumbs-->
 				

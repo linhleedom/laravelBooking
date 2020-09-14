@@ -98,9 +98,9 @@ $('#districts').change(function(){
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>
-						<li><a href="{{url('partner/list-homestay')}}" title="Home">Danh sách Homestay</a></li>
-						<li>Thêm Homestay</li>                               
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+                        <li><a href="{{route('list-homestay')}}" title="list-homestay">Danh sách Homestay</a></li> 
+						<li>Chỉnh sửa</li>                               
 					</ul> 
 					<!--//crumbs-->
 				</nav>
@@ -151,7 +151,6 @@ $('#districts').change(function(){
 											@endforeach
 										</select>
 									</div>
-									<!-- <span class="info">You’ll receive a confirmation email</span> -->
                                 </div>
 
                                 <h3 style="margin-top: 20px;"><span>02</span> Loại Homestay</h3>

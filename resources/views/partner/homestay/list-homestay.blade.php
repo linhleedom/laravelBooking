@@ -42,7 +42,7 @@ List Homestay
             <nav role="navigation" class="breadcrumbs clearfix">
                 <!--crumbs-->
                 <ul class="crumbs">
-                    <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>
+                    <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
                     <li>Danh sách Homestay</li>                                    
                 </ul>
                 <!--//crumbs-->
@@ -67,14 +67,21 @@ List Homestay
                     <!--deal-->                    
                         @foreach ($homestaylist as $Homestay)
                     <article class="one-fourth homestay-custom" >
-                        <figure><a href="{{url('room-detail'.'?id='.$Homestay->id)}}" title=""><img src="{{asset('public/'.$Homestay->avatar)}}" alt="" width="270" height="152" /></a></figure>
-                        <div class="details">
-                            <h1 style="height: 45px;" >{{$Homestay->name}}
+                        <figure><a href="{{route('list-room',['id'=>$Homestay->id])}}" title=""><img src="{{asset('public/'.$Homestay->avatar)}}" alt="" width="270" height="152" /></a></figure>
+                        <div class="details custom_details">
+                            <h1 style="height: 35px;text-align: center;" >{{$Homestay->name}}
+                                @if(empty($Homestay->point == ""))
                                 <span  class="point" >
                                     {{$Homestay->point}}
                                 </span><br>
+                                @endif
                             </h1>    
-                            <div class="description" style="height: 130px;border-top: 1px solid #ccc;border-bottom : none;"><h3>Tiêu đề :</h3>
+                            <span class="price none-border">Tỉnh: {{$Homestay->province->name}},&nbsp;{{$Homestay->district->name}}
+                                <em>                                
+                                    <img src="partner/images/ico/gps.png" alt="" width="22" height="22" />
+                                </em>
+                            </span>
+                            <div class="description" style="padding-top: 5px;height: 130px;border-top: 1px solid #ccc;border-bottom : none;"><h3>Tiêu đề :</h3>
                                 <p>{{$Homestay->title}}</p>
                             </div>                              
                             <span class="price none-border" style="font-size: 13.5px;">Trạng thái &nbsp; &nbsp;

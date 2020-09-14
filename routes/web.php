@@ -177,13 +177,13 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
 
     Route::group(['prefix'=>'/','middleware'=>'CheckLogedIn'],function(){
         
-        Route::get('trangchu','HomePartnerController@getHomePartner');
+        Route::get('trangchu','HomePartnerController@getHomePartner')->name('trangchu');
         
         Route::get('logout','HomePartnerController@getLogout');
 
         Route::group(['prefix'=>'/'],function(){
-            Route::get('/list-homestay','HomestayPartnerController@getListPartnerHomestay');
-            Route::get('/list-room','RoomController@getListRoom');
+            Route::get('/list-homestay','HomestayPartnerController@getListPartnerHomestay')->name('list-homestay');
+            Route::get('/list-room/{id}','RoomController@getListRoom')->name('list-room');
             
 
 
@@ -192,22 +192,40 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
             Route::get('/getwards/{id}','HomestayPartnerController@getwards');
 
-            Route::get('upload_images/{id}','HomestayPartnerController@create');
+            Route::get('upload_images/{id}','HomestayPartnerController@create')->name('UploadImageHomestay');
             Route::post('upload_images/{id}','HomestayPartnerController@Upload');           
-            Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay'); 
-             
-            Route::get('/add-room','RoomController@getAddRoom')->name('addRoom');  
-            Route::post('/add-room','RoomController@postAddRoom'); 
+            Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay')->name('delete_image'); 
+            
+            Route::get('upload_images_room/{id}','RoomController@createImage')->name('UploadImageRoom');
+            Route::post('upload_images_room/{id}','RoomController@UploadImage');           
+            Route::get('/delete_image_room/{id}','RoomController@getDeleteImagesRoom'); 
+            
+
+
+
+            Route::get('/add-room/{id}','RoomController@getAddRoom')->name('addRoom');  
+
+
+
+
+
+
+
+            Route::post('/add-room','RoomController@postAddRoom')->name('addRoomPost'); 
             Route::get('/edit-list-room/{id}','RoomController@getEditPartnerRoom');    
             Route::post('/edit-list-room/{id}','RoomController@postEditPartnerRoom');            
             Route::get('/delete-room/{id}','RoomController@getDeleteRoom'); 
 
-            Route::get('/list-bills','BillsController@getListBills'); 
-            Route::get('/information-order/{id}','OrderController@getInfoOrder');
+            Route::get('/list-bills','BillsController@getListBills')->name('list_bills'); 
+            Route::get('/information-order/{id}','OrderController@getInfoOrder')->name('information_order');
             Route::get('/edit-order/{id}','OrderController@getEditOrder');
             Route::post('/edit-order/{id}','OrderController@postEditOrder');
             Route::get('/edit-bill/{id}','BillsController@getEditbill');
             Route::post('/edit-bill/{id}','BillsController@postEditbill');  
+
+            
+            Route::get('/homestay_search','SearchHomestayController@index');
+            Route::get('/search', 'SearchHomestayController@search');  
             
             Route::get('Cancel-room/{id}',[
                 'as'=>'CancelBook',

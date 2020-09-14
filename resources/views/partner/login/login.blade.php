@@ -19,9 +19,9 @@
 					<!--Login account-->
 					<section id="Login" class="tab-content login-tab">
 						<!--booking-->
-						<article class="logins">														
-							@if( Session::get('errors-register') == 'register_success' )
-								<span class="success-register" style="text-align:center">{{Session::get('massage')}}</span>
+						<article class="logins">
+							@if(Session::get('thongbao') == 'success')
+								<i class="notify-success">{{Session::get('massage')}}</i>
 							@endif
 							@if( $errors->login->has('email') )
 								<span class="errors-register"><i>{{$errors->login->first('email')}}</i></span><br/>

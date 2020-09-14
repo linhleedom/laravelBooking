@@ -63,8 +63,8 @@ $('#districts').change(function(){
 			<div class="content clearfix">
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<ul class="crumbs">
-						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>  
-						<li><a href="{{url('partner/list-homestay')}}" title="ListHomestay">Danh sách Homestay</a></li>  
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+						<li><a href="{{route('list-homestay')}}" title="ListHomestay">Danh sách Homestay</a></li>  
 						<li>Thêm Homestay</li>                               
 					</ul> 
 				</nav>
@@ -72,7 +72,7 @@ $('#districts').change(function(){
 				<!--three-fourth content-->
 				<section class="three-fourth form-booking">
 					<h1 style="text-align: center;text-transform: uppercase;">Thêm thông tin homestay của bạn</h1>
-					<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
+				<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
 						@if(Session::get('thongbao') == 'success')
 							<i class="notify-success">{{Session::get('massage')}}</i>
 						@endif
@@ -171,9 +171,9 @@ $('#districts').change(function(){
 										<br><br>
 										{{-- <input type="submit" class="gradient-button" name = "send" value="Upload file"> --}}
 								</div>
+								<input type="submit" class="gradient-button" value="Thêm mới" id="add" >
 							</div>
 						</fieldset>							
-						<input type="submit" class="gradient-button" value="Thêm mới" id="add" >
 					</form>
 				</section>
 						

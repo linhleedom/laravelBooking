@@ -221,7 +221,7 @@ class SearchResultController extends Controller
         }
         
         $url ='&datepicker1='.$datepicker1.'&datepicker2='.$datepicker2.'&num_room='.$num_room.'&num_adult='.$num_adult.'&num_chil='.$num_chil;
-        return view('user.ajax.search_result', compact('address','province','district','datepicker1','datepicker2','num_room','num_adult','num_chil','product','url'));
+        return back('user.ajax.search_result', compact('address','province','district','datepicker1','datepicker2','num_room','num_adult','num_chil','product','url'));
         // dd($product);
     }
 

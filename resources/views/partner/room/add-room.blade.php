@@ -14,25 +14,18 @@ Add Room
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-                        <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li> 
-						<li><a href="{{url('partner/list-room')}}" title="ListHomestay">Danh sách phòng</a></li> 
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+						<li><a href="{{route('list-room',['id'=>$homestay->id])}}" title="ListRoom">Danh sách phòng</a></li> 
 						<li>Thêm Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->
-					
-					<!--top right navigation-->
-					<!-- <ul class="top-right-nav">
-						<li><a href="#" title="Back to results">Back to results</a></li>
-						<li><a href="#" title="Change search">Change search</a></li>
-					</ul> -->
-					<!--//top right navigation-->
 				</nav>
 				<!--//breadcrumbs-->
 
 				<!--three-fourth content-->
 					<section class="three-fourth form-booking">
 						<h1 style="text-align: center;text-transform: uppercase;">Thông tin phòng của bạn</h1>
-						<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data" >
+					<form id="booking" method="post" action="{{route('addRoomPost')}}" class="booking " enctype="multipart/form-data" >
 							@csrf
 							@if(Session::get('thongbao') == 'success')
 								<i class="notify-success">{{Session::get('massage')}}</i>
@@ -53,15 +46,8 @@ Add Room
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label>Tên homestay</label>
-										<select name="homestay_id" id="">
-											<option disabled selected value >Chọn</option>
-												@foreach($homestay as $homestayVal)
-													<option required value="{{$homestayVal->id}}">{{$homestayVal->name}}</option>
-												@endforeach
-										</select>
-										@if( $errors->addHomestay->has('homestay_id') )
-											<span class="notify"><i>{{$errors->addHomestay->first('homestay_id')}}</i></span><br/>
-										@endif
+										<input type="text" value = "{{$homestay->name}}" readonly = "readonly">
+										<input type="hidden" name="homestay_id" id="homestay_id"  value = "{{$homestay->id}}" readonly = "readonly">
 									</div>
 									<div class="f-item custom-item">
 										<label for="">Trạng thái của phòng</label>

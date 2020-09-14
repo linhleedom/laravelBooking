@@ -45,13 +45,6 @@
 											</td>
 										</tr>
 										<tr>
-											<th>Chức Danh</th>
-											<td>
-												<label for="status">Partner
-												<input type="checkbox" name="permision" id="permision" value="" checked>
-											</td>
-										</tr>
-										<tr>
 											<th>Password</th>
 											<td>
 												<input required type="password" name="password" id="password" placeholder="Nhập mật khẩu">

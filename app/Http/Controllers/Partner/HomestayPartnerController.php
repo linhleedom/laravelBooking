@@ -73,10 +73,10 @@ class HomestayPartnerController extends Controller
                 $table->homestay_id = $request->id;
                 $table->save();
 
-            }           
-            return back()->with('thongbao','Thêm ảnh thành công');
-        }else {
-            return back()->with('thongbao','Hãy chọn nhiều file ảnh');
+            }                       
+            return redirect()->back()->with(['thongbao'=>'success','massage'=>'Thêm ảnh thành công']);
+        }else {            
+            return redirect()->back()->with(['thongbao'=>'fail','massage'=>'Hãy chọn nhiều file ảnh ']);
         }
     }
 
