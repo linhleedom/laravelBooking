@@ -119,7 +119,6 @@ Edit Room
 								</div>
 								@endforeach
 							</div>	
-
 							@if(empty($product->avatar))
 								<h3 style="margin-top: 20px;"><span>06</span> Ảnh </h3>
 								<div class="row twins">
