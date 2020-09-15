@@ -194,7 +194,8 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
 
             Route::get('upload_images/{id}','HomestayPartnerController@create')->name('UploadImageHomestay');
             Route::post('upload_images/{id}','HomestayPartnerController@Upload');           
-            Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay')->name('delete_image'); 
+            Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay')->name('delete_image');
+            Route::get('/delete_avatar_homestay/{id}','HomestayPartnerController@getDeleteAvatarHomestay')->name('delete_avatar_homestay'); 
             
             Route::get('upload_images_room/{id}','RoomController@createImage')->name('UploadImageRoom');
             Route::post('upload_images_room/{id}','RoomController@UploadImage');           

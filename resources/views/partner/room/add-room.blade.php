@@ -91,8 +91,7 @@ Add Room
 										@endif
 									</div>
 								</div>
-								<h3 style="margin-top: 20px;"><span>02</span> Giá phòng & ưu đãi </h3>
-
+								<h3 style="margin-top: 20px;"><span>03</span> Giá phòng & ưu đãi </h3>
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label>Nhập giá phòng (VNĐ) :</label>
@@ -113,7 +112,7 @@ Add Room
 								</div>
 
 								<div class="row twins">
-								<h3 style="margin-top: 20px;"><span>03</span> Mô tả </h3>
+								<h3 style="margin-top: 20px;"><span>04</span> Mô tả </h3>
 									<div class="f-item custom-item">
 										<label>Mô tả khác: </label>
 										<textarea rows="10" cols="10" id="description" name="description" ></textarea>
@@ -129,20 +128,18 @@ Add Room
 											@endif
 									</div>
 								</div>
-								
-								<h3 style="margin-top: 20px;"><span>04</span> Tiện ích có tại chỗ nghỉ</h3>
+								<h3 style="margin-top: 20px;"><span>05</span> Tiện ích có tại chỗ nghỉ</h3>
 								<div class="row twins">
-									<div class="f-item custom-item checkbox">
-										@foreach ($tienichs as $items)											
+									@foreach ($tienichs as $items)	
+									<div class="f-item custom-item checkbox">										
 											<input type="checkbox" name="tienich[]" id="{{$items->id}}" value="{{$items->id}}"/>
 											<label for="{{$items->id}}" >{{ $items->name }}</label> <br> <br>
-										@endforeach
 									</div>
+									@endforeach
 									@if( $errors->addHomestay->has('tienich') )
 										<span class="notify"><i>{{$errors->addHomestay->first('tienich')}}</i></span><br/>
 									@endif
 								</div>
-							
 								<input type="submit" class="gradient-button" value="Thêm mới" id="update" >	
 							</fieldset>							
 						</form>

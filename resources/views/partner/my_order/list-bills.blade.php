@@ -31,51 +31,47 @@ List Bills
 												border-color: #ebccd1;
 												width: 100%;">
 								</div>
-							<table class="list-bills">
-								<tr>
-									<th>STT</th>
-									<th>Tài khoản</th>
-									<th>Tên khách hàng</th>
-									<th>Email</th>
-									<th>Số điện thoại</th>
-									<th>Yêu cầu</th>
-									<th>Tổng tiền</th>
-									<th>Trạng thái đơn hàng</th>
-									<th colspan="4">Thông tin</th>
-								</tr>
-								<?php $i=0; ?>
-								@foreach ($list_Bill  as $list_BillVal)                      
-								<?php $i++; ?>
-								<tr>
-								<td>{{$i}}</td>
-									<td>{{$list_BillVal->user->name}}</td>
-									<td>{{$list_BillVal->name}}</td>
-									<td>{{$list_BillVal->email}}</td>
-									<td>{{$list_BillVal->phone}}</td>
-									<td>{{$list_BillVal->note}}</td>
-									<td><strong>{{ number_format( $list_BillVal->payments,0,',','.' ) }}đ</strong></td>
-									<td >
-										@if ($list_BillVal->status == 2)                                    
-											<a title="Sửa" class="gradient-button success custom_button_bills">Xong</a>
-										@elseif($list_BillVal->status == 1)                                    
-										<a title="Sửa" class="gradient-button danger custom_button_bills">Đã hủy</a>
-										@elseif($list_BillVal->status == 0)                                 
-											<a href="" title="Sửa" class="gradient-button  warning custom_button_bills">Đã đặt phòng</a>
-										@endif
-									</td>
-									@if($list_BillVal->status != 0)
-									<td>
-										<a href="{{route('information_order', ['id' => $list_BillVal->id])}}" class="gradient-button  custom_button_bills">Thông tin</a>
-									</td>
-									@elseif($list_BillVal->status == 0)
-									<td>
-										<a href="{{route('information_order', ['id' => $list_BillVal->id])}}" class="gradient-button  custom_button_bills">Thông tin</a>
-										<a href="{{route('CancelBook', ['id'=>$list_BillVal])}}" class="gradient-button danger custom_button_bills">Hủy phòng</a>
-									</td>
-									@endif
-								</tr>
-								@endforeach
-							</table>
+								<table id="example" class="display">
+									<thead>
+										<tr>
+											<th>STT</th>
+											<th>Tài khoản</th>
+											<th>Tên khách hàng</th>
+											<th>Email</th>
+											<th>Số điện thoại</th>
+											<th>Yêu cầu</th>
+											<th>Tổng tiền</th>
+											<th>Trạng thái đơn hàng</th>
+											<th colspan="4">Thông tin</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Lorem.</td>
+											<td>Porro?</td>
+										</tr>
+										<tr>
+											<td>Amet.</td>
+											<td>Quo.</td>
+										</tr>
+										<tr>
+											<td>Assumenda.</td>
+											<td>Perspiciatis.</td>
+										</tr>
+										<tr>
+											<td>Quasi.</td>
+											<td>Rem?</td>
+										</tr>
+										<tr>
+											<td>Tempore!</td>
+											<td>Libero!</td>
+										</tr>
+										<tr>
+											<td>Distinctio.</td>
+											<td>Ut.</td>
+										</tr>
+									</tbody>
+								</table>
 						</div>
 						<div class="bottom-nav">
 							<!--pager-->
@@ -116,4 +112,13 @@ List Bills
 		</div>
 	</div>
 	<!--//main-->
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+@endsection
+@section('script1')
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "ajax": "data/arrays.txt"
+    } );
+} );
 @endsection
