@@ -32,7 +32,7 @@ class QLBlogController extends Controller
              $this->validate($request,
             [
                 'title'=>'required|min:3|max:100',
-                'photo'=>'required',
+                // 'photo'=>'required',
                 'post'=>'required',
                 'maqh'=>'required',
                 'status'=>'required',
@@ -42,7 +42,7 @@ class QLBlogController extends Controller
                 'title.min'=>'Tiêu đề quá ngắn ( từ 3 đến 100 kí tự !)',
                 'title.max'=>'Tiêu đề quá dài ( từ 3 đến 100 kí tự !)',
                 'post.required'=>'nhập thiếu nội dung',
-                'photo.required'=>'Mời bạn chọn ảnh!',
+                // 'photo.required'=>'Mời bạn chọn ảnh!',
                 'maqh.required'=>'Mời bạn nhập maqh!',
                 'status.required'=>'Hãy chọn trạng thái!',
 
@@ -59,16 +59,20 @@ class QLBlogController extends Controller
         $new ->status=$request->status;
         $new ->created_at= now();
         $new ->updated_at= now();
-        $file_name= $request->file('photo')->getClientOriginalName();
-        $duoi=$request->file('photo')->getClientOriginalExtension();
-        if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png' && $duoi!='jfif') {
-             return redirect('admin/QLBlog/edit/'.$id)->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png || jfif');
+        if ($request->hasFile('photo')) {
+            $file_name= $request->file('photo')->getClientOriginalName();
+            $duoi=$request->file('photo')->getClientOriginalExtension();
+            if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png' && $duoi!='jfif') {
+                 return redirect('admin/QLBlog/edit/'.$id)->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png || jfif');
+            }
+            $hinh= Str::random(5)."_".$file_name;
+            $link='uploads/blog/'.$hinh;
+            unlink("public/".$new->photo);
+            $new ->photo= $link;
+            $request->file('photo')->move('public/uploads/blog',$hinh);
+
         }
-        $hinh= Str::random(5)."_".$file_name;
-        $link='uploads/blog/'.$hinh;
-        unlink("public/".$new->photo);
-        $new ->photo= $link;
-        $request->file('photo')->move('public/uploads/blog',$hinh);
+        
         $new->save();
         return redirect('admin/QLBlog/edit/'.$id)->with('thongbao','Sửa bài viết thành công !');
     }

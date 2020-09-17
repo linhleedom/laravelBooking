@@ -20,30 +20,32 @@ class QLSlideController extends Controller
            $this->validate($request,
             [
                 'slogan'=>'required|min:3|max:100',
-                'url'=>'required',
+               
                 
             ],
             [
                 'slogan.required'=>'Bạn chưa nhập slogan!',
                 'slogan.min'=>'Độ dài tối thiểu là 3 kí tự',
                 'slogan.max'=>'Độ dài tối đa là 100 kí tự',
-                'url.required'=>'Bạn hãy chọn ảnh nhé!',
+               
                 
             ]);
     	    $new = Slide::find($id);
             $new->slogan= $request->slogan;
 	    	$new->status= $request->status;
 	    	$new->updated_at=now();
-            $file_name= $request->file('url')->getClientOriginalName();
-            $duoi=$request->file('url')->getClientOriginalExtension();
-            if ($duoi!='jpg'&&$duoi!='jpeg' && $duoi!='png' && $duoi!='jfif') {
-                 return redirect('admin/QLSlide/edit/'.$id)->with('loi','File thêm phải có định dạng jpg || jpeg || png || jfif!');
+            if ($request->hasFile('url')) {
+                $file_name= $request->file('url')->getClientOriginalName();
+                $duoi=$request->file('url')->getClientOriginalExtension();
+                if ($duoi!='jpg'&&$duoi!='jpeg' && $duoi!='png' && $duoi!='jfif') {
+                     return redirect('admin/QLSlide/edit/'.$id)->with('loi','File thêm phải có định dạng jpg || jpeg || png || jfif!');
+                }
+                $hinh= Str::random(5).$file_name;
+                $link='uploads/slider/'.$hinh;
+                unlink("public/".$new->url);
+                $new->url= $link;
+                $request->file('url')->move('public/uploads/slider',$hinh);
             }
-            $hinh= Str::random(5).$file_name;
-            $link='uploads/slider/'.$hinh;
-            unlink("public/".$new->url);
-            $new->url= $link;
-            $request->file('url')->move('public/uploads/slider',$hinh);
     	    $new->save();
     	    return redirect('admin/QLSlide/edit/'.$id)->with('thongbao','Sửa slide thành công !');
         }

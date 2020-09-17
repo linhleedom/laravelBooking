@@ -55,7 +55,7 @@
 						</td>
 						<td style="text-align: center">
 							<a href="{{url('/admin/QLSlide/edit')}}/{{$tl->id}}" class="btn btn-success">Edit</a>
-							<a class="btn btn-danger" href="{{url('/admin/QLSlide/delete')}}/{{$tl->id}}">
+							<a class="btn btn-danger" href="{{url('/admin/QLSlide/delete')}}/{{$tl->id}}" onclick="return confirm('Bạn Muốn Xóa?');">
 								<i class="halflings-icon white trash"></i> 
 							</a>
 						</td>

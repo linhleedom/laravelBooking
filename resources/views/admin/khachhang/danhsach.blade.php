@@ -12,7 +12,7 @@
 			<div class="row-fluid sortable">		
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon white user"></i><span class="break"></span>List Members</h2>
+						<h2><i class="halflings-icon white user"></i><span class="break"></span>List Admin</h2>
 						<div class="box-icon">
 							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -51,7 +51,7 @@
 									@else
 										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
 										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
-										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}">
+										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}} " onclick="return confirm('Bạn Muốn Xóa Đối Tượng?');">
 											<i class="halflings-icon white trash"></i> 
 										</a>
 									@endif
@@ -59,7 +59,38 @@
 							</tr>
 							@endif
 							@endforeach
+						  </tbody>
+					  </table>            
+					</div>
+				</div>
+			</div>
+			
 
+
+			<div class="row-fluid sortable">		
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white user"></i><span class="break"></span>List Partner</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th style="text-align: center">Ảnh Đại Diện</th>
+								  <th style="text-align: center">Tên</th>
+								  <th style="text-align: center">Ngày Đăng Kí</th>
+								  <th style="text-align: center">Email</th>
+								  <th style="text-align: center">Phone</th>
+								  <th style="text-align: center">Level</th>
+								  <th style="text-align: center">Hoạt Động</th>
+							  </tr>
+						  </thead>   
+						  <tbody>
 							@foreach($user as $tl)
 						  	@if($tl->permision==1)
 							<tr>
@@ -77,7 +108,7 @@
 										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
 									@else	
 										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
-										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}">
+										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}" onclick="return confirm('Bạn Muốn Xóa ?');">
 											<i class="halflings-icon white trash"></i> 
 										</a>
 									@endif
@@ -86,6 +117,38 @@
 							@endif
 							@endforeach
 
+							
+						  </tbody>
+					  </table>            
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row-fluid sortable">		
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white user"></i><span class="break"></span>List Customer</h2>
+						<div class="box-icon">
+							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+								  <th style="text-align: center">Ảnh Đại Diện</th>
+								  <th style="text-align: center">Tên</th>
+								  <th style="text-align: center">Ngày Đăng Kí</th>
+								  <th style="text-align: center">Email</th>
+								  <th style="text-align: center">Phone</th>
+								  <th style="text-align: center">Level</th>
+								  <th style="text-align: center">Hoạt Động</th>
+							  </tr>
+						  </thead>   
+						  <tbody>
 							@foreach($user as $tl)
 						  	@if($tl->permision==2)
 							<tr>
@@ -103,7 +166,7 @@
 										<a href="{{url('admin/khachhang/edit')}}/{{$tl->id}}" class="btn btn-primary">Edit</a>
 									@else	
 										<a href="{{url('/admin/khachhang/detail')}}/{{$tl->id}}" class="btn btn-primary">Detail</a>
-										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}">
+										<a class="btn btn-danger" href="{{url('admin/khachhang/delete')}}/{{$tl->id}}" onclick="return confirm('Bạn Muốn Xóa')">
 											<i class="halflings-icon white trash"></i> 
 										</a>
 									@endif
@@ -116,7 +179,6 @@
 					</div>
 				</div>
 			</div>
-			<a href="{{url('/admin/khachhang/them')}}" class="btn btn-primary">Thêm User</a>
+			<a href="{{url('/admin/khachhang/them')}}" class="btn btn-primary">Thêm Admin</a>
 	</div>
-
 @endsection

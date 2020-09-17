@@ -51,7 +51,7 @@ class KhachHangController extends Controller
         $user->permision= $request->permision;
         $file_name= $request->file('avatar')->getClientOriginalName();
         $duoi=$request->file('avatar')->getClientOriginalExtension();
-        if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png') {
+        if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png'&& $duoi!='jfif') {
              return redirect('admin/khachhang/them')->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png || jfif');
         }
         $hinh=Str::random(5).'_'.$file_name;
@@ -73,29 +73,31 @@ class KhachHangController extends Controller
     public function postEdit(Request $request,$id){
          $this->validate($request,[
             'name'=>'required|min:3', 
-            'avatar'=>'required',     
+             
         ],
         [
             'name.required'=>'Bạn chưa nhập tên',
             'name.min'=>'Tên quá ngắn',
-            'avatar.required'=>'Chọn Avatar Đuê!',
+           
         ]);
         $user=User::find($id);
         $user->name= $request->name;
         $user->phone= $request->phone;
         $user->permision= $request->permision;
-        $file_name= $request->file('avatar')->getClientOriginalName();
-        $duoi=$request->file('avatar')->getClientOriginalExtension();
-        if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png'&& $duoi!='jfif') {
-             return redirect('admin/khachhang/edit/'.$id)->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png || jfif');
-        }
-        $hinh=Str::random(5).'_'.$file_name;
-        $link='uploads/avatar/'.$hinh;
-       
-            unlink("public/".$user->avatar);
-       
-        $user->avatar= $link;
-        $request->file('avatar')->move('public/uploads/avatar',$hinh);
+        if ($request->hasFile('avatar')) {
+            $file_name= $request->file('avatar')->getClientOriginalName();
+            $duoi=$request->file('avatar')->getClientOriginalExtension();
+            if ($duoi!='jpg'&& $duoi!='jpeg'&& $duoi!='png'&& $duoi!='jfif') {
+                 return redirect('admin/khachhang/edit/'.$id)->with('loi','Bạn hãy chọn định dạng file ảnh jpg || jpeg || png || jfif');
+            }
+            $hinh=Str::random(5).'_'.$file_name;
+            $link='uploads/avatar/'.$hinh;
+           
+                unlink("public/".$user->avatar);
+           
+            $user->avatar= $link;
+            $request->file('avatar')->move('public/uploads/avatar',$hinh);
+     }
         if($request->changepass=="on")
         {
              $this->validate($request,[
