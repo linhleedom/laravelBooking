@@ -5,7 +5,7 @@
 			<h3>Book Your Travel</h3>
 			<p>238 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội</p>
 			<p><em>Phone:</em> 24/7 liên hệ: 1800 1989</p>
-			<p><em>Email:</em> <a href="javascript:" title="bookyourtravel@gmail.com">bookyourtravel@gmail.com</a></p>
+			<p><em>Email:</em> <a href="mailto:bookyourtravel@gmail.com" title="bookyourtravel@gmail.com">bookyourtravel@gmail.com</a></p>
 		</article>
 		<!--//column-->
 		
@@ -13,7 +13,7 @@
 		<article class="one-fourth">
 			<h3>Hỗ trợ khách hàng</h3>
 			<ul>
-				<li><a href="javascript:" title="Điều khoản và điều kiện">Điều khoản và điều kiện</a></li>
+				<li><a href="{{route('userConditions')}}" title="Điều khoản và điều kiện">Điều khoản và điều kiện</a></li>
 				<li><a href="javascript:" title="Làm cách nào để đặt chỗ?">Làm cách nào để đặt chỗ?</a></li>
 				<!-- <li><a href="javascript:" title="Payment options">Payment options</a></li> -->
 				<li><a href="javascript:" title="Mẹo đặt phòng">Mẹo đặt phòng</a></li>
@@ -39,28 +39,28 @@
 		
 		<!--column-->
 		<article class="one-fourth">
-			<h3>Don’t miss our exclusive offers</h3>
+			<h3>Đăng ký tài khoản</h3>
 			<!-- <form id="newsletter" action="newsletter.php" method="post"> -->
 				<fieldset>
-					<input type="email" id="email_signup" name="email_signup" placeholder="Enter your email here" />
-					<input type="submit" id="signUp"  name="signUp" value="Signup" onclick="singUp()" class="gradient-button" />
+					<input type="email" id="email_signup" name="email_signup" placeholder="Nhập email của bạn tại đây" />
+					<input type="submit" id="signUp"  name="signUp" value="Đăng ký" onclick="singUp()" class="gradient-button" />
 				</fieldset>
 			<!-- </form> -->
 		</article>
 		<!--//column-->
 		
 		<section class="bottom">
-			<p class="copy">Copyright 2012 Book your travel ltd. All rights reserved</p>
+			<p class="copy">Copyright © 2020 Book Your Travel</p>
 			<nav>
 				<ul>
-					<li><a href="javascript:" title="About us">About us</a></li>
-					<li><a href="contact.html" title="Contact">Contact</a></li>
-					<li><a href="javascript:" title="Partners">Partners</a></li>
-					<li><a href="javascript:" title="Customer service">Customer service</a></li>
+					<li><a href="javascript:" title="About us">Giới thiệu</a></li>
+					<li><a href="contact.html" title="Contact">Liên hệ</a></li>
+					<li><a href="javascript:" title="Partners">Đối tác</a></li>
+					<!-- <li><a href="javascript:" title="Customer service">Customer service</a></li> -->
 					<li><a href="javascript:" title="FAQ">FAQ</a></li>
-					<li><a href="javascript:" title="Careers">Careers</a></li>
-					<li><a href="javascript:" title="Terms & Conditions">Terms &amp; Conditions</a></li>
-					<li><a href="javascript:" title="Privacy statement">Privacy statement</a></li>
+					<!-- <li><a href="javascript:" title="Careers">Careers</a></li> -->
+					<li><a href="{{route('userConditions')}}" title="Terms & Conditions">Điều khoản và điều kiện</a></li>
+					<!-- <li><a href="javascript:" title="Privacy statement">Privacy statement</a></li> -->
 				</ul>
 			</nav>
 		</section>

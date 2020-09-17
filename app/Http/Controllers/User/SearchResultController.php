@@ -14,8 +14,7 @@ use App\Order;
 use App\Bill;
 use App\RoomType;
 use App\Utilities;
-
-
+use App\CancelBill;
 
 class SearchResultController extends Controller
 {
@@ -39,6 +38,7 @@ class SearchResultController extends Controller
             if($bill_seccess_val->status == 0){
                 $bill->status = 2;
                 $bill->update();
+                CancelBill::where('bill_id', $bill->id)->delete();
             }
         }
     }

@@ -14,6 +14,7 @@ use App\District;
 use App\Ward;
 use App\Rating;
 use App\Homestay;
+use App\CancelBill;
 
 class AccountController extends Controller
 {
@@ -189,7 +190,6 @@ class AccountController extends Controller
     public function rating($id, $bill_id, Request $request){
         $rating = new Rating;
         $rating->homestay_id = $request->homestay_id;
-        $rating->user_id     = $id;
         $rating->bill_id     = $bill_id;
         $rating->point       = $request->score;
         $rating->comment     = $request->comment;
@@ -217,6 +217,7 @@ class AccountController extends Controller
                 $order->update();
             }
         }
+        CancelBill::where('bill_id', $bill->id)->delete();
         return redirect()->back()->with(['cancel-booking'=>'success','massage'=>'Hủy phòng thành công, kiểm tra trong lịch sử đặt phòng']);
     }
 }

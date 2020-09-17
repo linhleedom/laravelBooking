@@ -43,6 +43,7 @@
 				<li><a href="{{url('partner/trangchu')}}" title="Home" class="active">Trang chủ</a></li>
 				<li><a href="{{url('partner/list-homestay')}}">Homestay</a></li>
 				<li><a href="{{url('partner/list-bills')}}" >Hóa đơn</a>
+				<li><a href="{{route('partnerProductManage')}}" >Trạng thái phòng</a>
 			</ul>
 		</nav>
 		<!--//main navigation-->

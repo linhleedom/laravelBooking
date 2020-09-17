@@ -11,11 +11,13 @@
 	<title>@yield('title')</title>
 	<base href="{{asset('public/partner')}}">
 	<link rel="stylesheet" href="partner/css/style.css" type="text/css" media="screen,projection,print" />
-    <link rel="stylesheet" href="partner/css/prettyPhoto.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="partner/css/prettyPhoto.css" type="text/css" media="screen" />
+	
+	<link href='partner/fullcalendar/lib/main.css' rel='stylesheet' />
+
     <link rel="stylesheet" href="partner/css/custom.css">
 	<link rel="shortcut icon" href="partner/images/favicon.ico" />
-	{{-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> --}}
-    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> --}}
+
 	<script type="text/javascript" src="partner/js/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="partner/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="partner/js/css3-mediaqueries.js"></script>
@@ -26,9 +28,12 @@
 	<script type="text/javascript" src="partner/js/sequence.js"></script>
 	<script type="text/javascript" src="partner/js/selectnav.js"></script>
 	<script type="text/javascript" src="partner/js/scripts.js"></script>
+	
+	<script src='partner/fullcalendar/lib/main.js'></script>
 	<script type="text/javascript">	
 		@yield('script')
 	</script>
+	@yield('script2')
 </head>
 <body>
 	<!--header-->
