@@ -52,12 +52,8 @@ Edit Room
 							<div class="row twins">
 								<div class="f-item custom-item">
 									<label>Tên homestay</label>
-									<select name="homestay_id" id="">
-										<option selected="selected" >Chọn</option>
-										@foreach ($homestay as $homestayVal)											
-											<option required value="{{$homestayVal->id}}" @if($homestayVal->id == $product->homestay_id) selected @endif >{{$homestayVal->name}}</option>
-										@endforeach										
-									</select>
+									<input type="text" value = "{{$product->homestay->name}}" readonly = "readonly">
+									<input type="hidden" name="homestay_id" id="homestay_id"  value = "{{$product->homestay->id}}" readonly = "readonly">
 								</div>
 								<div class="f-item custom-item">
 									<label for="">Trạng thái của phòng</label>
@@ -90,8 +86,7 @@ Edit Room
 									</select>
 								</div>
 							</div>
-							<h3 style="margin-top: 20px;"><span>02</span> Giá phòng & ưu đãi </h3>
-
+							<h3 style="margin-top: 20px;"><span>03</span> Giá phòng & ưu đãi </h3>
 							<div class="row twins">
 								<div class="f-item custom-item">
 									<label>Nhập giá phòng (VNĐ) :</label>
@@ -106,33 +101,30 @@ Edit Room
 							</div>
 
 							<div class="row twins">
-							<h3 style="margin-top: 20px;"><span>03</span> Mô tả </h3>
+							<h3 style="margin-top: 20px;"><span>04</span> Mô tả </h3>
 								<div class="f-item custom-item">
 									<label>Mô tả khác: </label>
 								<textarea rows="10" cols="10" id="description" name="description" >{{$product->description}}</textarea>
 								</div>
 							</div>
 							
-							<h3 style="margin-top: 20px;"><span>04</span> Tiện ích có tại chỗ nghỉ</h3>
+							<h3 style="margin-top: 20px;"><span>05</span> Tiện ích có tại chỗ nghỉ</h3>
 							<div class="row twins">
-								<div class="f-item custom-item checkbox">
-										@foreach ( $utilities as $utilities)		
+								@foreach ( $utilities as $utilities)	
+								<div class="f-item custom-item checkbox">	
 											<input type="checkbox" name="tienich[]" id="check" value="{{$utilities->id}}" 
 											<?php echo  in_array($utilities->id, $utilityIds) ?  'checked = "checked"' : null; ?>
 											/>
-												<label for="" >{{$utilities->name }}</label> <br> <br>
-										@endforeach
-									{{-- @endforeach --}}
+											<label for="" >{{$utilities->name }}</label>
 								</div>
+								@endforeach
 							</div>	
-
 							@if(empty($product->avatar))
-								<h3 style="margin-top: 20px;"><span>05</span> Ảnh </h3>
-
+								<h3 style="margin-top: 20px;"><span>06</span> Ảnh </h3>
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label for="avatar">Thay ảnh phòng :</label>
-											<input   type="file" name="avatar" multiple id="avatar" value="{{$product->avatar}}">											
+										<input type="file" name="avatar" multiple id="avatar" value="{{$product->avatar}}">											
 									</div>
 								</div>
 							@endif

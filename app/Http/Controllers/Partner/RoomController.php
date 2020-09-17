@@ -211,6 +211,16 @@ class RoomController extends Controller
         ImageProduct::destroy($id);
         return back();
     }
+
+    public function getDeleteAvatarRoom($id)
+    {
+        $avatarRoom = Product::find($id);
+        if(empty($avatarRoom->avatar = "")){
+            $avatarRoom->avatar = "";
+            $avatarRoom->update();
+        }
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Xóa avatar Room thành công']);
+    }
     //end upload img
 
 }

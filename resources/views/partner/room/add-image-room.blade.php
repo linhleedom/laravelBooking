@@ -77,6 +77,19 @@ Add Image Room
                             </article>
                             <!--column-->
 							@endforeach
+							@if(empty($product->avatar == ""))
+							<article class="one-fourth img_custom">
+								<figure>
+									<img src="{{asset('public/'.$product->avatar)}}" alt="" width="270" height="152">							
+								</figure>
+								<div class="details">
+									<h5>Avatar Room</h5>
+								</div>
+								<div class="details">
+									<a href="{{route('delete_avatar_room', ['id'=>$product->id])}}"  onclick="return confirm ('Bạn có muốn xóa ảnh')"><img style="float: right" src="partner/images/ico/delete1.png" alt="" width="20" height="20" /></a> 
+								</div>
+							</article>
+							@endif
 							<!--//column-->
 						<!--//get inspired list-->
 					</form>

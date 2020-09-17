@@ -204,11 +204,14 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
 
             Route::get('upload_images/{id}','HomestayPartnerController@create')->name('UploadImageHomestay');
             Route::post('upload_images/{id}','HomestayPartnerController@Upload');           
-            Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay')->name('delete_image'); 
+            Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay')->name('delete_image');
+            Route::get('/delete_avatar_homestay/{id}','HomestayPartnerController@getDeleteAvatarHomestay')->name('delete_avatar_homestay'); 
             
             Route::get('upload_images_room/{id}','RoomController@createImage')->name('UploadImageRoom');
             Route::post('upload_images_room/{id}','RoomController@UploadImage');           
             Route::get('/delete_image_room/{id}','RoomController@getDeleteImagesRoom')->name('delete_image_room'); 
+            Route::get('/delete_avatar_room/{id}','RoomController@getDeleteAvatarRoom')->name('delete_avatar_room'); 
+
             Route::get('/add-room/{id}','RoomController@getAddRoom')->name('addRoom');  
             Route::post('/add-room','RoomController@postAddRoom')->name('addRoomPost'); 
             Route::get('/edit-list-room/{id}','RoomController@getEditPartnerRoom');    

@@ -221,6 +221,14 @@ class HomestayPartnerController extends Controller
         $homestay->status_pay = $request->status_pay;
         $homestay->description = $request->description;
         $homestay->status = $request->status;
+
+        if($homestay->avatar == "" ){
+            $image_avatar = $request->avatar;
+            $filename_avatar = $image_avatar->getClientOriginalName();
+            $image_avatar->move(public_path('uploads/homestay/'), $filename_avatar);
+            $link = 'uploads/homestay/'.$filename_avatar;
+            $homestay->avatar = $link;
+        }
         $homestay->save();
         return redirect()->back()->with(['thongbao'=>'success','massage'=>'Update thành công !']);
 
@@ -230,6 +238,17 @@ class HomestayPartnerController extends Controller
         Homestay::destroy($id);
         return back();
     }
+    public function getDeleteAvatarHomestay($id)
+    {
+        $avatarHomestay = Homestay::find($id);
+        if(empty($avatarHomestay->avatar = "")){
+            $avatarHomestay->avatar = "";
+            // dd($avatarHomestay->avatar);
+            $avatarHomestay->update();
+        }
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Xóa avatar Homestay thành công']);
+    }
+    
     
 
     

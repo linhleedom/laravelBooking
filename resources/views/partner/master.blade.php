@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" href="partner/css/custom.css">
 	<link rel="shortcut icon" href="partner/images/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 
 	<script type="text/javascript" src="partner/js/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="partner/js/jquery-ui.min.js"></script>
