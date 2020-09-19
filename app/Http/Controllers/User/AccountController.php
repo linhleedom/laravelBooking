@@ -189,7 +189,6 @@ class AccountController extends Controller
     public function rating($id, $bill_id, Request $request){
         $rating = new Rating;
         $rating->homestay_id = $request->homestay_id;
-        $rating->user_id     = $id;
         $rating->bill_id     = $bill_id;
         $rating->point       = $request->score;
         $rating->comment     = $request->comment;

@@ -208,8 +208,10 @@ class RoomController extends Controller
 
     public function getDeleteImagesRoom($id)
     {
-        ImageProduct::destroy($id);
-        return back();
+        $deleteRoom = Product::find($id);
+        $deleteRoom->delete();
+
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Bạn vừa xóa 1 phòng !']);
     }
 
     public function getDeleteAvatarRoom($id)

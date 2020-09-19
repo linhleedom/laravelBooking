@@ -161,17 +161,6 @@ header #wrap .ribbon nav ul.open li a {
     background: url(../images/ico/person.png) 12px 0px  no-repeat;
 }
 /* end-home_partner */
-/* ---------------------------- */
-/* booking-room */
-/* .main-search{
-	margin: 0;
-}
-.column {
-	width: 45%;
-}
-.three-fourth.book-room{
-	width: 100%;
-} */
 .top-left-nav li {
 	color: white;
 }
@@ -244,15 +233,23 @@ table.list-bills {
     color: #fff;
     height: 23px;
 }
+.display .function_bills img{
+    float: left !important;
+    margin: 0px 27px;
+}
+.display .function_one_bills img
+{
+    margin: 0px 27px;
+}
 .address.status_room_custom{
     width: 50%;
 }
-  .list-bills tr,th, td {
+  /* .list-bills tr,th, td {
 	padding: 8px;
 	text-align: center;
 	border-bottom: 1px solid #ddd;
 	font-size: 15px;
-}
+} */
   table.list-bills tr:hover {
 	  background-color: #f5f5f5;
 }
@@ -590,4 +587,110 @@ table  tr td.alert-success{
 }
 .details.custom_details h1{
     font-size: 1.5em;
+}
+/* custom total revenue  */
+.forms .f-item {
+    display: inline-block;
+    margin-right: 100px;
+}
+.forms .f-item{
+    display: inline-block;
+    margin-right: 100px;
+}
+.forms .datepicker-wrap{
+    width: 150%;
+}
+.datepicker-wrap input{
+    height: 20px;
+}
+.forms .submit_search{
+    display: inline-block;
+}
+.forms .select_status {
+    display: inline-block;
+    width: 20%;
+    height: 20px;
+}
+.forms .select_option{
+    width: 100%;
+}
+.three-fourth .deals .table_bill{
+    margin-top: 10%;
+    background: #ffffff;
+}
+.three-fourth .deals .table_bill thead tr th {
+    background: #000482;
+    color: #fff;
+}
+.three-fourth .deals .table_bill  .alert_success{
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.three-fourth .deals .table_bill   .alert_danger{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.three-fourth .deals .table_bill  .alert_warning{
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";    
+}
+  /* .list-bills tr,th, td {
+	padding: 8px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	font-size: 15px;
+} */
+.table_bill tr,th,td {
+    padding: 8px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	font-size: 15px;
+}
+.dataTables_length select {
+    height: 20px;
+    width: 70px;
+    border-radius: 25px;
+}
+.dataTables_length label{
+    font-size: 1.5em;
+}
+.dataTables_paginate.paging_two_button{
+    margin: 15px 0px;
+}
+.dataTables_paginate.paging_two_button a.paginate_disabled_previous{
+    cursor: pointer;
+    padding: 10px 25px;
+    color: #007bff;
+    border: 1px solid#007bff;
+    border-radius: 25px;
+}
+.dataTables_paginate.paging_two_button a.paginate_disabled_next{
+    cursor: pointer;
+    padding: 10px 25px;
+    color: #007bff;
+    border: 1px solid#007bff;
+    border-radius: 25px;
+}
+.dataTables_paginate.paging_two_button a.paginate_enabled_next{
+    cursor: pointer;
+    padding: 10px 25px;
+    color: #007bff;
+    border: 1px solid#007bff;
+    border-radius: 25px;
+}
+.dataTables_paginate.paging_two_button a.paginate_enabled_previous{
+    cursor: pointer;
+    padding: 10px 25px;
+    color: #007bff;
+    border: 1px solid#007bff;
+    border-radius: 25px;
+}
+.wrap li.listbills{
+    width: 150px;
 }
