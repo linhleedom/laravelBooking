@@ -742,7 +742,7 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
 }
 .full>.custom_one_fourth {
     width: 93%;
-
+}
 /* linh custom */
 #script-warning {
     display: none;

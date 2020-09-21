@@ -25,8 +25,8 @@ class ManagerProductController extends Controller
         $data = array();
         foreach($orderOfProduct as $val){
             $data[] = array(
-                'start' => $val->date_start,
-                'end' => $val->date_end,
+                'start' => $val->date_start.'T12:00:00',
+                'end' => $val->date_end.'T12:00:00',
                 'bill_id' => $val->bill_id,
                 'title' => "Đơn hàng số:  ".$val->bill_id,
             );
