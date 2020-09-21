@@ -206,7 +206,8 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::post('/add-room','RoomController@postAddRoom')->name('addRoomPost'); 
             Route::get('/edit-list-room/{id}','RoomController@getEditPartnerRoom');    
             Route::post('/edit-list-room/{id}','RoomController@postEditPartnerRoom');            
-            Route::get('/delete-room/{id}','RoomController@getDeleteRoom')->name('delete_room'); 
+            Route::get('/delete-room/{id}','RoomController@getDeleteRoom')->name('delete_room');
+            Route::get('/restore-room/{id}','RoomController@getRestorePartnerRoom')->name('Restore_Room');
 
             Route::get('/list-bills','BillsController@getListBills')->name('list_bills'); 
             Route::get('/information-order/{id}','OrderController@getInfoOrder')->name('information_order');

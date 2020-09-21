@@ -640,6 +640,46 @@ table  tr td.alert-success{
     border-color: #ffeeba;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";    
 }
+
+.display tbody tr.alert_success.even{
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.display tbody tr.alert_danger.even{
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.display tbody tr.alert_warning.even{
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";    
+}
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
+    background-color: none !important;
+}
+.display tbody tr.alert_success.odd{
+    color: #155724;
+    background-color: #d4edda !important;
+    border-color: #c3e6cb;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.display tbody tr.alert_danger.odd{
+    color: #721c24;
+    background-color: #f8d7da !important;
+    border-color: #f5c6cb;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.display tbody tr.alert_warning.odd{
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";    
+}
   /* .list-bills tr,th, td {
 	padding: 8px;
 	text-align: center;
@@ -693,4 +733,10 @@ table  tr td.alert-success{
 }
 .wrap li.listbills{
     width: 150px;
+}
+.deals>.custom_one_fourth {
+    width: 93%;
+}
+.full>.custom_one_fourth {
+    width: 93%;
 }

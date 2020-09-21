@@ -18,20 +18,16 @@ class RoomController extends Controller
 {
     public function getListRoom(Request $request){
         $homestay_id = $request->id;
-        $product = Product::where('homestay_id',$homestay_id)->paginate(12);   
-        return view ('partner.room.list-room',compact('product','homestay_id'));
+        $product = Product::where('homestay_id',$homestay_id)->paginate(12);
+        $roomrestore = Product::where('homestay_id',$homestay_id)->onlyTrashed()->get();
+        return view ('partner.room.list-room',compact('product','homestay_id','roomrestore'));
     }
 
     public function getAddRoom(Request $request){
-        // $id = Auth::user()->id;
         $homestay = Homestay::where('id',$request->id)->firstOrFail();
-        // $product = Product::all();
         $types = RoomType::all();
         $tienichs = Utilities::all();
-
-        // // dd($roomtype);
         return view ('partner.room.add-room',compact('types','tienichs','homestay'));
-        // dd($request->id);    
     }
     public function postAddRoom(Request $request){
 
@@ -100,9 +96,7 @@ class RoomController extends Controller
     public function getEditPartnerRoom($id){
         $product = Product::find($id);
         $homestay = Homestay::where('user_id',Auth::user()->id)->get();
-
         $utilityIds = $product->utilities->pluck('id')->toArray();
-
         $room_type = RoomType::all();
         $utilities = Utilities::all();
 
@@ -151,8 +145,9 @@ class RoomController extends Controller
         return redirect()->back()->with(['thongbao'=>'success','massage'=>'Cập nhật thành công !']);
     }
     public function getDeleteRoom($id){
-        Product::destroy($id);
-        return back();
+        $deleteProduct = Product::find($id);
+        $deleteProduct->delete();
+        return redirect()->back()->with(['thongbao'=>'fail','massage'=>'Bạn vừa xóa 1 phòng !']);
     }
     //upload img Room
     public function createImage($id){
@@ -224,6 +219,12 @@ class RoomController extends Controller
         return redirect()->back()->with(['thongbao'=>'success','massage'=>'Xóa avatar Room thành công']);
     }
     //end upload img
+    public function getRestorePartnerRoom($id)
+    {
+        $room_restore = Product::withTrashed()->find($id);
+        $room_restore->restore();
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Bạn vừa khôi phục 1 phòng']);
+    }
 
 }
 
