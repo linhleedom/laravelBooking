@@ -17,8 +17,7 @@
 
     <link rel="stylesheet" href="partner/css/custom.css">
 	<link rel="shortcut icon" href="partner/images/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
-
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 	<script type="text/javascript" src="partner/js/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="partner/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="partner/js/css3-mediaqueries.js"></script>
@@ -28,8 +27,8 @@
 	<script type="text/javascript" src="partner/js/sequence.jquery-min.js"></script>
 	<script type="text/javascript" src="partner/js/sequence.js"></script>
 	<script type="text/javascript" src="partner/js/selectnav.js"></script>
-	<script type="text/javascript" src="partner/js/scripts.js"></script>
-	
+	<script type="text/javascript" src="partner/js/scripts.js"></script>	
+	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 	<script src='partner/fullcalendar/lib/main.js'></script>
 	<script type="text/javascript">	
 		@yield('script')

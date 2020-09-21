@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Partner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use Illuminate\Support\Str;
@@ -235,21 +234,32 @@ class HomestayPartnerController extends Controller
     }
     public function getDeletePartnerHomestay($id)
     {
-        Homestay::destroy($id);
-        return back();
+        $deleteHomestay = Homestay::find($id);
+        $deleteHomestay->delete();
+
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Bạn vừa xóa 1 Homestay !']);
     }
     public function getDeleteAvatarHomestay($id)
     {
         $avatarHomestay = Homestay::find($id);
         if(empty($avatarHomestay->avatar = "")){
             $avatarHomestay->avatar = "";
-            // dd($avatarHomestay->avatar);
             $avatarHomestay->update();
         }
         return redirect()->back()->with(['thongbao'=>'success','massage'=>'Xóa avatar Homestay thành công']);
     }
-    
-    
+    public function getViewRestorePartnerHomestay()
+    {
+        $homestayrestore = Homestay::onlyTrashed()->get();
+        return view ( 'partner.homestay.restore-homestay',compact('homestayrestore') );
+    }
+
+    public function getRestorePartnerHomestay($id)
+    {
+        $homestay_restore = Homestay::withTrashed()->find($id);
+        $homestay_restore->restore();
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Khôi phục thành công']);
+    }
 
     
 }

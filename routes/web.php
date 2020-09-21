@@ -216,16 +216,20 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::post('/add-room','RoomController@postAddRoom')->name('addRoomPost'); 
             Route::get('/edit-list-room/{id}','RoomController@getEditPartnerRoom');    
             Route::post('/edit-list-room/{id}','RoomController@postEditPartnerRoom');            
-            Route::get('/delete-room/{id}','RoomController@getDeleteRoom'); 
+            Route::get('/delete-room/{id}','RoomController@getDeleteRoom')->name('delete_room'); 
 
             Route::get('/list-bills','BillsController@getListBills')->name('list_bills'); 
             Route::get('/information-order/{id}','OrderController@getInfoOrder')->name('information_order');
             Route::get('/edit-order/{id}','OrderController@getEditOrder');
             Route::post('/edit-order/{id}','OrderController@postEditOrder');
             Route::get('/edit-bill/{id}','BillsController@getEditbill');
-            Route::post('/edit-bill/{id}','BillsController@postEditbill');  
+            Route::post('/edit-bill/{id}','BillsController@postEditbill'); 
 
+            Route::get('/total-revenue','RevenueController@index')->name('total_revenue'); 
+            Route::get('/get-time-bill','RevenueController@getTime')->name('partnerGetTimeBill');
             
+            
+            Route::get('/total-loyal-customers','LoyalCustomersController@index')->name('total_loyal_customers');
             Route::get('/homestay_search','SearchHomestayController@index');
             Route::get('/search', 'SearchHomestayController@search');  
             
@@ -237,7 +241,9 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
 
             Route::get('/edit-list-homestay/{id}','HomestayPartnerController@getEditPartnerHomestay');
             Route::post('/edit-list-homestay/{id}','HomestayPartnerController@postEditPartnerHomestay');
-            Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');
+            Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay')->name('delete_homestay');
+            Route::get('/view-restore-homestay','HomestayPartnerController@getViewRestorePartnerHomestay')->name('View_Restore_homestay');
+            Route::get('/restore-homestay/{id}','HomestayPartnerController@getRestorePartnerHomestay')->name('Restore_homestay');
             Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');
 
             

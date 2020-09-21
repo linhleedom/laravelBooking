@@ -6,16 +6,13 @@ $(document).ready(function () {
 		showOn: 'button',
 		buttonImage: 'partner/images/ico/calendar.png',
 		buttonImageOnly: true,
-		dateFormat: "dd/mm/yy",
-		minDate:0
+		dateFormat: "dd-mm-yy"
 	});
 	$('#datepicker2').datepicker({
 		showOn: 'button',
 		buttonImage: 'partner/images/ico/calendar.png',
 		buttonImageOnly: true,
-		dateFormat: "dd/mm/yy",
-		minDate:1,
-		maxDate:20
+		dateFormat: "dd-mm-yy"
 	});
 	
 	$( '#slider' ).slider({

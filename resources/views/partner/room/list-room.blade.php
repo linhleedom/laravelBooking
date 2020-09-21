@@ -30,7 +30,7 @@ List Room
 					<div class="sort-by" style="width:98%">
 						<ul class="sort custom" style="float: right">
 							<li>Thêm phòng
-								<a href="{{route('addRoom',['id' =>$homestay_id])}}" title="addRoom" class="add"></a>
+								<a href="{{ route('addRoom',['id' =>$homestay_id]) }}" title="addRoom" class="add"></a>
 							</li>
 						</ul>
 					</div>  
@@ -59,7 +59,7 @@ List Room
 									No Sales
 								</span>
 								@endif
-								<span class="price none-border">Thêm ảnh &nbsp; &nbsp;
+								<span class="price none-border">Thêm ảnh ({{$productVal->image->count()}})&nbsp; &nbsp;
 									<em>                                
 										<a href="{{route('UploadImageRoom',['id'=>$productVal->id])}}"><img src="partner/images/ico/plus.png" alt="" width="22" height="22" /></a>
 									</em>
@@ -70,7 +70,7 @@ List Room
 										<a href="{{url('partner/edit-list-room', ['id' => $productVal->id])}}"><img src="partner/images/ico/edit.png" alt="" width="16" height="16" /></a>
 									</em>
 								</span>
-								<a href="{{url('partner/delete-room', ['id' => $productVal->id])}}" title="Xóa" class="gradient-button delete" onclick="return confirm('Bạn muốn xóa phòng ?')">Xóa phòng</a>
+								<a href="{{route('delete_room', ['id' => $productVal->id])}}" title="Xóa" class="gradient-button delete" onclick="return confirm('Bạn muốn xóa phòng ?')">Xóa phòng</a>
 							</div>
 						</article>
 						@endforeach

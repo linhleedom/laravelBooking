@@ -5,8 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Utilities;
 use App\Uti_Pro;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
+    use SoftDeletes;
     protected $table = 'products';
     protected $fillable = ['id', 'homestay_id', 'room_type_id', 'name', 'prices', 'area','discount', 'avatar', 'description', 'status'];
 
