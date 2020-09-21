@@ -19,9 +19,8 @@ class ResetPasswordController extends Controller
         $result = User::where('email', $request->email)->first();
     	if($result && ($result->permision == '2'||$result->permision == '1')){
     		$resetPassword = ResetPassword::firstOrCreate(['email'=>$request->email, 'token'=>Str::random(60)]);
-            $resetPass = ResetPassword::where('email', $request->email)->first();
-
-            $token = $resetPass->token;
+            $token = ResetPassword::where('email', $request->email)->first()->token;
+            
             Mail::to($request->email)->send(new mailResetPassword($token,$result));
             return view('user.pages.reset_pass_step_2'); 
     	}else {

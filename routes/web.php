@@ -160,6 +160,18 @@ Route::get('/conditions',[
     'as'=>'userConditions',
     'uses'=>'user\HomeController@conditions'
 ]);
+Route::get('/cancel-bill/{token}',[
+    'as'=>'userCancelBill',
+    'uses'=>'user\CancelBillController@index'
+]);
+Route::post('/cancel-bill',[
+    'as'=>'userCancelBillPost',
+    'uses'=>'user\CancelBillController@cancelBillPost'
+]);
+Route::get('/cancel-bill-success',[
+    'as'=>'userCancelBillSuccess',
+    'uses'=>'user\CancelBillController@cancelBillSuccess'
+]);
 
 
 
@@ -185,8 +197,6 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::get('/list-homestay','HomestayPartnerController@getListPartnerHomestay')->name('list-homestay');
             Route::get('/list-room/{id}','RoomController@getListRoom')->name('list-room');
             
-
-
             Route::get('/add-homestay','HomestayPartnerController@getAddPartnerHomestay')->name('addHomestay');  
             Route::post('/add-homestay','HomestayPartnerController@postAddPartnerHomestay');          
             Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
@@ -249,7 +259,19 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
                     'as'=>'ChangeStatus',
                     'uses'=>'AccountController@getChange'
                 ]);
-            });             
+            });
+            Route::get('/productManage',[
+                'as'=>'partnerProductManage',
+                'uses'=>'ManagerProductController@index'
+            ]);
+            Route::get('/get-homestay/{id}',[
+                'as'=>'partnerGetHomestay',
+                'uses'=>'ManagerProductController@getHomestay'
+            ]);
+            Route::get('/get-order/{id}',[
+                'as'=>'partnerGetOrder',
+                'uses'=>'ManagerProductController@getOrder'
+            ]);
         });
     });
 });
