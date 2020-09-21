@@ -52,6 +52,7 @@
 						<li><a href="{{route('total_loyal_customers')}}" >Danh Sách Khách Hàng </a></li>
 					</ul>
 				</li>
+				<li><a href="{{route('partnerProductManage')}}" >Trạng thái phòng</a>
 			</ul>
 		</nav>
 		<!--//main navigation-->

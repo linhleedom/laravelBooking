@@ -11,7 +11,10 @@
 	<title>@yield('title')</title>
 	<base href="{{asset('public/partner')}}">
 	<link rel="stylesheet" href="partner/css/style.css" type="text/css" media="screen,projection,print" />
-    <link rel="stylesheet" href="partner/css/prettyPhoto.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="partner/css/prettyPhoto.css" type="text/css" media="screen" />
+	
+	<link href='partner/fullcalendar/lib/main.css' rel='stylesheet' />
+
     <link rel="stylesheet" href="partner/css/custom.css">
 	<link rel="shortcut icon" href="partner/images/favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
@@ -26,9 +29,11 @@
 	<script type="text/javascript" src="partner/js/selectnav.js"></script>
 	<script type="text/javascript" src="partner/js/scripts.js"></script>	
 	<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+	<script src='partner/fullcalendar/lib/main.js'></script>
 	<script type="text/javascript">	
 		@yield('script')
 	</script>
+	@yield('script2')
 </head>
 <body>
 	<!--header-->

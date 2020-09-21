@@ -9,6 +9,7 @@ use App\Product;
 use App\Order;
 use App\Bill;
 use App\RoomType;
+use App\CancelBill;
 use Session;
 
 class RoomDetailController extends Controller
@@ -33,6 +34,7 @@ class RoomDetailController extends Controller
             if($bill_seccess_val->status == 0){
                 $bill->status = 2;
                 $bill->update();
+                CancelBill::where('bill_id', $bill->id)->delete();
             }
         }
     }

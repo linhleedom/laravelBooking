@@ -82,6 +82,7 @@ header #wrap .ribbon nav ul.open li a {
 #choice-number{
 	font-size: 1.3em;
 }
+
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;
@@ -588,6 +589,7 @@ table  tr td.alert-success{
 .details.custom_details h1{
     font-size: 1.5em;
 }
+
 /* custom total revenue  */
 .forms .f-item {
     display: inline-block;
@@ -693,4 +695,57 @@ table  tr td.alert-success{
 }
 .wrap li.listbills{
     width: 150px;
+}
+
+/* linh custom */
+#script-warning {
+    display: none;
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    padding: 0 10px;
+    line-height: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    color: red;
+  }
+
+  #loading {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  #calendar {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 10px;
+  }
+.manage{
+    background-color: #fff;
+    width: 100%;
+    margin: 0 0 20px;
+    float: left;
+    font-size: 1.2em;
+    color: #000;
+}
+.select_homestay{
+    width: 45%;
+    margin: 20px 20px;
+    float: left;
+}
+.select_homestay select{
+    width: 100%;
+}
+.select_homestay .selector{
+    margin-top: 10px;
+    -webkit-box-shadow:none;
+}
+.main_manage{
+    background-color: #fff;
+}
+.fc .fc-bg-event .fc-event-title{
+    color: #ffffff;
+    margin-top: 30px;
 }
