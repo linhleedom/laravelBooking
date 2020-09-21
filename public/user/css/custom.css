@@ -341,14 +341,17 @@ header #wrap .ribbon nav ul.open li a {
 .booking-succes{
 	color: rgb(0, 0, 255);
 }
-.homestay_info h5{
+.homestay_info{
 	position: relative;
-	width: 190px;
+}
+.homestay_info h5{
+	width: 170px;
 	padding-right: 30px;
 }
 .homestay_info .point{
 	position: absolute;
 	right: 0;
+	top: 10px;
 }
 .full-width img{
 	height: 200px;
@@ -357,10 +360,9 @@ header #wrap .ribbon nav ul.open li a {
 	.search-left .search-submit{
 		left:1%;
 	}
-
-/*	.room-information .price .first{
-	width: 60px;
-	}*/
+	.destinations .ribbon .location{
+		margin-right: 15px;
+	}
 }
 @media screen and (max-width: 830px){
 	.search-left .search-submit{

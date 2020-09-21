@@ -1328,20 +1328,9 @@
                                                             tahoma, sans-serif;
                                                     "
                                                 >
-                                                    <span class="font-roboto"
-                                                        >N&#7871;u mu&#7889;n
-                                                        thay &#273;&#7893;i
-                                                        th&#7901;i gian,
-                                                        s&#7889;
-                                                        l&#432;&#7907;ng
-                                                        ph&#242;ng xin vui
-                                                        l&#242;ng li&#234;n
-                                                        h&#7879; tr&#7921;c
-                                                        ti&#7871;p v&#7899;i
-                                                        ch&#7911; nh&#224;.
-                                                        Tr&#226;n
-                                                        tr&#7885;ng.</span
-                                                    >
+                                                    <span class="font-roboto">Nếu quý khách muốn thay đổi thời gian hoặc hủy phòng, hãy truy cập vào link bên dưới</span><br/>
+                                                    <span class="font-roboto"><i><strong style="color: #0014eb; font-size:14px;">Chú ý: </strong>Hệ thống chỉ xử lý đơn hàng có ngày nhận phòng trước <strong style=" margin-top: 20px; color: #ff0000;"> 2 </strong>ngày tính từ thời điểm hiện tại. Những đơn hàng quá thời hạn xin vui lòng liên hệ trực tiếp với chủ nhà. Trân trọng. </i></span ><br/>
+                                                    <span class="font-roboto"></span> <strong style=" margin-top: 20px; color: #ff0000;"> Hủy phòng</strong>, bấm vào <a href="{{$url}}" style=" margin-top: 20px; color: #0014eb;" >đây</a>
                                                 </p>
                                             </div>
                                         </div>
