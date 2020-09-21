@@ -46,7 +46,7 @@
 					<li><a href="{{route('View_Restore_homestay')}}">Khôi phục Homestay</a></li>
 				</ul>
 			</li>
-				<li class = "listbills"><a  href="{{url('partner/list-bills')}}" >Danh Sách Hóa đơn</a>
+				<li class = "listbills"><a  href="{{url('partner/list-bills')}}" > Hóa đơn</a>
 					<ul>
 						<li><a href="{{url('partner/total-revenue')}}" >Thống Kê Hóa Đơn</a></li>	
 						<li><a href="{{route('total_loyal_customers')}}" >Danh Sách Khách Hàng </a></li>
