@@ -150,7 +150,7 @@ class HomestayPartnerController extends Controller
             $homestay->description=$request->description;
             $homestay->status=$request->status; 
             $homestay->save();
-            return redirect()->back()->with(['thongbao'=>'success','massage'=>'Thêm Homestay thành công !']);
+            return redirect()->route('UploadImageHomestay',['id'=>$homestay->id])->with(['thongbao'=>'success','massage'=>'Thêm Homestay thành công !']);
     
 }
 

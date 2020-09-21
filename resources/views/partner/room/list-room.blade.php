@@ -130,20 +130,14 @@ List Room
 								<span class="price none-border">Số lượng ảnh ({{$ViewRoom->image->count()}})&nbsp; &nbsp;
 								</span>
 								<span class="price none-border" style="border-top : none;">Giá phòng  <em>{{number_format( $ViewRoom->prices,0,',','.' ) }}đ</em> </span>
-								<a href="{{route('Restore_Room', ['id' => $ViewRoom->id])}}" title="Restore" class="gradient-button delete" onclick="return confirm('Bạn muốn xóa phòng ?')">Khôi phục</a>
+								<a href="{{route('Restore_Room', ['id' => $ViewRoom->id])}}" title="Restore" class="gradient-button delete" onclick="return confirm('Bạn muốn khôi phục phòng chứ ?')">Khôi phục</a>
 							</div>
 						</article>
 						@endforeach
 						<!--//deal-->
 					</div>
 				</section>
-				@else	
-				<section class="full">				
-					<article class="one-fourth custom_one_fourth">
-						<div class="alert"><i class="alert-danger">Chưa có phòng nào xóa</i></div>
-					</article>
-				</section>
-			@endif
+				@endif
 			</div>
 			<!--//main content-->
 		</div>
