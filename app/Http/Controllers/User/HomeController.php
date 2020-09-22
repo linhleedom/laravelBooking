@@ -10,6 +10,7 @@ use App\District;
 use App\Province;
 use App\Order;
 use App\Bill;
+use App\CancelBill;
 
 class HomeController extends Controller
 {
@@ -33,6 +34,7 @@ class HomeController extends Controller
             if($bill_seccess_val->status == 0){
                 $bill->status = 2;
                 $bill->update();
+                CancelBill::where('bill_id', $bill->id)->delete();
             }
         }
     }
@@ -66,5 +68,8 @@ class HomeController extends Controller
 
     public function getError(){
         return view('user.pages.error');
+    }
+    public function conditions(){
+        return view('user.pages.terms_of_sevices');
     }
 }

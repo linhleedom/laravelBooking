@@ -14,9 +14,9 @@ Add Image Homestay
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li> 
-						<li><a href="{{url('partner/list-homestay')}}" title="Home">Danh sách Homestay</a></li>
-						<li>Thêm Homestay</li>                               
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li>  
+                        <li><a href="{{route('list-homestay')}}" title="list-homestay">Danh sách Homestay</a></li> 
+						<li>Thêm ảnh Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->
 					
@@ -35,6 +35,12 @@ Add Image Homestay
                 
                 <form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
                         {{csrf_field()}}
+						@if(Session::get('thongbao') == 'success')
+							<i class="notify-success">{{Session::get('massage')}}</i>
+						@endif
+						@if(Session::get('thongbao') == 'fail')
+							<i class="notify-fail">{{Session::get('massage')}}</i>
+						@endif
                         <div colspan="2" 
 									style="color: #32df5d;
 										/* background-color: #f2dede; */
@@ -43,7 +49,6 @@ Add Image Homestay
 										height: 50px;
 										font-size: 1.5em;
 								">
-										{{Session::get('thongbao')}}
 								</div>
 						<fieldset>
                             <h3 style="margin-top: 20px;"><span>01</span> Upload Ảnh </h3>
@@ -55,25 +60,44 @@ Add Image Homestay
 				</section>
 				<section class="three-fourth form-booking">
 					<form id="booking" method="post" action="" class="booking " >
-						{{csrf_field()}}							
-						@foreach ($homestay->image as $imageval)
+						{{csrf_field()}}						
 						<!--get inspired list-->
-						<ul class="get_inspired width-height">
-							<!--item-->
-							<li>
-								<a class="no_href">
-									<figure>
-										<img src="{{asset('public/'.$imageval->url)}}" alt="Image" width="200px" height="100px" />
-										<a href="{{asset('public/'.$imageval->url)}}" class="image-overlay search-custom" rel="prettyPhoto[gallery1]"></a>
-										<figcaption>{{$homestay->name}}</figcaption>
-									</figure>
-								</a>
-							</li>
-							<!--//item-->
-						</ul>
+							@foreach ($homestay->image as $imageval)
+							<!--column-->
+							<article class="one-fourth img_custom">
+								<figure>
+									<img src="{{asset('public/'.$imageval->url)}}" alt="" width="270" height="152">							
+								</figure>
+								<div class="details">
+									<h5>{{$homestay->name}}</h5>
+								</div>
+								<div class="details">
+									<a href="{{route('delete_image', ['id'=>$imageval->id])}}"  onclick="return confirm ('Bạn có muốn xóa ảnh')"><img style="float: right" src="partner/images/ico/delete1.png" alt="" width="20" height="20" /></a> 
+								</div>
+							</article>							
+							@endforeach							
+							@if(empty($homestay->avatar == ""))
+							<article class="one-fourth img_custom">
+								<figure>
+									<img src="{{asset('public/'.$homestay->avatar)}}" alt="" width="270" height="152">							
+								</figure>
+								<div class="details">
+									<h5>Avatar Homestay</h5>
+								</div>
+								<div class="details">
+									<a href="{{route('delete_avatar_homestay', ['id'=>$homestay->id])}}"  onclick="return confirm ('Bạn có muốn xóa ảnh')"><img style="float: right" src="partner/images/ico/delete1.png" alt="" width="20" height="20" /></a> 
+								</div>
+							</article>
+							@endif
+							<!--//column-->
 						<!--//get inspired list-->
-						@endforeach
 					</form>
+				</section>
+				<section class="three-fourth">
+										
+					<!--top destinations-->
+					
+					<!--//top destinations-->
 				</section>
 				<!--//three-fourth content-->
 				

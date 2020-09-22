@@ -16,15 +16,15 @@ $(document).ready(function(){
 			{
 				$("#districts").empty();
 				$("#wards").empty();
-				$("#districts").append('<option>Chon</option>');
+				$("#districts").append('<option></option>');
 				$.each(res,function(key,value){
 					$("#districts").append('<option value="'+key+'">'+value+'</option>');
 				});
 			}else{
 				$("#districts").empty();
 				$("#wards").empty();
-				$("#districts").append('<option>Chọn</option>');
-				$("#wards").append('<option>Chọn</option>');
+				$("#districts").append('<option></option>');
+				$("#wards").append('<option></option>');
 			}
 	}
 
@@ -43,7 +43,7 @@ $('#districts').change(function(){
 			if(res)
 			{
 				$("#wards").empty();
-				$("#wards").append('<option>Chon</option>');
+				$("#wards").append('<option></option>');
 				$.each(res,function(key,value){
 					$("#wards").append('<option value="'+key+'">'+value+'</option>');
 				});
@@ -63,8 +63,8 @@ $('#districts').change(function(){
 			<div class="content clearfix">
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<ul class="crumbs">
-						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>  
-						<li><a href="{{url('partner/list-homestay')}}" title="ListHomestay">Danh sách Homestay</a></li>  
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+						<li><a href="{{route('list-homestay')}}" title="ListHomestay">Danh sách Homestay</a></li>  
 						<li>Thêm Homestay</li>                               
 					</ul> 
 				</nav>
@@ -72,17 +72,19 @@ $('#districts').change(function(){
 				<!--three-fourth content-->
 				<section class="three-fourth form-booking">
 					<h1 style="text-align: center;text-transform: uppercase;">Thêm thông tin homestay của bạn</h1>
-					<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
+				<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
+						@if(Session::get('thongbao') == 'success')
+							<i class="notify-success">{{Session::get('massage')}}</i>
+						@endif
 						<fieldset>
 								<div colspan="2" 
 								style="
 									color: #32df5d;
 									border-color: #ebccd1;
 									width: 500px;
-									height: 50px;
+									height: 20px;
 									font-size: 1.5em;
 								">
-									{{Session::get('thongbao')}}
 							</div>
 							<h3 style="margin-top: 20px;"><span>01</span> Địa chỉ Homestay của bạn </h3>
 							@csrf
@@ -91,30 +93,43 @@ $('#districts').change(function(){
 							<div class="row twins">
 								<div class="f-item custom-item">
 									<label for="text">Tên chỗ nghỉ </label>
-									<input required type="text" id="name" name="name" />
+									<input  type="text" id="name" name="name" />
+									@if( $errors->addHomestay->has('name') )
+										<span class="notify"><i>{{$errors->addHomestay->first('name')}}</i></span><br/>
+									@endif
+									
 								</div>
 								<div class="f-item custom-item">
 									<label>Tỉnh (Thành Phố)</label>
 									<select name="matp" id="provinces">
-										<option selected="selected" >Chọn</option>
+										<option disabled selected value >Chọn</option>
 										@if($provinces)
 											@foreach($provinces as $province)
-												<option value="{{$province->matp}}">{{$province->name}}</option>
+												<option value="{{$province->matp}}" >{{$province->name}}</option>
 											@endforeach
 										@endif
 									</select>
+									@if( $errors->addHomestay->has('matp') )
+										<span class="notify"><i>{{$errors->addHomestay->first('matp')}}</i></span><br/>
+									@endif
 								</div>
 								<div class="f-item custom-item">
 									<label>Quận (Huyện)</label>
 									<select name="maqh" id="districts">
-										<option selected="selected">Chọn</option>
+										<option disabled selected value>Chọn</option>
 									</select>
+									@if( $errors->addHomestay->has('maqh') )
+										<span class="notify"><i>{{$errors->addHomestay->first('maqh')}}</i></span><br/>
+									@endif
 								</div>
 								<div class="f-item custom-item">
 									<label>Phường Xã</label>
 									<select name="xaid" id="wards">
-										<option selected="selected">Chọn</option>
+										<option disabled selected value>Chọn</option>
 									</select>
+									@if( $errors->addHomestay->has('xaid') )
+										<span class="notify"><i>{{$errors->addHomestay->first('xaid')}}</i></span><br/>
+									@endif
 								</div>
 							</div>	
 
@@ -123,11 +138,17 @@ $('#districts').change(function(){
 								<div class="f-item custom-item">
 									<label>Mô tả Homestay :</label>
 									<textarea rows="10" cols="10" name="description" placeholder="Thông tin mô tả"></textarea>
+									@if( $errors->addHomestay->has('description') )
+										<span class="notify"><i>{{$errors->addHomestay->first('description')}}</i></span><br/>
+									@endif
 								</div>
 								
 								<div class="f-item custom-item">
 									<label>Title: </label>
-									<input  required= "required" type="text" name = "title">
+									<input type="text" name = "title">
+									@if( $errors->addHomestay->has('title') )
+										<span class="notify"><i>{{$errors->addHomestay->first('title')}}</i></span><br/>
+									@endif									
 								</div>
 								
 								<div class="f-item custom-item">
@@ -142,13 +163,17 @@ $('#districts').change(function(){
 							<div class="row twins">								
 								<div class="f-item custom-item">
 									<h3 style="margin-top: 20px;"><span>03</span> Ảnh đại diện Homestay </h3>
-										<input type="file" name="avatar" multiple>
+										<input  type="file" name="avatar" multiple>
+									@if( $errors->addHomestay->has('avatar') )
+										<span class="notify"><i>{{$errors->addHomestay->first('avatar')}}</i></span><br/>
+									@endif	
+								</div>
 										<br><br>
 										{{-- <input type="submit" class="gradient-button" name = "send" value="Upload file"> --}}
 								</div>
+								<input type="submit" class="gradient-button" value="Thêm mới" id="add" >
 							</div>
 						</fieldset>							
-						<input type="submit" class="gradient-button" value="Thêm mới" id="add" >
 					</form>
 				</section>
 						

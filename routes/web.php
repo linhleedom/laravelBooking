@@ -140,9 +140,37 @@ Route::get('/search-orderBy',[
     'as'=>'userSearchOrderBy',
     'uses'=>'user\SearchResultController@orderBy'
 ]);
-Route::get('/test',[
-    'as'=>'usertest',
-    'uses'=>'user\Test@index'
+Route::get('/reset-password',[
+    'as'=>'userResetPassword',
+    'uses'=>'user\ResetPasswordController@resetPasswordStep1'
+]);
+Route::post('/reset-password-post',[
+    'as'=>'userResetPasswordPost',
+    'uses'=>'user\ResetPasswordController@resetPasswordStep1Post'
+]);
+Route::get('/reset-password/{token}',[
+    'as'=>'userResetPasswordStep2',
+    'uses'=>'user\ResetPasswordController@resetPasswordStep2'
+]);
+Route::post('/reset-password-2-post',[
+    'as'=>'userResetPasswordStep2Post',
+    'uses'=>'user\ResetPasswordController@resetPasswordStep2Post'
+]);
+Route::get('/conditions',[
+    'as'=>'userConditions',
+    'uses'=>'user\HomeController@conditions'
+]);
+Route::get('/cancel-bill/{token}',[
+    'as'=>'userCancelBill',
+    'uses'=>'user\CancelBillController@index'
+]);
+Route::post('/cancel-bill',[
+    'as'=>'userCancelBillPost',
+    'uses'=>'user\CancelBillController@cancelBillPost'
+]);
+Route::get('/cancel-bill-success',[
+    'as'=>'userCancelBillSuccess',
+    'uses'=>'user\CancelBillController@cancelBillSuccess'
 ]);
 
 
@@ -155,43 +183,56 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
     });
 
     Route::group(['prefix'=>'register-partner'],function(){
-        Route::get('/','LoginPartnerController@getDangKyPartner'); 
+        Route::get('/','LoginPartnerController@getDangKyPartner')->name('partnerRegister'); 
         Route::post('/','LoginPartnerController@postDangKyPartner');
     });
 
     Route::group(['prefix'=>'/','middleware'=>'CheckLogedIn'],function(){
         
-        Route::get('trangchu','HomePartnerController@getHomePartner');
+        Route::get('trangchu','HomePartnerController@getHomePartner')->name('trangchu');
         
         Route::get('logout','HomePartnerController@getLogout');
 
         Route::group(['prefix'=>'/'],function(){
-            Route::get('/list-homestay','HomestayPartnerController@getListPartnerHomestay');
-            Route::get('/list-room','RoomController@getListRoom');
+            Route::get('/list-homestay','HomestayPartnerController@getListPartnerHomestay')->name('list-homestay');
+            Route::get('/list-room/{id}','RoomController@getListRoom')->name('list-room');
             
-
-
             Route::get('/add-homestay','HomestayPartnerController@getAddPartnerHomestay')->name('addHomestay');  
             Route::post('/add-homestay','HomestayPartnerController@postAddPartnerHomestay');          
             Route::get('/getdistricts/{id}','HomestayPartnerController@getdistricts');
             Route::get('/getwards/{id}','HomestayPartnerController@getwards');
 
-            Route::get('upload_images/{id}','HomestayPartnerController@create');
+            Route::get('upload_images/{id}','HomestayPartnerController@create')->name('UploadImageHomestay');
             Route::post('upload_images/{id}','HomestayPartnerController@Upload');           
-            Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay'); 
-             
-            Route::get('/add-room','RoomController@getAddRoom')->name('addRoom');  
-            Route::post('/add-room','RoomController@postAddRoom'); 
+            Route::get('/delete_image/{id}','HomestayPartnerController@getDeleteImagesHomestay')->name('delete_image');
+            Route::get('/delete_avatar_homestay/{id}','HomestayPartnerController@getDeleteAvatarHomestay')->name('delete_avatar_homestay'); 
+            
+            Route::get('upload_images_room/{id}','RoomController@createImage')->name('UploadImageRoom');
+            Route::post('upload_images_room/{id}','RoomController@UploadImage');           
+            Route::get('/delete_image_room/{id}','RoomController@getDeleteImagesRoom')->name('delete_image_room'); 
+            Route::get('/delete_avatar_room/{id}','RoomController@getDeleteAvatarRoom')->name('delete_avatar_room'); 
+
+            Route::get('/add-room/{id}','RoomController@getAddRoom')->name('addRoom');  
+            Route::post('/add-room','RoomController@postAddRoom')->name('addRoomPost'); 
             Route::get('/edit-list-room/{id}','RoomController@getEditPartnerRoom');    
             Route::post('/edit-list-room/{id}','RoomController@postEditPartnerRoom');            
-            Route::get('/delete-room/{id}','RoomController@getDeleteRoom'); 
+            Route::get('/delete-room/{id}','RoomController@getDeleteRoom')->name('delete_room');
+            Route::get('/restore-room/{id}','RoomController@getRestorePartnerRoom')->name('Restore_Room');
 
-            Route::get('/list-bills','BillsController@getListBills'); 
-            Route::get('/information-order/{id}','OrderController@getInfoOrder');
+            Route::get('/list-bills','BillsController@getListBills')->name('list_bills'); 
+            Route::get('/information-order/{id}','OrderController@getInfoOrder')->name('information_order');
             Route::get('/edit-order/{id}','OrderController@getEditOrder');
             Route::post('/edit-order/{id}','OrderController@postEditOrder');
             Route::get('/edit-bill/{id}','BillsController@getEditbill');
-            Route::post('/edit-bill/{id}','BillsController@postEditbill');  
+            Route::post('/edit-bill/{id}','BillsController@postEditbill'); 
+
+            Route::get('/total-revenue','RevenueController@index')->name('total_revenue'); 
+            Route::get('/get-time-bill','RevenueController@getTime')->name('partnerGetTimeBill');
+            
+            
+            Route::get('/total-loyal-customers','LoyalCustomersController@index')->name('total_loyal_customers');
+            Route::get('/homestay_search','SearchHomestayController@index');
+            Route::get('/search', 'SearchHomestayController@search');  
             
             Route::get('Cancel-room/{id}',[
                 'as'=>'CancelBook',
@@ -201,7 +242,9 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
 
             Route::get('/edit-list-homestay/{id}','HomestayPartnerController@getEditPartnerHomestay');
             Route::post('/edit-list-homestay/{id}','HomestayPartnerController@postEditPartnerHomestay');
-            Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay');
+            Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay')->name('delete_homestay');
+            Route::get('/view-restore-homestay','HomestayPartnerController@getViewRestorePartnerHomestay')->name('View_Restore_homestay');
+            Route::get('/restore-homestay/{id}','HomestayPartnerController@getRestorePartnerHomestay')->name('Restore_homestay');
             Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');
 
             
@@ -223,7 +266,19 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
                     'as'=>'ChangeStatus',
                     'uses'=>'AccountController@getChange'
                 ]);
-            });             
+            });
+            Route::get('/productManage',[
+                'as'=>'partnerProductManage',
+                'uses'=>'ManagerProductController@index'
+            ]);
+            Route::get('/get-homestay/{id}',[
+                'as'=>'partnerGetHomestay',
+                'uses'=>'ManagerProductController@getHomestay'
+            ]);
+            Route::get('/get-order/{id}',[
+                'as'=>'partnerGetOrder',
+                'uses'=>'ManagerProductController@getOrder'
+            ]);
         });
     });
 });

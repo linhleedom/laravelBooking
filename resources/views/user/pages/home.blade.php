@@ -119,7 +119,6 @@ Travel Your Booking
 						</figure>
 						<div class="details">
 							<div class="homestay_info">
-								<a href="{{route('userRoomDetail').'?id='.$homestayTopRateVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
 								<h5>{{$homestayTopRateVal->name}}&nbsp&nbsp<span class="point">{{$homestayTopRateVal->point}}</span>
 								</h5>
 								</span>
@@ -162,7 +161,6 @@ Travel Your Booking
 						</figure>
 						<div class="details">
 							<div class="homestay_info">
-								<a href="{{route('userRoomDetail').'?id='.$homestayVal->id.$urlSearch}}" title="View all" class="gradient-button">Chi tiết</a>
 								<h5>{{$homestayVal->name}}&nbsp&nbsp<span class="point">{{$homestayVal->point}}</span> </h5>
 							</div>
 							<div class="ribbon">
@@ -239,7 +237,7 @@ Travel Your Booking
 				<!--column-->
 				<article class="one-fourth">
 					<h2>Giải đáp thắc mắc?</h2>
-					<p>Gọi cho chúng tôi theo số <em>1-555-555-555</em> để được tư vấn riêng, phù hợp cho kỳ nghỉ hoàn hảo của bạn hoặc gửi tin nhắn cho chúng tôi với câu hỏi đặt phòng khách sạn của bạn.<br /></p>
+					<p>Gọi cho chúng tôi theo số <em>1800-1989</em> để được tư vấn riêng, phù hợp cho kỳ nghỉ hoàn hảo của bạn hoặc gửi tin nhắn cho chúng tôi với câu hỏi đặt phòng khách sạn của bạn.<br /></p>
 				</article>
 				<!--//column-->
 			</section>

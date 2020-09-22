@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="HandheldFriendly" content="True">
-	<title>Book Your Travel - Hot deals</title>
+	<title>Partner of Book Your Travel</title>
 	<base href="{{asset('public/partner')}}">
 	<link rel="stylesheet" href="partner/css/style.css" type="text/css" media="screen,projection,print" />
     <link rel="stylesheet" href="partner/css/prettyPhoto.css" type="text/css" media="screen" />

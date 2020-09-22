@@ -102,7 +102,12 @@ class="active"
 									<!--room-->
 									<li>
 										<figure class="left"><img src="{{$productVal->avatar}}" alt="" width="270" height="152" />
-										<a href="{{$productVal->avatar}}" class="image-overlay" rel="prettyPhoto[gallery1]"></a></figure>
+										<a href="{{$productVal->avatar}}" class="image-overlay" rel="prettyPhoto[gallery{{$productVal->id}}]"></a></figure>
+										<div hidden>
+											@foreach($productVal->image as $imageProduct)
+												<a href="{{$imageProduct->url}}" class="image-overlay" rel="prettyPhoto[gallery{{$imageProduct->product_id}}]"></a></figure>
+											@endforeach
+										</div>
 										<div class="meta">
 											<p class="pro-name">{{ucfirst($productVal->name)}}</p>
 											<h2 class="type-name">{{$productVal->roomType->name}}</h2>
@@ -204,8 +209,8 @@ class="active"
 									@foreach($homestayVal->rating->where('status','1') as $ratingVal)
 										<!--review-->
 										<li>
-											<figure class="left"><img src="{{$ratingVal->user->avatar}}" alt="avatar" width=50 height=50/></figure>
-											<address><span>{{$ratingVal->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->created_at ))}}</address>
+											<figure class="left"><img src="{{$ratingVal->bill->user->avatar}}" alt="avatar" width=50 height=50/></figure>
+											<address><span>{{$ratingVal->bill->user->name}}</span><br /><br />{{date( "d-m-Y", strtotime( $ratingVal->created_at ))}}</address>
 											<div class="pro">
 												<div class="stars">
 													@for( $i=5-$ratingVal->point; $i--; $i >= 0 )

@@ -94,8 +94,6 @@
 								@foreach($district as $tlu)
 								<option value="{{$tlu->maqh}}">{{$tlu->name}}</option>
 								@endforeach
-								
-								
 							</select>
 						  </div>
 						</div>   

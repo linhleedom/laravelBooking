@@ -98,9 +98,9 @@ $('#districts').change(function(){
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li>
-						<li><a href="{{url('partner/list-homestay')}}" title="Home">Danh sách Homestay</a></li>
-						<li>Thêm Homestay</li>                               
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+                        <li><a href="{{route('list-homestay')}}" title="list-homestay">Danh sách Homestay</a></li> 
+						<li>Chỉnh sửa</li>                               
 					</ul> 
 					<!--//crumbs-->
 				</nav>
@@ -108,11 +108,13 @@ $('#districts').change(function(){
 
 				<!--three-fourth content-->
 					<section class="three-fourth form-booking">
-						<h1 style="text-align: center;text-transform: uppercase;">Sửa thông tin homestay <br><br><b style="color: lightcoral"><u>{{$homestay->name}}</u></b> </h1>
-					<form id="booking" method="post" action="" class="booking ">
+					<h1 style="text-align: center;text-transform: uppercase;">Sửa thông tin homestay <br><br><b style="color: lightcoral"><u>{{$homestay->name}}</u></b> </h1>
+					<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data">
 							{{csrf_field()}}
+							@if(Session::get('thongbao') == 'success')
+								<i class="notify-success">{{Session::get('massage')}}</i>
+							@endif
 							<fieldset>
-								
 								<tr>
 									<td colspan="2" class="alert-danger">
 										{{Session::get('Thongbao')}}
@@ -148,11 +150,9 @@ $('#districts').change(function(){
 											@endforeach
 										</select>
 									</div>
-									<!-- <span class="info">You’ll receive a confirmation email</span> -->
                                 </div>
-
                                 <h3 style="margin-top: 20px;"><span>02</span> Loại Homestay</h3>
-								<div class="row twins">
+								<div class="row twins">	
 									<div class="f-item custom-item">
 										<label>Mô tả Homestay :
 											<textarea rows="10" cols="10" name="description" placeholder="Thông tin mô tả" >{{$homestay->description}}</textarea>
@@ -161,8 +161,7 @@ $('#districts').change(function(){
 									<div class="f-item custom-item">
 										<label>Title: </label>
 									<input  required= "required" type="text" name = "title" value="{{$homestay->title}}">
-									</div>
-									
+									</div>	
 									<div class="f-item custom-item">
 										<label for="status">Trạng thái của Homestay</label>
 										<label for="status1">Ẩn  &nbsp 
@@ -170,14 +169,24 @@ $('#districts').change(function(){
 										<label for="status2">Hiện  &nbsp 
 											<input required type="radio" id="status2" name="status"  value="1" @if($homestay->status == 1) checked  @endif/>
 										</label>
-									</div>									
+									</div>	
+								</div>									
+								@if(empty($homestay->avatar))
+								<h3 style="margin-top: 20px;"><span>03</span> Ảnh </h3>
+								<div class="row twins">
+									<div class="f-item custom-item">
+										<label for="avatar">Thay ảnh phòng :</label>
+										<input type="file" name="avatar" multiple id="avatar" value="{{$homestay->avatar}}">											
+									</div>
 								</div>
-								
-							<input type="submit" class="gradient-button" value="Update" id="Edit" >
+								@endif							
+								</div>
+								<input type="submit" class="gradient-button" value="Update" id="Edit" >
 							</fieldset>							
 						{{-- <input href = "{{asset('partner/list-homestay')}}" type="submit" class="gradient-button" value="Cancel" id="Cancel" > --}}
 						</form>
 					</section>
+					
 				<!--//three-fourth content-->
 				
 				<!--right sidebar-->

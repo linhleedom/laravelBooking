@@ -66,8 +66,8 @@ My Account
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-						<li><a href="" title="Home">Home</a></li>
-						<li><a href="#" title="My Account">My Account</a></li>                                    
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+						<li>My Account</li>                                    
 					</ul>
 					<!--//crumbs-->
 				
@@ -298,15 +298,15 @@ My Account
 							</tr>
 							<tr>
 								<th>Khách hàng đánh giá :</th>
-								<td>{{$rateVal->user->name}}</td>
+								<td>{{$rateVal->bill->name}}</td>
 							</tr>
 							<tr>
 								<th>Email :</th>
-								<td>{{$rateVal->user->email}}</td>
+								<td>{{$rateVal->bill->email}}</td>
 							</tr>
 							<tr>
 								<th>Số điện thoại :</th>
-								<td>{{$rateVal->user->phone}}</td>
+								<td>{{$rateVal->bill->phone}}</td>
 							</tr>
 							<tr>
 								<th >Trạng thái</th>

@@ -22,7 +22,7 @@ Reset Password
 
 				<!--full content-->
 					<section class="full-width">
-						<form id="booking" method="post" action="{{route('resetTestPost')}}" class="booking">
+						<form id="booking" method="post" action="{{route('userResetPasswordPost')}}" class="booking">
 							{{ csrf_field() }}
 							<fieldset>
 								<h3><span>01 </span>Nhập email của bạn</h3>

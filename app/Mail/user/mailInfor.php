@@ -18,9 +18,10 @@ class mailInfor extends Mailable
      *
      * @return void
      */
-    public function __construct(Bill $bill)
+    public function __construct(Bill $bill, $cancelBillToken)
     {
         $this->bill = $bill;
+        $this->cancelBillToken = $cancelBillToken;
     }
 
     /**
@@ -30,10 +31,12 @@ class mailInfor extends Mailable
      */
     public function build()
     {
+        $url = url('cancel-bill')."/".$this->cancelBillToken;
         return $this->from('bookyourtravel.vn@gmail.com')
                     ->view('user.sendEmail.custom1')
                     ->with([
                         'bill' => $this->bill,
+                        'url' => $url
                     ]);
     }
 }

@@ -40,7 +40,7 @@
 			<!--column-->
 			<article class="one-fourth last">
 				<h3>Contacts with us</h3>
-				<form id="newsletter" action="newsletter.php" method="post">
+				<form id="newsletter" action="{{route('partnerRegister')}}" method="get">
 					<fieldset>
 						<input type="email" id="newsletter_signup" name="newsletter_signup" placeholder="Enter your email here" />
 						<input type="submit" id="newsletter_submit" name="newsletter_submit" value="Signup" class="gradient-button" />

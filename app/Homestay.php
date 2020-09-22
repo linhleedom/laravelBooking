@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Homestay extends Model
 {
+    use SoftDeletes;
     protected $table = 'homestays';
 
     protected $fillable = ['id', 'name', 'alias', 'avtar', 'keyword(SE0)', 'status', 'user_id', 'matp', 'maqh','xaid','title','description','point'];
@@ -28,8 +30,6 @@ class Homestay extends Model
     public function ward(){
         return $this->belongsTo('App\Ward', 'xaid','xaid');
     }
-
-
     public function user(){
         return $this->belongsTo('App\User','user_id','id');
     }

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Partner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 use Illuminate\Support\Str;
 use App\Homestay;
 use App\District;
@@ -72,10 +72,10 @@ class HomestayPartnerController extends Controller
                 $table->homestay_id = $request->id;
                 $table->save();
 
-            }           
-            return back()->with('thongbao','Thêm ảnh thành công');
-        }else {
-            return back()->with('thongbao','Hãy chọn nhiều file ảnh');
+            }                       
+            return redirect()->back()->with(['thongbao'=>'success','massage'=>'Thêm ảnh thành công']);
+        }else {            
+            return redirect()->back()->with(['thongbao'=>'fail','massage'=>'Hãy chọn nhiều file ảnh ']);
         }
     }
 
@@ -101,11 +101,33 @@ class HomestayPartnerController extends Controller
 
 
     public function postAddPartnerHomestay(Request $request){
+        $validatorAdd = Validator::make($request->all(),
+            [
+                'name'=>'required',
+                'title'=>'required',
+                'description'=>'required',
+                'avatar'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+                'matp'=>'required',
+                'maqh'=>'required',
+                'xaid'=>'required'
+            ],[
+                'name.required'=>'Vui lòng nhập tên Homestay',
+                'title.required'=>'Vui lòng nhập tiêu đề cho Homestay',
+                'description.required'=>'Vui lòng mô tả Homestay',
+                'avatar.required'=>'Vui lòng thêm ảnh đại diện',
+                'avatar.required'=>'Vui lòng chọn 1 ảnh',
+                'avatar.image'=>'File không đúng định dạng',
+                'avatar.mimes'=>'File ảnh phải có đuôi jpeg,png,ipg,gif',
+                'avatar.max'=>'File ảnh dung lượng vượt quá 2Mb',
+                'matp.required'=>'Vui lòng nhập tên Tỉnh/Thành Phố',
+                'maqh.required'=>'Vui lòng chọn Quận/Huyện',
+                'xaid.required'=>'Vui lòng chọn Xã/Phường',
+            ]
+            );
         
-        $homestay = new Homestay() ;
-
-        if($request->isMethod('post') && $request->hasFile('avatar')){
-
+        if($validatorAdd->fails()){
+            return redirect()->back()->withErrors($validatorAdd, 'addHomestay');
+        }
             $image = $request->file('avatar');
             $image_size = $image->getSize();
             $image_ext = $image->getClientOriginalExtension();
@@ -113,29 +135,24 @@ class HomestayPartnerController extends Controller
 
             $destination_path = public_path('/uploads/homestay');
             $image->move($destination_path,$new_image_name);
-
-            $homestay->avatar = $new_image_name;
             
+            $homestay = new Homestay() ;
+            $homestay->avatar = $new_image_name;
             $homestay->name=$request->name;
             $alias = Str::slug($request->name, '-');
+            $homestay->matp = $request->matp;
+            $homestay->maqh = $request->maqh;
+            $homestay->xaid = $request->xaid;
             $homestay->alias = $alias;
             $homestay->user_id= Auth::user()->id;
-            $homestay->matp=$request->matp;
-            $homestay->title = $request->title;
-            $homestay->maqh =$request->maqh ;
-            $homestay->xaid=$request->xaid ;            
+            $homestay->title = $request->title;          
             $homestay->status_pay = 0;
             $homestay->description=$request->description;
-            $homestay->status=$request->status;
-
+            $homestay->status=$request->status; 
             $homestay->save();
-            return back()->withInput()->with('thongbao','Thêm Homestay thành công');
-        }
-        else
-        {
-            return back()->withInput()->with('thongbao','Thêm không thành công');
-        }
-    }
+            return redirect()->back()->with(['thongbao'=>'success','massage'=>'Thêm Homestay thành công !']);
+    
+}
 
     public function getEditprovinces()
     {   
@@ -204,18 +221,45 @@ class HomestayPartnerController extends Controller
         $homestay->description = $request->description;
         $homestay->status = $request->status;
 
-        
+        if($homestay->avatar == "" ){
+            $image_avatar = $request->avatar;
+            $filename_avatar = $image_avatar->getClientOriginalName();
+            $image_avatar->move(public_path('uploads/homestay/'), $filename_avatar);
+            $link = 'uploads/homestay/'.$filename_avatar;
+            $homestay->avatar = $link;
+        }
         $homestay->save();
-
-        return redirect()->intended('partner/list-homestay')->with('Thongbao','Sửa thành công');
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Update thành công !']);
 
     }
     public function getDeletePartnerHomestay($id)
     {
-        Homestay::destroy($id);
-        return back();
+        $deleteHomestay = Homestay::find($id);
+        $deleteHomestay->delete();
+
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Bạn vừa xóa 1 Homestay !']);
     }
-    
+    public function getDeleteAvatarHomestay($id)
+    {
+        $avatarHomestay = Homestay::find($id);
+        if(empty($avatarHomestay->avatar = "")){
+            $avatarHomestay->avatar = "";
+            $avatarHomestay->update();
+        }
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Xóa avatar Homestay thành công']);
+    }
+    public function getViewRestorePartnerHomestay()
+    {
+        $homestayrestore = Homestay::onlyTrashed()->get();
+        return view ( 'partner.homestay.restore-homestay',compact('homestayrestore') );
+    }
+
+    public function getRestorePartnerHomestay($id)
+    {
+        $homestay_restore = Homestay::withTrashed()->find($id);
+        $homestay_restore->restore();
+        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Khôi phục thành công']);
+    }
 
     
 }

@@ -165,7 +165,7 @@ My Account
 												<div class="input-pass">
 													<label for="pass_new">Nhập mật khẩu mới: </label>
 													<input type="password" id="pass_new" class="show" name="pass_new" required="required"/>
-													<input type="button" class="btnShow" value="show" id="showPassword">
+													<input type="button" class="btnShow showPassword" value="show" >
 													@if( $errors->has('pass_new') )
 														<i class="error_account">{{$errors->first('pass_new')}}</i><br/>
 													@endif
@@ -173,7 +173,7 @@ My Account
 												<div class="input-pass">
 													<label for="confirm_pass_new">Nhập lại mật khẩu mới: </label>
 													<input type="password" id="confirm_pass_new" class="show" name="confirm_pass_new" required="required"/>
-													<input type="button" class="btnShow" value="show" id="showPassword">
+													<input type="button" class="btnShow showPassword" value="show" >
 													@if( $errors->has('confirm_pass_new') )
 														<i class="error_account">{{$errors->first('confirm_pass_new')}}</i><br/>
 													@endif
@@ -297,9 +297,7 @@ My Account
 						@foreach( $billBooking as $billBookingVal )
 							<!--booking-->
 							<article class="bookings">
-								@foreach($billBookingVal->order->take(1) as $orderBookingTake_1)
-									<h1><a href="{{route('userRoomDetail').'?id='.$orderBookingTake_1->product->homestay->id}}">{{$orderBookingTake_1->product->homestay->name}}</a></h1>
-								@endforeach
+								<h1><a href="{{route('userRoomDetail').'?id='.$billBookingVal->order->first()->product->homestay->id}}">{{$billBookingVal->order->first()->product->homestay->name}}</a></h1>
 								<div class="b-info">
 									<table>
 										<tr>
@@ -319,7 +317,7 @@ My Account
 											<td>
 												@foreach($billBookingVal->order as $orderBooking)
 													{{$orderBooking->product->roomType->name}} <br/>
-												@endforeach					
+												@endforeach
 											</td>
 										</tr>
 										<tr>

@@ -41,13 +41,18 @@
 		<nav class="main-nav" role="navigation" id="nav">
 			<ul class="wrap">
 				<li><a href="{{url('partner/trangchu')}}" title="Home" class="active">Trang chủ</a></li>
-				<li><a >Danh mục</a>
+				<li><a href="{{url('partner/list-homestay')}}">Homestay</a>
+				<ul>
+					<li><a href="{{route('View_Restore_homestay')}}">Khôi phục Homestay</a></li>
+				</ul>
+			</li>
+				<li class = "listbills"><a  href="{{url('partner/list-bills')}}" > Hóa đơn</a>
 					<ul>
-						<li><a href="{{url('partner/list-homestay')}}">Danh sách homestay</a></li>
-						<li><a href="{{url('partner/list-room')}}">Danh sách phòng</a></li>
+						<li><a href="{{url('partner/total-revenue')}}" >Thống Kê Hóa Đơn</a></li>	
+						<li><a href="{{route('total_loyal_customers')}}" >Danh Sách Khách Hàng </a></li>
 					</ul>
 				</li>
-				<li><a href="{{url('partner/list-bills')}}" >Hóa đơn</a>
+				<li><a href="{{route('partnerProductManage')}}" >Trạng thái phòng</a>
 			</ul>
 		</nav>
 		<!--//main navigation-->

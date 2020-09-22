@@ -14,36 +14,31 @@ Add Room
 				<nav role="navigation" class="breadcrumbs clearfix">
 					<!--crumbs-->
 					<ul class="crumbs">
-                        <li><a href="{{url('partner/trangchu')}}" title="Home">Home</a></li> 
-						<li><a href="{{url('partner/list-room')}}" title="ListHomestay">Danh sách phòng</a></li> 
+                        <li><a href="{{route('trangchu')}}" title="Home">Home</a></li> 
+						<li><a href="{{route('list-room',['id'=>$homestay->id])}}" title="ListRoom">Danh sách phòng</a></li> 
 						<li>Thêm Homestay</li>                               
 					</ul> 
 					<!--//crumbs-->
-					
-					<!--top right navigation-->
-					<!-- <ul class="top-right-nav">
-						<li><a href="#" title="Back to results">Back to results</a></li>
-						<li><a href="#" title="Change search">Change search</a></li>
-					</ul> -->
-					<!--//top right navigation-->
 				</nav>
 				<!--//breadcrumbs-->
 
 				<!--three-fourth content-->
 					<section class="three-fourth form-booking">
 						<h1 style="text-align: center;text-transform: uppercase;">Thông tin phòng của bạn</h1>
-						<form id="booking" method="post" action="" class="booking " enctype="multipart/form-data" >
+					<form id="booking" method="post" action="{{route('addRoomPost')}}" class="booking " enctype="multipart/form-data" >
 							@csrf
+							@if(Session::get('thongbao') == 'success')
+								<i class="notify-success">{{Session::get('massage')}}</i>
+							@endif
 							<input type="hidden" name="_token" value="{{csrf_token()}}">
 								<div colspan="2" 
 									style="color: #32df5d;
 										/* background-color: #f2dede; */
 										border-color: #ebccd1;
 										width: 500px;
-										height: 50px;
+										height: 20px;
 										font-size: 1.5em;
 								">
-										{{Session::get('thongbao')}}
 								</div>
 							<fieldset>
 
@@ -51,12 +46,8 @@ Add Room
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label>Tên homestay</label>
-										<select name="homestay_id" id="">
-											<option selected="selected" >Chọn</option>
-												@foreach($homestay as $homestayVal)
-													<option required value="{{$homestayVal->id}}">{{$homestayVal->name}}</option>
-												@endforeach
-										</select>
+										<input type="text" value = "{{$homestay->name}}" readonly = "readonly">
+										<input type="hidden" name="homestay_id" id="homestay_id"  value = "{{$homestay->id}}" readonly = "readonly">
 									</div>
 									<div class="f-item custom-item">
 										<label for="">Trạng thái của phòng</label>
@@ -71,64 +62,84 @@ Add Room
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label for="">Tên phòng :
-											<input required= "required" type="text" name="name" >
-										</label>										
+											<input  type="text" name="name" >
+										</label>
+										@if( $errors->addHomestay->has('name') )
+											<span class="notify"><i>{{$errors->addHomestay->first('name')}}</i></span><br/>
+										@endif										
 									</div>
 									<div class="f-item custom-item">
 										<label for="area1">Diện tích phòng m<sup>2</sup> 	
-											<input required="required" type="number" name="area"/>
-										</label>									
+											<input  type="number" name="area"/>
+										</label>
+										@if( $errors->addHomestay->has('area') )
+											<span class="notify"><i>{{$errors->addHomestay->first('area')}}</i></span><br/>
+										@endif										
 									</div>
 								</div>
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label for="">Kiểu phòng :</label>
 										<select name="room_type_id" id="">
-											<option selected="selected" >Chọn</option>
+											<option disabled selected value >Chọn</option>
 												@foreach($types as $typeval)
 													<option value="{{$typeval->id}}">{{$typeval->name}}</option>
 												@endforeach
 										</select>
+										@if( $errors->addHomestay->has('room_type_id') )
+											<span class="notify"><i>{{$errors->addHomestay->first('room_type_id')}}</i></span><br/>
+										@endif
 									</div>
 								</div>
-								<h3 style="margin-top: 20px;"><span>02</span> Giá phòng & ưu đãi </h3>
-
+								<h3 style="margin-top: 20px;"><span>03</span> Giá phòng & ưu đãi </h3>
 								<div class="row twins">
 									<div class="f-item custom-item">
 										<label>Nhập giá phòng (VNĐ) :</label>
 										<form action="/action_page.php">
-											<input required= "required" type="text" id="prices" name="prices" ><br><br>
+											<input  type="text" id="prices" name="prices" ><br><br>
 										</form>
+										@if( $errors->addHomestay->has('prices') )
+											<span class="notify"><i>{{$errors->addHomestay->first('prices')}}</i></span><br/>
+										@endif
 									</div>
 									<div class="f-item custom-item">
 										<label>Giảm giá :</label>
-										<input required= "required" type="text" id="discount" name="discount" placeholder="... %">
+										<input  type="text" id="discount" name="discount" placeholder="... %">
+										@if( $errors->addHomestay->has('discount') )
+											<span class="notify"><i>{{$errors->addHomestay->first('discount')}}</i></span><br/>
+										@endif
 									</div>																
 								</div>
 
 								<div class="row twins">
-								<h3 style="margin-top: 20px;"><span>03</span> Mô tả </h3>
+								<h3 style="margin-top: 20px;"><span>04</span> Mô tả </h3>
 									<div class="f-item custom-item">
 										<label>Mô tả khác: </label>
-										<textarea required rows="10" cols="10" id="description" name="description" ></textarea>
+										<textarea rows="10" cols="10" id="description" name="description" ></textarea>
+										@if( $errors->addHomestay->has('description') )
+											<span class="notify"><i>{{$errors->addHomestay->first('description')}}</i></span><br/>
+										@endif
 									</div>
 									<div class="f-item custom-item">
 										<label for="avatar">Avatar room of Homestay :</label>
-											<input required= "required" type="file" name="avatar" multiple id="avatar">
-											{{-- <input type="submit" class="gradient-button" name = "send" value="Upload file"> --}}
+											<input type="file" name="avatar" multiple id="avatar">
+											@if( $errors->addHomestay->has('avatar') )
+												<span class="notify"><i>{{$errors->addHomestay->first('avatar')}}</i></span><br/>
+											@endif
 									</div>
 								</div>
-								
-								<h3 style="margin-top: 20px;"><span>04</span> Tiện ích có tại chỗ nghỉ</h3>
+								<h3 style="margin-top: 20px;"><span>05</span> Tiện ích có tại chỗ nghỉ</h3>
 								<div class="row twins">
-									<div class="f-item custom-item checkbox">
-										@foreach ($tienichs as $items)											
+									@foreach ($tienichs as $items)	
+									<div class="f-item custom-item checkbox">										
 											<input type="checkbox" name="tienich[]" id="{{$items->id}}" value="{{$items->id}}"/>
 											<label for="{{$items->id}}" >{{ $items->name }}</label> <br> <br>
-										@endforeach
 									</div>
+									@endforeach
+									@if( $errors->addHomestay->has('tienich') )
+										<span class="notify"><i>{{$errors->addHomestay->first('tienich')}}</i></span><br/>
+									@endif
 								</div>
-							
 								<input type="submit" class="gradient-button" value="Thêm mới" id="update" >	
 							</fieldset>							
 						</form>

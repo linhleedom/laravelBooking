@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Session,Mail;
+use App\Mail\user\mailInfor;
+use Session,Mail,Str;
 use App\Cart;
 use App\Homestay;
 use App\Bill;
 use App\Order;
-use App\Mail\user\mailInfor;
+use App\CancelBill;
+
 class BookingController extends Controller
 {
     public function bookingStep1(Request $request){
@@ -32,7 +34,7 @@ class BookingController extends Controller
         $datepicker2 = $request->datepicker2;
         $homestay_id = $request->homestay_id;
 
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->permision == '2'){
             $validator = Validator::make($request->all(), 
                 [
                     'name'=>'required',
@@ -77,11 +79,11 @@ class BookingController extends Controller
             }else{
                 $bill->user_id = 0;
             }
-            $bill->name = $request->name;
-            $bill->phone = $request->phone;
-            $bill->email = $request->email;
-            $bill->note = $request->note;
-            $bill->status = 0;
+            $bill->name     = $request->name;
+            $bill->phone    = $request->phone;
+            $bill->email    = $request->email;
+            $bill->note     = $request->note;
+            $bill->status   = 0;
             $bill->payments = $cart->totalPrice;
             $bill->save();
 
@@ -95,6 +97,8 @@ class BookingController extends Controller
                 $order->status = 1;
                 $order->save();
             }
+            $cancelBill = CancelBill::firstOrCreate(['bill_id'=>$bill->id, 'token'=>Str::random(60)]);
+            
             Session::forget('Cart-homestay-'.$homestay_id);
             return redirect()->route('userBookingStep3',['id'=>$bill->id]);
         }else{
@@ -104,7 +108,9 @@ class BookingController extends Controller
 
     public function BookingStep3($id){
         $bill = Bill::find($id);
-        Mail::to($bill->email)->send(new mailInfor($bill));
+        $cancelBillToken = CancelBill::where('bill_id', $id)->first()->token;
+
+        Mail::to($bill->email)->send(new mailInfor($bill,$cancelBillToken));
         return view('user.pages.booking_step_3', compact('bill'));
     }
 }
