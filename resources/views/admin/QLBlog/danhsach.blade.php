@@ -61,7 +61,7 @@
 							<a class="btn btn-info" href="{{url('/admin/QLBlog/edit')}}/{{$tl->id}}">
 								<i class="halflings-icon white edit"></i>  
 							</a>
-							<a class="btn btn-danger" href="{{url('/admin/QLBlog/delete')}}/{{$tl->id}}">
+							<a class="btn btn-danger" href="{{url('/admin/QLBlog/delete')}}/{{$tl->id}}" onclick="return confirm('Bạn Muốn Xóa?');">
 								<i class="halflings-icon white trash"></i> 
 							</a>
 						</td>
