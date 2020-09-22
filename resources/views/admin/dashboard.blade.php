@@ -16,29 +16,35 @@
 		</li>
 		<li><a href="#">Dashboard</a></li>
 	</ul>
-	<div class="row-fluid" style="margin-top: 80px;padding:0 100px;">	
+	<div class="row-fluid" style="margin-top: 100px;">	
 
-		<a class="quick-button metro yellow span2" href="{{url('/admin/khachhang/danhsach')}}">
+		<a class="quick-button metro yellow span3" href="{{url('/admin/khachhang/danhsach')}}">
 			<i class="icon-group"></i>
 			<p>Users</p>
 			<span class="badge">{{$user->count()}}</span>
 		</a>
-		<a class="quick-button metro blue span2" href="{{url('/admin/booking/danhsach')}}" >
+		<!-- <a class="quick-button metro blue span2" href="{{url('/admin/booking/danhsach')}}" >
 			<i class="icon-shopping-cart"></i>
 			<p>Orders</p>
+<<<<<<< HEAD
+			<span class="badge">{{$bill->count()}}</span>
+		</a> -->
+		<a class="quick-button metro red span3" href="{{url('/admin/QLSlide/danhsach')}}" >
+=======
 			<span class="badge">{{$bill->where('status','0')->count()}}</span>
 		</a>
 		<a class="quick-button metro red span2" href="{{url('/admin/QLSlide/danhsach')}}" >
+>>>>>>> 2790b9d2265187e2dd1563cf6fd77463c8e530fe
 			<i class="icon-picture"></i>
 			<p>Slides</p>
 			<span class="badge">{{$slide->count()}}</span>
 		</a>
-		<a class="quick-button metro pink span2" href="{{url('/admin/QLBlog/danhsach')}}">
+		<a class="quick-button metro pink span3" href="{{url('/admin/QLBlog/danhsach')}}">
 			<i class="icon-file"></i>
 			<p>Blogs</p>
 			<span class="badge">{{$blog->count()}}</span>
 		</a>
-		<a class="quick-button metro green span2" href="{{url('/admin/homestay/ListHT')}}">
+		<a class="quick-button metro green span3" href="{{url('/admin/homestay/ListHT')}}">
 			<i class="icon-home"></i>
 			<p>Home Stay</p>
 			<span class="badge">{{$homestay->count()}}</span>

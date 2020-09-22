@@ -18,7 +18,7 @@
 					</li>
 				</ul>	
 			</li>
-			<li><a href="{{url('/admin/booking/danhsach')}}"><i class="icon-list-alt"></i><span class="hidden-tablet">Booking</span></a></li>
+			<!-- <li><a href="{{url('/admin/booking/danhsach')}}"><i class="icon-list-alt"></i><span class="hidden-tablet">Booking</span></a></li> -->
 			<li><a href="{{url('/admin/khachhang/danhsach')}}"><i class="icon-bar-chart"></i><span class="hidden-tablet">Users</span></a></li>
 			
 			<li><a href="{{url('/admin/logout')}}"><i class="icon-lock"></i><span class="hidden-tablet"> Đăng Nhập/Đăng Xuất</span></a></li>

@@ -49,7 +49,7 @@
 						</td>
 						<td style="text-align: center">
 							<a href="{{url('/admin/homestay/editTI')}}/{{$tl->id}}" class="btn btn-success">Edit</a>
-							<a class="btn btn-primary" href="{{url('/admin/homestay/xoaTI')}}/{{$tl->id}}">Xóa</a>
+							<a class="btn btn-primary" href="{{url('/admin/homestay/xoaTI')}}/{{$tl->id}}" onclick="return confirm('Bạn Muốn Xóa?');">Xóa</a>
 						</td>
 					</tr> 
 					@endforeach

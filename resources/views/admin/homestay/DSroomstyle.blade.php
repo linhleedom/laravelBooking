@@ -53,7 +53,7 @@
 							@endif
 						</td>
 						<td style="text-align: center">
-							<a href="{{url('/admin/homestay/xoaRS')}}/{{$tl->id}}" class="btn btn-success">Xóa</a>
+							<a href="{{url('/admin/homestay/xoaRS')}}/{{$tl->id}}" class="btn btn-success" onclick="return confirm('Bạn Muốn Xóa?');">Xóa</a>
 							
 						</td>
 					</tr> 

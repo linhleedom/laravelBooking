@@ -50,6 +50,12 @@
 						  </div>
 						</div>
 						<div class="control-group">
+						  <label class="control-label" for="slogan2">Slogan2:</label>
+						  <div class="controls">
+							<input type="text" id="slogan2" name="slogan2">
+						  </div>
+						</div>
+						<div class="control-group">
 						  <label class="control-label" for="img">Ảnh:</label>
 						  <div class="controls">
 							<input type="file" id="img" name="url">
