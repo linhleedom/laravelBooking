@@ -5,7 +5,7 @@
 			<li><a href="{{url('/admin/thembai')}}"><i class="icon-edit"></i><span class="hidden-tablet"> Thêm Bài Viết</span></a></li>
 			<li><a href="{{url('/admin/themslide')}}"><i class="icon-edit"></i><span class="hidden-tablet"> Thêm Slide</span></a></li>
 			<li>
-				<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Quản Lí Slide/Bài Viết/HomeStay </span><span class="label label-important">3</span></a>
+				<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet">Quản Lí </span></a>
 				<ul>
 					<li>
 						<a class="submenu" href="{{url('/admin/QLSlide/danhsach')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Quản Lí Slide</span></a>

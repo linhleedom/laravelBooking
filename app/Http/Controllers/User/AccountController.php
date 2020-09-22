@@ -24,10 +24,7 @@ class AccountController extends Controller
         $billBooking = Bill::where([['user_id',$id],['status','0']])->orderBy('created_at', 'DESC')->paginate(3);
         $user = User::find($id);
         $province = Province::all();
-        $district = District::all();
-        $ward = Ward::all();
-        // dd($billBooking);
-        return view('user.pages.account',compact('billHistory','billBooking','user','id','province','district','ward'));
+        return view('user.pages.account',compact('billHistory','billBooking','user','id','province'));
     }
 
     public function editName($id, Request $request){

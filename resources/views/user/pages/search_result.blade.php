@@ -37,13 +37,14 @@ $(document).ready(function() {
 @endsection
 @section('scriptEnd')
 	<script>
+		var address = $('#address').val();
+		var datepicker1 = $('#datepicker1').val();
+		var datepicker2 = $('#datepicker2').val();
+		var num_room = $('#num_room').val();
+		var num_adult = $('#num_adult').val();
+		var num_chil = $('#num_chil').val();
+		
 		$("input:checkbox").change(function() {
-			var address = $('.address').val();
-			var datepicker1 = $('.datepicker1').val();
-			var datepicker2 = $('.datepicker2').val();
-			var num_room = $('.num_room').val();
-			var num_adult = $('.num_adult').val();
-			var num_chil = $('.num_chil').val();
 			var amount = [];
 			$('input:checkbox:checked').each(function() {
 				amount.push($(this).val());
@@ -60,12 +61,6 @@ $(document).ready(function() {
 		});
 		$('#price-asc').click(function(){
 			var orderBy = 'asc';
-			var address = $('.address').val();
-			var datepicker1 = $('.datepicker1').val();
-			var datepicker2 = $('.datepicker2').val();
-			var num_room = $('.num_room').val();
-			var num_adult = $('.num_adult').val();
-			var num_chil = $('.num_chil').val();
 			$.ajax({
 				url: '../search-orderBy',
 				type: 'GET',
@@ -78,12 +73,6 @@ $(document).ready(function() {
 		})
 		$('#price-desc').click(function(){
 			var orderBy = 'desc';
-			var address = $('.address').val();
-			var datepicker1 = $('.datepicker1').val();
-			var datepicker2 = $('.datepicker2').val();
-			var num_room = $('.num_room').val();
-			var num_adult = $('.num_adult').val();
-			var num_chil = $('.num_chil').val();
 			$.ajax({
 				url: '../search-orderBy',
 				type: 'GET',
@@ -103,13 +92,7 @@ class="active"
 
 @section('content')
 	<!--main-->
-	<div class="main" role="main">		
-		<input type="hidden" class="address" value="{{ $address }}">
-		<input type="hidden" class="datepicker1" value="{{ $datepicker1 }}">
-		<input type="hidden" class="datepicker2" value="{{ $datepicker2 }}">
-		<input type="hidden" class="num_room" value="{{ $num_room }}">
-		<input type="hidden" class="num_adult" value="{{ $num_adult }}">
-		<input type="hidden" class="num_chil" value="{{ $num_chil }}">
+	<div class="main" role="main">
 		<div class="wrap clearfix">
 			<!--main content-->
 			<div class="content clearfix">

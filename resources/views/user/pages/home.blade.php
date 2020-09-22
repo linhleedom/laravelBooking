@@ -32,8 +32,12 @@ Travel Your Booking
 				@foreach($slide as $slideVal)
 					<li>
 						<div class="info animate-in">
-							<h2>{{$slideVal->slogan}}</h2><br />
-							<p>Thủ tục đăng ký nhanh gọn</p>
+							@if(!empty($slideVal->slogan))
+								<h2>{{$slideVal->slogan}}</h2><br />
+							@endif
+							@if(!empty($slideVal->slogan2))
+								<p>{{$slideVal->slogan2}}</p>
+							@endif
 						</div>
 						<img class="main-image animate-in" src="{{$slideVal->url}}" alt="" />
 					</li>
@@ -184,59 +188,67 @@ Travel Your Booking
 			<!--//top destinations-->
 			
 			<!--info boxes-->
-			<section class="boxes clearfix">
+			<section class="boxes clearfix icon">
 				<!--column-->
-				<article class="one-fourth">
-					<h2>Chọn lọc cẩn thận</h2>
+				<article class="one-fourth slogan_homepage">
+					<img src="user/images/ico/slogan1.png" alt="" class = "icon_slogan">
+					<h2 class="text_slogan">Chọn lọc cẩn thận</h2>
 					<p>Tất cả các cuốn sách Khách sạn du lịch của bạn đáp ứng các tiêu chí lựa chọn nghiêm ngặt. Mỗi khách sạn được chọn riêng và không thể mua.</p>
 				</article>
 				<!--//column-->
 				
 				<!--column-->
-				<article class="one-fourth">
-					<h2>Mô tả chi tiết</h2>
+				<article class="one-fourth slogan_homepage">
+					<img src="user/images/ico/slogan2.png" alt="" class = "icon_slogan">
+					<h2 class="text_slogan">Mô tả chi tiết</h2>
 					<p>Để cho bạn một ấn tượng chính xác về khách sạn, chúng tôi nỗ lực để xuất bản các mô tả khách sạn minh bạch, cân bằng và chính xác.</p>
 				</article>
 				<!--//column-->
 				
 				<!--column-->
-				<article class="one-fourth">
-					<h2>Thông tin độc quyền</h2>
+				<article class="one-fourth slogan_homepage">
+					<img src="user/images/ico/slogan3.png" alt="" class = "icon_slogan">
+					<h2 class="text_slogan">Thông tin độc quyền</h2>
 					<p>Các chuyên gia của chúng tôi luôn cập nhật thêm về khách sạn của chúng tôi, môi trường xung quanh và các hoạt động được cung cấp gần đó.</p>
 				</article>
 				<!--//column-->
 				
 				<!--column-->
-				<article class="one-fourth">
-					<h2>Dịch vụ tận tình</h2>
+				<article class="one-fourth slogan_homepage">
+					<img src="user/images/ico/slogan4.png" alt="" class = "icon_slogan">
+					<h2 class="text_slogan">Dịch vụ tận tình</h2>
 					<p>Đội ngũ Travels của chúng tôi sẽ phục vụ cho các yêu cầu đặc biệt của bạn. Chúng tôi cung cấp lời khuyên chuyên môn để tìm đúng khách sạn.</p>
 				</article>
 				<!--//column-->
 				
 				<!--column-->
-				<article class="one-fourth">
-					<h2>Đảm bảo giá tốt nhất</h2>
+				<article class="one-fourth slogan_homepage">
+					<img src="user/images/ico/slogan5.png" alt="" class = "icon_slogan">
+					<h2 class="text_slogan">Đảm bảo giá tốt nhất</h2>
 					<p>Chúng tôi cung cấp các khách sạn tốt nhất với giá tốt nhất. Nếu bạn tìm thấy cùng loại phòng vào cùng ngày rẻ hơn ở nơi khác, chúng tôi sẽ hoàn lại tiền chênh lệch. Đảm bảo, và nhanh chóng.</p>
 				</article>
 				<!--//column-->
 				
 				<!--column-->
-				<article class="one-fourth">
-					<h2>Đặt phòng an toàn</h2>
+				<article class="one-fourth slogan_homepage">
+					<img src="user/images/ico/slogan6.png" alt="" class = "icon_slogan">
+					<h2 class="text_slogan">Đặt phòng an toàn</h2>
 					<p>Đặt hệ thống đặt chỗ du lịch của bạn được bảo mật và thẻ tín dụng và thông tin cá nhân của bạn được mã hóa. <br /> Chúng tôi làm việc theo tiêu chuẩn cao và đảm bảo quyền <strong>riêng tư</strong> của bạn.</p>
 				</article>
 				<!--//column-->
 				
 				<!--column-->
-				<article class="one-fourth">
-					<h2>Lợi ích cho khách sạn</h2>
+				<article class="one-fourth slogan_homepage">
+					<img src="user/images/ico/slogan7.png" alt="" class = "icon_slogan">
+					<h2 class="text_slogan">Lợi ích cho khách sạn</h2>
 					<p>Chúng tôi cung cấp một mô hình hiệu quả về chi phí, mạng lưới hơn 5000 đối tác và dịch vụ quản lý tài khoản được cá nhân hóa để giúp bạn tối ưu hóa doanh thu của mình.</p>
 				</article>
 				<!--//column-->
 				
 				<!--column-->
-				<article class="one-fourth">
-					<h2>Giải đáp thắc mắc?</h2>
+				<article class="one-fourth slogan_homepage">
+					<img src="user/images/ico/slogan8.png" alt="" class = "icon_slogan">
+					<h2 class="text_slogan">Giải đáp thắc mắc?</h2>
 					<p>Gọi cho chúng tôi theo số <em>1800-1989</em> để được tư vấn riêng, phù hợp cho kỳ nghỉ hoàn hảo của bạn hoặc gửi tin nhắn cho chúng tôi với câu hỏi đặt phòng khách sạn của bạn.<br /></p>
 				</article>
 				<!--//column-->

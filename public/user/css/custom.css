@@ -356,6 +356,22 @@ header #wrap .ribbon nav ul.open li a {
 .full-width img{
 	height: 200px;
 }
+.icon_slogan{
+	margin: 0 auto;
+	width: 70px;
+	height: 70px;
+	margin-bottom: 20px;
+}
+.text_slogan{
+	text-align: center;
+}
+.icon{
+	padding-left: 25px;
+}
+.slogan_homepage:hover{
+	background: rgba(230, 238, 253, 0.918);
+	/* cursor: pointer; */
+}
 @media screen and (max-width: 1024px){
 	.search-left .search-submit{
 		left:1%;

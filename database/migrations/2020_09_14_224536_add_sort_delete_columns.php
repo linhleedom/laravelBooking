@@ -41,6 +41,7 @@ class AddSortDeleteColumns extends Migration
         Schema::table('slides', function(Blueprint $table) {
             $table->string('order')->nullable();
             $table->string('slogan2')->nullable();
+            $table->softDeletes();
         });
     }
 
@@ -79,6 +80,7 @@ class AddSortDeleteColumns extends Migration
         Schema::table('slides', function(Blueprint $table) {
             $table->dropColumn('order');
             $table->dropColumn('slogan2');
+            $table->dropColumn('deleted_at');
         });
     }
 }

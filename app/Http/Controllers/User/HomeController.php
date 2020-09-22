@@ -41,7 +41,7 @@ class HomeController extends Controller
 
     public function index(){
 
-        $slide = Slide::where('status', '1')->get();
+        $slide = Slide::where('status', '1')->orderBy('order','asc')->get();
         
         $homestayTopRate = Homestay::where('status', '1')->orderBy('point', 'DESC')->take(8)->get();
         $homestay = Homestay::where('status', '1')->take(8)->get();

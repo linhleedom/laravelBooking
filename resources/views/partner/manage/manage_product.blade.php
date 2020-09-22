@@ -51,6 +51,9 @@ Add Image Room
                                     document.getElementById('script-warning').style.display = 'block'
                                     },
                                     color:'rgba(255, 25, 25, 0.79)',
+                                    // display: 'background',
+                                    constraint: 'availableForMeeting',
+                                    overlap: false,
                                     backgroundColor: 'rgba(255, 25, 25, 0.79)'
                                 },
                                 loading: function(bool) {
