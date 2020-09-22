@@ -26,3 +26,4 @@ class AdminLoginMiddleware
         return redirect('admin/dangnhap');
     }
 }
+

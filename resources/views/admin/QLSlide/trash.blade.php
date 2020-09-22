@@ -8,16 +8,28 @@
 			<a href="#">Home</a> 
 			<i class="icon-angle-right"></i>
 		</li>
-		<li><a href="#">Quản Lí</a></li>
+		<li><a href="#">Quản Lí Slide</a></li>
 		<li>
 			<i class="icon-angle-right"></i>
-			<a href="#">Quản Lí Slide</a>
+			<a href="#">Thùng rác</a>
 		</li>
 	</ul>
+	@if(count($errors) > 0)
+			<div class="alert alert-danger">
+				@foreach($errors->all() as $err)
+					{{$err}}
+				@endforeach
+			</div>
+	@endif
+	@if(session('thongbao'))
+			<div class="alert alert-success">
+				{{session('thongbao')}}
+			</div>
+	@endif
 	<div class="row-fluid sortable">		
 		<div class="box span12">
 			<div class="box-header" data-original-title>
-				<h2><i class="halflings-icon white user"></i><span class="break"></span>danh Sách Slide</h2>
+				<h2><i class="halflings-icon white user"></i><span class="break"></span>Danh Sách Slide đã xóa</h2>
 				<div class="box-icon">
 					<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
 					<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -32,32 +44,22 @@
 						  <th style="text-align: center">Avatar</th>
 						  <th style="text-align: center">Slogan</th>
 						  <th style="text-align: center">Slogan2</th>
-						  <th style="text-align: center">Thứ Tự</th>
-						  <th style="text-align: center">Status</th>
 						  <th style="text-align: center">Hoạt Động</th>
 					  </tr>
 				  </thead>   
 				  <tbody>
-				  	@foreach($slide as $tl)
+				  	@foreach($slide3 as $tl)
 					<tr>
 						<td style="text-align: center">{{$tl->id}}</td>
 						<td style="text-align: center"><img width="70px" height="80px" src="{{$tl->url}}" alt=""></td>
 						<td style="text-align: center">{{$tl->slogan}}</td>
 						<td style="text-align: center">{{$tl->slogan2}}</td>
-						<td style="text-align: center">{{$tl->order}}</td>
 						<td style="text-align: center">
-							@if($tl->status==0)
-							<p class="label label-primary">Ẩn</p>
-							@else 
-							<p class="label label-important">Public</p>
-							@endif
-							
-						</td>
-						<td style="text-align: center">
-							<a href="{{url('/admin/QLSlide/edit')}}/{{$tl->id}}" class="btn btn-success">Edit</a>
-							<a class="btn btn-danger" href="{{url('/admin/QLSlide/delete')}}/{{$tl->id}}" onclick="return confirm('Bạn Muốn Xóa?');">
-								<i class="halflings-icon white trash"></i> 
+							<!-- <a href="{{url('/admin/QLSlide/edit')}}/{{$tl->id}}" class="btn btn-success">Edit</a> -->
+							<a class="btn btn-success" href="{{url('/admin/QLSlide/untrash')}}/{{$tl->id}}" onclick="return confirm('Bạn Muốn Khôi Phục?');">
+								Khôi Phục 
 							</a>
+							
 						</td>
 					</tr>	
 					@endforeach 
@@ -66,6 +68,5 @@
 			</div>
 		</div>
 	</div>
-		<a href="{{url('/admin/QLSlide/trash')}}" class="btn btn-danger">Thùng Rác</a>
 	</div>
 @endsection

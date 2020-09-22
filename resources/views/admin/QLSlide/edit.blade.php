@@ -52,6 +52,13 @@
 					<form class="form-horizontal" action="{{url('/admin/QLSlide/edit')}}/{{$slide->id}}" method="POST" enctype="multipart/form-data">
 						<input type="hidden" name="_token" value="{{csrf_token()}}">
 					  <fieldset>
+					  	<div class="control-group">
+						  <label class="control-label" for="date01">Ảnh:</label>
+						  <div class="controls">
+							<input type="file" id="date01" name="url"><br>
+							<img width="180px" height="160px" src="{{$slide->url}}" alt="">
+						  </div>
+						</div>   
 						<div class="control-group">
 						  <label class="control-label" for="slogan1">Slogan:</label>
 						  <div class="controls">
@@ -59,12 +66,25 @@
 						  </div>
 						</div>
 						<div class="control-group">
-						  <label class="control-label" for="date01">Ảnh:</label>
+						  <label class="control-label" for="slogan2">Slogan2:</label>
 						  <div class="controls">
-							<input type="file" id="date01" name="url"><br>
-							<img width="180px" height="160px" src="{{$slide->url}}" alt="">
+							<input type="text" id="slogan2" name="slogan2" value="{{$slide->slogan2}}">
 						  </div>
-						</div>   
+						</div>
+						<div class="control-group">
+						  <label class="control-label" for="order">Thứ Tự Slide:</label>
+						  <div class="controls">
+							<!-- <input type="text" id="slogan2" name="slogan2" value="{{$slide->slogan2}}"> -->
+							<select name="order" id="order">
+								@foreach($sli as $tl)
+								<option value="{{$tl->order}}"
+									 @if($tl->order == $slide->order) selected="selected"; @endif>
+									 Vị trí số:{{$tl->order}}
+								</option>
+								 @endforeach
+							</select>
+						  </div>
+						</div>
 						<div class="control-group">
 							<label class="control-label" for="status">Public BV:</label>
 						  	<label class="controls radio-inline">

@@ -275,6 +275,9 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
         Route::post('edit/{id}','KhachHangController@postEdit');
 
         Route::get('delete/{id}','KhachHangController@getDelete');
+        Route::get('trash','KhachHangController@getTrash');
+        Route::get('untrash/{id}','KhachHangController@getUnTrash');
+
 
         Route::get('detail/{id}','KhachHangController@getDetail');
 
@@ -295,6 +298,14 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
     });
 
 
+    Route::group(['prefix'=>'/'],function(){
+        //admin/booking/danhsach
+        Route::get('thembai','TBController@getThemBai');
+        Route::post('thembai','TBController@postThemBai');
+        Route::get('ajax/them/{matp}','TBController@getmaqh');
+    });
+
+
     Route::group(['prefix'=>'QLSlide'],function(){
         //admin/booking/danhsach
         Route::get('danhsach','QlSlideController@getDanhSach');
@@ -303,19 +314,17 @@ Route::group(['prefix'=>'admin','middleware'=>'adminLogin'],function(){
         Route::post('edit/{id}','QLSlideController@postEdit');
 
         Route::get('delete/{id}','QLSlideController@getDel');
+        Route::get('trash','QLSlideController@getTrash');
+        Route::get('untrash/{id}','QLSlideController@getUnTrash');   
     });
+
 
     Route::group(['prefix'=>'/'],function(){
         //admin/booking/danhsach
         Route::get('dashboard','DBController@getDashBoard');
     });
 
-    Route::group(['prefix'=>'/'],function(){
-        //admin/booking/danhsach
-        Route::get('thembai','TBController@getThemBai');
-        Route::post('thembai','TBController@postThemBai');
-        Route::get('ajax/them/{matp}','TBController@getmaqh');
-    });
+   
 
     Route::group(['prefix'=>'/'],function(){
         Route::get('themslide','TSController@getTS');

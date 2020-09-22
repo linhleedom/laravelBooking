@@ -180,5 +180,6 @@
 				</div>
 			</div>
 			<a href="{{url('/admin/khachhang/them')}}" class="btn btn-primary">Thêm Admin</a>
+			<a href="{{url('/admin/khachhang/trash')}}" class="btn btn-danger">Thùng Rác</a>
 	</div>
 @endsection

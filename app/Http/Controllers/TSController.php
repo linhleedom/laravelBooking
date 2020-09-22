@@ -16,6 +16,7 @@ class TSController extends Controller
         $this->validate($request,
             [
                 'slogan'=>'required|unique:slides,slogan|min:3|max:100',
+                'slogan2'=>'required|unique:slides,slogan|min:3|max:100',
                 'url'=>'required',
                 'status'=>'required',
             ],
@@ -24,6 +25,10 @@ class TSController extends Controller
                 'slogan.unique'=>'Slogan đã tồn tại',
                 'slogan.min'=>'Độ dài tối thiểu là 3 kí tự',
                 'slogan.max'=>'Độ dài tối đa là 100 kí tự',
+                'slogan2.required'=>'Bạn chưa nhập slogan2!',
+                'slogan2.unique'=>'Slogan đã tồn tại',
+                'slogan2.min'=>'Độ dài tối thiểu là 3 kí tự',
+                'slogan2.max'=>'Độ dài tối đa là 100 kí tự',
                 'url.required'=>'Bạn hãy chọn ảnh nhé!',
                 'status.required'=>'Chọn trạng thái!',
             ]);
@@ -31,7 +36,9 @@ class TSController extends Controller
     	
     	$slide=new Slide;
     	$slide->slogan= $request->slogan;
+        $slide->slogan2= $request->slogan2;
     	$slide->status= $request->status;
+        $slide->order=$slide->count()+1;
     	$slide ->created_at= now();
         $slide ->updated_at= now();
         $file_name= $request->file('url')->getClientOriginalName();

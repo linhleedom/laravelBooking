@@ -92,9 +92,6 @@ class KhachHangController extends Controller
             }
             $hinh=Str::random(5).'_'.$file_name;
             $link='uploads/avatar/'.$hinh;
-           
-                unlink("public/".$user->avatar);
-           
             $user->avatar= $link;
             $request->file('avatar')->move('public/uploads/avatar',$hinh);
      }
@@ -127,6 +124,16 @@ class KhachHangController extends Controller
         $user=User::find($id);
         $user->delete();
         return redirect('admin/khachhang/danhsach')->with('thongbao','Xóa thành công');
+    }
+    public function getTrash(Request $request){
+        $user=User::onlyTrashed()->get();
+        return view('admin.khachhang.trash',['user'=>$user]);
+
+    }
+    public function getUnTrash($id){
+        $use=User::withTrashed()->find($id);
+        $use->restore();
+        return redirect()->back()->with('thongbao','Khôi Phục Thành Công');
     }
 
    
