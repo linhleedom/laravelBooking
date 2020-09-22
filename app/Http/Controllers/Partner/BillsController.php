@@ -33,7 +33,6 @@ class BillsController extends Controller
         };
         
         $list_Bill = Bill::whereIn('id',$orderofBill)->get();
-        // dd($Bill);
 
         return view ('partner.my_order.list-bills',['list_Bill'=>$list_Bill]);
     }

@@ -89,8 +89,7 @@ class RoomController extends Controller
                 'utilities_id'=>$tienich
             ]);
         }
-        // dd($product);
-        return redirect()->back()->with(['thongbao'=>'success','massage'=>'Thêm phòng thành công !']);
+        return redirect()->route('UploadImageRoom',['id'=>$product->id])->with(['thongbao'=>'success','massage'=>'Thêm phòng thành công !']);
                 
     }
     public function getEditPartnerRoom($id){

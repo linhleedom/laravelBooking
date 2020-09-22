@@ -36,7 +36,7 @@
                     <!--deal-->                    
                     @foreach ($homestayrestore as $Homestay)
                     <article class="one-fourth homestay-custom" >
-                        <figure><a href="{{route('list-room',['id'=>$Homestay->id])}}" title=""><img src="{{asset('public/'.$Homestay->avatar)}}" alt="" width="270" height="152" /></a></figure>
+                        <figure><a title=""><img src="{{asset('public/'.$Homestay->avatar)}}" alt="" width="270" height="152" /></a></figure>
                         <div class="details custom_details">
                             <h1 style="height: 35px;text-align: center;" >{{$Homestay->name}}
                                 @if(empty($Homestay->point == ""))
