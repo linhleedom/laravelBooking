@@ -54,7 +54,7 @@
 			<nav>
 				<ul>
 					<li><a href="javascript:" title="About us">Giới thiệu</a></li>
-					<li><a href="contact.html" title="Contact">Liên hệ</a></li>
+					<li><a href="javascript:" title="Contact">Liên hệ</a></li>
 					<li><a href="javascript:" title="Partners">Đối tác</a></li>
 					<!-- <li><a href="javascript:" title="Customer service">Customer service</a></li> -->
 					<li><a href="javascript:" title="FAQ">FAQ</a></li>
