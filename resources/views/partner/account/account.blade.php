@@ -86,7 +86,7 @@ My Account
 					<nav class="inner-nav">
 						<ul>
 							<li><a href="#MySettings" title="Settings">Cài đặt tài khoản</a></li>
-							<li><a href="#MyReviews" title="MyReviews">Đánh giá</a></li>
+							{{-- <li><a href="#MyReviews" title="MyReviews">Đánh giá</a></li> --}}
 						</ul>
 					</nav>
 					<!--//inner navigation-->
@@ -282,99 +282,10 @@ My Account
 
 						</article>
 					</section>
-					<!--//MySettings-->
-					
-					<!--MyReviews-->
-					<section id="MyReviews" class="tab-content myaccount">
-						<?php $i=0; ?>
-						@foreach ($rate as $rateVal)
-						<?php $i++; ?>
-						<article class="myreviews bookings">
-						<h1><strong class="gradient-button success stt ">{{$i}}</strong> | Your review of <strong style= "color: #dc3545;font-size: 18px;">{{$rateVal->homestay->name}}</strong></h1>
-						<table class="my-comments">							
-							<tr>
-								<th>Số hóa đơn :</th>
-								<td>{{$rateVal->bill_id}}</td>
-							</tr>
-							<tr>
-								<th>Khách hàng đánh giá :</th>
-								<td>{{$rateVal->bill->name}}</td>
-							</tr>
-							<tr>
-								<th>Email :</th>
-								<td>{{$rateVal->bill->email}}</td>
-							</tr>
-							<tr>
-								<th>Số điện thoại :</th>
-								<td>{{$rateVal->bill->phone}}</td>
-							</tr>
-							<tr>
-								<th >Trạng thái</th>
-								@if($rateVal->status == 1)
-									<td><strong class="gradient-button success">Hiện</strong></td>
-								@elseif($rateVal->status == 0)									
-									<td><strong class="gradient-button danger ">Ẩn</strong></td>
-								@endif
-							</tr>
-						</table>
-								<div class="score">
-									<span class="achieved">{{$rateVal->point}}  </span>
-									<span>  / 5</span>
-								</div>
-								<div class="reviews">
-									@if($rateVal->point >= 3 && $rateVal->point <=5)										
-									<div class="pro"><p>{{$rateVal->comment}}</p></div>
-									@elseif($rateVal->point <3)										
-									<div class="con"><p>{{$rateVal->comment}}</p></div>
-									@endif
-								</div>
-						</article>
-						
-								
-						<div class="actions">
-							@if ($rateVal->status == 1)								
-								<a href="{{route('ChangeStatus', ['bill_id'=>$rateVal])}}" class="gradient-button danger">Change-status</a>
-							@elseif($rateVal->status == 0)								
-								<a href="{{route('ChangeStatus', ['bill_id'=>$rateVal])}}" class="gradient-button success">Change-status</a>
-							@endif
-						</div>
-						@endforeach				
-						<div class="bottom-nav" style="background: none">
-							<!--back up button-->
-							<a href="#" class="scroll-to-top" title="Back up">Top</a> 
-							<!--//back up button-->
-							
-							<!--pager-->
-								{{ $rate->withQueryString()->links('vendor.pagination.custom') }}
-							<!--//pager-->
-						</div>
-					</section>
-					<!--//MyReviews-->
-					
+					<!--//MySettings-->					
 					<!--My Bookings-->
 					<!--//My Bookings-->	
 				</section>
-				<!--//three-fourth content-->
-				
-				<!--sidebar-->
-				{{-- <aside class="right-sidebar"> --}}
-
-					<!--Need Help Booking?-->
-					{{-- <article class="default clearfix">	
-						<h2>Hỗ trợ đặt phòng?</h2>
-						<p>Gọi cho nhóm dịch vụ khách hàng của chúng tôi theo số dưới đây để nói chuyện với một trong những cố vấn của chúng tôi, những người sẽ giúp bạn với tất cả các nhu cầu kỳ nghỉ của bạn.</p>
-						<p class="number">1800 1989</p>
-					</article> --}}
-					<!--//Need Help Booking?-->
-					
-					<!--Ads-->
-					{{-- <article class="default clearfix">
-						<img src="uploads/Ads/ad.png" alt="">
-					</article> --}}
-					<!--//Ads-->
-					
-				{{-- </aside> --}}
-				<!--//sidebar-->
 			</div>
 			<!--//main content-->
 		</div>

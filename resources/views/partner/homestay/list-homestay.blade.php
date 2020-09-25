@@ -82,9 +82,14 @@ List Homestay
                                     <a href="" title="" style="color:red ;font-size :12px;float:right;text-decoration: none;" >Chưa Thanh toán </a>
                                     @endif                                
                             </span> 
-                        <span class="price none-border">Thêm ảnh ({{$Homestay->image->count()}})&nbsp; &nbsp;
+                            <span class="price none-border">Thêm ảnh ({{$Homestay->image->count()}})&nbsp; &nbsp;
                                 <em>                                
                                     <a href="{{url('partner/upload_images', ['id' => $Homestay->id])}}"><img src="partner/images/ico/plus.png" alt="" width="22" height="22" /></a>
+                                </em>
+                            </span>
+                            <span class="price none-border">Đánh giá ({{$Homestay->rating->count()}})&nbsp; &nbsp;
+                                <em>                                
+                                    <a href="{{route('RatingHomestay',['id'=>$Homestay->id])}}"><img src="partner/images/ico/rating.png" alt="" width="22" height="22" /></a>
                                 </em>
                             </span>
                             <span class="price" style="border: none;margin : 0 auto"><label for="">Chỉnh sửa &nbsp; &nbsp;</label> 

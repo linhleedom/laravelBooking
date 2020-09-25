@@ -134,7 +134,6 @@ class RoomController extends Controller
         $product->save();
 
         $uti_pro->delete();
-        // dd($request->input('tienich'));
         foreach($request->input('tienich') as $tienich){
             Uti_Pro::create([
                 'product_id'=>$product->id,
