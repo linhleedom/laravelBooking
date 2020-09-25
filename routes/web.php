@@ -245,9 +245,7 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
             Route::get('/delete-homestay/{id}','HomestayPartnerController@getDeletePartnerHomestay')->name('delete_homestay');
             Route::get('/view-restore-homestay','HomestayPartnerController@getViewRestorePartnerHomestay')->name('View_Restore_homestay');
             Route::get('/restore-homestay/{id}','HomestayPartnerController@getRestorePartnerHomestay')->name('Restore_homestay');
-            Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');
-
-            
+            Route::get('/view-homestay/{id}','HomestayPartnerController@getViewPartnerHomestay');            
             Route::get('/pays-homestay/{id}','HomestayPartnerController@getPaysHomestay')->name('PaysHomestay');             
             Route::get('/pays-homestay/{id}','HomestayPartnerController@getPaysHomestay2')->name('PaysHomestayStep2');
 
@@ -261,12 +259,13 @@ Route::group(['namespace'=>'Partner', 'prefix'=>'partner/'],function(){
                 Route::post('/edit-avatar/{id}','AccountController@editAvatar')->name('userEdit_Avatar');
                 Route::post('/edit-address/{id}','AccountController@editAddress')->name('userEdit_Address');
 
-                Route::get('/edit-address/{id}','AccountController@editAddress');               
-                Route::get('/change-status/{bill_id}',[
-                    'as'=>'ChangeStatus',
-                    'uses'=>'AccountController@getChange'
-                ]);
-            });
+                Route::get('/edit-address/{id}','AccountController@editAddress');     
+            });            
+            Route::get('/rating-homestay/{id}','RatingController@index')->name('RatingHomestay');
+            Route::get('/change-status/{bill_id}',[
+                'as'=>'ChangeStatus',
+                'uses'=>'RatingController@getChange'
+            ]);
             Route::get('/productManage',[
                 'as'=>'partnerProductManage',
                 'uses'=>'ManagerProductController@index'

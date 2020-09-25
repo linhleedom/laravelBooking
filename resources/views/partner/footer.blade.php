@@ -1,87 +1,71 @@
 <footer>
-		<div class="wrap clearfix">
-			<!--column-->
-			<article class="one-fourth">
-				<h3>Book Your Travel</h3>
-				<p>Tòa nhà HTC, 236B & 238 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội.</p>
-				<p><em>P:</em> 0888519575 / 0359989090</p>
-				<p><em>E:</em> <a class="no_href" title="booking@mail.com">booking-travel@gmail.com</a></p>
-			</article>
-			<!--//column-->
-			
-			<!--column-->
-			<article class="one-fourth">
-				<h3>Customer support</h3>
+	<div class="wrap clearfix">
+		<!--column-->
+		<article class="one-fourth">
+			<h3>Book Your Travel</h3>
+			<p>238 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội</p>
+			<p><em>Phone:</em> 24/7 liên hệ: 1800 1989</p>
+			<p><em>Email:</em> <a href="mailto:bookyourtravel@gmail.com" title="bookyourtravel@gmail.com">bookyourtravel@gmail.com</a></p>
+		</article>
+		<!--//column-->
+		
+		<!--column-->
+		<article class="one-fourth">
+			<h3>Hỗ trợ khách hàng</h3>
+			<ul>
+				<li><a href="javascript:" title="Điều khoản và điều kiện">Điều khoản và điều kiện</a></li>
+				<li><a href="javascript:" title="Làm cách nào để đặt chỗ?">Làm cách nào để đặt chỗ?</a></li>
+				<!-- <li><a href="javascript:" title="Payment options">Payment options</a></li> -->
+				<li><a href="javascript:" title="Mẹo đặt phòng">Mẹo đặt phòng</a></li>
+			</ul>
+		</article>
+		<!--//column-->
+		
+		<!--column-->
+		<article class="one-fourth">
+			<h3>Theo dõi chúng tôi</h3>
+			<ul class="social">
+				<li class="facebook"><a href="javascript:" title="facebook">facebook</a></li>
+				<li class="youtube"><a href="javascript:" title="youtube">youtube</a></li>
+				<!-- <li class="rss"><a href="javascript:" title="rss">rss</a></li> -->
+				<!-- <li class="linkedin"><a href="javascript:" title="linkedin">linkedin</a></li> -->
+				<li class="googleplus"><a href="javascript:" title="googleplus">googleplus</a></li>
+				<li class="twitter"><a href="javascript:" title="twitter">twitter</a></li>
+				<!-- <li class="vimeo"><a href="javascript:" title="vimeo">vimeo</a></li> -->
+				<li class="pinterest"><a href="javascript:" title="pinterest">pinterest</a></li>
+			</ul>
+		</article>
+		<!--//column-->
+		
+		<!--column-->
+		<article class="one-fourth">
+			<h3>Đăng ký tài khoản</h3>
+			<!-- <form id="newsletter" action="newsletter.php" method="post"> -->
+				<fieldset>
+					<input type="email" id="email_signup" name="email_signup" placeholder="Nhập email của bạn tại đây" />
+					<input type="submit" id="signUp"  name="signUp" value="Đăng ký"  class="gradient-button" />
+				</fieldset>
+			<!-- </form> -->
+		</article>
+		<!--//column-->
+		
+		<section class="bottom">
+			<p class="copy">Copyright © 2020 Book Your Travel</p>
+			<nav>
 				<ul>
-					<li><a class = "no_href" title="Faq">Faq</a></li>
-					<li><a class = "no_href" title="How do I make a reservation?">How do I make a reservation?</a></li>
-					<li><a class = "no_href" title="Payment options">Payment options</a></li>
-					<li><a class = "no_href" title="Booking tips">Booking tips</a></li>
+					<li><a href="javascript:" title="About us">Giới thiệu</a></li>
+					<li><a href="javascript:" title="Contact">Liên hệ</a></li>
+					<li><a href="javascript:" title="Users">Khách Hàng</a></li>
+					<!-- <li><a href="javascript:" title="Customer service">Customer service</a></li> -->
+					<li><a href="javascript:" title="FAQ">FAQ</a></li>
+					<!-- <li><a href="javascript:" title="Careers">Careers</a></li> -->
+					<li><a href="javascript:" title="Terms & Conditions">Điều khoản và điều kiện</a></li>
+					<!-- <li><a href="javascript:" title="Privacy statement">Privacy statement</a></li> -->
 				</ul>
-			</article>
-			<!--//column-->
-			
-			<!--column-->
-			<article class="one-fourth">
-				<h3>Follow us</h3>
-				<ul class="social">
-					<li class="facebook"><a href="#" title="facebook">facebook</a></li>
-					{{-- <li class="youtube"><a href="#" title="youtube">youtube</a></li> --}}
-					{{-- <li class="rss"><a href="#" title="rss">rss</a></li> --}}
-					<li class="linkedin"><a href="#" title="linkedin">linkedin</a></li>
-					<li class="googleplus"><a href="#" title="googleplus">googleplus</a></li>
-					<li class="twitter"><a href="#" title="twitter">twitter</a></li>
-					{{-- <li class="vimeo"><a href="#" title="vimeo">vimeo</a></li>
-					<li class="pinterest"><a href="#" title="pinterest">pinterest</a></li> --}}
-				</ul>
-			</article>
-			<!--//column-->
-			
-			<!--column-->
-			<article class="one-fourth last">
-				<h3>Contacts with us</h3>
-				<form id="newsletter" action="{{route('partnerRegister')}}" method="get">
-					<fieldset>
-						<input type="email" id="newsletter_signup" name="newsletter_signup" placeholder="Enter your email here" />
-						<input type="submit" id="newsletter_submit" name="newsletter_submit" value="Signup" class="gradient-button" />
-					</fieldset>
-				</form>
-			</article>
-			<!--//column-->
-			
-			<section class="bottom">
-				<p class="copy">Copyright 2012 Book your travel ltd. All rights reserved</p>
-				<nav>
-					<ul>
-						<li><a class="no_href" title="About us">About us</a></li>
-						<li><a class="no_href" title="Contact">Contact</a></li>
-						<li><a class="no_href" title="Partners">Partners</a></li>
-						<li><a class="no_href" title="Customer service">Customer service</a></li>
-						<li><a class="no_href"class="no_href" title="FAQ">FAQ</a></li>
-						<li><a class="no_href" title="Careers">Careers</a></li>
-						<li><a class="no_href" title="Terms & Conditions">Terms &amp; Conditions</a></li>
-						<li><a class="no_href" title="Privacy statement">Privacy statement</a></li>
-					</ul>
-				</nav>
-			</section>
-		</div>
-	</footer>
-	
-	{{-- <script>
-		selectnav();
-		const
-		range = document.getElementById('range'),
-		rangeV = document.getElementById('rangeV'),
-		setValue = ()=>{
-			const
-				newValue = Number( (range.value - range.min) * 100 / (range.max - range.min) ),
-				newPosition = 10 - (newValue * 0.2);
-			rangeV.innerHTML = `<span>${range.value}</span>`;
-			rangeV.style.left = `calc(${newValue}% + (${newPosition}px))`;
-		};
-	document.addEventListener("DOMContentLoaded", setValue);
-	range.addEventListener('input', setValue);
-	</script> --}}
+			</nav>
+		</section>
+	</div>
+</footer>
+<script>
 
-
-
+</script>

@@ -74,7 +74,7 @@ Home
 					<!--column-->
 					<article class="one-fourth last">
 						<div class="details" style="background-color: #E25A59;height: 194px;">
-						<a href="{{url('partner/my-account',['id' => Auth::user()->id])}}"><img src="partner/images/ico/comment.png" alt="" width="80" height="80" style="
+						<a href="javascript:"><img src="partner/images/ico/comment.png" alt="" width="80" height="80" style="
 						background-color: #E25A59; margin: 45px auto" /></a>
 							<h4 style="color: white;border-bottom: none;">Rating</h4>
 							<span style="text-align: center !important;

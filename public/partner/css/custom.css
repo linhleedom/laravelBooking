@@ -795,3 +795,6 @@ table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
     color: #ffffff;
     margin-top: 30px;
 }
+.deals section article.ratings article{
+    box-shadow: none !important;
+}

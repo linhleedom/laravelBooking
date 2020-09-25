@@ -29,9 +29,7 @@ class AccountController extends Controller
             foreach ($homestay as $homestayVal){
                 array_push($homestayforPartner, $homestayVal->id);
             };
-
             $rate = Rating::whereIn('homestay_id',$homestayforPartner)->paginate(3);
-            // dd($rate);
             return view('partner.account.account',compact('user','id','province','district','ward','rate'));
     }
 
@@ -131,17 +129,6 @@ class AccountController extends Controller
         $user->avatar = $link;
         $user->update();
         return redirect()->back()->with(['edit_avatar'=>'success','massage'=>'Cập nhật thành công']);
-    }
-    public function getChange($bill_id){
-        $rate = Rating::find($bill_id);
-        if($rate->status == 0){            
-            $rate->status = 1;        
-            $rate->update();
-        }elseif($rate->status == 1) {            
-            $rate->status = 0;        
-            $rate->update();
-        }
-        return redirect()->back()->with(['change-status'=>'success','massage'=>'Đổi trạng thái phòng thành công']);
     }
     public function getDistrict($id){
         $districts = District::where("matp",$id)->pluck("name","maqh");

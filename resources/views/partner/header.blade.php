@@ -31,8 +31,8 @@
 			
 			<!--contact-->
 			<div class="contact">
-				<span>24/7 Support number</span>
-				<span class="number">1- 555 - 555 - 555</span>
+				<span>24/7 Hỗ trợ </span>
+				<span class="number">1800-1989</span>
 			</div>
 			<!--//contact-->
 		</div>
@@ -42,9 +42,9 @@
 			<ul class="wrap">
 				<li><a href="{{url('partner/trangchu')}}" title="Home" class="active">Trang chủ</a></li>
 				<li><a href="{{url('partner/list-homestay')}}">Homestay</a>
-				<ul>
-					<li><a href="{{route('View_Restore_homestay')}}">Khôi phục Homestay</a></li>
-				</ul>
+					<ul>
+						<li><a href="{{route('View_Restore_homestay')}}">Khôi phục Homestay</a></li>
+					</ul>
 			</li>
 				<li class = "listbills"><a  href="{{url('partner/list-bills')}}" > Hóa đơn</a>
 					<ul>
